@@ -43,7 +43,12 @@ Está em [`src/app/[locale]/layout.tsx`](src/app/[locale]/layout.tsx). Como é u
 | Títulos, display | Forevs (serif, OH no Type Co.) | `--font-display` |
 | Corpo, labels | Area Normal (grotesca, Blaze Type) | `--font-body` |
 
-**Pesos disponíveis no kit atual:** só Regular (400) e Bold (700) de cada família, mais um Light (300) à parte. Onde o CSS pede 500/medium, o browser aproxima para 400. Se quiseres os pesos intermédios a sério, adiciona-os ao Web Project no Adobe Fonts — o link mantém-se igual.
+**⚠️ Os cortes Light são uma família separada.** A Adobe serve-os com nome próprio
+(`area-normal-light`), por isso `font-weight: 300` sobre `area-normal` é silenciosamente
+ignorado. No site usa-se o token `--font-body-light` (classe `.lead`).
+
+Faltam ainda no kit: **Forevs Light** e **Area Normal Medium/SemiBold**. Ver
+[`BRANDING.md`](BRANDING.md) §1 para o detalhe e o que fazer.
 
 ## 4. Armadilha conhecida: traduções não atualizam
 
@@ -115,17 +120,33 @@ O PDF de branding **não está no repositório** (59 MB) — está no Desktop de
 O `BRANDING.md` foi escrito para que não precises de o reanalisar, mas as referências de
 página estão lá caso queiras confirmar algo.
 
-## 7. Sugestão: usar Git
+## 7. Git
 
-Uma pasta transferida à mão resolve hoje, mas a partir do momento em que trabalhas nas duas máquinas os ficheiros começam a divergir. O caminho durável é um repositório no GitHub:
+O projeto já está em **<https://github.com/martim-palhava-duall/Basilica>** (privado).
 
 ```bash
-git init
-git add .
-git commit -m "Homepage da Basílica da Estrela"
-# criar o repo no GitHub e depois:
-git remote add origin <url-do-repo>
-git push -u origin main
+git pull     # antes de começar
+git push     # ao terminar
 ```
 
-Depois, em cada máquina, `git pull` antes de começar e `git push` no fim. O `.gitignore` já está configurado para ignorar `node_modules` e `.next`.
+Numa máquina nova:
+
+```bash
+git clone https://github.com/martim-palhava-duall/Basilica.git ~/Projects/Basilica
+cd ~/Projects/Basilica && npm install
+```
+
+**Autenticação:** o repositório pertence à conta de trabalho `martim-palhava-duall`.
+Cada máquina precisa do seu token — [github.com/settings/tokens](https://github.com/settings/tokens)
+→ Generate new token (classic) → scope **`repo`**. No push, o username é
+`martim-palhava-duall` e a password é o token.
+
+Se o Mac tiver guardada a credencial de outra conta GitHub, o push falha com
+*"Repository not found"* em vez de um erro de permissões (é assim que o GitHub protege
+repositórios privados). Nesse caso, põe o utilizador no próprio URL do remote:
+
+```bash
+git remote set-url origin https://martim-palhava-duall@github.com/martim-palhava-duall/Basilica.git
+```
+
+O `.gitignore` já ignora `node_modules` e `.next`.
