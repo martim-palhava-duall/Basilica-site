@@ -2,9 +2,15 @@ import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import Logo from '@/components/ui/Logo'
 
+/** Aparece no rodapé de todas as peças do branding, junto ao site */
+const INSTAGRAM = '@basilicadaestrela'
+const INSTAGRAM_URL = 'https://instagram.com/basilicadaestrela'
+const SITE = 'basilicadaestrela.com'
+
 export default function Footer() {
   const t = useTranslations('footer')
   const tn = useTranslations('nav')
+  const tc = useTranslations('common')
 
   const sections = [
     {
@@ -35,58 +41,81 @@ export default function Footer() {
 
   return (
     <footer className="bg-[var(--color-bg-dark)] text-[var(--color-text-inverse)]">
-      <div className="container section-pad">
-        {/* Top */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          {/* Brand */}
-          <div>
-            <Logo className="h-16 w-auto mb-6" />
-            <p className="label text-[var(--color-text-muted)] mb-6">Lisboa, desde 1790</p>
-            <address className="not-italic text-[var(--color-text-secondary)] text-sm leading-relaxed">
-              <p>{t('morada')}</p>
-              <p className="mt-2">
-                <a href={`tel:${t('telefone')}`} className="hover:text-[var(--color-text-inverse)] transition-colors">
-                  {t('telefone')}
-                </a>
-              </p>
-              <p>
-                <a href={`mailto:${t('email')}`} className="hover:text-[var(--color-text-inverse)] transition-colors">
-                  {t('email')}
-                </a>
-              </p>
+      <div className="container section-pad-lg">
+        {/* Marca e morada à esquerda; a navegação agrupada junto à margem direita,
+            terminando à mesma altura que a régua em baixo. */}
+        <div className="flex flex-col lg:flex-row lg:justify-between gap-16">
+          <div className="lg:max-w-sm">
+            <Logo className="h-20 w-auto" />
+            <p
+              className="font-display mt-8 whitespace-pre-line opacity-80"
+              style={{ fontSize: 'var(--text-tagline)', lineHeight: 1.15 }}
+            >
+              {tc('tagline')}
+            </p>
+
+            <address className="not-italic flex flex-col gap-2.5 mt-10 text-[0.95rem] text-[var(--color-text-on-dark)]">
+              <span className="whitespace-pre-line leading-relaxed">{t('morada')}</span>
+              <a
+                href={`tel:${t('telefone').replace(/\s/g, '')}`}
+                className="hover:text-[var(--color-text-inverse)] transition-colors duration-200"
+              >
+                {t('telefone')}
+              </a>
+              <a
+                href={`mailto:${t('email')}`}
+                className="hover:text-[var(--color-text-inverse)] transition-colors duration-200"
+              >
+                {t('email')}
+              </a>
             </address>
           </div>
 
-          {/* Nav sections */}
-          {sections.map((section) => (
-            <div key={section.title}>
-              <p className="label text-[var(--color-text-muted)] mb-4">{section.title}</p>
-              <ul className="flex flex-col gap-3">
-                {section.links.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-[var(--color-text-secondary)] hover:text-[var(--color-text-inverse)] transition-colors text-sm"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <div className="flex flex-wrap gap-x-14 gap-y-12 lg:flex-nowrap">
+            {sections.map((section) => (
+              <div key={section.title} className="min-w-[8rem]">
+                <p className="label !text-[var(--color-text-on-dark)] opacity-60 mb-5">
+                  {section.title}
+                </p>
+                <ul className="flex flex-col gap-3.5">
+                  {section.links.map((link) => (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        className="text-[0.95rem] text-[var(--color-text-on-dark)] hover:text-[var(--color-text-inverse)] transition-colors duration-200"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-[var(--color-border)] pt-8 flex flex-col md:flex-row justify-between gap-4">
-          <p className="text-[var(--color-text-muted)] text-xs">{t('direitos')}</p>
-          <div className="flex gap-6">
-            <Link href="/privacidade" className="text-[var(--color-text-muted)] hover:text-[var(--color-text-inverse)] text-xs transition-colors">
+        {/* Régua + barra legal */}
+        <div className="mt-24 pt-8 border-t border-[var(--color-text-inverse)]/15 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-2 text-[0.8rem] text-[var(--color-text-on-dark)]">
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[var(--color-text-inverse)] transition-colors duration-200"
+            >
+              {INSTAGRAM}
+            </a>
+            <span className="opacity-70">{SITE}</span>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-2 text-[0.8rem] text-[var(--color-text-on-dark)]">
+            <Link href="/privacidade" className="hover:text-[var(--color-text-inverse)] transition-colors duration-200">
               {t('privacidade')}
             </Link>
-            <Link href="/termos" className="text-[var(--color-text-muted)] hover:text-[var(--color-text-inverse)] text-xs transition-colors">
+            <Link href="/termos" className="hover:text-[var(--color-text-inverse)] transition-colors duration-200">
               {t('termos')}
             </Link>
+            <span className="opacity-60">{t('direitos')}</span>
           </div>
         </div>
       </div>
