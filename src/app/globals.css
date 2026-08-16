@@ -1,0 +1,230 @@
+@import "tailwindcss";
+
+/* ============================================
+   BASÍLICA DA ESTRELA — DESIGN SYSTEM TOKENS
+   ============================================ */
+
+@layer base {
+  :root {
+    /* CORES */
+    --color-bg-primary:     oklch(96% 0.012 80);
+    --color-bg-secondary:   oklch(93% 0.015 75);
+    --color-bg-dark:        oklch(22% 0.010 260);
+
+    --color-text-primary:   oklch(20% 0.010 260);
+    --color-text-secondary: oklch(45% 0.008 260);
+    --color-text-muted:     oklch(62% 0.006 260);
+    --color-text-inverse:   oklch(95% 0.008 80);
+
+    --color-terracota:      oklch(55% 0.110 28);
+    --color-slate:          oklch(52% 0.045 230);
+    --color-gold:           oklch(68% 0.110 68);
+    --color-cream:          oklch(91% 0.025 85);
+
+    --color-border:         oklch(20% 0.010 260 / 0.08);
+    --color-border-light:   oklch(20% 0.010 260 / 0.04);
+
+    /* TIPOGRAFIA — Adobe Fonts kit (see layout.tsx <head>).
+       Forevs ships Regular/Bold (+ italics) in this kit; no Light face is
+       loaded yet, so font-weight:300 falls back to Regular (400) rather than
+       a true light cut. Area Normal ships the same, plus a separate
+       "area-normal-light" family for true 300 where it's explicitly used. */
+    --font-display: 'forevs', Georgia, serif;
+    --font-body:    'area-normal', system-ui, sans-serif;
+    --font-body-light: 'area-normal-light', system-ui, sans-serif;
+
+    --text-display:  clamp(3.5rem, 9vw, 10rem);
+    --text-h1:       clamp(2.5rem, 6vw, 6rem);
+    --text-h2:       clamp(1.75rem, 4vw, 3.5rem);
+    --text-h3:       clamp(1.25rem, 2.5vw, 2rem);
+    --text-body-lg:  clamp(1rem, 1.5vw, 1.25rem);
+    --text-body:     clamp(0.9rem, 1.2vw, 1.1rem);
+    --text-label:    0.8rem;
+    /* editorial statement type — the large serif "manifesto" paragraph */
+    --text-editorial: clamp(1.5rem, 3.4vw, 3rem);
+
+    /* staggered headline indents (see .stagger) */
+    --stagger-1: clamp(1.5rem, 7vw, 7rem);
+    --stagger-2: clamp(0.75rem, 3.5vw, 3.5rem);
+
+    /* inline image tucked into a headline (see .inline-media) */
+    --inline-media-w: clamp(3.5rem, 7vw, 7rem);
+
+    --tracking-display: -0.03em;
+    --tracking-heading: -0.02em;
+    --tracking-label:    -0.005em;
+
+    --leading-display: 0.92;
+    --leading-heading: 1.1;
+    --leading-body:    1.6;
+
+    /* ESPAÇAMENTO */
+    --space-xs:   clamp(0.5rem,  1vw,  0.75rem);
+    --space-sm:   clamp(1rem,    2vw,  1.5rem);
+    --space-md:   clamp(1.5rem,  3vw,  2.5rem);
+    --space-lg:   clamp(2.5rem,  5vw,  5rem);
+    --space-xl:   clamp(4rem,    8vw,  8rem);
+    --space-2xl:  clamp(6rem,   12vw, 14rem);
+
+    --container-max: 1440px;
+    --container-pad: clamp(1.5rem, 5vw, 6rem);
+
+    /* MOTION */
+    --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-inout:  cubic-bezier(0.76, 0, 0.24, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    --dur-micro: 150ms;
+    --dur-sm:    250ms;
+    --dur-md:    500ms;
+    --dur-lg:    700ms;
+    --dur-xl:    1000ms;
+
+    /* BORDER RADIUS — a single, understated 6px across all media and surfaces */
+    --radius: 6px;
+    --radius-sm: 6px;
+    --radius-md: 6px;
+    --radius-lg: 6px;
+    --radius-xl: 6px;
+  }
+}
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: var(--tracking-heading);
+    line-height: var(--leading-heading);
+  }
+
+  img, video { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  button { cursor: pointer; border: none; background: none; font-family: inherit; }
+}
+
+@layer utilities {
+  .container {
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--container-pad);
+  }
+
+  .font-display { font-family: var(--font-display); }
+  .font-body    { font-family: var(--font-body); }
+
+  .text-display {
+    font-size: var(--text-display);
+    letter-spacing: var(--tracking-display);
+    line-height: var(--leading-display);
+  }
+
+  /* Quiet editorial kicker — sentence case, near-zero tracking. Neither
+     paisana.studio nor tengilemalamala.com use a widely-tracked uppercase
+     eyebrow; paisana stays lowercase/light, tengile keeps caps tight. This
+     sits between the two: natural casing (from the message strings), a
+     touch of weight for structure, no shouting. */
+  .label {
+    font-family: var(--font-body);
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: none;
+    color: var(--color-text-muted);
+  }
+
+  .section-pad   { padding-block: var(--space-xl); }
+  .section-pad-lg { padding-block: var(--space-2xl); }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity var(--dur-lg) var(--ease-out),
+                transform var(--dur-lg) var(--ease-out);
+  }
+
+  .bg-dark { background-color: var(--color-bg-dark); color: var(--color-text-inverse); }
+  .bg-secondary { background-color: var(--color-bg-secondary); }
+
+  .media { border-radius: var(--radius); overflow: hidden; }
+  /* .arch must win the border-radius cascade when combined with .media */
+  .arch { border-radius: 999px 999px 0 0; overflow: hidden; }
+
+  .ken-burns {
+    animation: ken-burns 24s ease-in-out infinite alternate;
+  }
+
+  /* ── EDITORIAL TYPE ──
+     Delicate serif register: light weights, mixed roman/italic, staggered
+     lines and inline media. See paisana.studio / tengilemalamala.com */
+
+  /* Large serif statement paragraph — the "manifesto" block */
+  .type-editorial {
+    font-family: var(--font-display);
+    font-size: var(--text-editorial);
+    font-weight: 300;
+    line-height: 1.28;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  /* Italic emphasis inside a serif headline or statement */
+  .em-italic {
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  /* Staggered headline lines: each line indents further right */
+  .stagger > * { display: block; }
+  .stagger > *:nth-child(2) { padding-inline-start: var(--stagger-1); }
+  .stagger > *:nth-child(3) { padding-inline-start: var(--stagger-2); }
+
+  /* Small rounded image sitting inline within a headline */
+  .inline-media {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    width: var(--inline-media-w);
+    aspect-ratio: 3 / 2;
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-inline: 0.35em;
+    translate: 0 -0.06em;
+  }
+}
+
+@keyframes ken-burns {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
