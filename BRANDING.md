@@ -14,7 +14,38 @@ As referências de página abaixo são desse PDF.
 
 ⚠️ **O Manrope que aparece no PDF não é do branding** — é apenas o template da apresentação da agência (os cabeçalhos "Alfred / Basílica da Estrela Identidade" nas margens). Ignorar.
 
-Vêm do Adobe Fonts por link (ver `layout.tsx`). O kit atual só tem Regular (400) e Bold (700) de cada família, mais um Light (300) à parte. Se forem precisos pesos intermédios, adicionar ao Web Project no Adobe Fonts — o link mantém-se.
+Vêm do Adobe Fonts por link (ver `layout.tsx`).
+
+### ⚠️ Os Light são uma família separada
+
+O kit serve **16 faces**:
+
+| Família CSS | Pesos |
+|---|---|
+| `forevs` | 400, 400i, 700, 700i |
+| `area-normal` | 400, 400i, 700, 700i |
+| `area-normal-light` | 300, 300i |
+| `area-extended` / `area-extended-light` | (não usadas no site) |
+
+A Adobe serve os cortes Light com **nome de família próprio**. Ou seja,
+`font-weight: 300` sobre `area-normal` **é silenciosamente ignorado** — é preciso
+`font-family: area-normal-light`. No site isso está no token `--font-body-light`,
+usado pela classe `.lead`.
+
+Verificado por medição: a mesma frase a 40px dá 1182.5px em `area-normal-light`
+contra 1184.5px em `area-normal` — larguras distintas, logo são faces distintas.
+
+### Pesos que faltam no kit
+
+Estes são pedidos pelo CSS mas **não existem**, e renderizam a 400 sem aviso:
+
+- **`forevs` 300** — o título do hero pede Light e sai Regular
+- **`area-normal` 500 (Medium)** — nav, botões e labels
+
+O branding usa nas peças de print: Forevs *Regular, Italic, Medium, Bold, LightItalic*
+e Area Normal *Regular, SemiBold, Bold, ExtraBold*, além de Area Variable Thin.
+Para ter a gama completa, adicionar ao Web Project em fonts.adobe.com — o link
+`tuk8ddf.css` não muda, passa apenas a servir mais faces.
 
 ---
 

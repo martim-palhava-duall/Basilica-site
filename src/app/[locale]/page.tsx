@@ -145,7 +145,7 @@ export default function HomePage() {
             </h2>
 
             <Reveal delay={0.3} className="flex flex-col items-center text-center mt-20">
-              <p className="text-[var(--color-text-on-dark)] max-w-sm mb-10">
+              <p className="lead text-[var(--color-text-on-dark)] max-w-sm mb-10">
                 {t('visitSubtitle')}
               </p>
               <Button
@@ -237,7 +237,7 @@ export default function HomePage() {
                 >
                   {t.rich('quemSomosTitleRich', { em })}
                 </h2>
-                <p className="text-[var(--color-text-secondary)] mb-12 max-w-sm">
+                <p className="lead text-[var(--color-text-secondary)] mb-12 max-w-sm">
                   {t('quemSomosSubtitle')}
                 </p>
                 <Button href="/sobre-nos" variant="secondary" arrow>
@@ -263,7 +263,7 @@ export default function HomePage() {
               >
                 {t.rich('obraSocialTitleRich', { em })}
               </h2>
-              <p className="text-[var(--color-text-secondary)] max-w-sm mb-12">
+              <p className="lead text-[var(--color-text-secondary)] max-w-sm mb-12">
                 {t('obraSocialSubtitle')}
               </p>
               <Button href="/obra-social" variant="secondary" arrow>
@@ -372,7 +372,7 @@ export default function HomePage() {
                 </div>
 
                 <div className="lg:col-span-5 lg:pb-3">
-                  <p className="text-[var(--color-text-secondary)] mb-10 max-w-sm">
+                  <p className="lead text-[var(--color-text-secondary)] mb-10 max-w-sm">
                     {t('doacoesSubtitle')}
                   </p>
                   <Button

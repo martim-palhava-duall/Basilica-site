@@ -46,11 +46,20 @@
     --color-border:         rgb(27 43 57 / 0.14);
     --color-border-light:   rgb(27 43 57 / 0.07);
 
-    /* TIPOGRAFIA — Adobe Fonts kit (see layout.tsx <head>).
-       Forevs ships Regular/Bold (+ italics) in this kit; no Light face is
-       loaded yet, so font-weight:300 falls back to Regular (400) rather than
-       a true light cut. Area Normal ships the same, plus a separate
-       "area-normal-light" family for true 300 where it's explicitly used. */
+    /* TIPOGRAFIA — Adobe Fonts kit (ver layout.tsx <head>).
+       O kit serve 16 faces:
+         forevs            400, 400i, 700, 700i
+         area-normal       400, 400i, 700, 700i
+         area-normal-light 300, 300i   ← família SEPARADA, não é peso da anterior
+         area-extended / area-extended-light (não usadas aqui)
+
+       ⚠️ A Adobe serve os Light como família própria. `font-weight: 300` sobre
+       `area-normal` é ignorado — é preciso usar --font-body-light.
+
+       Em falta no kit (font-weight:300/500 sobre estas famílias não tem efeito):
+         · forevs Light   → o título do hero pede 300 e renderiza a 400
+         · area-normal Medium (500) → nav e botões pedem 500, renderizam a 400
+       Para os ter, adicionar ao Web Project em fonts.adobe.com (o link não muda). */
     --font-display: 'forevs', Georgia, serif;
     --font-body:    'area-normal', system-ui, sans-serif;
     --font-body-light: 'area-normal-light', system-ui, sans-serif;
@@ -225,6 +234,16 @@
   .stagger > * { display: block; }
   .stagger > *:nth-child(2) { padding-inline-start: var(--stagger-1); }
   .stagger > *:nth-child(3) { padding-inline-start: var(--stagger-2); }
+
+  /* Parágrafo de apoio, sob os títulos de secção.
+     Usa a família Light a sério (area-normal-light), e não font-weight:300,
+     que sobre a família normal seria ignorado. */
+  .lead {
+    font-family: var(--font-body-light);
+    font-weight: 300;
+    font-size: var(--text-body-lg);
+    line-height: 1.6;
+  }
 
   /* ── HORÁRIOS ──
      Composição dos cartazes de celebrações (branding p28): tudo em Area,
