@@ -22,8 +22,6 @@ export default function HomePage() {
     </span>
   )
 
-  const media = inlineMedia('/images/interior-nave.jpg', t('manifestoImgAlt'))
-
   /** Visit section: one editorial line per experience, images alternating sides */
   const experiences = [
     { key: 'visitExp1', src: '/images/cupula-torre.jpg', alt: 'cupulaImgAlt' },
@@ -58,48 +56,64 @@ export default function HomePage() {
             />
           </div>
 
-          <div className="container relative z-10">
-            <Reveal>
-              <SectionLabel rule className="!text-[var(--color-text-inverse)] opacity-80">
-                {t('heroLabel')}
-              </SectionLabel>
-            </Reveal>
-            <Reveal delay={0.1}>
-              {/* Staggered serif lines, second set in italic (see tengile / paisana) */}
-              <h1
-                className="font-display font-light text-[var(--color-text-inverse)] stagger mb-10"
-                style={{
-                  fontSize: 'var(--text-display)',
-                  letterSpacing: 'var(--tracking-display)',
-                  lineHeight: 'var(--leading-display)',
-                }}
-              >
-                <span>{t('heroTitleA')}</span>
-                <span className="em-italic">{t('heroTitleB')}</span>
-              </h1>
-            </Reveal>
-            <Reveal delay={0.25}>
-              <div className="flex flex-wrap gap-4">
-                <Button href="/visita" arrow>{t('visitCta')}</Button>
-                <Button
-                  href="/sobre-a-basilica"
-                  variant="secondary"
-                  className="!border-[var(--color-text-inverse)] !text-[var(--color-text-inverse)]"
+          {/* Título e CTAs ancorados à esquerda; a frase-assinatura da marca alinhada
+              à direita, na mesma base — as duas pontas da mesma linha. */}
+          <div className="container relative z-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-12">
+            <div className="lg:max-w-[62%]">
+              <Reveal>
+                <SectionLabel rule className="!text-[var(--color-text-inverse)] opacity-80">
+                  {t('heroLabel')}
+                </SectionLabel>
+              </Reveal>
+              <Reveal delay={0.1}>
+                {/* Staggered serif lines, second set in italic (see tengile / paisana) */}
+                <h1
+                  className="font-display font-light text-[var(--color-text-inverse)] stagger mb-10"
+                  style={{
+                    fontSize: 'var(--text-display)',
+                    letterSpacing: 'var(--tracking-display)',
+                    lineHeight: 'var(--leading-display)',
+                  }}
                 >
-                  {tc('saberMais')}
-                </Button>
-              </div>
+                  <span>{t('heroTitleA')}</span>
+                  <span className="em-italic">{t('heroTitleB')}</span>
+                </h1>
+              </Reveal>
+              <Reveal delay={0.3}>
+                <div className="flex flex-wrap gap-4">
+                  <Button href="/visita" arrow>{t('visitCta')}</Button>
+                  <Button
+                    href="/sobre-a-basilica"
+                    variant="secondary"
+                    className="!border-[var(--color-text-inverse)] !text-[var(--color-text-inverse)]"
+                  >
+                    {tc('saberMais')}
+                  </Button>
+                </div>
+              </Reveal>
+            </div>
+
+            {/* Frase-assinatura da marca (branding p30). Forevs romano, não itálico. */}
+            <Reveal delay={0.2} className="lg:shrink-0 lg:pb-2">
+              <p
+                className="font-display text-[var(--color-text-inverse)] whitespace-pre-line lg:text-right"
+                style={{ fontSize: 'var(--text-tagline)', lineHeight: 1.15 }}
+              >
+                {tc('tagline')}
+              </p>
             </Reveal>
           </div>
         </section>
 
-        {/* ── MANIFESTO ── */}
+        {/* ── MANIFESTO ──
+            Declaração puramente tipográfica. As fotografias encaixadas no texto
+            ficam reservadas à secção Visitar, para as duas não competirem. */}
         <section className="section-pad-lg">
           <div className="container">
             <Reveal className="max-w-5xl">
               <SectionLabel rule>{t('manifestoLabel')}</SectionLabel>
               <p className="type-editorial">
-                {t.rich('manifesto', { em, media })}
+                {t.rich('manifesto', { em })}
               </p>
             </Reveal>
           </div>

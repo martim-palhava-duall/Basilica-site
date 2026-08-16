@@ -42,20 +42,10 @@ export default function Nav() {
       } ${scrolled ? 'text-[var(--color-text-primary)]' : 'text-[var(--color-text-inverse)]'}`}
     >
       <nav className="container flex items-center justify-between h-16 md:h-20">
-        {/* Logo + frase-assinatura da marca (ver folheto tríptico, p30 do branding).
-            Composta em Forevs romano, não itálico. */}
-        <div className="flex items-center gap-4">
-          <Link href="/" className="transition-colors duration-500" aria-label="Basílica da Estrela">
-            <Logo className="h-9 md:h-11 w-auto" />
-          </Link>
-          <span
-            aria-hidden="true"
-            className="hidden lg:block h-8 w-px bg-current opacity-25"
-          />
-          <p className="hidden lg:block font-display text-[0.8rem] leading-[1.25] opacity-75 whitespace-pre-line">
-            {tc('tagline')}
-          </p>
-        </div>
+        {/* Logo */}
+        <Link href="/" className="transition-colors duration-500" aria-label="Basílica da Estrela">
+          <Logo className="h-9 md:h-11 w-auto" />
+        </Link>
 
         {/* Desktop links */}
         <ul className="hidden md:flex items-center gap-8">
@@ -71,8 +61,22 @@ export default function Nav() {
           ))}
         </ul>
 
-        {/* Lang + mobile toggle */}
-        <div className="flex items-center gap-4">
+        {/* Bilheteira + lang + mobile toggle */}
+        <div className="flex items-center gap-5">
+          {/* CTA de bilheteira — o sitemap prevê-a como destino principal da Visita,
+              e a compra é feita em plataforma externa. */}
+          <Link
+            href="/visita"
+            className={`hidden sm:inline-flex items-center border px-5 py-2.5 text-[0.8rem] font-medium transition-colors duration-300 ${
+              scrolled
+                ? 'border-[var(--color-text-primary)] !text-[var(--color-text-primary)] hover:bg-[var(--color-text-primary)] hover:!text-[var(--color-text-inverse)]'
+                : 'border-[var(--color-text-inverse)] !text-[var(--color-text-inverse)] hover:bg-[var(--color-text-inverse)] hover:!text-[var(--color-text-primary)]'
+            }`}
+            style={{ borderRadius: 'var(--radius)' }}
+          >
+            {t('bilheteira')}
+          </Link>
+
           <Link
             href={locale === 'pt' ? '/en' : '/'}
             className={`label transition-colors duration-200 ${linkColor}`}
@@ -108,6 +112,16 @@ export default function Nav() {
               </li>
             ))}
           </ul>
+
+          {/* Bilheteira: no topo o botão está escondido abaixo de sm, por isso repete-se aqui */}
+          <Link
+            href="/visita"
+            onClick={() => setMenuOpen(false)}
+            className="mt-8 inline-flex items-center bg-[var(--color-text-primary)] !text-[var(--color-text-inverse)] px-6 py-3 text-[0.8rem] font-medium"
+            style={{ borderRadius: 'var(--radius)' }}
+          >
+            {t('bilheteira')}
+          </Link>
         </div>
       )}
     </header>

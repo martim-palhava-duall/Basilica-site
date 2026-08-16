@@ -6,7 +6,8 @@
     "celebracoes": "Celebrações",
     "vidaParoquia": "Vida da Paróquia",
     "horarios": "Horários",
-    "contactos": "Contactos"
+    "contactos": "Contactos",
+    "bilheteira": "Bilheteira"
   },
   "home": {
     "heroLabel": "Lisboa, desde 1790",
@@ -15,7 +16,7 @@
     "heroTitleB": "da Estrela",
     "heroSubtitle": "Mais do que um monumento. Uma casa de oração no coração de Lisboa.",
     "manifestoLabel": "A nossa missão",
-    "manifesto": "Mais do que um monumento, <media></media> a Basílica da Estrela é uma <em>casa de oração</em> que convida a descobrir o amor infinito do <em>Coração de Jesus</em>.",
+    "manifesto": "Mais do que um monumento, a Basílica da Estrela é uma <em>casa de oração</em> que convida a descobrir o amor infinito do <em>Coração de Jesus</em>.",
     "visitLabel": "Visitar",
     "visitTitle": "Descubra a Basílica",
     "visitTitleRich": "Descubra a <em>Basílica</em>",

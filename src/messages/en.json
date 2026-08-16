@@ -6,7 +6,8 @@
     "celebracoes": "Celebrations",
     "vidaParoquia": "Parish Life",
     "horarios": "Schedule",
-    "contactos": "Contact"
+    "contactos": "Contact",
+    "bilheteira": "Tickets"
   },
   "home": {
     "heroLabel": "Lisbon, since 1790",
@@ -15,7 +16,7 @@
     "heroTitleB": "da Estrela",
     "heroSubtitle": "More than a monument. A house of prayer in the heart of Lisbon.",
     "manifestoLabel": "Our mission",
-    "manifesto": "More than a monument, <media></media> the Basílica da Estrela is a <em>house of prayer</em> that invites you to discover the infinite love of the <em>Heart of Jesus</em>.",
+    "manifesto": "More than a monument, the Basílica da Estrela is a <em>house of prayer</em> that invites you to discover the infinite love of the <em>Heart of Jesus</em>.",
     "visitLabel": "Visit",
     "visitTitle": "Discover the Basilica",
     "visitTitleRich": "Discover the <em>Basilica</em>",

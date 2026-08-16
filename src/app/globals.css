@@ -64,6 +64,8 @@
     --text-label:    0.8rem;
     /* editorial statement type — the large serif "manifesto" paragraph */
     --text-editorial: clamp(1.5rem, 3.4vw, 3rem);
+    /* frase-assinatura da marca, sob o título do hero */
+    --text-tagline:  clamp(1.25rem, 2.2vw, 2rem);
 
     /* staggered headline indents (see .stagger) */
     --stagger-1: clamp(1.5rem, 7vw, 7rem);
