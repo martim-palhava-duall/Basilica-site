@@ -85,9 +85,14 @@ Frase-assinatura da marca. Aparece em:
 - **p31** — folheto díptico cultural
 - **p36** — sinalética exterior
 
-Composta em **Forevs**, tamanho pequeno, como *standfirst* — não como título grande.
+Composta em **Forevs romano** (não itálico), em caixa alta e baixa, quebrada em linhas:
+`More Than / Just Another / Church`.
 
-**Por aplicar:** colocar no header, junto/por baixo de "Basílica da Estrela".
+O tamanho varia com o suporte: na capa do tríptico (p30) é o título principal, grande;
+no díptico e na sinalética é pequena, como assinatura.
+
+✅ **Aplicado:** no header, ao lado do logótipo, separada por um filete vertical
+(escondida abaixo de `lg`, para não competir com a navegação em ecrãs estreitos).
 
 ---
 
@@ -103,18 +108,35 @@ Isto valida o registo editorial/cultural que o site já segue.
 
 ---
 
-## 7. Estado
+## 7. Nem tudo é maiúsculas
+
+Nos **cartazes** quase tudo está em maiúsculas, porque são peças de leitura rápida à distância.
+Mas nos **folhetos** (p30), onde há texto corrido, os labels pequenos estão em **caixa baixa a
+negrito**: `Opening Hours:`, `How to get there:`, `Admission and Tickets:`.
+
+Regra prática para o site:
+- Maiúsculas → eyebrows de secção, cabeçalhos de coluna, horas (peças curtas e estruturais)
+- Caixa baixa → tudo o que seja texto para ler
+
+---
+
+## 8. Estado
 
 **Aplicado:**
 - Forevs + Area via Adobe Fonts
 - Logótipo (3 variantes em `public/logos/`, inline em `components/ui/Logo.tsx`)
 - Registo editorial itálico nas secções culturais
 - Cantos a 6px
+- **Paleta da marca** com os valores exatos (tokens `--brand-*` em `globals.css`)
+- **Linha Religiosa** na secção de Celebrações: título em maiúsculas Forevs
+- **Anatomia da p28**: eyebrow → título → régua → 3 colunas (classes `.schedule-*`)
+- **Formato das horas** `10H00`, `18H00 ÀS 19H00`
+- **"More Than Just Another Church"** no header
 
 **Por aplicar:**
-1. Linha Religiosa (maiúsculas Forevs) na secção de Celebrações/Horários
-2. Reestruturar os horários segundo o modelo da p28 (eyebrow → título → régua → 3 colunas)
-3. Formato das horas para `19H00`
-4. `"More Than Just Another Church"` no header
-5. Alinhar `--color-bg-dark` com o `#1c2b39` da marca
-6. Rever os pesos de fonte — o kit não tem medium (500); ou adicionar ao kit, ou ajustar o CSS
+1. Rever os pesos de fonte — o kit Adobe só tem Regular (400) e Bold (700). Onde o CSS
+   pede 500/medium o browser aproxima. Ou adicionar os pesos ao Web Project, ou ajustar o CSS.
+2. Considerar usar as cores da **Linha Religiosa** (dessaturadas) para distinguir
+   visualmente as secções litúrgicas das culturais — está definido no branding mas
+   ainda não explorado no site.
+3. Restantes páginas do site.

@@ -42,10 +42,20 @@ export default function Nav() {
       } ${scrolled ? 'text-[var(--color-text-primary)]' : 'text-[var(--color-text-inverse)]'}`}
     >
       <nav className="container flex items-center justify-between h-16 md:h-20">
-        {/* Logo */}
-        <Link href="/" className="transition-colors duration-500" aria-label="Basílica da Estrela">
-          <Logo className="h-9 md:h-11 w-auto" />
-        </Link>
+        {/* Logo + frase-assinatura da marca (ver folheto tríptico, p30 do branding).
+            Composta em Forevs romano, não itálico. */}
+        <div className="flex items-center gap-4">
+          <Link href="/" className="transition-colors duration-500" aria-label="Basílica da Estrela">
+            <Logo className="h-9 md:h-11 w-auto" />
+          </Link>
+          <span
+            aria-hidden="true"
+            className="hidden lg:block h-8 w-px bg-current opacity-25"
+          />
+          <p className="hidden lg:block font-display text-[0.8rem] leading-[1.25] opacity-75 whitespace-pre-line">
+            {tc('tagline')}
+          </p>
+        </div>
 
         {/* Desktop links */}
         <ul className="hidden md:flex items-center gap-8">

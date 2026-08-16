@@ -53,7 +53,18 @@ O [`src/i18n.ts`](src/i18n.ts) carrega os textos com `await import()` dinâmico:
 messages: (await import(`./messages/${locale}.json`)).default
 ```
 
-O Turbopack **não recarrega estes JSON em hot-reload**. Sempre que editares `src/messages/pt.json` ou `en.json`, o site continua a mostrar os textos antigos (ou erros `MISSING_MESSAGE`) até **reiniciares o servidor**. Não é um erro teu — é uma limitação do Turbopack com imports dinâmicos de JSON.
+O Turbopack **não recarrega estes JSON em hot-reload**. Depois de editares
+`src/messages/pt.json` ou `en.json`, o site continua a mostrar os textos antigos — ou pior,
+imprime a própria chave (`home.massasCol1Head`) e enche a consola de `MISSING_MESSAGE`.
+
+⚠️ **Reiniciar o servidor não chega.** A cache do Turbopack vive em `.next/` e sobrevive ao
+restart. É preciso apagá-la:
+
+```bash
+rm -rf .next && npm run dev
+```
+
+Não é erro teu — é uma limitação do Turbopack com imports dinâmicos de JSON.
 
 ## 5. Estrutura
 

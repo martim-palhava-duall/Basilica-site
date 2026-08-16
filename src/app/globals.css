@@ -6,23 +6,45 @@
 
 @layer base {
   :root {
-    /* CORES */
-    --color-bg-primary:     oklch(96% 0.012 80);
-    --color-bg-secondary:   oklch(93% 0.015 75);
-    --color-bg-dark:        oklch(22% 0.010 260);
+    /* ── PALETA DA MARCA ──
+       Valores exatos extraídos da apresentação de branding (Alfred, p26).
+       Ver BRANDING.md. */
 
-    --color-text-primary:   oklch(20% 0.010 260);
-    --color-text-secondary: oklch(45% 0.008 260);
-    --color-text-muted:     oklch(62% 0.006 260);
-    --color-text-inverse:   oklch(95% 0.008 80);
+    /* Institucionais / Linha Cultural */
+    --brand-navy:       #1b2b39;
+    --brand-terracota:  #b87a6e;
+    --brand-blue:       #6d92a7;
+    --brand-sand:       #ddbd98;
+    --brand-cream:      #e3d5c7;
 
-    --color-terracota:      oklch(55% 0.110 28);
-    --color-slate:          oklch(52% 0.045 230);
-    --color-gold:           oklch(68% 0.110 68);
-    --color-cream:          oklch(91% 0.025 85);
+    /* Linha Religiosa — as mesmas cores, dessaturadas */
+    --brand-grey-soft:  #bcc1c8;
+    --brand-rose-soft:  #dec1b9;
+    --brand-blue-soft:  #bacad6;
+    --brand-cream-soft: #f0e1cf;
+    --brand-white:      #f9f6f3;
 
-    --color-border:         oklch(20% 0.010 260 / 0.08);
-    --color-border-light:   oklch(20% 0.010 260 / 0.04);
+    /* ── TOKENS SEMÂNTICOS ── */
+    --color-bg-primary:     var(--brand-white);
+    --color-bg-secondary:   var(--brand-cream-soft);
+    --color-bg-dark:        var(--brand-navy);
+
+    --color-text-primary:   var(--brand-navy);
+    --color-text-secondary: #5b6b78;
+    --color-text-muted:     #8c98a2;
+    --color-text-inverse:   var(--brand-white);
+    /* texto secundário sobre fundo escuro — o --color-text-secondary
+       não tem contraste suficiente sobre o navy */
+    --color-text-on-dark:   #a9b6c1;
+
+    --color-terracota:      var(--brand-terracota);
+    --color-slate:          var(--brand-blue);
+    --color-gold:           var(--brand-sand);
+    --color-cream:          var(--brand-cream);
+
+    /* navy #1b2b39 com alpha */
+    --color-border:         rgb(27 43 57 / 0.14);
+    --color-border-light:   rgb(27 43 57 / 0.07);
 
     /* TIPOGRAFIA — Adobe Fonts kit (see layout.tsx <head>).
        Forevs ships Regular/Bold (+ italics) in this kit; no Light face is
@@ -201,6 +223,39 @@
   .stagger > * { display: block; }
   .stagger > *:nth-child(2) { padding-inline-start: var(--stagger-1); }
   .stagger > *:nth-child(3) { padding-inline-start: var(--stagger-2); }
+
+  /* ── HORÁRIOS ──
+     Composição dos cartazes de celebrações (branding p28): tudo em Area,
+     maiúsculas, com o peso a fazer a hierarquia em vez do tamanho. */
+
+  .schedule-head {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-primary);
+  }
+
+  .schedule-time {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-text-primary);
+  }
+
+  .schedule-desc {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    margin-top: 0.2rem;
+  }
 
   /* Small rounded image sitting inline within a headline */
   .inline-media {

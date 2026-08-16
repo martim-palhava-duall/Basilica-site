@@ -131,7 +131,7 @@ export default function HomePage() {
             </h2>
 
             <Reveal delay={0.3} className="flex flex-col items-center text-center mt-20">
-              <p className="text-[var(--color-text-secondary)] max-w-sm mb-10">
+              <p className="text-[var(--color-text-on-dark)] max-w-sm mb-10">
                 {t('visitSubtitle')}
               </p>
               <Button
@@ -146,41 +146,54 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ── PRÓXIMAS CELEBRAÇÕES ── */}
-        <section className="section-pad border-b border-[var(--color-border)]">
+        {/* ── HORÁRIOS DAS CELEBRAÇÕES ──
+            Linha Religiosa do branding: título em MAIÚSCULAS a serif, ao contrário
+            das secções culturais em itálico. Segue a anatomia dos cartazes A3/A4
+            (p28): eyebrow → título → régua → três colunas de horários. */}
+        <section className="section-pad bg-secondary">
           <div className="container">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-14 items-start">
-              <Reveal>
-                <SectionLabel rule>{t('massasLabel')}</SectionLabel>
-                <h2
-                  className="font-display font-light mb-10"
-                  style={{ fontSize: 'var(--text-h2)', letterSpacing: 'var(--tracking-heading)' }}
-                >
-                  {t('massasTitle')}
-                </h2>
-                <Button href="/horarios" variant="ghost" arrow>{t('massasCta')}</Button>
-              </Reveal>
+            <Reveal>
+              <SectionLabel>{t('massasLabel')}</SectionLabel>
+              <h2
+                className="font-display font-light uppercase"
+                style={{
+                  fontSize: 'var(--text-h1)',
+                  letterSpacing: '0.01em',
+                  lineHeight: 1,
+                }}
+              >
+                {t('massasTitle')}
+              </h2>
+            </Reveal>
 
-              <Reveal delay={0.1} className="border-t border-[var(--color-border)] pt-8">
-                <p className="label mb-4">{t('massasDomingos')}</p>
-                <p
-                  className="font-display font-light text-[var(--color-terracota)]"
-                  style={{ fontSize: 'var(--text-h3)' }}
-                >
-                  {t('massasDomingosHoras')}
-                </p>
-              </Reveal>
+            {/* régua, como nos cartazes */}
+            <Reveal delay={0.1}>
+              <hr className="border-0 border-t border-[var(--color-text-primary)] opacity-25 mt-8 mb-12" />
+            </Reveal>
 
-              <Reveal delay={0.2} className="border-t border-[var(--color-border)] pt-8">
-                <p className="label mb-4">{t('massasSemana')}</p>
-                <p
-                  className="font-display font-light text-[var(--color-terracota)]"
-                  style={{ fontSize: 'var(--text-h3)' }}
-                >
-                  {t('massasSemanaHoras')}
-                </p>
-              </Reveal>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-12">
+              {[
+                { head: 'massasCol1Head', slots: [['massasCol1aHora','massasCol1aDesc'], ['massasCol1bHora','massasCol1bDesc'], ['massasCol1cHora','massasCol1cDesc']] },
+                { head: 'massasCol2Head', slots: [['massasCol2aHora','massasCol2aDesc'], ['massasCol2bHora','massasCol2bDesc']] },
+                { head: 'massasCol3Head', slots: [['massasCol3aHora','massasCol3aDesc'], ['massasCol3bHora','massasCol3bDesc']] },
+              ].map((col, i) => (
+                <Reveal key={col.head} delay={0.15 + i * 0.1}>
+                  <p className="schedule-head mb-6">{t(col.head)}</p>
+                  <dl className="flex flex-col gap-5">
+                    {col.slots.map(([hora, desc]) => (
+                      <div key={hora}>
+                        <dt className="schedule-time">{t(hora)}</dt>
+                        <dd className="schedule-desc">{t(desc)}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </Reveal>
+              ))}
             </div>
+
+            <Reveal delay={0.4} className="mt-16">
+              <Button href="/horarios" variant="ghost" arrow>{t('massasCta')}</Button>
+            </Reveal>
           </div>
         </section>
 
