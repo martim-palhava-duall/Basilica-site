@@ -97,9 +97,15 @@ public/
 
 **A fazer / em curso:**
 
-👉 **Começa por ler o [`BRANDING.md`](BRANDING.md).** Tem a análise completa da apresentação
-de branding — as duas linhas tipográficas, a anatomia dos horários da p28, as cores, o
-formato das horas — e a lista concreta do que falta aplicar. É por aí que se retoma.
+👉 **Começa por ler estes dois:**
+
+- **[`BRANDING.md`](BRANDING.md)** — o que a *marca* define: as duas linhas tipográficas,
+  a anatomia dos horários (p28), as cores exatas, o formato das horas, e a armadilha dos
+  pesos Light do Adobe Fonts.
+- **[`DESIGN.md`](DESIGN.md)** — as decisões de *design do site*: os cinco sites de
+  referência e o que se tirou de cada um, porque é que o Manifesto e a secção Visitar
+  são deliberadamente diferentes, como estão feitos os botões e o footer, e a lista
+  do que falta.
 
 Além disso:
 - Restantes páginas do site (Visita, Sobre a Basílica, etc.) ainda não começadas
