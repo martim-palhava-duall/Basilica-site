@@ -82,6 +82,10 @@
     --text-editorial: clamp(1.5rem, 2.8vw, 2.625rem);  /* 42px @1440 */
     /* frase-assinatura da marca (rodapé) */
     --text-tagline:  clamp(1.25rem, 2.2vw, 2rem);
+    /* assinatura tipográfica gigante no rodapé — "Basílica da Estrela" /
+       "Sagrado Coração de Jesus" (branding p31) */
+    --text-wordmark:    clamp(2.5rem, 8.5vw, 7.5rem);  /* 120px @1440 */
+    --text-wordmark-sm: clamp(1.5rem, 4.5vw, 4rem);    /* 64px @1440 */
 
     /* staggered headline indents (see .stagger) */
     --stagger-1: clamp(1.5rem, 7vw, 7rem);

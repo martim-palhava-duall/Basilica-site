@@ -3,16 +3,10 @@ import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import Logo from '@/components/ui/Logo'
 
-/** Aparece no rodapé de todas as peças do branding, junto ao site */
-const INSTAGRAM = '@basilicadaestrela'
-const INSTAGRAM_URL = 'https://instagram.com/basilicadaestrela'
-const SITE = 'basilicadaestrela.com'
-
 export default function Footer() {
   const t = useTranslations('footer')
   const tn = useTranslations('nav')
   const th = useTranslations('home')
-  const tc = useTranslations('common')
 
   const sections = [
     {
@@ -43,36 +37,25 @@ export default function Footer() {
 
   return (
     <footer
-      className="relative overflow-hidden text-[var(--color-text-inverse)]"
+      className="text-[var(--color-text-inverse)]"
       style={{ backgroundColor: 'var(--color-bg-darker)' }}
     >
-      {/* Marca d'água decorativa — o mesmo logo do Sagrado Coração usado nas
-          peças de branding, a baixa opacidade, recortado no rodapé. Reaproveita
-          o SVG do cliente via filtro (fica branco), em vez de traçar um novo. */}
-      <Image
-        src="/logos/logo-sagrado-coracao.svg"
-        alt=""
-        aria-hidden="true"
-        width={900}
-        height={900}
-        className="pointer-events-none absolute -right-[10%] -bottom-[22%] w-[38rem] max-w-none opacity-[0.05]"
-        style={{ filter: 'brightness(0) invert(1)' }}
-      />
-
-      <div className="container relative section-pad-lg">
+      <div className="container section-pad-lg pb-0">
         {/* Três zonas separadas por réguas verticais (desktop) / horizontais
             (mobile) — marca+morada · navegação · CTA fotográfico. */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr_0.9fr] gap-x-0 gap-y-14">
-          <div className="lg:pr-14 lg:border-r border-b lg:border-b-0 border-[var(--color-text-inverse)]/12 pb-14 lg:pb-0">
-            <Logo className="h-16 w-auto" />
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr_1fr] gap-x-0 gap-y-14">
+          <div className="lg:pr-12 lg:border-r border-b lg:border-b-0 border-[var(--color-text-inverse)]/15 pb-14 lg:pb-0">
+            {/* Apenas a marca arquitetónica, sem a wordmark — a "assinatura"
+                de texto vive na frase ao lado, não no logótipo (branding p31). */}
+            <Logo withWordmark={false} className="h-[4.2rem] w-auto" />
             <p
-              className="font-display mt-8 whitespace-pre-line opacity-80"
-              style={{ fontSize: 'var(--text-tagline)', lineHeight: 1.15 }}
+              className="font-display mt-4 whitespace-pre-line"
+              style={{ fontSize: '2rem', lineHeight: 1.1 }}
             >
-              {tc('tagline')}
+              {t('tagline')}
             </p>
 
-            <address className="not-italic flex flex-col gap-2.5 mt-10 text-[0.95rem] text-[var(--color-text-on-dark)]">
+            <address className="not-italic flex flex-col gap-4 mt-6 text-sm text-[var(--color-text-on-dark)]">
               <span className="whitespace-pre-line leading-relaxed">{t('morada')}</span>
               <a
                 href={`tel:${t('telefone').replace(/\s/g, '')}`}
@@ -89,18 +72,18 @@ export default function Footer() {
             </address>
           </div>
 
-          <div className="lg:px-14 lg:border-r border-b lg:border-b-0 border-[var(--color-text-inverse)]/12 pb-14 lg:pb-0 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-1 gap-x-8 gap-y-10">
+          <div className="lg:px-12 lg:border-r border-b lg:border-b-0 border-[var(--color-text-inverse)]/15 pb-14 lg:pb-0 flex flex-wrap gap-x-14 gap-y-10">
             {sections.map((section) => (
-              <div key={section.title}>
-                <p className="label !text-[var(--color-text-on-dark)] opacity-60 mb-5">
+              <div key={section.title} className="w-32">
+                <p className="text-xs opacity-60 text-[var(--color-text-on-dark)] mb-3">
                   {section.title}
                 </p>
-                <ul className="flex flex-col gap-3.5">
+                <ul className="flex flex-col gap-1">
                   {section.links.map((link) => (
                     <li key={link.href}>
                       <Link
                         href={link.href}
-                        className="text-[0.95rem] text-[var(--color-text-on-dark)] hover:text-[var(--color-text-inverse)] transition-colors duration-200"
+                        className="text-sm text-[var(--color-text-on-dark)] hover:text-[var(--color-text-inverse)] transition-colors duration-200"
                       >
                         {link.label}
                       </Link>
@@ -111,8 +94,8 @@ export default function Footer() {
             ))}
           </div>
 
-          <div className="lg:pl-14">
-            <div className="relative media aspect-[4/3] mb-6">
+          <div className="lg:pl-12 max-w-[328px]">
+            <div className="relative media aspect-[328/287] mb-5">
               <Image
                 src="/images/figma-icon-priest1.jpg"
                 alt=""
@@ -123,7 +106,7 @@ export default function Footer() {
             </div>
             <Link
               href="/visita"
-              className="label !text-[var(--color-text-inverse)] inline-flex items-center gap-2.5 group/link"
+              className="text-sm text-[var(--color-text-on-dark)] hover:text-[var(--color-text-inverse)] transition-colors duration-200 inline-flex items-center gap-2.5 group/link"
             >
               {th('visitCta')}
               <svg width="15" height="10" viewBox="0 0 15 10" fill="none" stroke="currentColor" strokeWidth="1" aria-hidden="true" className="shrink-0 transition-transform duration-300 ease-[var(--ease-out)] group-hover/link:translate-x-[3px]">
@@ -133,28 +116,46 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Régua + barra legal */}
-        <div className="mt-20 pt-8 border-t border-[var(--color-text-inverse)]/12 flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div className="flex flex-wrap items-center gap-x-8 gap-y-2 text-[0.8rem] text-[var(--color-text-on-dark)]">
-            <a
-              href={INSTAGRAM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-[var(--color-text-inverse)] transition-colors duration-200"
-            >
-              {INSTAGRAM}
-            </a>
-            <span className="opacity-70">{SITE}</span>
+        {/* Assinatura tipográfica gigante — o momento de marca do rodapé
+            (branding p31): "Basílica da Estrela" numa linha, "Sagrado
+            Coração de Jesus" espalhado a toda a largura por baixo. */}
+        <div className="mt-24 md:mt-32 flex flex-col gap-2 md:gap-3">
+          <p
+            className="font-display uppercase whitespace-nowrap overflow-hidden"
+            style={{
+              fontSize: 'var(--text-wordmark)',
+              lineHeight: 1,
+              letterSpacing: 'var(--tracking-display)',
+            }}
+          >
+            Basílica da Estrela
+          </p>
+          <div
+            className="font-display uppercase flex flex-wrap justify-between gap-x-6"
+            style={{
+              fontSize: 'var(--text-wordmark-sm)',
+              lineHeight: 1.15,
+              letterSpacing: '0.14em',
+            }}
+          >
+            <span>Sagrado</span>
+            <span>Coração</span>
+            <span>de Jesus</span>
           </div>
+        </div>
+      </div>
 
-          <div className="flex flex-wrap items-center gap-x-8 gap-y-2 text-[0.8rem] text-[var(--color-text-on-dark)]">
+      {/* Régua + barra legal — a toda a largura, fora do container */}
+      <div className="border-t border-[var(--color-text-inverse)]/15 mt-16 md:mt-20">
+        <div className="container py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <span className="text-xs text-[var(--color-text-on-dark)] opacity-60">{t('direitos')}</span>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-[var(--color-text-on-dark)]">
             <Link href="/privacidade" className="hover:text-[var(--color-text-inverse)] transition-colors duration-200">
               {t('privacidade')}
             </Link>
             <Link href="/termos" className="hover:text-[var(--color-text-inverse)] transition-colors duration-200">
               {t('termos')}
             </Link>
-            <span className="opacity-60">{t('direitos')}</span>
           </div>
         </div>
       </div>
