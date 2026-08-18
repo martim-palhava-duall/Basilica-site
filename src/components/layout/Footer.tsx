@@ -30,7 +30,7 @@ export default function Footer() {
         { href: '/sobre-nos',      label: tn('sobreNos') },
         { href: '/celebracoes',    label: tn('celebracoes') },
         { href: '/obra-social',    label: 'Obra Social' },
-        { href: '/blog',           label: 'Notícias' },
+        { href: '/vida-paroquia',  label: tn('vidaParoquia') },
       ],
     },
   ]

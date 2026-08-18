@@ -344,7 +344,7 @@ export default function HomePage() {
                   {t.rich('destaquesTitleRich', { em })}
                 </h2>
               </div>
-              <Button href="/blog" variant="ghost" arrow>{t('destaquesCta')}</Button>
+              <Button href="/vida-paroquia" variant="ghost" arrow>{t('destaquesCta')}</Button>
             </Reveal>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
