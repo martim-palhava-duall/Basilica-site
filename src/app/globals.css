@@ -351,6 +351,40 @@
     .showcase-num[data-active='true'] { opacity: 0.9; }
   }
 
+  /* ── CITAÇÕES DAS DEVOÇÕES ──
+     As promessas e passagens que o cliente forneceu são o coração de cada
+     devoção, não decoração — por isso são compostas em Forevs itálico a
+     tamanho de título e ancoram o bloco, em vez de irem para um rodapé. */
+  .pull-quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(1.5rem, 3.2vw, 2.75rem);
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  /* Variante menor, para as citações de fecho */
+  .pull-quote-sm {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(1.15rem, 2vw, 1.6rem);
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+  }
+
+  /* Atribuição sob uma citação */
+  .quote-ref {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
+
   /* Small rounded image sitting inline within a headline */
   .inline-media {
     display: inline-block;
