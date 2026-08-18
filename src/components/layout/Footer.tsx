@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import Logo from '@/components/ui/Logo'
@@ -10,6 +11,7 @@ const SITE = 'basilicadaestrela.com'
 export default function Footer() {
   const t = useTranslations('footer')
   const tn = useTranslations('nav')
+  const th = useTranslations('home')
   const tc = useTranslations('common')
 
   const sections = [
@@ -22,6 +24,13 @@ export default function Footer() {
       ],
     },
     {
+      title: 'Contacto',
+      links: [
+        { href: '/contactos', label: tn('contactos') },
+        { href: '/donativos', label: 'Donativos' },
+      ],
+    },
+    {
       title: 'Paróquia',
       links: [
         { href: '/sobre-nos',      label: tn('sobreNos') },
@@ -30,23 +39,32 @@ export default function Footer() {
         { href: '/blog',           label: 'Notícias' },
       ],
     },
-    {
-      title: 'Contacto',
-      links: [
-        { href: '/contactos', label: tn('contactos') },
-        { href: '/donativos', label: 'Donativos' },
-      ],
-    },
   ]
 
   return (
-    <footer className="bg-[var(--color-bg-dark)] text-[var(--color-text-inverse)]">
-      <div className="container section-pad-lg">
-        {/* Marca e morada à esquerda; a navegação agrupada junto à margem direita,
-            terminando à mesma altura que a régua em baixo. */}
-        <div className="flex flex-col lg:flex-row lg:justify-between gap-16">
-          <div className="lg:max-w-sm">
-            <Logo className="h-20 w-auto" />
+    <footer
+      className="relative overflow-hidden text-[var(--color-text-inverse)]"
+      style={{ backgroundColor: 'var(--color-bg-darker)' }}
+    >
+      {/* Marca d'água decorativa — o mesmo logo do Sagrado Coração usado nas
+          peças de branding, a baixa opacidade, recortado no rodapé. Reaproveita
+          o SVG do cliente via filtro (fica branco), em vez de traçar um novo. */}
+      <Image
+        src="/logos/logo-sagrado-coracao.svg"
+        alt=""
+        aria-hidden="true"
+        width={900}
+        height={900}
+        className="pointer-events-none absolute -right-[10%] -bottom-[22%] w-[38rem] max-w-none opacity-[0.05]"
+        style={{ filter: 'brightness(0) invert(1)' }}
+      />
+
+      <div className="container relative section-pad-lg">
+        {/* Três zonas separadas por réguas verticais (desktop) / horizontais
+            (mobile) — marca+morada · navegação · CTA fotográfico. */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr_0.9fr] gap-x-0 gap-y-14">
+          <div className="lg:pr-14 lg:border-r border-b lg:border-b-0 border-[var(--color-text-inverse)]/12 pb-14 lg:pb-0">
+            <Logo className="h-16 w-auto" />
             <p
               className="font-display mt-8 whitespace-pre-line opacity-80"
               style={{ fontSize: 'var(--text-tagline)', lineHeight: 1.15 }}
@@ -71,9 +89,9 @@ export default function Footer() {
             </address>
           </div>
 
-          <div className="flex flex-wrap gap-x-14 gap-y-12 lg:flex-nowrap">
+          <div className="lg:px-14 lg:border-r border-b lg:border-b-0 border-[var(--color-text-inverse)]/12 pb-14 lg:pb-0 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-1 gap-x-8 gap-y-10">
             {sections.map((section) => (
-              <div key={section.title} className="min-w-[8rem]">
+              <div key={section.title}>
                 <p className="label !text-[var(--color-text-on-dark)] opacity-60 mb-5">
                   {section.title}
                 </p>
@@ -92,10 +110,31 @@ export default function Footer() {
               </div>
             ))}
           </div>
+
+          <div className="lg:pl-14">
+            <div className="relative media aspect-[4/3] mb-6">
+              <Image
+                src="/images/figma-icon-priest1.jpg"
+                alt=""
+                fill
+                sizes="(min-width: 1024px) 25vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+            <Link
+              href="/visita"
+              className="label !text-[var(--color-text-inverse)] inline-flex items-center gap-2.5 group/link"
+            >
+              {th('visitCta')}
+              <svg width="15" height="10" viewBox="0 0 15 10" fill="none" stroke="currentColor" strokeWidth="1" aria-hidden="true" className="shrink-0 transition-transform duration-300 ease-[var(--ease-out)] group-hover/link:translate-x-[3px]">
+                <path d="M0 5h13M9.5 1.5 13 5l-3.5 3.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </Link>
+          </div>
         </div>
 
         {/* Régua + barra legal */}
-        <div className="mt-24 pt-8 border-t border-[var(--color-text-inverse)]/15 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div className="mt-20 pt-8 border-t border-[var(--color-text-inverse)]/12 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="flex flex-wrap items-center gap-x-8 gap-y-2 text-[0.8rem] text-[var(--color-text-on-dark)]">
             <a
               href={INSTAGRAM_URL}

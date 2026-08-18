@@ -41,14 +41,18 @@ export default function Nav() {
           : 'bg-transparent'
       } ${scrolled ? 'text-[var(--color-text-primary)]' : 'text-[var(--color-text-inverse)]'}`}
     >
-      <nav className="container flex items-center justify-between h-16 md:h-20">
+      {/* items-start: o logótipo (grande, à la Figma) fica mais alto do que a
+          linha de links/idioma/bilheteira, que se mantêm pequenos e alinhados
+          ao topo — ele é que dita a altura do header, não o contrário. Ao
+          fazer scroll, encolhe para um logótipo de nav normal. */}
+      <nav className="container relative flex items-start justify-between pt-5 md:pt-7 pb-5">
         {/* Logo */}
-        <Link href="/" className="transition-colors duration-500" aria-label="Basílica da Estrela">
-          <Logo className="h-9 md:h-11 w-auto" />
+        <Link href="/" className="transition-all duration-500" aria-label="Basílica da Estrela">
+          <Logo className={`w-auto transition-all duration-500 ${scrolled ? 'h-9 md:h-11' : 'h-16 md:h-24 lg:h-28'}`} />
         </Link>
 
-        {/* Desktop links */}
-        <ul className="hidden md:flex items-center gap-8">
+        {/* Desktop links — centrados, sobre o hero */}
+        <ul className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2 top-7 md:top-9">
           {links.map((link) => (
             <li key={link.href}>
               <Link
@@ -62,7 +66,7 @@ export default function Nav() {
         </ul>
 
         {/* Bilheteira + lang + mobile toggle */}
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-5 pt-2 md:pt-4">
           {/* CTA de bilheteira — o sitemap prevê-a como destino principal da Visita,
               e a compra é feita em plataforma externa. */}
           <Link

@@ -12,9 +12,12 @@
 
     /* Institucionais / Linha Cultural */
     --brand-navy:       #1b2b39;
+    --brand-navy-deep:  #20272d; /* rodapé — mais escuro que o navy institucional */
     --brand-terracota:  #b87a6e;
+    --brand-terracota-deep: #a37569; /* fundo da secção Visitar + botão do hero */
     --brand-blue:       #6d92a7;
     --brand-sand:       #ddbd98;
+    --brand-sand-pale:  #dfd3c2; /* primeira palavra das linhas da secção Visitar */
     --brand-cream:      #e3d5c7;
 
     /* Linha Religiosa — as mesmas cores, dessaturadas */
@@ -28,6 +31,7 @@
     --color-bg-primary:     var(--brand-white);
     --color-bg-secondary:   var(--brand-cream-soft);
     --color-bg-dark:        var(--brand-navy);
+    --color-bg-darker:      var(--brand-navy-deep);
 
     --color-text-primary:   var(--brand-navy);
     --color-text-secondary: #5b6b78;
@@ -64,16 +68,19 @@
     --font-body:    'area-normal', system-ui, sans-serif;
     --font-body-light: 'area-normal-light', system-ui, sans-serif;
 
-    --text-display:  clamp(3.5rem, 9vw, 10rem);
-    --text-h1:       clamp(2.5rem, 6vw, 6rem);
-    --text-h2:       clamp(1.75rem, 4vw, 3.5rem);
-    --text-h3:       clamp(1.25rem, 2.5vw, 2rem);
+    /* clamps calibrados para atingir o valor exato do Figma a 1440px de viewport */
+    --text-display:  clamp(3.5rem, 8.33vw, 7.5rem);   /* 120px @1440 — título do hero */
+    --text-h1:       clamp(2.5rem, 6vw, 6rem);         /* 96px @1440 — Visitar, Doações */
+    --text-h1b:      clamp(2.25rem, 5vw, 5rem);        /* 80px @1440 — Quem Somos, Obra Social */
+    --text-h2:       clamp(1.75rem, 4vw, 3.5rem);      /* 56px @1440 — Destaques */
+    --text-h3:       clamp(1.25rem, 2.5vw, 2rem);      /* 32px @1440 — cards de Destaques */
+    --text-h3b:      clamp(1.5rem, 2.8vw, 2.5rem);     /* 40px @1440 — lista da Obra Social */
     --text-body-lg:  clamp(1rem, 1.5vw, 1.25rem);
     --text-body:     clamp(0.9rem, 1.2vw, 1.1rem);
     --text-label:    0.8rem;
     /* editorial statement type — the large serif "manifesto" paragraph */
-    --text-editorial: clamp(1.5rem, 3.4vw, 3rem);
-    /* frase-assinatura da marca, sob o título do hero */
+    --text-editorial: clamp(1.5rem, 2.8vw, 2.625rem);  /* 42px @1440 */
+    /* frase-assinatura da marca (rodapé) */
     --text-tagline:  clamp(1.25rem, 2.2vw, 2rem);
 
     /* staggered headline indents (see .stagger) */
