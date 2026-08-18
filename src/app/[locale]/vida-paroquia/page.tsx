@@ -6,30 +6,36 @@ import Footer from '@/components/layout/Footer'
 import Button from '@/components/ui/Button'
 import SectionLabel from '@/components/ui/SectionLabel'
 import Reveal from '@/components/ui/Reveal'
+import MaskReveal from '@/components/ui/MaskReveal'
+import Parallax from '@/components/ui/Parallax'
+import Marquee from '@/components/ui/Marquee'
+import SectionRail from '@/components/ui/SectionRail'
+import GroupShowcase from '@/components/ui/GroupShowcase'
 
 const em = (chunks: ReactNode) => <em className="em-italic">{chunks}</em>
 
 /** Secções desta página, pela ordem do sitemap (Figma, nó "Vida da Paróquia").
- *  Servem também de índice âncora no topo — o mesmo padrão que o cliente usa
- *  nos seus próprios documentos de conteúdo. */
+ *  Alimentam o índice do hero, o marquee e a barra lateral fixa. */
 const SECTIONS = [
-  { id: 'grupos',      label: 'gruposLabel' },
-  { id: 'escuteiros',  label: 'escuteirosLabel' },
-  { id: 'culturais',   label: 'culturaisLabel' },
-  { id: 'formacao',    label: 'formacaoLabel' },
-  { id: 'cti',         label: 'ctiLabel' },
-  { id: 'reservas',    label: 'reservasLabel' },
+  { id: 'grupos',     label: 'gruposLabel' },
+  { id: 'escuteiros', label: 'escuteirosLabel' },
+  { id: 'culturais',  label: 'culturaisLabel' },
+  { id: 'formacao',   label: 'formacaoLabel' },
+  { id: 'cti',        label: 'ctiLabel' },
+  { id: 'reservas',   label: 'reservasLabel' },
 ]
 
 export default function VidaParoquiaPage() {
   const t = useTranslations('vidaParoquia')
   const year = new Date().getFullYear()
 
+  const rail = SECTIONS.map((s) => ({ id: s.id, label: t(s.label) }))
+
   const grupos = [
-    { n: '01', title: 'grupo1Title', desc: 'grupo1Desc', src: '/images/figma-icon-priest2.jpg', alt: 'imgAltComunidade' },
-    { n: '02', title: 'grupo2Title', desc: 'grupo2Desc', src: '/images/hero.jpg',               alt: 'imgAltJovens' },
-    { n: '03', title: 'grupo3Title', desc: 'grupo3Desc', src: '/images/figma-icon-chalice.jpg', alt: 'imgAltComunidade' },
-    { n: '04', title: 'grupo4Title', desc: 'grupo4Desc', src: '/images/figma-statue-mary.jpg',  alt: 'imgAltInterior' },
+    { n: '01', title: t('grupo1Title'), desc: t('grupo1Desc'), src: '/images/figma-icon-priest2.jpg', alt: t('imgAltComunidade') },
+    { n: '02', title: t('grupo2Title'), desc: t('grupo2Desc'), src: '/images/hero.jpg',               alt: t('imgAltJovens') },
+    { n: '03', title: t('grupo3Title'), desc: t('grupo3Desc'), src: '/images/figma-icon-chalice.jpg', alt: t('imgAltComunidade') },
+    { n: '04', title: t('grupo4Title'), desc: t('grupo4Desc'), src: '/images/figma-statue-mary.jpg',  alt: t('imgAltInterior') },
   ]
 
   const culturais = [
@@ -50,180 +56,189 @@ export default function VidaParoquiaPage() {
     { title: 'reserva3Title', desc: 'reserva3Desc' },
   ]
 
-  const news = [
-    '/images/hero-fachada.jpg',
-    '/images/interior-nave.jpg',
-    '/images/cupula-torre.jpg',
-  ]
+  const news = ['/images/hero-fachada.jpg', '/images/interior-nave.jpg', '/images/cupula-torre.jpg']
 
   return (
     <>
       <Nav />
+      <SectionRail sections={rail} />
+
       <main>
 
-        {/* ── HERO ── */}
-        <section className="relative min-h-[88vh] flex flex-col justify-end section-pad-lg overflow-hidden">
-          <div className="absolute inset-0">
+        {/* ── HERO ──
+            A fotografia deriva atrás do título em vez de estar fixa; o título
+            entra por baixo de uma máscara, linha a linha. */}
+        <section className="relative min-h-screen flex flex-col justify-end pb-14 md:pb-20 overflow-hidden">
+          <Parallax inset amount={7}>
             <Image
               src="/images/hero.jpg"
               alt=""
               fill
               priority
               sizes="100vw"
-              className="object-cover ken-burns"
+              className="object-cover"
             />
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background:
-                  'linear-gradient(to bottom, rgba(8,8,10,0.50) 0%, rgba(8,8,10,0.12) 28%, rgba(8,8,10,0.22) 55%, rgba(8,8,10,0.58) 80%, rgba(8,8,10,0.78) 100%)',
-              }}
-            />
-          </div>
+          </Parallax>
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                'linear-gradient(to bottom, rgba(8,8,10,0.52) 0%, rgba(8,8,10,0.10) 26%, rgba(8,8,10,0.22) 52%, rgba(8,8,10,0.62) 78%, rgba(8,8,10,0.84) 100%)',
+            }}
+          />
 
           <div className="container relative z-10">
-            <div className="max-w-3xl">
-              <Reveal>
-                <SectionLabel className="!text-[var(--color-text-inverse)] opacity-80">
-                  {t('heroLabel')}
-                </SectionLabel>
-              </Reveal>
-              <Reveal delay={0.1}>
-                <h1
-                  className="font-display text-[var(--color-text-inverse)] mb-6"
-                  style={{
-                    fontSize: 'var(--text-h1)',
-                    letterSpacing: 'var(--tracking-heading)',
-                    lineHeight: 'var(--leading-heading)',
-                  }}
-                >
-                  {t.rich('heroTitleRich', { em })}
-                </h1>
-              </Reveal>
-              <Reveal delay={0.2}>
+            <MaskReveal delay={0.15}>
+              <SectionLabel className="!text-[var(--color-text-inverse)] opacity-80 !mb-4">
+                {t('heroLabel')}
+              </SectionLabel>
+            </MaskReveal>
+
+            <MaskReveal as="h1" delay={0.25} className="mb-8">
+              <span
+                className="font-display block text-[var(--color-text-inverse)] max-w-5xl"
+                style={{
+                  fontSize: 'var(--text-display)',
+                  letterSpacing: 'var(--tracking-display)',
+                  lineHeight: 0.98,
+                }}
+              >
+                {t.rich('heroTitleRich', { em })}
+              </span>
+            </MaskReveal>
+
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-10">
+              <Reveal delay={0.55}>
                 <p
-                  className="!text-[var(--color-text-inverse)] max-w-lg"
+                  className="!text-[var(--color-text-inverse)] max-w-md"
                   style={{ fontFamily: 'var(--font-body-light)', fontWeight: 300, fontSize: 'var(--text-body-lg)', lineHeight: 1.6 }}
                 >
                   {t('heroSubtitle')}
                 </p>
               </Reveal>
-            </div>
 
-            {/* Índice âncora — a página é longa e tem seis destinos distintos */}
-            <Reveal delay={0.32} className="mt-16 pt-8 border-t border-[var(--color-text-inverse)]/20">
-              <p className="label !text-[var(--color-text-inverse)] opacity-60 mb-4">{t('indice')}</p>
-              <ul className="flex flex-wrap gap-x-8 gap-y-3">
-                {SECTIONS.map((s) => (
-                  <li key={s.id}>
-                    <a
-                      href={`#${s.id}`}
-                      className="text-sm !text-[var(--color-text-inverse)] opacity-75 hover:opacity-100 transition-opacity duration-200 underline-offset-[6px] hover:underline decoration-[0.5px]"
-                    >
-                      {t(s.label)}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
+              {/* Índice inline — abaixo de xl é este que faz o trabalho da barra lateral */}
+              <Reveal delay={0.7} className="xl:hidden">
+                <p className="label !text-[var(--color-text-inverse)] opacity-55 mb-3">{t('indice')}</p>
+                <ul className="flex flex-wrap gap-x-6 gap-y-2 max-w-lg">
+                  {SECTIONS.map((s, i) => (
+                    <li key={s.id}>
+                      <a
+                        href={`#${s.id}`}
+                        className="text-sm !text-[var(--color-text-inverse)] opacity-75 hover:opacity-100 transition-opacity duration-200"
+                      >
+                        <span className="opacity-50 mr-1.5">{String(i + 1).padStart(2, '0')}</span>
+                        {t(s.label)}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
+            </div>
           </div>
         </section>
 
-        {/* ── MANIFESTO ── */}
-        <section className="section-pad-lg bg-secondary">
-          <div className="container">
-            <Reveal className="max-w-4xl">
-              <SectionLabel className="opacity-75">{t('manifestoLabel')}</SectionLabel>
-              <p className="type-editorial">
+        {/* ── MARQUEE ──
+            Faz a passagem do hero para o corpo da página e volta a nomear as
+            seis secções, agora como gesto de marca. */}
+        <div className="bg-secondary py-6 md:py-8 border-y border-[var(--color-border-light)]">
+          <Marquee items={SECTIONS.map((s) => t(s.label))} />
+        </div>
+
+        {/* ── MANIFESTO ──
+            A fotografia sobrepõe-se ao bloco de texto em vez de ficar ao lado. */}
+        {/* sem overflow-hidden: a fotografia tem de poder sair da secção — é
+            essa invasão que faz a sobreposição ler-se */}
+        <section className="section-pad-lg bg-secondary relative z-10">
+          <div className="container relative">
+            <div className="lg:pr-[26rem]">
+              <Reveal>
+                <SectionLabel className="opacity-75">{t('manifestoLabel')}</SectionLabel>
+              </Reveal>
+              <MaskReveal as="p" className="type-editorial">
                 {t.rich('manifesto', { em })}
-              </p>
+              </MaskReveal>
+            </div>
+
+            <Reveal
+              delay={0.2}
+              className="hidden lg:block absolute right-0 -bottom-24 w-[19rem] xl:w-[22rem]"
+            >
+              <Parallax className="media aspect-[3/4]" amount={11}>
+                <Image
+                  src="/images/figma-icon-priest1.jpg"
+                  alt={t('imgAltComunidade')}
+                  fill
+                  sizes="22rem"
+                  className="object-cover"
+                />
+              </Parallax>
             </Reveal>
           </div>
         </section>
 
         {/* ── 1. GRUPOS ──
-            Cartões com fotografia (não os cartões só de texto que tinha antes):
-            2×2, imagem em retrato, número discreto sobre a imagem. */}
+            O momento principal da página: índice tipográfico com a fotografia
+            a acompanhar em coluna fixa. */}
         <section id="grupos" className="section-pad-lg scroll-mt-28">
           <div className="container">
-            <Reveal className="flex flex-wrap items-end justify-between gap-8 mb-16">
+            <div className="flex flex-wrap items-end justify-between gap-8 mb-16 md:mb-24">
               <div className="max-w-xl">
-                <SectionLabel className="opacity-75">{t('gruposLabel')}</SectionLabel>
-                <h2
-                  className="font-display mb-5"
-                  style={{ fontSize: 'var(--text-h1b)', letterSpacing: 'var(--tracking-heading)', lineHeight: 1.15 }}
+                <Reveal>
+                  <SectionLabel className="opacity-75">{t('gruposLabel')}</SectionLabel>
+                </Reveal>
+                <MaskReveal
+                  as="h2"
+                  className="font-display"
+                  style={{ fontSize: 'var(--text-h1)', letterSpacing: 'var(--tracking-heading)', lineHeight: 1.05 }}
                 >
                   {t.rich('gruposTitleRich', { em })}
-                </h2>
+                </MaskReveal>
               </div>
-              <p className="text-[var(--color-text-secondary)] max-w-sm">{t('gruposText')}</p>
-            </Reveal>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-14">
-              {grupos.map((g, i) => (
-                <Reveal key={g.n} delay={(i % 2) * 0.1} className="group">
-                  <div className="relative media aspect-[4/5] mb-6 overflow-hidden">
-                    <Image
-                      src={g.src}
-                      alt={t(g.alt)}
-                      fill
-                      sizes="(min-width: 640px) 50vw, 100vw"
-                      className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
-                    />
-                    <span
-                      className="absolute top-5 left-5 label !text-[var(--color-text-inverse)] opacity-90"
-                      style={{ textShadow: '0 1px 8px rgba(0,0,0,0.5)' }}
-                    >
-                      {g.n}
-                    </span>
-                  </div>
-                  <h3
-                    className="font-display mb-3"
-                    style={{ fontSize: 'var(--text-h3b)', letterSpacing: '-0.005em', lineHeight: 1.1 }}
-                  >
-                    {t(g.title)}
-                  </h3>
-                  <p className="text-[var(--color-text-secondary)] max-w-md leading-relaxed">
-                    {t(g.desc)}
-                  </p>
-                </Reveal>
-              ))}
+              <Reveal delay={0.15}>
+                <p className="text-[var(--color-text-secondary)] max-w-sm">{t('gruposText')}</p>
+              </Reveal>
             </div>
+
+            <GroupShowcase items={grupos} />
           </div>
         </section>
 
         {/* ── 2. ESCUTEIROS / MOVIMENTOS ──
-            Momento de contraste da página: fundo terracota, fotografia a sangrar
-            de um lado (padrão dos spreads editoriais do moodboard). */}
-        <section
-          id="escuteiros"
-          className="scroll-mt-28 overflow-hidden"
-          style={{ backgroundColor: 'var(--brand-terracota-deep)' }}
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch">
-            <Reveal className="relative min-h-[380px] lg:min-h-[640px] order-2 lg:order-1">
-              <Image
-                src="/images/fachada-wide.jpg"
-                alt={t('imgAltComunidade')}
-                fill
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover"
-              />
-            </Reveal>
+            Fotografia a toda a largura com o bloco de texto em terracota a
+            invadir-lhe o canto — a quebra de grelha da página. */}
+        <section id="escuteiros" className="scroll-mt-28 relative">
+          <Parallax className="w-full h-[62vh] md:h-[86vh]" amount={8}>
+            <Image
+              src="/images/fachada-wide.jpg"
+              alt={t('imgAltComunidade')}
+              fill
+              sizes="100vw"
+              className="object-cover"
+            />
+          </Parallax>
 
-            <Reveal delay={0.12} className="order-1 lg:order-2 flex flex-col justify-center section-pad px-[var(--container-pad)] lg:pr-[max(var(--container-pad),calc((100vw-var(--container-max))/2+var(--container-pad)))]">
+          <div className="container relative">
+            {/* O posicionamento vive neste wrapper, não no <Reveal>: o Reveal
+                anima via GSAP, que escreve `transform` inline e apagaria
+                qualquer translate vindo de uma classe. */}
+            <div className="lg:absolute lg:right-[var(--container-pad)] lg:bottom-0 lg:translate-y-[33%] w-full lg:max-w-[34rem] -mt-16 lg:mt-0">
+            <Reveal
+              className="p-9 md:p-12"
+              style={{ backgroundColor: 'var(--brand-terracota-deep)', borderRadius: 'var(--radius)' }}
+            >
               <SectionLabel className="!text-[var(--color-text-inverse)] opacity-90">
                 {t('escuteirosLabel')}
               </SectionLabel>
               <h2
-                className="font-display text-[var(--color-text-inverse)] mb-6 max-w-lg"
-                style={{ fontSize: 'var(--text-h1b)', letterSpacing: 'var(--tracking-heading)', lineHeight: 1.12 }}
+                className="font-display text-[var(--color-text-inverse)] mb-5"
+                style={{ fontSize: 'var(--text-h2)', letterSpacing: 'var(--tracking-heading)', lineHeight: 1.1 }}
               >
                 {t.rich('escuteirosTitleRich', { em })}
               </h2>
               <p
-                className="!text-[var(--color-text-inverse)] max-w-md mb-10"
-                style={{ fontFamily: 'var(--font-body-light)', fontWeight: 300, fontSize: 'var(--text-body-lg)', lineHeight: 1.6 }}
+                className="!text-[var(--color-text-inverse)] mb-9"
+                style={{ fontFamily: 'var(--font-body-light)', fontWeight: 300, lineHeight: 1.6 }}
               >
                 {t('escuteirosText')}
               </p>
@@ -231,40 +246,47 @@ export default function VidaParoquiaPage() {
                 href="/contactos"
                 variant="secondary"
                 arrow
-                className="self-start !border-[var(--color-text-inverse)] !text-[var(--color-text-inverse)]"
+                className="!border-[var(--color-text-inverse)] !text-[var(--color-text-inverse)]"
               >
                 {t('escuteirosCta')}
               </Button>
             </Reveal>
+            </div>
           </div>
         </section>
 
-        {/* ── 3. GRUPOS CULTURAIS ── */}
-        <section id="culturais" className="section-pad-lg bg-secondary scroll-mt-28">
+        {/* ── 3. GRUPOS CULTURAIS ──
+            Grelha desencontrada (.offset-grid), cada imagem com a sua deriva. */}
+        <section id="culturais" className="section-pad-lg scroll-mt-28 lg:pt-56">
           <div className="container">
-            <Reveal className="max-w-2xl mb-16">
-              <SectionLabel className="opacity-75">{t('culturaisLabel')}</SectionLabel>
-              <h2
+            <div className="max-w-2xl mb-16 md:mb-24">
+              <Reveal>
+                <SectionLabel className="opacity-75">{t('culturaisLabel')}</SectionLabel>
+              </Reveal>
+              <MaskReveal
+                as="h2"
                 className="font-display mb-5"
-                style={{ fontSize: 'var(--text-h1b)', letterSpacing: 'var(--tracking-heading)', lineHeight: 1.15 }}
+                style={{ fontSize: 'var(--text-h1)', letterSpacing: 'var(--tracking-heading)', lineHeight: 1.05 }}
               >
                 {t.rich('culturaisTitleRich', { em })}
-              </h2>
-              <p className="text-[var(--color-text-secondary)]">{t('culturaisText')}</p>
-            </Reveal>
+              </MaskReveal>
+              <Reveal delay={0.15}>
+                <p className="text-[var(--color-text-secondary)]">{t('culturaisText')}</p>
+              </Reveal>
+            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="offset-grid grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 pb-16 md:pb-24">
               {culturais.map((c, i) => (
-                <Reveal key={c.title} delay={i * 0.1} className="group">
-                  <div className="relative media aspect-[3/2] mb-5 overflow-hidden">
+                <Reveal key={c.title} delay={i * 0.1}>
+                  <Parallax className="media aspect-[3/4] mb-6" amount={6}>
                     <Image
                       src={c.src}
                       alt={t(c.alt)}
                       fill
                       sizes="(min-width: 768px) 33vw, 100vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="object-cover"
                     />
-                  </div>
+                  </Parallax>
                   <h3
                     className="font-display mb-2"
                     style={{ fontSize: 'var(--text-h3)', lineHeight: 'var(--leading-heading)' }}
@@ -281,23 +303,30 @@ export default function VidaParoquiaPage() {
         </section>
 
         {/* ── 4. CURSOS DE FORMAÇÃO ──
-            Composição dos cartazes do branding (p28): Area em maiúsculas, o peso
-            a fazer a hierarquia, réguas a separar. Reutiliza .schedule-*. */}
-        <section id="formacao" className="section-pad-lg scroll-mt-28">
+            Composição dos cartazes do branding (p28): Area em maiúsculas, o
+            peso a fazer a hierarquia, réguas a separar. */}
+        <section id="formacao" className="section-pad-lg bg-secondary scroll-mt-28">
           <div className="container">
-            <Reveal className="flex flex-wrap items-end justify-between gap-8">
+            <div className="flex flex-wrap items-end justify-between gap-8">
               <div className="max-w-xl">
-                <SectionLabel className="opacity-75">{t('formacaoLabel')}</SectionLabel>
-                <h2
+                <Reveal>
+                  <SectionLabel className="opacity-75">{t('formacaoLabel')}</SectionLabel>
+                </Reveal>
+                <MaskReveal
+                  as="h2"
                   className="font-display mb-5"
-                  style={{ fontSize: 'var(--text-h1b)', letterSpacing: 'var(--tracking-heading)', lineHeight: 1.15 }}
+                  style={{ fontSize: 'var(--text-h1)', letterSpacing: 'var(--tracking-heading)', lineHeight: 1.05 }}
                 >
                   {t.rich('formacaoTitleRich', { em })}
-                </h2>
-                <p className="text-[var(--color-text-secondary)]">{t('formacaoText')}</p>
+                </MaskReveal>
+                <Reveal delay={0.15}>
+                  <p className="text-[var(--color-text-secondary)]">{t('formacaoText')}</p>
+                </Reveal>
               </div>
-              <Button href="/contactos" variant="secondary" arrow>{t('formacaoCta')}</Button>
-            </Reveal>
+              <Reveal delay={0.2}>
+                <Button href="/contactos" variant="secondary" arrow>{t('formacaoCta')}</Button>
+              </Reveal>
+            </div>
 
             <Reveal delay={0.1}>
               <hr className="border-0 border-t border-[var(--color-text-primary)] opacity-25 mt-14 mb-12" />
@@ -316,115 +345,131 @@ export default function VidaParoquiaPage() {
         </section>
 
         {/* ── 5. CTI JUVENIL ──
-            Segundo momento escuro da página, a espelhar o dos Escuteiros mas com
-            a fotografia do lado oposto. */}
-        <section id="cti" className="scroll-mt-28 bg-dark overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch">
-            <Reveal className="flex flex-col justify-center section-pad px-[var(--container-pad)] lg:pl-[max(var(--container-pad),calc((100vw-var(--container-max))/2+var(--container-pad)))]">
-              <SectionLabel className="!text-[var(--color-text-inverse)] opacity-90">
-                {t('ctiLabel')}
-              </SectionLabel>
-              <h2
-                className="font-display text-[var(--color-text-inverse)] mb-6 max-w-lg"
-                style={{ fontSize: 'var(--text-h1b)', letterSpacing: 'var(--tracking-heading)', lineHeight: 1.12 }}
+            Texto assente sobre a fotografia, não ao lado dela. */}
+        <section id="cti" className="scroll-mt-28 relative min-h-[85vh] flex items-end overflow-hidden">
+          <Parallax inset amount={7}>
+            <Image
+              src="/images/figma-liturgy.jpg"
+              alt={t('imgAltJovens')}
+              fill
+              sizes="100vw"
+              className="object-cover"
+            />
+          </Parallax>
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                'linear-gradient(to bottom, rgba(8,8,10,0.30) 0%, rgba(8,8,10,0.08) 35%, rgba(8,8,10,0.50) 72%, rgba(8,8,10,0.84) 100%)',
+            }}
+          />
+
+          <div className="container relative z-10 section-pad">
+            <div className="max-w-2xl">
+              <Reveal>
+                <SectionLabel className="!text-[var(--color-text-inverse)] opacity-85">
+                  {t('ctiLabel')}
+                </SectionLabel>
+              </Reveal>
+              <MaskReveal
+                as="h2"
+                className="font-display text-[var(--color-text-inverse)] mb-6"
+                style={{ fontSize: 'var(--text-h1)', letterSpacing: 'var(--tracking-heading)', lineHeight: 1.05 }}
               >
                 {t.rich('ctiTitleRich', { em })}
-              </h2>
-              <p
-                className="text-[var(--color-text-on-dark)] max-w-md mb-10"
-                style={{ fontFamily: 'var(--font-body-light)', fontWeight: 300, fontSize: 'var(--text-body-lg)', lineHeight: 1.6 }}
-              >
-                {t('ctiText')}
-              </p>
-              <Button
-                href="/contactos"
-                variant="secondary"
-                arrow
-                className="self-start !border-[var(--color-text-inverse)] !text-[var(--color-text-inverse)]"
-              >
-                {t('ctiCta')}
-              </Button>
-            </Reveal>
-
-            <Reveal delay={0.12} className="relative min-h-[380px] lg:min-h-[600px]">
-              <Image
-                src="/images/figma-liturgy.jpg"
-                alt={t('imgAltJovens')}
-                fill
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover"
-              />
-            </Reveal>
+              </MaskReveal>
+              <Reveal delay={0.2}>
+                <p
+                  className="!text-[var(--color-text-inverse)] max-w-md mb-9"
+                  style={{ fontFamily: 'var(--font-body-light)', fontWeight: 300, fontSize: 'var(--text-body-lg)', lineHeight: 1.6 }}
+                >
+                  {t('ctiText')}
+                </p>
+                <Button
+                  href="/contactos"
+                  variant="secondary"
+                  arrow
+                  className="!border-[var(--color-text-inverse)] !text-[var(--color-text-inverse)]"
+                >
+                  {t('ctiCta')}
+                </Button>
+              </Reveal>
+            </div>
           </div>
         </section>
 
         {/* ── 6. RESERVAS NA SALA ──
-            Bloco funcional, não editorial: três colunas de informação prática
-            dentro de uma moldura fina. */}
-        <section id="reservas" className="section-pad-lg bg-secondary scroll-mt-28">
+            Bloco funcional e deliberadamente calmo, a seguir ao momento mais
+            cheio da página. */}
+        <section id="reservas" className="section-pad-lg scroll-mt-28">
           <div className="container">
-            <Reveal className="border border-[var(--color-border)] p-8 md:p-14" style={{ borderRadius: 'var(--radius)' }}>
-              <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-16 items-start">
-                <div>
+            <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-24 items-start">
+              <div>
+                <Reveal>
                   <SectionLabel className="opacity-75">{t('reservasLabel')}</SectionLabel>
-                  <h2
-                    className="font-display mb-5"
-                    style={{ fontSize: 'var(--text-h2)', letterSpacing: 'var(--tracking-heading)', lineHeight: 1.15 }}
-                  >
-                    {t.rich('reservasTitleRich', { em })}
-                  </h2>
+                </Reveal>
+                <MaskReveal
+                  as="h2"
+                  className="font-display mb-5"
+                  style={{ fontSize: 'var(--text-h1b)', letterSpacing: 'var(--tracking-heading)', lineHeight: 1.1 }}
+                >
+                  {t.rich('reservasTitleRich', { em })}
+                </MaskReveal>
+                <Reveal delay={0.15}>
                   <p className="text-[var(--color-text-secondary)] max-w-md mb-10">{t('reservasText')}</p>
                   <Button href="/contactos" arrow>{t('reservasCta')}</Button>
-                </div>
-
-                <dl className="flex flex-col">
-                  {reservas.map((r, i) => (
-                    <div
-                      key={r.title}
-                      className={`py-5 ${i > 0 ? 'border-t border-[var(--color-border-light)]' : ''}`}
-                    >
-                      <dt className="label mb-1.5">{t(r.title)}</dt>
-                      <dd className="text-[var(--color-text-secondary)] text-sm leading-relaxed">
-                        {t(r.desc)}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
+                </Reveal>
               </div>
-            </Reveal>
+
+              <Reveal delay={0.2} as="dl" className="flex flex-col border-t border-[var(--color-border-light)]">
+                {reservas.map((r) => (
+                  <div key={r.title} className="py-6 border-b border-[var(--color-border-light)]">
+                    <dt className="label mb-1.5">{t(r.title)}</dt>
+                    <dd className="text-[var(--color-text-secondary)] text-sm leading-relaxed">
+                      {t(r.desc)}
+                    </dd>
+                  </div>
+                ))}
+              </Reveal>
+            </div>
           </div>
         </section>
 
         {/* ── NOTÍCIAS ──
             Não está no sitemap, mas é o destino do "Ver todas as notícias" da
             homepage — fica no fim, como remate. */}
-        <section className="section-pad-lg">
+        <section className="section-pad-lg bg-secondary">
           <div className="container">
-            <Reveal className="flex flex-wrap items-end justify-between gap-6 mb-14">
+            <div className="flex flex-wrap items-end justify-between gap-6 mb-14 md:mb-20">
               <div>
-                <SectionLabel className="mb-4 opacity-75">{t('newsLabel')}</SectionLabel>
-                <h2
+                <Reveal>
+                  <SectionLabel className="mb-4 opacity-75">{t('newsLabel')}</SectionLabel>
+                </Reveal>
+                <MaskReveal
+                  as="h2"
                   className="font-display"
-                  style={{ fontSize: 'var(--text-h2)', letterSpacing: 'var(--tracking-heading)' }}
+                  style={{ fontSize: 'var(--text-h1b)', letterSpacing: 'var(--tracking-heading)', lineHeight: 1.1 }}
                 >
                   {t.rich('newsTitleRich', { em })}
-                </h2>
+                </MaskReveal>
               </div>
-              <Button href="/vida-paroquia" variant="ghost" arrow>{t('newsCta')}</Button>
-            </Reveal>
+              <Reveal delay={0.15}>
+                <Button href="/vida-paroquia" variant="ghost" arrow>{t('newsCta')}</Button>
+              </Reveal>
+            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="offset-grid grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 pb-12 md:pb-20" style={{ ['--offset-drop' as string]: '3rem' }}>
               {news.map((src, i) => (
                 <Reveal as="article" key={src} delay={i * 0.1} className="group cursor-pointer">
-                  <div className="relative aspect-[3/2] media mb-5 overflow-hidden">
+                  <Parallax className="media aspect-[3/2] mb-5" amount={5}>
                     <Image
                       src={src}
                       alt=""
                       fill
                       sizes="(min-width: 768px) 33vw, 100vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="object-cover"
                     />
-                  </div>
+                  </Parallax>
                   <p className="label mb-3">{t('newsLabel')} · {year}</p>
                   <h3
                     className="font-display group-hover:text-[var(--color-terracota)] transition-colors duration-300"
@@ -441,25 +486,28 @@ export default function VidaParoquiaPage() {
         {/* ── CTA FINAL ── */}
         <section className="section-pad-lg bg-secondary">
           <div className="container">
-            <Reveal className="border-t border-[var(--color-border)] pt-12 md:pt-16 grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-10 items-end">
+            <div className="border-t border-[var(--color-border)] pt-12 md:pt-16 grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-10 items-end">
               <div>
-                <SectionLabel className="opacity-75">{t('ctaLabel')}</SectionLabel>
-                <h2
+                <Reveal>
+                  <SectionLabel className="opacity-75">{t('ctaLabel')}</SectionLabel>
+                </Reveal>
+                <MaskReveal
+                  as="h2"
                   className="font-display"
-                  style={{ fontSize: 'var(--text-h1b)', letterSpacing: 'var(--tracking-heading)', lineHeight: 1.15 }}
+                  style={{ fontSize: 'var(--text-h1)', letterSpacing: 'var(--tracking-heading)', lineHeight: 1.05 }}
                 >
                   {t.rich('ctaTitleRich', { em })}
-                </h2>
+                </MaskReveal>
               </div>
-              <div className="flex flex-col gap-8 lg:items-end lg:text-right">
+              <Reveal delay={0.15} className="flex flex-col gap-8 lg:items-end lg:text-right">
                 <p className="text-[var(--color-text-secondary)] max-w-xs">
                   {t('ctaSubtitle')}
                 </p>
                 <Button href="/contactos" arrow>
                   {t('ctaButton')}
                 </Button>
-              </div>
-            </Reveal>
+              </Reveal>
+            </div>
           </div>
         </section>
 

@@ -289,6 +289,68 @@
     margin-top: 0.2rem;
   }
 
+  /* ── MARQUEE ──
+     Ticker lento, em Forevs. Duas pistas idênticas correm como uma só, por
+     isso a translação é de exatamente -100% e o ciclo não tem emenda. */
+  .marquee {
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+    width: 100%;
+  }
+
+  .marquee-track {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    min-width: 100%;
+    animation: marquee-scroll 46s linear infinite;
+  }
+
+  .marquee-item {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 4vw, 3.25rem);
+    line-height: 1.2;
+    letter-spacing: var(--tracking-heading);
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .marquee-sep {
+    padding-inline: clamp(1.25rem, 3vw, 2.75rem);
+    opacity: 0.4;
+  }
+
+  /* Grelha desalinhada: as colunas pares descem, criando o desencontro
+     vertical dos spreads editoriais em vez de uma fila certinha.
+     Usa margin, não transform: estes filhos são <Reveal>, que anima via GSAP
+     e reescreve `transform` inline — um translate daqui seria apagado. */
+  @media (min-width: 768px) {
+    .offset-grid > *:nth-child(even) { margin-top: var(--offset-drop, 4rem); }
+  }
+
+  /* ── SHOWCASE DE GRUPOS ──
+     O esbatimento dos itens inativos só faz sentido onde existe o hover que o
+     desfaz. Em ecrãs pequenos não há apontador nem coluna fixa, por isso todos
+     os títulos ficam à mesma intensidade — caso contrário metade da lista
+     parecia desativada, sem forma de a "acender". */
+  .showcase-title,
+  .showcase-num {
+    transition: opacity var(--dur-lg) var(--ease-out),
+                transform var(--dur-lg) var(--ease-out);
+  }
+
+  @media (min-width: 1024px) {
+    .showcase-title { opacity: 0.42; }
+    .showcase-title[data-active='true'] {
+      opacity: 1;
+      transform: translateX(0.5rem);
+    }
+    .showcase-num { opacity: 0.4; }
+    .showcase-num[data-active='true'] { opacity: 0.9; }
+  }
+
   /* Small rounded image sitting inline within a headline */
   .inline-media {
     display: inline-block;
@@ -308,10 +370,17 @@
   to { transform: scale(1.08); }
 }
 
+@keyframes marquee-scroll {
+  to { transform: translateX(-100%); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
   .reveal { opacity: 1; transform: none; }
+  /* o marquee é decorativo — para de vez, não acelera */
+  .marquee-track { animation: none !important; }
+  .offset-grid > *:nth-child(even) { margin-top: 0; }
 }
