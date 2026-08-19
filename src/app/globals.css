@@ -274,6 +274,70 @@
     color: var(--color-text-primary);
   }
 
+  /* ── FORMULÁRIO ──
+     Primeiro formulário do site (donativos). Segue o registo editorial: campos
+     a hairline, sem caixa cheia nem sombra, e o rótulo em maiúsculas pequenas
+     como os .schedule-head. O foco marca-se pela cor do filete, não por um
+     halo — o azulão do browser destoaria da paleta. */
+  .field-label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-primary);
+    margin-bottom: 0.75rem;
+  }
+
+  .field-help {
+    font-family: var(--font-body-light);
+    font-weight: 300;
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    margin-top: 0.6rem;
+  }
+
+  .field {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--color-border);
+    border-radius: 0;
+    padding: 0.7rem 0;
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg);
+    color: var(--color-text-primary);
+    transition: border-color var(--dur-sm) var(--ease-out);
+  }
+
+  .field::placeholder { color: var(--color-text-muted); }
+
+  .field:focus {
+    outline: none;
+    border-bottom-color: var(--color-text-primary);
+  }
+
+  /* Repõe a seta do <select>, que o `appearance: none` remove — desenhada em
+     SVG inline para acompanhar a paleta em vez do cinzento do sistema. */
+  select.field {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%231b2b39' stroke-width='1.2'%3E%3Cpath d='M1 1.5 6 6.5l5-5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.25rem center;
+    padding-right: 2rem;
+  }
+
+  textarea.field { resize: vertical; min-height: 6.5rem; }
+
+  /* O valor é o campo que se lê de relance: serif grande, com o símbolo da
+     moeda como prefixo fixo em vez de dentro do input. */
+  .field-amount {
+    font-family: var(--font-display);
+    font-size: var(--text-h3);
+    font-weight: 300;
+  }
+
   .schedule-desc {
     font-family: var(--font-body);
     font-size: 0.72rem;
