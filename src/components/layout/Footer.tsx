@@ -46,7 +46,7 @@ export default function Footer() {
             terminando à mesma altura que a régua em baixo. */}
         <div className="flex flex-col lg:flex-row lg:justify-between gap-16">
           <div className="lg:max-w-sm">
-            <Logo className="h-20 w-auto" />
+            <Logo className="h-28 w-auto" />
             <p
               className="font-display mt-8 whitespace-pre-line opacity-80"
               style={{ fontSize: 'var(--text-tagline)', lineHeight: 1.15 }}

@@ -10,6 +10,14 @@ import Reveal from '@/components/ui/Reveal'
 /** Italic emphasis used by the rich-text headings (<em> in the message files) */
 const em = (chunks: ReactNode) => <em className="em-italic">{chunks}</em>
 
+/**
+ * Quebra de linha editorial dentro de um título (<br></br> nos ficheiros de tradução).
+ * A quebra automática desloca-se com o ecrã — o corpo é fluido (`clamp(.., 6vw, ..)`) —
+ * e cada idioma parte num sítio diferente, por isso onde a quebra é uma decisão de
+ * composição marca-se no texto, como o hero faz com duas linhas separadas.
+ */
+const br = () => <br />
+
 export default function HomePage() {
   const t = useTranslations('home')
   const tc = useTranslations('common')
@@ -43,7 +51,7 @@ export default function HomePage() {
               fill
               priority
               sizes="100vw"
-              className="object-cover ken-burns"
+              className="object-cover"
             />
             {/* Scrim kept deliberately light: the interior shot is already dark, so
                 this only seats the nav and the headline without muddying the altar. */}
@@ -56,17 +64,26 @@ export default function HomePage() {
             />
           </div>
 
-          {/* Título e CTAs ancorados à esquerda; a frase-assinatura da marca alinhada
-              à direita, na mesma base — as duas pontas da mesma linha. */}
-          <div className="container relative z-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-12">
-            <div className="lg:max-w-[62%]">
+          {/* Título e CTAs ancorados à esquerda. Já teve o nome da igreja alinhado à
+              direita, na mesma base — removido a pedido; o hero fica só com a frase da
+              marca. max-w mais largo do que antes: já não há coluna à direita a disputar
+              espaço. */}
+          <div className="container relative z-10">
+            <div className="lg:max-w-[80%]">
               <Reveal>
-                <SectionLabel rule className="!text-[var(--color-text-inverse)] opacity-80">
+                <SectionLabel className="!text-[var(--color-text-inverse)] opacity-80">
                   {t('heroLabel')}
                 </SectionLabel>
               </Reveal>
               <Reveal delay={0.1}>
-                {/* Staggered serif lines, second set in italic (see tengile / paisana) */}
+                {/* A frase-assinatura da marca (branding p30, "More Than Just Another
+                    Church") é agora o único título do hero — o nome da igreja foi
+                    removido daqui por completo. Por isso o <h1> semântico da página
+                    passa a viver aqui: uma página sobre a Basílica precisa de um <h1>
+                    para SEO/leitores de ecrã, e este é o único texto de título que
+                    resta no hero. O nome continua presente no wordmark do logótipo
+                    e em texto mais abaixo na página (Manifesto, Quem Somos).
+                    Staggered serif lines, second set in italic (tengile / paisana). */}
                 <h1
                   className="font-display font-light text-[var(--color-text-inverse)] stagger mb-10"
                   style={{
@@ -75,8 +92,8 @@ export default function HomePage() {
                     lineHeight: 'var(--leading-display)',
                   }}
                 >
-                  <span>{t('heroTitleA')}</span>
-                  <span className="em-italic">{t('heroTitleB')}</span>
+                  <span>{t('heroTaglineA')}</span>
+                  <span className="em-italic">{t('heroTaglineB')}</span>
                 </h1>
               </Reveal>
               <Reveal delay={0.3}>
@@ -92,26 +109,18 @@ export default function HomePage() {
                 </div>
               </Reveal>
             </div>
-
-            {/* Frase-assinatura da marca (branding p30). Forevs romano, não itálico. */}
-            <Reveal delay={0.2} className="lg:shrink-0 lg:pb-2">
-              <p
-                className="font-display text-[var(--color-text-inverse)] whitespace-pre-line lg:text-right"
-                style={{ fontSize: 'var(--text-tagline)', lineHeight: 1.15 }}
-              >
-                {tc('tagline')}
-              </p>
-            </Reveal>
           </div>
         </section>
 
         {/* ── MANIFESTO ──
-            Declaração puramente tipográfica. As fotografias encaixadas no texto
-            ficam reservadas à secção Visitar, para as duas não competirem. */}
+            Declaração puramente tipográfica, centrada como "momento de pausa"
+            (hotelbelavista.net — ver DESIGN.md §1/§2): coluna estreita e deliberada,
+            não um parágrafo corrido a abranger a largura toda. Sem imagens — ficam
+            reservadas à secção Visitar, para as duas não competirem. */}
         <section className="section-pad-lg">
           <div className="container">
-            <Reveal className="max-w-5xl">
-              <SectionLabel rule>{t('manifestoLabel')}</SectionLabel>
+            <Reveal className="max-w-3xl mx-auto text-center">
+              <SectionLabel>{t('manifestoLabel')}</SectionLabel>
               <p className="type-editorial">
                 {t.rich('manifesto', { em })}
               </p>
@@ -126,7 +135,7 @@ export default function HomePage() {
         <section className="bg-dark section-pad-lg overflow-hidden">
           <div className="container">
             <Reveal>
-              <SectionLabel rule className="!text-[var(--color-gold)]">{t('visitLabel')}</SectionLabel>
+              <SectionLabel className="!text-[var(--color-gold)]">{t('visitLabel')}</SectionLabel>
             </Reveal>
 
             <h2
@@ -226,7 +235,7 @@ export default function HomePage() {
               </Reveal>
 
               <Reveal delay={0.15} className="order-1 lg:order-2">
-                <SectionLabel rule>{t('quemSomosLabel')}</SectionLabel>
+                <SectionLabel>{t('quemSomosLabel')}</SectionLabel>
                 <h2
                   className="font-display font-light mb-8"
                   style={{
@@ -251,44 +260,69 @@ export default function HomePage() {
         {/* ── OBRA SOCIAL ── */}
         <section className="section-pad-lg">
           <div className="container">
-            <Reveal className="max-w-2xl mb-20">
-              <SectionLabel rule>{t('obraSocialLabel')}</SectionLabel>
-              <h2
-                className="font-display font-light mb-8"
-                style={{
-                  fontSize: 'var(--text-h1)',
-                  letterSpacing: 'var(--tracking-heading)',
-                  lineHeight: 'var(--leading-heading)',
-                }}
-              >
-                {t.rich('obraSocialTitleRich', { em })}
-              </h2>
-              <p className="lead text-[var(--color-text-secondary)] max-w-sm mb-12">
-                {t('obraSocialSubtitle')}
-              </p>
-              <Button href="/obra-social" variant="secondary" arrow>
-                {t('obraSocialCta')}
-              </Button>
+            {/* Só em desktop (lg+) o subtítulo sai da coluna do título e encosta à direita,
+                na mesma base da última linha — a mesma composição do hero (DESIGN.md §2).
+                Abaixo de lg empilha por baixo do título: a partir de ~768px a coluna da
+                direita ficava estreita e o subtítulo quebrava em três linhas. */}
+            <Reveal className="mb-16 md:mb-20">
+              <SectionLabel>{t('obraSocialLabel')}</SectionLabel>
+              <div className="lg:grid lg:grid-cols-12 lg:items-end lg:gap-x-12">
+                <h2
+                  className="font-display font-light mb-8 max-w-2xl lg:col-span-7 lg:mb-0"
+                  style={{
+                    fontSize: 'var(--text-h1)',
+                    letterSpacing: 'var(--tracking-heading)',
+                    lineHeight: 'var(--leading-heading)',
+                  }}
+                >
+                  {t.rich('obraSocialTitleRich', { em, br })}
+                </h2>
+                <p className="lead text-[var(--color-text-secondary)] max-w-md lg:col-span-4 lg:col-start-9">
+                  {t('obraSocialSubtitle')}
+                </p>
+              </div>
             </Reveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Índice editorial, não cards: os projetos são listados como entradas de um
+                sumário — número, nome em serif, uma linha de descrição — separadas por
+                filetes hairline. Os cards cheios com ícones (registo insidermadeira)
+                pesavam demais contra a direção editorial e não continham conteúdo real.
+                Ver DESIGN.md §1. */}
+            <div className="border-t border-[var(--color-border-light)]">
               {[
-                { icon: <IconBasket />, key: 'obraSocialFeat1' as const },
-                { icon: <IconHands />, key: 'obraSocialFeat2' as const },
-                { icon: <IconHeart />, key: 'obraSocialFeat3' as const },
+                { name: 'obraSocialItem1Name', desc: 'obraSocialItem1Desc' },
+                { name: 'obraSocialItem2Name', desc: 'obraSocialItem2Desc' },
+                { name: 'obraSocialItem3Name', desc: 'obraSocialItem3Desc' },
               ].map((item, i) => (
                 <Reveal
-                  key={item.key}
-                  delay={i * 0.1}
-                  className="bg-[var(--color-cream)] p-12 media flex flex-col items-center text-center"
+                  key={item.name}
+                  delay={i * 0.08}
+                  y={20}
+                  className="grid grid-cols-[2.5rem_1fr] md:grid-cols-[5rem_minmax(0,22rem)_1fr] items-baseline gap-x-6 border-b border-[var(--color-border-light)] py-8 md:py-11"
                 >
-                  <div className="text-[var(--color-terracota)] mb-8">{item.icon}</div>
-                  <p className="font-display font-light" style={{ fontSize: 'var(--text-h3)' }}>
-                    {t(item.key)}
+                  <span className="label tabular-nums">{`0${i + 1}`}</span>
+                  <h3
+                    className="font-display font-light"
+                    style={{
+                      fontSize: 'var(--text-h3)',
+                      letterSpacing: 'var(--tracking-heading)',
+                      lineHeight: 'var(--leading-heading)',
+                    }}
+                  >
+                    {t(item.name as 'obraSocialItem1Name')}
+                  </h3>
+                  <p className="col-start-2 mt-3 max-w-md text-[var(--color-text-secondary)] md:col-start-3 md:mt-0">
+                    {t(item.desc as 'obraSocialItem1Desc')}
                   </p>
                 </Reveal>
               ))}
             </div>
+
+            <Reveal delay={0.24} className="mt-12 md:mt-16">
+              <Button href="/obra-social" variant="secondary" arrow>
+                {t('obraSocialCta')}
+              </Button>
+            </Reveal>
           </div>
         </section>
 
@@ -297,7 +331,7 @@ export default function HomePage() {
           <div className="container">
             <Reveal className="flex flex-wrap items-end justify-between gap-6 mb-6">
               <div>
-                <SectionLabel rule>{t('destaques')}</SectionLabel>
+                <SectionLabel>{t('destaques')}</SectionLabel>
                 <h2
                   className="font-display font-light"
                   style={{ fontSize: 'var(--text-h2)', letterSpacing: 'var(--tracking-heading)' }}
@@ -356,7 +390,7 @@ export default function HomePage() {
             <Reveal className="border-t border-[var(--color-border)] pt-16 md:pt-24">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-end">
                 <div className="lg:col-span-7">
-                  <SectionLabel rule className="!text-[var(--color-terracota)]">
+                  <SectionLabel className="!text-[var(--color-terracota)]">
                     {t('doacoesLabel')}
                   </SectionLabel>
                   <h2
@@ -394,33 +428,3 @@ export default function HomePage() {
   )
 }
 
-function IconBasket() {
-  return (
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.2">
-      <path d="M6 16h28l-3 17a2 2 0 0 1-2 1.6H11a2 2 0 0 1-2-1.6L6 16Z" />
-      <path d="M12 16 16 6M28 16 24 6M16 22v9M20 22v9M24 22v9" strokeLinecap="round" />
-    </svg>
-  )
-}
-
-function IconHands() {
-  return (
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.2">
-      <path d="M8 18V9a2.2 2.2 0 0 1 4.4 0v8" strokeLinecap="round" />
-      <path d="M12.4 17V7a2.2 2.2 0 0 1 4.4 0v10" strokeLinecap="round" />
-      <path d="M16.8 17V9a2.2 2.2 0 0 1 4.4 0v9" strokeLinecap="round" />
-      <path d="M21.2 18v-5a2.2 2.2 0 0 1 4.4 0v9c0 6-4.2 11-10.6 11-4 0-6.6-1.8-8.8-5l-4-6a2 2 0 0 1 3.2-2.4l2.6 2.8" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  )
-}
-
-function IconHeart() {
-  return (
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.2">
-      <path
-        d="M20 33S6 24.5 6 14.9C6 10 9.8 7 13.7 7c2.7 0 5 1.4 6.3 3.8C21.3 8.4 23.6 7 26.3 7c3.9 0 7.7 3 7.7 7.9C34 24.5 20 33 20 33Z"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-}

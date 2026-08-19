@@ -15,8 +15,8 @@ editorial, fotográfico, com serif expressiva e muito espaço branco.
 |---|---|
 | [living.paisana.studio](https://living.paisana.studio) | **Fotografia encaixada dentro do título** — a assinatura do site. Serif com romano e itálico misturados na mesma frase. |
 | [tengilemalamala.com](https://tengilemalamala.com) | Linhas de título **desencontradas** (indentação assimétrica). Seta em compartimento próprio no botão. |
-| [vivre.agency](https://vivre.agency) | Label com **filete horizontal** ao lado (`VISITAR ———`). Hero fotográfico full-bleed. |
-| [insidermadeira.com](https://www.insidermadeira.com) | **Cards creme com ícones de linha** (usados na Obra Social). Seta separada no botão. |
+| [vivre.agency](https://vivre.agency) | Label com **filete horizontal** ao lado (`VISITAR ———`). Testado no site inteiro e depois removido — ver §2. Hero fotográfico full-bleed. |
+| [insidermadeira.com](https://www.insidermadeira.com) | **Cards creme com ícones de linha**. Testado na Obra Social e depois substituído — ver §2. Seta separada no botão. |
 | [hotelbelavista.net](https://www.hotelbelavista.net/pt) | **Parágrafo-manifesto** em serif grande e centrado como momento de pausa. |
 
 **Tecnologia:** confirmei por inspeção que paisana, vivre, insider e bela vista usam
@@ -42,11 +42,27 @@ detrimento do registo mais declarativo e turístico do bela vista/vivre.
 As duas secções chegaram a ter o **mesmo** tratamento (serif grande, itálicos e fotografias
 dentro do texto) e competiam uma com a outra. Resolvido assim:
 
-- **Manifesto** — declaração puramente tipográfica, sem imagens, alinhada à esquerda, sobre creme.
+- **Manifesto** — declaração puramente tipográfica, sem imagens, sobre creme. Centrada e numa
+  coluna estreita (`max-w-3xl`), como **momento de pausa** (hotelbelavista.net) — não um
+  parágrafo corrido a abranger a largura toda. Já foi alinhada à esquerda; o centrado
+  continua a diferenciar-se de Visitar por não ter imagens nem fundo escuro.
 - **Visitar** — fundo escuro, centrada, com as fotografias encaixadas no título a alternar
   de lado. As imagens inline são agora a **assinatura exclusiva desta secção**.
 
 ⚠️ Não voltar a pôr `<media></media>` na chave `manifesto` dos ficheiros de tradução.
+
+### Labels de secção — sem filete
+O filete horizontal ao lado do label (`SectionLabel rule`, tirado do vivre.agency) foi
+testado em quase todas as secções e depois removido — ficava a mais ao lado de tantos
+labels na mesma página de scroll. O componente `SectionLabel` deixou de aceitar a prop
+`rule`; é sempre só o texto do label.
+
+### Obra Social
+Os cards creme com ícones de linha (insidermadeira) foram substituídos por um índice
+editorial — número, nome em serif, descrição — separado por filetes horizontais, mais
+alinhado com o registo paisana/tengile do resto do site. Título e subtítulo dividem-se
+em duas colunas a partir de `lg`, subtítulo encostado à direita na base do título (mesma
+composição do Hero).
 
 ### Celebrações
 Segue a Linha Religiosa do branding — ver `BRANDING.md` §2 e §3.
