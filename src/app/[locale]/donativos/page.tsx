@@ -122,6 +122,9 @@ export default function DonativosPage() {
               >
                 {t.rich('modalidadesTitleRich', { em })}
               </h2>
+              <p className="text-[var(--color-text-secondary)] max-w-md mt-6">
+                {t('modalidadesText')}
+              </p>
             </Reveal>
 
             <div className="border-t border-[var(--color-border-light)]">
