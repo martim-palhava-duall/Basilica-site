@@ -374,27 +374,59 @@ export default function BasilicaConventoPage() {
               </p>
             </Reveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 border-t border-l border-[var(--color-border-light)]">
-              {([1, 2, 3] as const).map((n, i) => (
-                <Reveal
-                  key={n}
-                  delay={i * 0.1}
-                  className="border-r border-b border-[var(--color-border-light)] p-8 md:p-10 flex flex-col gap-5"
-                >
-                  <span className="schedule-time opacity-70">
-                    {t(`exp${n}Duracao` as 'exp1Duracao')}
-                  </span>
-                  <div>
-                    <h3
-                      className="font-display mb-3"
-                      style={{ fontSize: 'var(--text-h3)', lineHeight: 'var(--leading-heading)' }}
-                    >
-                      {t(`exp${n}Nome` as 'exp1Nome')}
-                    </h3>
-                    <p className="text-[var(--color-text-secondary)] text-sm leading-relaxed">
-                      {t(`exp${n}Desc` as 'exp1Desc')}
-                    </p>
+            {/* Painéis fotográficos, sem moldura e desalinhados — deliberadamente
+                o oposto de "Tipos de Visita", logo acima, que é texto dentro de
+                caixas iguais. Ali escolhe-se um percurso comparando dados; aqui
+                a fotografia é que convida, por isso a imagem manda e o nome
+                assenta sobre ela. */}
+            <div
+              className="offset-grid grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
+              style={{ ['--offset-drop' as string]: '4.5rem' }}
+            >
+              {([
+                { n: 1, src: '/images/hero-fachada.jpg' },
+                { n: 2, src: '/images/figma-statue-mary.jpg' },
+                { n: 3, src: '/images/destaque-celebracao.jpg' },
+              ] as const).map((exp, i) => (
+                <Reveal key={exp.n} delay={i * 0.1} className="group">
+                  <div className="relative media aspect-[3/4] overflow-hidden">
+                    {/* `inset`, não `className="absolute inset-0"`: o Parallax
+                        define `position` inline e apagaria a classe, deixando a
+                        moldura a zero de altura. */}
+                    <Parallax inset amount={6}>
+                      <Image
+                        src={exp.src}
+                        alt=""
+                        fill
+                        sizes="(min-width: 768px) 33vw, 100vw"
+                        className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
+                      />
+                    </Parallax>
+
+                    <div
+                      className="absolute inset-0 pointer-events-none"
+                      style={{
+                        background:
+                          'linear-gradient(to bottom, rgba(8,8,10,0.28) 0%, rgba(8,8,10,0.05) 38%, rgba(8,8,10,0.55) 78%, rgba(8,8,10,0.82) 100%)',
+                      }}
+                    />
+
+                    <div className="absolute inset-x-0 bottom-0 p-7 md:p-8">
+                      <p className="schedule-time !text-[var(--color-text-inverse)] opacity-85 mb-2">
+                        {t(`exp${exp.n}Duracao` as 'exp1Duracao')}
+                      </p>
+                      <h3
+                        className="font-display text-[var(--color-text-inverse)]"
+                        style={{ fontSize: 'var(--text-h3)', lineHeight: 1.1 }}
+                      >
+                        {t(`exp${exp.n}Nome` as 'exp1Nome')}
+                      </h3>
+                    </div>
                   </div>
+
+                  <p className="text-[var(--color-text-secondary)] text-sm leading-relaxed mt-5 max-w-sm">
+                    {t(`exp${exp.n}Desc` as 'exp1Desc')}
+                  </p>
                 </Reveal>
               ))}
             </div>
