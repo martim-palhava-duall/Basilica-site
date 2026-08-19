@@ -30,7 +30,7 @@ export default function CelebracoesPage() {
   const t = useTranslations('celebracoes')
   // Os horários das missas vivem no namespace da homepage — lidos daqui em vez
   // de duplicados, para não haver duas versões da mesma informação a divergir.
-  const th = useTranslations('home')
+  const thr = useTranslations('horarios')
 
   const rail = SECTIONS.map((s) => ({ id: s.id, label: t(s.label) }))
 
@@ -41,8 +41,8 @@ export default function CelebracoesPage() {
   }))
 
   const horarios = [
-    { head: 'massasCol1Head', slots: [['massasCol1aHora', 'massasCol1aDesc'], ['massasCol1bHora', 'massasCol1bDesc'], ['massasCol1cHora', 'massasCol1cDesc']] },
-    { head: 'massasCol2Head', slots: [['massasCol2aHora', 'massasCol2aDesc'], ['massasCol2bHora', 'massasCol2bDesc']] },
+    { horas: 'missasDomHoras', dias: 'missasDomDias' },
+    { horas: 'missasSemHoras', dias: 'missasSemDias' },
   ]
 
   return (
@@ -229,19 +229,28 @@ export default function CelebracoesPage() {
             </Reveal>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-12">
-              {horarios.map((col, i) => (
-                <Reveal key={col.head} delay={0.15 + i * 0.1}>
-                  <p className="schedule-head mb-6">{th(col.head)}</p>
-                  <dl className="flex flex-col gap-5">
-                    {col.slots.map(([hora, desc]) => (
-                      <div key={hora}>
-                        <dt className="schedule-time">{th(hora)}</dt>
-                        <dd className="schedule-desc">{th(desc)}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                </Reveal>
-              ))}
+              {/* Horas do namespace `horarios` — fonte única */}
+              <Reveal delay={0.15}>
+                <p className="schedule-head mb-6">{thr('missasHead')}</p>
+                <dl className="flex flex-col gap-5">
+                  {horarios.map((slot) => (
+                    <div key={slot.horas}>
+                      <dt className="schedule-time">{thr(slot.horas)}</dt>
+                      <dd className="schedule-desc">{thr(slot.dias)}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </Reveal>
+
+              <Reveal delay={0.25}>
+                <p className="schedule-head mb-6">{thr('adoracaoHead')}</p>
+                <dl className="flex flex-col gap-5">
+                  <div>
+                    <dt className="schedule-time">{thr('adoracaoSemHoras')}</dt>
+                    <dd className="schedule-desc">{thr('adoracaoSemDias')}</dd>
+                  </div>
+                </dl>
+              </Reveal>
 
               {/* 4. INTENÇÕES — terceira coluna do mesmo cartaz, para não abrir
                    uma secção inteira a um bloco de três linhas */}
@@ -288,8 +297,17 @@ export default function CelebracoesPage() {
 
               <Reveal delay={0.2} className="border-t border-[var(--color-border)] pt-7">
                 <p className="schedule-head mb-5">{t('confissoesHorarioHead')}</p>
-                <p className="schedule-time mb-2">{t('confissoesHorario')}</p>
-                <p className="schedule-time">{t('confissoesHorario2')}</p>
+                <dl className="flex flex-col gap-4">
+                  {[
+                    { horas: 'confissoesDomHoras', dias: 'confissoesDomDias' },
+                    { horas: 'confissoesSemHoras', dias: 'confissoesSemDias' },
+                  ].map((slot) => (
+                    <div key={slot.horas}>
+                      <dt className="schedule-time">{thr(slot.horas)}</dt>
+                      <dd className="schedule-desc">{thr(slot.dias)}</dd>
+                    </div>
+                  ))}
+                </dl>
               </Reveal>
             </div>
           </div>
@@ -340,7 +358,10 @@ export default function CelebracoesPage() {
                       {t('adoracaoQuandoHead')}
                     </p>
                     <p className="schedule-time !text-[var(--color-text-inverse)]">
-                      {t('adoracaoQuando')}
+                      {thr('adoracaoSemHoras')}
+                    </p>
+                    <p className="schedule-desc !text-[var(--color-text-on-dark)]">
+                      {thr('adoracaoSemDias')}
                     </p>
                   </div>
                 </Reveal>

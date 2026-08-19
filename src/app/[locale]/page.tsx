@@ -17,6 +17,7 @@ const w = (chunks: ReactNode) => <span style={{ color: 'var(--brand-sand-pale)' 
 export default function HomePage() {
   const t = useTranslations('home')
   const tc = useTranslations('common')
+  const thr = useTranslations('horarios')
   const year = new Date().getFullYear()
 
   /** Builds a <media/> renderer: a small rounded photo set inline in a sentence */
@@ -220,19 +221,21 @@ export default function HomePage() {
               <hr className="border-0 border-t border-[var(--color-text-primary)] opacity-25 mt-8 mb-12" />
             </Reveal>
 
+            {/* Horas lidas do namespace `horarios` — a fonte única com os dados
+                reais da paróquia. Não repetir valores aqui. */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-12">
               {[
-                { head: 'massasCol1Head', slots: [['massasCol1aHora','massasCol1aDesc'], ['massasCol1bHora','massasCol1bDesc'], ['massasCol1cHora','massasCol1cDesc']] },
-                { head: 'massasCol2Head', slots: [['massasCol2aHora','massasCol2aDesc'], ['massasCol2bHora','massasCol2bDesc']] },
-                { head: 'massasCol3Head', slots: [['massasCol3aHora','massasCol3aDesc'], ['massasCol3bHora','massasCol3bDesc']] },
+                { head: 'missasHead',     slots: [['missasDomHoras','missasDomDias'], ['missasSemHoras','missasSemDias']] },
+                { head: 'confissoesHead', slots: [['confissoesDomHoras','confissoesDomDias'], ['confissoesSemHoras','confissoesSemDias']] },
+                { head: 'adoracaoHead',   slots: [['adoracaoSemHoras','adoracaoSemDias']] },
               ].map((col, i) => (
                 <Reveal key={col.head} delay={0.15 + i * 0.1}>
-                  <p className="schedule-head mb-6">{t(col.head)}</p>
+                  <p className="schedule-head mb-6">{thr(col.head)}</p>
                   <dl className="flex flex-col gap-5">
-                    {col.slots.map(([hora, desc]) => (
-                      <div key={hora}>
-                        <dt className="schedule-time">{t(hora)}</dt>
-                        <dd className="schedule-desc">{t(desc)}</dd>
+                    {col.slots.map(([horas, dias]) => (
+                      <div key={horas}>
+                        <dt className="schedule-time">{thr(horas)}</dt>
+                        <dd className="schedule-desc">{thr(dias)}</dd>
                       </div>
                     ))}
                   </dl>

@@ -32,6 +32,7 @@ const CONHECER = [1, 2, 3, 4, 5, 6, 7] as const
 
 export default function BasilicaConventoPage() {
   const t = useTranslations('visita')
+  const thr = useTranslations('horarios')
 
   const rail = SECTIONS.map((s) => ({ id: s.id, label: t(s.label) }))
 
@@ -254,13 +255,37 @@ export default function BasilicaConventoPage() {
               </Reveal>
 
               <Reveal delay={0.15} className="flex flex-col gap-8 lg:pt-4">
-                {(['abertura', 'morada', 'transportes'] as const).map((k) => (
+                {/* Horário de acolhimento — dados reais da paróquia, lidos do
+                    namespace `horarios`. São dois regimes (fim-de-semana e dias
+                    úteis), por isso este bloco leva duas linhas em vez de uma. */}
+                <div className="border-t border-[var(--color-text-inverse)]/20 pt-6">
+                  <p className="schedule-head !text-[var(--color-text-on-dark)] mb-3">
+                    {t('aberturaHead')}
+                  </p>
+                  <dl className="flex flex-col gap-3">
+                    {[
+                      { horas: 'acolhimentoFdsHoras', dias: 'acolhimentoFdsDias' },
+                      { horas: 'acolhimentoSemHoras', dias: 'acolhimentoSemDias' },
+                    ].map((slot) => (
+                      <div key={slot.horas}>
+                        <dt className="schedule-time !text-[var(--color-text-inverse)]">
+                          {thr(slot.horas)}
+                        </dt>
+                        <dd className="schedule-desc !text-[var(--color-text-on-dark)]">
+                          {thr(slot.dias)}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+
+                {(['morada', 'transportes'] as const).map((k) => (
                   <div key={k} className="border-t border-[var(--color-text-inverse)]/20 pt-6">
                     <p className="schedule-head !text-[var(--color-text-on-dark)] mb-2">
-                      {t(`${k}Head` as 'aberturaHead')}
+                      {t(`${k}Head` as 'moradaHead')}
                     </p>
                     <p className="schedule-time !text-[var(--color-text-inverse)]">
-                      {t(`${k}Valor` as 'aberturaValor')}
+                      {t(`${k}Valor` as 'moradaValor')}
                     </p>
                   </div>
                 ))}
