@@ -1,12 +1,15 @@
 {
   "nav": {
+    "basilicaConvento": "Basilica and Convent",
+    "celebracoes": "Celebrations of Faith",
     "sobreNos": "About Us",
-    "sobreBasilica": "The Basilica",
-    "visita": "Visit",
-    "celebracoes": "Celebrations",
     "vidaParoquia": "Parish Life",
-    "horarios": "Schedule",
+    "donativos": "Donations",
+    "blog": "Blog",
+    "obraSocial": "Obra Social",
+    "horarios": "Times and Intentions",
     "contactos": "Contact",
+    "visita": "Visit",
     "bilheteira": "Tickets"
   },
   "home": {
@@ -105,10 +108,8 @@
     "heroTitleRich": "The parish's <em>liturgical</em> life",
     "heroSubtitle": "Sacraments, liturgy and devotions — the gestures that shape the year and the life of a Christian community.",
     "indice": "On this page",
-
     "introLabel": "Through the year",
     "intro": "From the daily Eucharist to devotions that span centuries, the Basílica keeps its own rhythm of <em>prayer and celebration</em>, open to those arriving for the first time and to those who have come for a lifetime.",
-
     "sacramentosLabel": "Sacraments",
     "sacramentosTitleRich": "Signs of <em>grace</em>",
     "sacramentosText": "The seven sacraments accompany the stages of Christian life. All are celebrated at the Basílica, each with its own preparation.",
@@ -127,53 +128,44 @@
     "sac7Title": "Holy Orders",
     "sac7Desc": "The sacrament of ordained ministry, in service of the community.",
     "sacramentosNota": "For bookings and preparation, please contact the parish office.",
-
     "liturgiaLabel": "Liturgy",
     "liturgiaTitleRich": "The time <em>of the Church</em>",
     "liturgiaText": "The liturgical year gives shape to the community's time: Advent and Christmas, Lent and Easter, Ordinary Time. Each season has its colour, its music and its own way of praying.",
     "liturgiaText2": "At the Basílica, solemn celebrations mark the great feasts of the year, with particular emphasis on the solemnity of the Sacred Heart of Jesus, to whom the church is dedicated.",
-
     "missasLabel": "Mass",
     "missasTitleRich": "Eucharist <em>every day</em>",
     "missasText": "The Basílica celebrates the Eucharist daily. Times may change on solemnities.",
     "missasCta": "Full schedule",
-
     "intencoesLabel": "Mass Intentions",
     "intencoesTitleRich": "Praying for <em>someone</em>",
     "intencoesText": "You may ask for a Mass to be celebrated for a particular intention — for someone who has died, in thanksgiving, or for a personal request.",
     "intencoesCta": "Request an intention",
-
     "confissoesLabel": "Confessions",
     "confissoesTitleRich": "Sacrament of <em>Reconciliation</em>",
     "confissoesText": "A priest is always available at the times listed. Outside them, an appointment can be arranged through the parish office.",
     "confissoesHorarioHead": "Usual hours",
     "confissoesHorario": "SATURDAYS · 10H00 — 12H00",
     "confissoesHorario2": "WEEKDAYS · 18H00 — 19H00",
-
     "devocoesLabel": "Devotions",
     "devocoesTitleRich": "A prayer that <em>spans centuries</em>",
     "devocoesText": "Four devotions mark the Basílica's calendar, each with its own history and its own promise.",
-
     "adoracaoTitle": "Eucharistic Adoration",
     "adoracaoQuote": "Come to Me, all you who are weary and burdened, and I will give you rest.",
     "adoracaoQuoteRef": "Mt 11:28",
     "adoracaoText": "Eucharistic Adoration is the profound gesture of placing ourselves at the feet of Christ, recognising in Him the real presence that nourishes and transforms us. A moment of silent encounter, inviting us to contemplate the mystery of His love and to offer Him our heart, our sorrows and our intentions.",
     "adoracaoClose": "Jesus waits for us in this sacrament of love.",
     "adoracaoCloseRef": "Saint John Paul II",
-
     "sextasTitle": "First Fridays",
     "sextasQuote": "To all those who receive Communion on the first Friday of nine consecutive months, I will grant the grace of final perseverance and eternal salvation.",
     "origemHead": "Origin",
     "basilicaHead": "At the Basílica",
     "sextasOrigem": "The devotion began in the 17th century, from the revelations of the Sacred Heart of Jesus to Saint Margaret Mary Alacoque at Paray-le-Monial. Christ expressed His desire to be loved and to receive reparation for human offence and indifference, promising special graces to those who, for nine consecutive months, received Communion on the First Friday.",
     "sextasBasilica": "We celebrate every First Friday with Eucharistic Adoration and Confessions, between 18h and 19h. Holy Mass follows at 19h, for the intentions of the Holy Father.",
-
     "sabadosTitle": "First Saturdays",
     "sabadosQuote": "To all those who, on five consecutive first Saturdays, go to confession, receive Holy Communion, pray the rosary and keep Me company for fifteen minutes, I promise to assist them at the hour of death with all the graces necessary for salvation.",
     "sabadosOrigem": "The devotion began at Fátima in 1925, when Our Lady and the Child Jesus appeared to Sister Lúcia at Pontevedra. Our Lady asked for this act of reparation in honour of her Immaculate Heart, promising abundant graces — especially that of final perseverance — to those who fulfilled it faithfully.",
     "sabadosBasilica": "We celebrate every First Saturday in a spirit of reparation and filial offering to the Immaculate Heart of Mary, with the Holy Rosary, the opportunity for Confession, meditation on the mysteries and the celebration of the Eucharist.",
     "sabadosClose": "In the end, my Immaculate Heart will triumph.",
-
     "tercoTitle": "Family Rosary",
     "tercoQuote": "If you wish peace to reign in your families and in your country, pray the Holy Rosary together every day.",
     "tercoQuoteRef": "Saint Pius X",
@@ -182,12 +174,10 @@
     "tercoQuando": "THE 13TH OF EACH MONTH · 20H00",
     "tercoOndeHead": "Where",
     "tercoOnde": "IGREJA DA LAPA",
-
     "imgAltAltar": "Altar of the Basílica da Estrela",
     "imgAltInterior": "Interior of the Basílica da Estrela",
     "imgAltEucaristia": "Celebration of the Eucharist at the Basílica da Estrela",
     "imgAltDevocao": "Devotional image at the Basílica da Estrela",
-
     "ctaLabel": "Contact",
     "ctaTitleRich": "Need to <em>arrange</em> a celebration?",
     "ctaSubtitle": "Baptisms, weddings, Mass intentions or spiritual guidance — speak to the parish office.",
@@ -198,10 +188,8 @@
     "heroTitleRich": "An <em>active</em> community",
     "heroSubtitle": "Groups, movements, formation and culture — the parish happens every day of the week, not only on Sundays.",
     "indice": "On this page",
-
     "manifestoLabel": "Every day",
     "manifesto": "The Basílica doesn't close its doors after Mass. Between catechesis, scouting, choir and formation, there's always <em>something happening</em> — faith lived in community, not only in silence.",
-
     "gruposLabel": "Groups",
     "gruposTitleRich": "Find your <em>place</em>",
     "gruposText": "Each group has its own rhythm and mission. There's room for those who want to serve, learn, pray or simply be present.",
@@ -213,12 +201,10 @@
     "grupo3Desc": "Direct service at the altar and in the proclamation of the Word, at every celebration.",
     "grupo4Title": "Prayer Group",
     "grupo4Desc": "Moments of communal prayer through the week, outside the celebration schedule.",
-
     "escuteirosLabel": "Scouts & Movements",
     "escuteirosTitleRich": "Growing <em>outdoors</em>",
     "escuteirosText": "The parish scout group and apostolic movements accompany children, young people and adults on a path of faith built on service, nature and friendship.",
     "escuteirosCta": "Learn more",
-
     "culturaisLabel": "Cultural Groups",
     "culturaisTitleRich": "Faith is also <em>sung</em>",
     "culturaisText": "Music, heritage and culture have been part of the Basílica's life since its founding.",
@@ -228,7 +214,6 @@
     "cultural2Desc": "Study, outreach and preservation of the Basílica's artistic collection.",
     "cultural3Title": "Concerts & Events",
     "cultural3Desc": "A musical programme open to the city, throughout the liturgical year.",
-
     "formacaoLabel": "Formation Courses",
     "formacaoTitleRich": "Deepening <em>faith</em>",
     "formacaoText": "Formation cycles open to the whole community, with no prior registration required unless otherwise stated.",
@@ -242,12 +227,10 @@
     "curso3Hora": "IN CYCLES",
     "curso3Desc": "Marriage preparation",
     "formacaoCta": "Request information",
-
     "ctiLabel": "CTI Juvenil",
     "ctiTitleRich": "A space <em>for young people</em>",
     "ctiText": "A project dedicated to the parish's youngest members, with its own activities throughout the year.",
     "ctiCta": "Learn more",
-
     "reservasLabel": "Room Bookings",
     "reservasTitleRich": "A space for the <em>community</em>",
     "reservasText": "The parish rooms are available for meetings, formation sessions and parish group gatherings.",
@@ -258,17 +241,14 @@
     "reserva3Title": "Hours",
     "reserva3Desc": "Weekdays, subject to room availability.",
     "reservasCta": "Request a booking",
-
     "newsLabel": "News",
     "newsTitleRich": "What's happening <em>now</em>",
     "newsCta": "See all news",
     "newsPlaceholderTitle": "Sample Article Title",
-
     "imgAltComunidade": "Community gathered at the Basílica da Estrela",
     "imgAltInterior": "Interior of the Basílica da Estrela",
     "imgAltCoro": "Celebration with music at the Basílica da Estrela",
     "imgAltJovens": "Young people of the Basílica da Estrela parish",
-
     "ctaLabel": "Get Involved",
     "ctaTitleRich": "There's always a <em>place</em> for you",
     "ctaSubtitle": "Want to get to know our community better or join one of the groups? Get in touch.",

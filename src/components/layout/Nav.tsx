@@ -57,14 +57,19 @@ export default function Nav() {
     return () => mq.removeEventListener('change', onChange)
   }, [])
 
+  // A ordem e os nomes seguem o sitemap do cliente. "Visitar" não é secção de
+  // topo: vive dentro da página Basílica e Convento, que é também para onde o
+  // botão de bilheteira aponta.
   const links = [
-    { href: '/sobre-a-basilica', label: t('sobreBasilica') },
-    { href: '/visita',           label: t('visita') },
-    { href: '/celebracoes',      label: t('celebracoes') },
-    { href: '/vida-paroquia',    label: t('vidaParoquia') },
-    { href: '/horarios',         label: t('horarios') },
-    { href: '/obra-social',      label: 'Obra Social' },
-    { href: '/contactos',        label: t('contactos') },
+    { href: '/basilica-e-convento', label: t('basilicaConvento') },
+    { href: '/celebracoes',         label: t('celebracoes') },
+    { href: '/sobre-nos',           label: t('sobreNos') },
+    { href: '/vida-paroquia',       label: t('vidaParoquia') },
+    { href: '/donativos',           label: t('donativos') },
+    { href: '/blog',                label: t('blog') },
+    { href: '/obra-social',         label: t('obraSocial') },
+    { href: '/horarios',            label: t('horarios') },
+    { href: '/contactos',           label: t('contactos') },
   ]
 
   // Over the photographic hero the nav floats transparent with light text;
@@ -126,7 +131,7 @@ export default function Nav() {
           {/* CTA de bilheteira — o sitemap prevê-a como destino principal da Visita,
               e a compra é feita em plataforma externa. */}
           <Link
-            href="/visita"
+            href="/basilica-e-convento"
             className={`hidden sm:inline-flex items-center border px-5 py-2.5 text-[0.8rem] font-medium transition-colors duration-300 ${
               solid
                 ? 'border-[var(--color-text-primary)] !text-[var(--color-text-primary)] hover:bg-[var(--color-text-primary)] hover:!text-[var(--color-text-inverse)]'
@@ -222,7 +227,7 @@ export default function Nav() {
                   aqui. De sm para cima o do topo já é visível — em tablet/desktop este
                   esconde-se para não aparecer duas vezes. */}
               <Link
-                href="/visita"
+                href="/basilica-e-convento"
                 onClick={() => setMenuOpen(false)}
                 className="mt-12 sm:hidden self-start inline-flex items-center bg-[var(--color-text-primary)] !text-[var(--color-text-inverse)] px-6 py-3 text-[0.8rem] font-medium"
                 style={{ borderRadius: 'var(--radius)' }}

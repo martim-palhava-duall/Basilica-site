@@ -8,29 +8,30 @@ export default function Footer() {
   const tn = useTranslations('nav')
   const th = useTranslations('home')
 
+  // Mesmos destinos do menu (sitemap do cliente), agrupados por tema.
   const sections = [
     {
       title: 'Basílica',
       links: [
-        { href: '/sobre-a-basilica', label: tn('sobreBasilica') },
-        { href: '/visita',           label: tn('visita') },
-        { href: '/horarios',         label: tn('horarios') },
+        { href: '/basilica-e-convento', label: tn('basilicaConvento') },
+        { href: '/horarios',            label: tn('horarios') },
+        { href: '/blog',                label: tn('blog') },
       ],
     },
     {
       title: 'Contacto',
       links: [
         { href: '/contactos', label: tn('contactos') },
-        { href: '/donativos', label: 'Donativos' },
+        { href: '/donativos', label: tn('donativos') },
       ],
     },
     {
       title: 'Paróquia',
       links: [
-        { href: '/sobre-nos',      label: tn('sobreNos') },
-        { href: '/celebracoes',    label: tn('celebracoes') },
-        { href: '/obra-social',    label: 'Obra Social' },
-        { href: '/vida-paroquia',  label: tn('vidaParoquia') },
+        { href: '/sobre-nos',     label: tn('sobreNos') },
+        { href: '/celebracoes',   label: tn('celebracoes') },
+        { href: '/obra-social',   label: tn('obraSocial') },
+        { href: '/vida-paroquia', label: tn('vidaParoquia') },
       ],
     },
   ]
@@ -105,7 +106,7 @@ export default function Footer() {
               />
             </div>
             <Link
-              href="/visita"
+              href="/basilica-e-convento"
               className="text-sm text-[var(--color-text-on-dark)] hover:text-[var(--color-text-inverse)] transition-colors duration-200 inline-flex items-center gap-2.5 group/link"
             >
               {th('visitCta')}

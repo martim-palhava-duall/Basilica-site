@@ -95,7 +95,7 @@ export default function HomePage() {
             <Reveal delay={0.25}>
               <div className="flex flex-wrap gap-4">
                 <Button
-                  href="/visita"
+                  href="/basilica-e-convento"
                   arrow
                   className="!bg-[var(--brand-terracota-deep)] !text-[var(--color-text-inverse)] hover:!opacity-90"
                 >
@@ -185,7 +185,7 @@ export default function HomePage() {
                   {t('visitSubtitle')}
                 </p>
                 <Button
-                  href="/visita"
+                  href="/basilica-e-convento"
                   variant="secondary"
                   arrow
                   className="shrink-0 !border-[var(--color-text-inverse)] !text-[var(--color-text-inverse)]"
