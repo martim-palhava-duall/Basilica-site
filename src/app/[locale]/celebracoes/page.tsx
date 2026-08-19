@@ -329,6 +329,42 @@ export default function CelebracoesPage() {
             <Reveal delay={0.15}>
               <p className="text-[var(--color-text-secondary)] max-w-lg">{t('devocoesText')}</p>
             </Reveal>
+
+            {/* Abre-capítulo: em vez de gastar um ecrã só com um título, lista
+                as quatro devoções com o seu número e âncora. Dá ao leitor o
+                mapa do que aí vem, que é o que falta a uma sequência longa. */}
+            <div className="mt-16 md:mt-20 border-t border-[var(--color-border-light)]">
+              {([
+                { id: 'adoracao', titulo: 'adoracaoTitle' },
+                { id: 'sextas',   titulo: 'sextasTitle' },
+                { id: 'sabados',  titulo: 'sabadosTitle' },
+                { id: 'terco',    titulo: 'tercoTitle' },
+              ] as const).map((d, i) => (
+                <Reveal key={d.id} delay={i * 0.07} y={20}>
+                  <a
+                    href={`#${d.id}`}
+                    className="group/dev flex items-baseline gap-6 md:gap-10 border-b border-[var(--color-border-light)] py-6 md:py-7"
+                  >
+                    <span className="label tabular-nums opacity-50 shrink-0">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <span
+                      className="font-display flex-1 transition-transform duration-500 ease-[var(--ease-out)] group-hover/dev:translate-x-2"
+                      style={{ fontSize: 'var(--text-h3b)', lineHeight: 1.1, letterSpacing: '-0.005em' }}
+                    >
+                      {t(d.titulo)}
+                    </span>
+                    <svg
+                      width="15" height="10" viewBox="0 0 15 10" fill="none" stroke="currentColor"
+                      strokeWidth="1" aria-hidden="true"
+                      className="shrink-0 opacity-40 transition-all duration-500 ease-[var(--ease-out)] group-hover/dev:opacity-100 group-hover/dev:translate-x-1 rotate-90"
+                    >
+                      <path d="M0 5h13M9.5 1.5 13 5l-3.5 3.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </a>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -386,77 +422,117 @@ export default function CelebracoesPage() {
           </div>
         </section>
 
-        {/* ── 7. PRIMEIRAS SEXTAS-FEIRAS ── */}
-        <section id="sextas" className="section-pad-lg scroll-mt-28">
+        {/* ── 7. PRIMEIRAS SEXTAS-FEIRAS ──
+            Composição assimétrica: a citação ocupa a coluna larga e a
+            fotografia sobe pelo lado, enquanto os factos passam a uma régua
+            horizontal por baixo. Antes eram duas colunas de prosa, iguais às
+            dos Primeiros Sábados — as duas secções liam-se como a mesma. */}
+        <section id="sextas" className="section-pad-lg scroll-mt-28 overflow-hidden">
           <div className="container">
-            <Reveal>
-              <SectionLabel className="opacity-75">{t('sextasTitle')}</SectionLabel>
-            </Reveal>
-            <MaskReveal as="blockquote" className="pull-quote max-w-4xl mb-14">
-              “{t('sextasQuote')}”
-            </MaskReveal>
+            <div className="grid grid-cols-1 lg:grid-cols-[1.35fr_1fr] gap-12 lg:gap-20 items-start">
+              <div>
+                <Reveal>
+                  <SectionLabel className="opacity-75">{t('sextasTitle')}</SectionLabel>
+                </Reveal>
+                <MaskReveal as="blockquote" className="pull-quote">
+                  “{t('sextasQuote')}”
+                </MaskReveal>
+              </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 max-w-4xl">
-              <Reveal delay={0.15}>
-                <p className="schedule-head mb-4">{t('origemHead')}</p>
-                <p className="text-[var(--color-text-secondary)] leading-relaxed">{t('sextasOrigem')}</p>
+              <Reveal delay={0.15} className="lg:-mt-24">
+                <Parallax className="media aspect-[4/5]" amount={7}>
+                  <Image
+                    src="/images/figma-liturgy.jpg"
+                    alt={t('imgAltEucaristia')}
+                    fill
+                    sizes="(min-width: 1024px) 40vw, 100vw"
+                    className="object-cover"
+                  />
+                </Parallax>
               </Reveal>
-              <Reveal delay={0.25}>
-                <p className="schedule-head mb-4">{t('basilicaHead')}</p>
-                <p className="text-[var(--color-text-secondary)] leading-relaxed">{t('sextasBasilica')}</p>
+            </div>
 
-                {/* Horas fora da prosa: quem procura o horário encontra-o de
-                    relance, no mesmo formato do resto da página. */}
-                <div className="mt-8 pt-6 border-t border-[var(--color-border)] flex flex-col gap-5">
-                  <div>
-                    <p className="schedule-head mb-2">{t('sextasQuandoHead')}</p>
-                    <p className="schedule-time">{t('sextasQuando')}</p>
-                  </div>
-                  <div>
-                    <p className="schedule-head mb-2">{t('sextasProgramaHead')}</p>
-                    <p className="schedule-time">{t('sextasAdoracao')}</p>
-                    <p className="schedule-time">{t('sextasMissa')}</p>
-                  </div>
-                </div>
+            {/* Origem · Na Basílica · Quando · Programa numa só régua — o que
+                antes ocupava duas colunas de prosa cabe aqui de relance. */}
+            <div className="mt-16 md:mt-20 pt-10 border-t border-[var(--color-border)] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+              <Reveal delay={0.1}>
+                <p className="schedule-head mb-4">{t('origemHead')}</p>
+                <p className="text-[var(--color-text-secondary)] text-sm leading-relaxed">{t('sextasOrigem')}</p>
+              </Reveal>
+              <Reveal delay={0.18}>
+                <p className="schedule-head mb-4">{t('basilicaHead')}</p>
+                <p className="text-[var(--color-text-secondary)] text-sm leading-relaxed">{t('sextasBasilica')}</p>
+              </Reveal>
+              <Reveal delay={0.26}>
+                <p className="schedule-head mb-4">{t('sextasQuandoHead')}</p>
+                <p className="schedule-time">{t('sextasQuando')}</p>
+              </Reveal>
+              <Reveal delay={0.34}>
+                <p className="schedule-head mb-4">{t('sextasProgramaHead')}</p>
+                <p className="schedule-time">{t('sextasAdoracao')}</p>
+                <p className="schedule-time">{t('sextasMissa')}</p>
               </Reveal>
             </div>
           </div>
         </section>
 
         {/* ── 8. PRIMEIROS SÁBADOS ──
-            Terracota, a espelhar a estrutura das Sextas com o texto à direita
-            e a citação de fecho a rematar. */}
-        <section
-          id="sabados"
-          className="section-pad-lg scroll-mt-28"
-          style={{ backgroundColor: 'var(--brand-terracota-deep)' }}
-        >
-          <div className="container">
-            <Reveal>
-              <SectionLabel className="!text-[var(--color-text-inverse)] opacity-90">
-                {t('sabadosTitle')}
-              </SectionLabel>
-            </Reveal>
-            <MaskReveal as="blockquote" className="pull-quote text-[var(--color-text-inverse)] max-w-4xl mb-14">
-              “{t('sabadosQuote')}”
-            </MaskReveal>
+            O momento visual da sequência: a promessa de Nossa Senhora assente
+            sobre a imagem, a toda a largura, e os factos numa régua terracota
+            por baixo. É a devoção mariana, daí a escultura. */}
+        <section id="sabados" className="scroll-mt-28">
+          <div className="relative min-h-[88vh] flex items-end overflow-hidden">
+            <Parallax inset amount={7}>
+              <Image
+                src="/images/figma-statue-mary.jpg"
+                alt={t('imgAltDevocao')}
+                fill
+                sizes="100vw"
+                className="object-cover"
+              />
+            </Parallax>
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background:
+                  'linear-gradient(to bottom, rgba(8,8,10,0.55) 0%, rgba(8,8,10,0.20) 32%, rgba(8,8,10,0.45) 66%, rgba(8,8,10,0.86) 100%)',
+              }}
+            />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 max-w-4xl mb-14">
-              <Reveal delay={0.15}>
-                <p className="schedule-head !text-[var(--color-text-inverse)] mb-4">{t('origemHead')}</p>
-                <p className="!text-[var(--color-text-inverse)] opacity-90 leading-relaxed">{t('sabadosOrigem')}</p>
+            <div className="container relative z-10 section-pad">
+              <Reveal>
+                <SectionLabel className="!text-[var(--color-text-inverse)] opacity-85">
+                  {t('sabadosTitle')}
+                </SectionLabel>
               </Reveal>
-              <Reveal delay={0.25}>
-                <p className="schedule-head !text-[var(--color-text-inverse)] mb-4">{t('basilicaHead')}</p>
-                <p className="!text-[var(--color-text-inverse)] opacity-90 leading-relaxed">{t('sabadosBasilica')}</p>
-              </Reveal>
+              <MaskReveal as="blockquote" className="pull-quote text-[var(--color-text-inverse)] max-w-4xl">
+                “{t('sabadosQuote')}”
+              </MaskReveal>
             </div>
+          </div>
 
-            <Reveal delay={0.35} className="border-t border-[var(--color-text-inverse)]/25 pt-8">
-              <blockquote className="pull-quote-sm text-[var(--color-text-inverse)]">
-                “{t('sabadosClose')}”
-              </blockquote>
-            </Reveal>
+          <div style={{ backgroundColor: 'var(--brand-terracota-deep)' }}>
+            <div className="container py-14 md:py-16">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 items-start">
+                <Reveal delay={0.1}>
+                  <p className="schedule-head !text-[var(--color-text-inverse)] mb-4">{t('origemHead')}</p>
+                  <p className="!text-[var(--color-text-inverse)] opacity-90 text-sm leading-relaxed">
+                    {t('sabadosOrigem')}
+                  </p>
+                </Reveal>
+                <Reveal delay={0.18}>
+                  <p className="schedule-head !text-[var(--color-text-inverse)] mb-4">{t('basilicaHead')}</p>
+                  <p className="!text-[var(--color-text-inverse)] opacity-90 text-sm leading-relaxed">
+                    {t('sabadosBasilica')}
+                  </p>
+                </Reveal>
+                <Reveal delay={0.26}>
+                  <blockquote className="pull-quote-sm text-[var(--color-text-inverse)]">
+                    “{t('sabadosClose')}”
+                  </blockquote>
+                </Reveal>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -488,10 +564,13 @@ export default function CelebracoesPage() {
               </div>
             </Reveal>
 
+            {/* A escultura mariana passou para os Primeiros Sábados; aqui fica a
+                nave com gente, que é o que o Terço das Famílias é — assembleia,
+                não imagem de devoção. */}
             <Parallax className="w-full min-h-[52vh] lg:min-h-[76vh] order-first lg:order-last" amount={8}>
               <Image
-                src="/images/figma-statue-mary.jpg"
-                alt={t('imgAltDevocao')}
+                src="/images/figma-nave-wide.jpg"
+                alt={t('imgAltInterior')}
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 className="object-cover"
