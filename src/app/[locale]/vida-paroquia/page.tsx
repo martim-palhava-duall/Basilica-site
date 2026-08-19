@@ -378,21 +378,16 @@ export default function VidaParoquiaPage() {
               >
                 {t.rich('ctiTitleRich', { em })}
               </MaskReveal>
+              {/* Secção informativa: não leva CTA. As restantes desta página
+                  encaminham para contacto porque há algo a fazer (inscrever,
+                  reservar); aqui é só dar a conhecer o projeto. */}
               <Reveal delay={0.2}>
                 <p
-                  className="!text-[var(--color-text-inverse)] max-w-md mb-9"
+                  className="!text-[var(--color-text-inverse)] max-w-md"
                   style={{ fontFamily: 'var(--font-body-light)', fontWeight: 300, fontSize: 'var(--text-body-lg)', lineHeight: 1.6 }}
                 >
                   {t('ctiText')}
                 </p>
-                <Button
-                  href="/contactos"
-                  variant="secondary"
-                  arrow
-                  className="!border-[var(--color-text-inverse)] !text-[var(--color-text-inverse)]"
-                >
-                  {t('ctiCta')}
-                </Button>
               </Reveal>
             </div>
           </div>
