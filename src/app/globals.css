@@ -217,10 +217,6 @@
   /* .arch must win the border-radius cascade when combined with .media */
   .arch { border-radius: 999px 999px 0 0; overflow: hidden; }
 
-  .ken-burns {
-    animation: ken-burns 24s ease-in-out infinite alternate;
-  }
-
   /* ── EDITORIAL TYPE ──
      Delicate serif register: light weights, mixed roman/italic, staggered
      lines and inline media. See paisana.studio / tengilemalamala.com */
@@ -397,11 +393,6 @@
     margin-inline: 0.35em;
     translate: 0 -0.06em;
   }
-}
-
-@keyframes ken-burns {
-  from { transform: scale(1); }
-  to { transform: scale(1.08); }
 }
 
 @keyframes marquee-scroll {

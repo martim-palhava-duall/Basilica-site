@@ -63,7 +63,7 @@ export default function HomePage() {
               fill
               priority
               sizes="100vw"
-              className="object-cover ken-burns"
+              className="object-cover"
             />
             <div
               className="absolute inset-0 pointer-events-none"
@@ -118,13 +118,16 @@ export default function HomePage() {
             (branding: par imagem 72×72 + texto de apoio). */}
         <section className="section-pad-lg bg-secondary">
           <div className="container">
-            <Reveal className="max-w-5xl">
+            {/* Centrado numa coluna estreita: o parágrafo-manifesto é um momento de
+                pausa entre secções mais movimentadas (hotelbelavista.net — ver
+                DESIGN.md), não um bloco de texto a abranger a largura toda. */}
+            <Reveal className="max-w-3xl mx-auto text-center">
               <SectionLabel className="opacity-75">{t('manifestoLabel')}</SectionLabel>
               <p className="type-editorial mb-12">
                 {t.rich('manifesto', { em })}
               </p>
             </Reveal>
-            <Reveal delay={0.15} className="flex items-center gap-4">
+            <Reveal delay={0.15} className="flex items-center justify-center gap-4">
               <div className="relative media shrink-0" style={{ width: 72, height: 72 }}>
                 <Image
                   src="/images/figma-icon-priest1.jpg"
