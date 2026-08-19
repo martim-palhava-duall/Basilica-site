@@ -333,6 +333,16 @@ export default function CelebracoesPage() {
                   <p className="text-[var(--color-text-on-dark)] max-w-xl leading-relaxed">
                     {t('adoracaoText')}
                   </p>
+                  {/* A secção era puramente devocional — quem quisesse vir não
+                      ficava a saber quando. Mesmo padrão do Terço/Confissões. */}
+                  <div className="mt-10 pt-8 border-t border-[var(--color-text-inverse)]/20">
+                    <p className="schedule-head !text-[var(--color-text-on-dark)] mb-2">
+                      {t('adoracaoQuandoHead')}
+                    </p>
+                    <p className="schedule-time !text-[var(--color-text-inverse)]">
+                      {t('adoracaoQuando')}
+                    </p>
+                  </div>
                 </Reveal>
               </div>
 
@@ -373,6 +383,20 @@ export default function CelebracoesPage() {
               <Reveal delay={0.25}>
                 <p className="schedule-head mb-4">{t('basilicaHead')}</p>
                 <p className="text-[var(--color-text-secondary)] leading-relaxed">{t('sextasBasilica')}</p>
+
+                {/* Horas fora da prosa: quem procura o horário encontra-o de
+                    relance, no mesmo formato do resto da página. */}
+                <div className="mt-8 pt-6 border-t border-[var(--color-border)] flex flex-col gap-5">
+                  <div>
+                    <p className="schedule-head mb-2">{t('sextasQuandoHead')}</p>
+                    <p className="schedule-time">{t('sextasQuando')}</p>
+                  </div>
+                  <div>
+                    <p className="schedule-head mb-2">{t('sextasProgramaHead')}</p>
+                    <p className="schedule-time">{t('sextasAdoracao')}</p>
+                    <p className="schedule-time">{t('sextasMissa')}</p>
+                  </div>
+                </div>
               </Reveal>
             </div>
           </div>
