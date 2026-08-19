@@ -122,15 +122,43 @@ export default function CelebracoesPage() {
           </div>
         </section>
 
-        {/* ── INTRODUÇÃO ── */}
+        {/* ── INTRODUÇÃO ──
+            Etiqueta miúda encostada à margem e a declaração recuada para a
+            direita, em vez de ambas alinhadas à esquerda: a assimetria dá ao
+            parágrafo o peso de abertura que ele não tinha. Padrão vindo das
+            referências do moodboard (Legacy Green). */}
         <section className="section-pad-lg bg-secondary">
           <div className="container">
-            <Reveal className="max-w-4xl">
-              <SectionLabel className="opacity-75">{t('introLabel')}</SectionLabel>
-            </Reveal>
-            <MaskReveal as="p" className="type-editorial max-w-4xl">
-              {t.rich('intro', { em })}
-            </MaskReveal>
+            <div className="grid grid-cols-1 lg:grid-cols-[10rem_1fr] gap-8 lg:gap-16">
+              <Reveal>
+                <SectionLabel className="opacity-60 lg:pt-4">{t('introLabel')}</SectionLabel>
+              </Reveal>
+              <MaskReveal as="p" className="type-editorial max-w-4xl">
+                {t.rich('intro', { em })}
+              </MaskReveal>
+            </div>
+
+            {/* Régua de números — factos que já vivem no site (a sagração, os
+                sete sacramentos, as missas de domingo, as quatro devoções),
+                reunidos num só relance a abrir a página. */}
+            <div className="mt-20 md:mt-28 pt-10 border-t border-[var(--color-border)] grid grid-cols-2 lg:grid-cols-4 gap-y-10">
+              {([1, 2, 3, 4] as const).map((n, i) => (
+                <Reveal
+                  key={n}
+                  delay={i * 0.08}
+                  y={20}
+                  className={i > 0 ? 'lg:border-l lg:border-[var(--color-border-light)] lg:pl-10' : ''}
+                >
+                  <p
+                    className="font-display mb-2"
+                    style={{ fontSize: 'var(--text-h1b)', lineHeight: 1, letterSpacing: 'var(--tracking-heading)' }}
+                  >
+                    {t(`num${n}Valor` as 'num1Valor')}
+                  </p>
+                  <p className="label opacity-70">{t(`num${n}Label` as 'num1Label')}</p>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -169,10 +197,14 @@ export default function CelebracoesPage() {
         </section>
 
         {/* ── 2. LITURGIA ──
-            Fotografia a sangrar à esquerda, texto em duas colunas à direita. */}
+            Era foto ao lado de dois parágrafos, o arranjo mais genérico da
+            página. Passa ao padrão do moodboard (Dar Elyah): fotografia grande
+            a sangrar de um lado e, do outro, um painel escuro que carrega o
+            título, uma segunda imagem encaixada lá dentro e o texto. A imagem
+            dentro do painel é o que quebra a leitura de "coluna de texto". */}
         <section id="liturgia" className="scroll-mt-28 bg-secondary overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch">
-            <Parallax className="w-full min-h-[52vh] lg:min-h-[78vh]" amount={8}>
+          <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] items-stretch">
+            <Parallax className="w-full min-h-[52vh] lg:min-h-[82vh]" amount={8}>
               <Image
                 src="/images/figma-fresco.jpg"
                 alt={t('imgAltInterior')}
@@ -182,19 +214,38 @@ export default function CelebracoesPage() {
               />
             </Parallax>
 
-            <Reveal className="flex flex-col justify-center section-pad px-[var(--container-pad)] lg:pr-[max(var(--container-pad),calc((100vw-var(--container-max))/2+var(--container-pad)))]">
-              <SectionLabel className="opacity-75">{t('liturgiaLabel')}</SectionLabel>
-              <h2
-                className="font-display mb-7 max-w-lg"
+            <div className="bg-dark flex flex-col justify-center section-pad px-[var(--container-pad)] lg:pr-[max(var(--container-pad),calc((100vw-var(--container-max))/2+var(--container-pad)))]">
+              <Reveal>
+                <SectionLabel className="!text-[var(--color-text-inverse)] opacity-85">
+                  {t('liturgiaLabel')}
+                </SectionLabel>
+              </Reveal>
+              <MaskReveal
+                as="h2"
+                className="font-display text-[var(--color-text-inverse)] mb-9 max-w-lg"
                 style={{ fontSize: 'var(--text-h1b)', letterSpacing: 'var(--tracking-heading)', lineHeight: 1.1 }}
               >
                 {t.rich('liturgiaTitleRich', { em })}
-              </h2>
-              <div className="flex flex-col gap-5 max-w-md text-[var(--color-text-secondary)] leading-relaxed">
-                <p>{t('liturgiaText')}</p>
-                <p>{t('liturgiaText2')}</p>
+              </MaskReveal>
+
+              <div className="flex flex-col sm:flex-row gap-8 sm:gap-9 items-start max-w-xl">
+                <Reveal delay={0.15} className="shrink-0 w-full sm:w-[11.5rem]">
+                  <div className="relative media aspect-[3/4]">
+                    <Image
+                      src="/images/figma-icon-priest2.jpg"
+                      alt={t('liturgiaImgAlt2')}
+                      fill
+                      sizes="(min-width: 640px) 12rem, 100vw"
+                      className="object-cover"
+                    />
+                  </div>
+                </Reveal>
+                <Reveal delay={0.25} className="flex flex-col gap-5 text-[var(--color-text-on-dark)] leading-relaxed text-sm">
+                  <p>{t('liturgiaText')}</p>
+                  <p>{t('liturgiaText2')}</p>
+                </Reveal>
               </div>
-            </Reveal>
+            </div>
           </div>
         </section>
 

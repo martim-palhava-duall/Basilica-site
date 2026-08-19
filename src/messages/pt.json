@@ -274,7 +274,17 @@
     "ctaLabel": "Contacto",
     "ctaTitleRich": "Precisa de <em>marcar</em> alguma celebração?",
     "ctaSubtitle": "Batizados, casamentos, intenções de missa ou acompanhamento espiritual — fale com o secretariado.",
-    "ctaButton": "Entrar em contacto"
+    "ctaButton": "Entrar em contacto",
+    "numerosLabel": "Em números",
+    "num1Valor": "1789",
+    "num1Label": "Sagração da Basílica",
+    "num2Valor": "7",
+    "num2Label": "Sacramentos celebrados",
+    "num3Valor": "3",
+    "num3Label": "Missas ao domingo",
+    "num4Valor": "4",
+    "num4Label": "Devoções próprias",
+    "liturgiaImgAlt2": "Celebração litúrgica na Basílica da Estrela"
   },
   "donativos": {
     "heroLabel": "Donativos",

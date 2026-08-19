@@ -274,7 +274,17 @@
     "ctaLabel": "Contact",
     "ctaTitleRich": "Need to <em>arrange</em> a celebration?",
     "ctaSubtitle": "Baptisms, weddings, Mass intentions or spiritual guidance — speak to the parish office.",
-    "ctaButton": "Get in touch"
+    "ctaButton": "Get in touch",
+    "numerosLabel": "In numbers",
+    "num1Valor": "1789",
+    "num1Label": "Basilica consecrated",
+    "num2Valor": "7",
+    "num2Label": "Sacraments celebrated",
+    "num3Valor": "3",
+    "num3Label": "Sunday Masses",
+    "num4Valor": "4",
+    "num4Label": "Devotions of its own",
+    "liturgiaImgAlt2": "Liturgical celebration at the Basílica da Estrela"
   },
   "donativos": {
     "heroLabel": "Donations",
