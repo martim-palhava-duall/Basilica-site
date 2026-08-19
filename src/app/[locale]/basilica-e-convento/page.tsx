@@ -347,10 +347,17 @@ export default function BasilicaConventoPage() {
           </div>
         </section>
 
-        {/* ── 3. EXPERIÊNCIAS ── */}
+        {/* ── 3. EXPERIÊNCIAS ──
+            PROGRAMAÇÃO PROVISÓRIA: as três experiências são propostas nossas,
+            não programa confirmado da paróquia. Ancoram-se em elementos reais
+            da Basílica (cúpula/miradouro, Presépio de Machado de Castro,
+            acústica da nave) para serem plausíveis, mas têm de ser validadas
+            antes de ir para o ar — daí a nota sob o CTA.
+            A reserva vive na bilhética externa, por isso a secção termina num
+            único CTA para lá em vez de detalhar preços ou datas aqui. */}
         <section id="experiencias" className="section-pad-lg bg-secondary scroll-mt-28">
           <div className="container">
-            <Reveal className="max-w-2xl">
+            <Reveal className="max-w-2xl mb-16">
               <SectionLabel>{t('experienciasLabel')}</SectionLabel>
               <h2
                 className="font-display font-light mb-6"
@@ -362,10 +369,42 @@ export default function BasilicaConventoPage() {
               >
                 {t.rich('experienciasTitleRich', { em })}
               </h2>
-              {/* Sem conteúdo do cliente: fica a estrutura e o aviso, sem
-                  inventar programação que não existe. */}
               <p className="text-[var(--color-text-secondary)] max-w-md">
                 {t('experienciasText')}
+              </p>
+            </Reveal>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 border-t border-l border-[var(--color-border-light)]">
+              {([1, 2, 3] as const).map((n, i) => (
+                <Reveal
+                  key={n}
+                  delay={i * 0.1}
+                  className="border-r border-b border-[var(--color-border-light)] p-8 md:p-10 flex flex-col gap-5"
+                >
+                  <span className="schedule-time opacity-70">
+                    {t(`exp${n}Duracao` as 'exp1Duracao')}
+                  </span>
+                  <div>
+                    <h3
+                      className="font-display mb-3"
+                      style={{ fontSize: 'var(--text-h3)', lineHeight: 'var(--leading-heading)' }}
+                    >
+                      {t(`exp${n}Nome` as 'exp1Nome')}
+                    </h3>
+                    <p className="text-[var(--color-text-secondary)] text-sm leading-relaxed">
+                      {t(`exp${n}Desc` as 'exp1Desc')}
+                    </p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+
+            <Reveal delay={0.3} className="mt-12 flex flex-col sm:flex-row sm:items-center gap-6">
+              {/* TODO(bilheteira): trocar por <Button external href="..."> quando
+                  houver o link do fornecedor — o sitemap marca-a como externa. */}
+              <Button href="/contactos" arrow>{t('experienciasCta')}</Button>
+              <p className="label opacity-70 max-w-sm leading-relaxed">
+                {t('experienciasNota')}
               </p>
             </Reveal>
           </div>
