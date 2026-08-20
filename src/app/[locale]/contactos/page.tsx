@@ -17,11 +17,13 @@ const INSTAGRAM = '@basilicadaestrela'
 const INSTAGRAM_URL = 'https://instagram.com/basilicadaestrela'
 
 /** Secções pela ordem do sitemap (nó "Contactos", 2960:1017). */
+/* O formulário deixou de ser secção própria — vive dentro de "Contacto Geral",
+   ao lado dos dados diretos — por isso saiu do índice. A âncora #formulario
+   continua a existir no bloco, para quem chegue por link direto. */
 const SECTIONS = [
-  { id: 'geral',      label: 'geralLabel' },
-  { id: 'fe',         label: 'feLabel' },
-  { id: 'formulario', label: 'formLabel' },
-  { id: 'redes',      label: 'redesLabel' },
+  { id: 'geral', label: 'geralLabel' },
+  { id: 'fe',    label: 'feLabel' },
+  { id: 'redes', label: 'redesLabel' },
 ]
 
 export default function ContactosPage() {
@@ -113,9 +115,14 @@ export default function ContactosPage() {
           </div>
         </section>
 
-        {/* ── 1. CONTACTO GERAL ──
-            Os dados diretos primeiro, em grande: quem chega a esta página
-            quase sempre quer o telefone ou o email, não um formulário. */}
+        {/* ── 1. CONTACTO GERAL + FORMULÁRIO ──
+            Numa só secção, lado a lado. Antes o formulário era a terceira
+            secção e ficava a dois ecrãs de distância — longe demais para o
+            gesto principal da página. Empurrá-lo para cima sozinho apenas
+            inverteria o problema, deixando quem só quer o telefone a passar
+            por cima de um formulário. Ao pô-los a par, nenhum dos dois fica
+            enterrado: o formulário abre a secção e os dados diretos estão à
+            mesma altura, do lado. */}
         <section id="geral" className="section-pad-lg bg-secondary scroll-mt-28">
           <div className="container">
             <div className="max-w-2xl mb-14 md:mb-16">
@@ -134,42 +141,74 @@ export default function ContactosPage() {
               </Reveal>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-[var(--color-border)]">
-              {/* Telefone e email como links reais — em telemóvel o telefone
-                  disca, e o email abre o cliente já endereçado. */}
-              <Reveal delay={0.05} className="py-8 lg:pr-8 border-b lg:border-b-0 border-[var(--color-border-light)]">
-                <p className="schedule-head mb-3">{t('telefoneHead')}</p>
-                <a
-                  href={`tel:${telefone.replace(/\s/g, '')}`}
-                  className="font-display hover:text-[var(--color-terracota)] transition-colors duration-300"
-                  style={{ fontSize: 'var(--text-h3)', lineHeight: 1.15 }}
-                >
-                  {telefone}
-                </a>
-              </Reveal>
+            <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-14 lg:gap-24 items-start border-t border-[var(--color-border)] pt-12">
+              {/* Formulário — o gesto principal, por isso abre a secção */}
+              <div id="formulario" className="scroll-mt-28">
+                <Reveal>
+                  <p className="schedule-head mb-3">{t('formLabel')}</p>
+                  <h3
+                    className="font-display mb-4"
+                    style={{ fontSize: 'var(--text-h3b)', lineHeight: 1.1, letterSpacing: '-0.005em' }}
+                  >
+                    {t.rich('formTitleRich', { em })}
+                  </h3>
+                  <p className="text-[var(--color-text-secondary)] text-sm max-w-sm mb-10">
+                    {t('formText')}
+                  </p>
+                </Reveal>
+                <Reveal delay={0.15}>
+                  <ContactForm destino={email} />
+                </Reveal>
+              </div>
 
-              <Reveal delay={0.12} className="py-8 lg:px-8 border-b lg:border-b-0 lg:border-l border-[var(--color-border-light)]">
-                <p className="schedule-head mb-3">{t('emailHead')}</p>
-                <a
-                  href={`mailto:${email}`}
-                  className="font-display break-words hover:text-[var(--color-terracota)] transition-colors duration-300"
-                  style={{ fontSize: 'var(--text-body-lg)', lineHeight: 1.3 }}
-                >
-                  {email}
-                </a>
-              </Reveal>
+              {/* Dados diretos — empilhados, à mesma altura do formulário.
+                  Telefone e email como links reais: em telemóvel um disca e o
+                  outro abre o cliente já endereçado. */}
+              <Reveal delay={0.2} className="lg:border-l lg:border-[var(--color-border-light)] lg:pl-16">
+                <dl className="flex flex-col">
+                  <div className="pb-7">
+                    <dt className="schedule-head mb-3">{t('telefoneHead')}</dt>
+                    <dd>
+                      <a
+                        href={`tel:${telefone.replace(/\s/g, '')}`}
+                        className="font-display hover:text-[var(--color-terracota)] transition-colors duration-300"
+                        style={{ fontSize: 'var(--text-h3)', lineHeight: 1.15 }}
+                      >
+                        {telefone}
+                      </a>
+                    </dd>
+                  </div>
 
-              <Reveal delay={0.19} className="py-8 lg:px-8 border-b lg:border-b-0 lg:border-l border-[var(--color-border-light)]">
-                <p className="schedule-head mb-3">{t('moradaHead')}</p>
-                <address className="not-italic whitespace-pre-line text-[var(--color-text-secondary)] leading-relaxed">
-                  {tf('morada')}
-                </address>
-              </Reveal>
+                  <div className="py-7 border-t border-[var(--color-border-light)]">
+                    <dt className="schedule-head mb-3">{t('emailHead')}</dt>
+                    <dd>
+                      <a
+                        href={`mailto:${email}`}
+                        className="font-display break-words hover:text-[var(--color-terracota)] transition-colors duration-300"
+                        style={{ fontSize: 'var(--text-body-lg)', lineHeight: 1.3 }}
+                      >
+                        {email}
+                      </a>
+                    </dd>
+                  </div>
 
-              <Reveal delay={0.26} className="py-8 lg:pl-8 lg:border-l border-[var(--color-border-light)]">
-                <p className="schedule-head mb-3">{t('atendimentoHead')}</p>
-                <p className="schedule-time">{thr('cartorioHoras')}</p>
-                <p className="schedule-desc">{thr('cartorioDias')}</p>
+                  <div className="py-7 border-t border-[var(--color-border-light)]">
+                    <dt className="schedule-head mb-3">{t('moradaHead')}</dt>
+                    <dd>
+                      <address className="not-italic whitespace-pre-line text-[var(--color-text-secondary)] leading-relaxed">
+                        {tf('morada')}
+                      </address>
+                    </dd>
+                  </div>
+
+                  <div className="pt-7 border-t border-[var(--color-border-light)]">
+                    <dt className="schedule-head mb-3">{t('atendimentoHead')}</dt>
+                    <dd>
+                      <p className="schedule-time">{thr('cartorioHoras')}</p>
+                      <p className="schedule-desc">{thr('cartorioDias')}</p>
+                    </dd>
+                  </div>
+                </dl>
               </Reveal>
             </div>
           </div>
@@ -236,34 +275,7 @@ export default function ContactosPage() {
           </div>
         </section>
 
-        {/* ── 3. FORMULÁRIO ── */}
-        <section id="formulario" className="section-pad-lg scroll-mt-28">
-          <div className="container">
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-24 items-start">
-              <div className="lg:sticky lg:top-32">
-                <Reveal>
-                  <SectionLabel className="opacity-75">{t('formLabel')}</SectionLabel>
-                </Reveal>
-                <MaskReveal
-                  as="h2"
-                  className="font-display mb-5"
-                  style={{ fontSize: 'var(--text-h1)', letterSpacing: 'var(--tracking-heading)', lineHeight: 1.05 }}
-                >
-                  {t.rich('formTitleRich', { em })}
-                </MaskReveal>
-                <Reveal delay={0.15}>
-                  <p className="text-[var(--color-text-secondary)] max-w-sm">{t('formText')}</p>
-                </Reveal>
-              </div>
-
-              <Reveal delay={0.2}>
-                <ContactForm destino={email} />
-              </Reveal>
-            </div>
-          </div>
-        </section>
-
-        {/* ── 4. REDES SOCIAIS ── */}
+        {/* ── 3. REDES SOCIAIS ── */}
         <section id="redes" className="scroll-mt-28 bg-secondary overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch">
             <Reveal className="flex flex-col justify-center section-pad px-[var(--container-pad)] lg:pl-[max(var(--container-pad),calc((100vw-var(--container-max))/2+var(--container-pad)))]">
