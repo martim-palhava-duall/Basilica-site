@@ -445,6 +445,30 @@
     opacity: 0.6;
   }
 
+  /* ── GALERIA HORIZONTAL ──
+     Tira que corre para o lado, com encaixe por item. Sangra até à margem
+     direita do ecrã de propósito: o corte a meio da última imagem é o que
+     diz que há mais para ver, sem precisar de setas.
+     Scroll nativo, sem JS — funciona com dedo, trackpad e teclado. */
+  .filmstrip {
+    display: flex;
+    gap: clamp(1rem, 2vw, 1.75rem);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: var(--container-pad);
+    padding-inline: var(--container-pad);
+    padding-bottom: 0.5rem;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+  }
+  .filmstrip::-webkit-scrollbar { display: none; }
+
+  .filmstrip > * {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    width: clamp(15rem, 30vw, 25rem);
+  }
+
   /* Small rounded image sitting inline within a headline */
   .inline-media {
     display: inline-block;
