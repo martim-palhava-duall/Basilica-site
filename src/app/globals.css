@@ -445,6 +445,37 @@
     opacity: 0.6;
   }
 
+  /* ── CORPO DE ARTIGO ──
+     Página de leitura, não de navegação: a medida é curta de propósito
+     (~68ch) porque linhas longas cansam, e a entrelinha é mais folgada do
+     que no resto do site. É o único sítio onde o texto manda sozinho. */
+  .prose-artigo {
+    font-size: clamp(1.02rem, 1.15vw, 1.15rem);
+    line-height: 1.75;
+    color: var(--color-text-secondary);
+    max-width: 68ch;
+  }
+
+  .prose-artigo > * + * { margin-top: 1.6em; }
+
+  /* Primeiro parágrafo — a entrada, em corpo maior e cor plena */
+  .prose-artigo > .lead-artigo {
+    font-family: var(--font-body-light);
+    font-weight: 300;
+    font-size: clamp(1.2rem, 1.7vw, 1.5rem);
+    line-height: 1.55;
+    color: var(--color-text-primary);
+  }
+
+  .prose-artigo h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-h3);
+    line-height: 1.2;
+    letter-spacing: var(--tracking-heading);
+    color: var(--color-text-primary);
+    margin-top: 2.4em;
+  }
+
   /* Small rounded image sitting inline within a headline */
   .inline-media {
     display: inline-block;

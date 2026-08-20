@@ -1,6 +1,8 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import type { ReactNode } from 'react'
+import { POSTS } from '@/lib/posts'
 import Nav from '@/components/layout/Nav'
 import Footer from '@/components/layout/Footer'
 import Button from '@/components/ui/Button'
@@ -11,22 +13,8 @@ import Parallax from '@/components/ui/Parallax'
 
 const em = (chunks: ReactNode) => <em className="em-italic">{chunks}</em>
 
-/**
- * CONTEÚDO PROVISÓRIO — os sete posts abaixo são exemplos, não conteúdo real
- * da paróquia. Estão num único array de propósito: quando houver CMS, o que
- * muda é a origem destes dados, não o resto da página. O primeiro é o
- * destaque; os restantes formam a listagem.
- */
-const POSTS = [
-  { n: 1, src: '/images/figma-liturgy.jpg' },
-  { n: 2, src: '/images/figma-icon-priest2.jpg' },
-  { n: 3, src: '/images/destaque-celebracao.jpg' },
-  { n: 4, src: '/images/figma-fresco.jpg' },
-  { n: 5, src: '/images/figma-nave-aerial.jpg' },
-  { n: 6, src: '/images/figma-statue-mary.jpg' },
-  { n: 7, src: '/images/figma-icon-chalice.jpg' },
-] as const
-
+/* A lista passou para src/lib/posts.ts — a página de detalhe precisa dos
+   mesmos dados, e duas cópias divergiriam à primeira alteração. */
 const [DESTAQUE, ...RESTANTES] = POSTS
 
 export default function BlogPage() {
@@ -101,47 +89,81 @@ export default function BlogPage() {
               <SectionLabel className="opacity-75">{t('destaqueEtiqueta')}</SectionLabel>
             </Reveal>
 
+            {/* A fotografia está encostada à direita e o título arranca da
+                margem da página, atravessando-lhe o rebordo. O texto é branco
+                com mix-blend-difference: sobre o creme inverte-se para um tom
+                quase igual ao navy da marca, sobre a foto fica claro — a mesma
+                palavra muda de cor ao cruzar a fronteira, sem precisar de dois
+                elementos sobrepostos.
+                Só a partir de md: em ecrã estreito não há margem por onde o
+                título saia, por isso ele assenta simplesmente por baixo. */}
             <Reveal as="article" delay={0.1} className="group">
-              <a href="/blog" className="block">
-                <div className="relative media aspect-[4/3] md:aspect-[21/9] overflow-hidden">
-                  <Parallax inset amount={5}>
-                    <Image
-                      src={DESTAQUE.src}
-                      alt=""
-                      fill
-                      priority
-                      sizes="100vw"
-                      className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]"
-                    />
-                  </Parallax>
+              <Link href={`/blog/${DESTAQUE.slug}`} className="block">
+                <div className="relative">
+                  <div className="md:ml-auto md:w-[74%]">
+                    <div className="relative media aspect-[4/3] md:aspect-[3/2] overflow-hidden">
+                      <Parallax inset amount={5}>
+                        <Image
+                          src={DESTAQUE.src}
+                          alt=""
+                          fill
+                          priority
+                          sizes="(min-width: 768px) 74vw, 100vw"
+                          className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]"
+                        />
+                      </Parallax>
 
-                  <div
-                    className="absolute inset-0 pointer-events-none"
+                      {/* Véu só na banda inferior, onde o título passa. Sem ele
+                          o resultado do blend fica à mercê da fotografia: sobre
+                          uma zona clara — o altar, nesta — a diferença dá um
+                          tom lavado e o título perde-se. Com o véu, a faixa por
+                          onde o título cruza é sempre escura, e o efeito é o
+                          mesmo seja qual for a imagem que venha do CMS. */}
+                      <div
+                        className="absolute inset-0 pointer-events-none"
+                        style={{
+                          background:
+                            'linear-gradient(to bottom, rgba(8,8,10,0) 42%, rgba(8,8,10,0.55) 72%, rgba(8,8,10,0.78) 100%)',
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  <h2
+                    className="font-display mt-6 md:mt-0 md:absolute md:left-0 md:bottom-[8%] md:z-10 md:mix-blend-difference md:text-white md:pr-[6%]"
                     style={{
-                      background:
-                        'linear-gradient(to bottom, rgba(8,8,10,0.20) 0%, rgba(8,8,10,0.05) 40%, rgba(8,8,10,0.58) 80%, rgba(8,8,10,0.84) 100%)',
+                      fontSize: 'var(--text-h1)',
+                      lineHeight: 1,
+                      letterSpacing: 'var(--tracking-heading)',
                     }}
-                  />
+                  >
+                    {t('post1Titulo')}
+                  </h2>
+                </div>
 
-                  <div className="absolute inset-x-0 bottom-0 p-7 md:p-12">
-                    <p className="label !text-[var(--color-text-inverse)] opacity-85 mb-3">
-                      {t('post1Cat')} · {t('post1Data')}
-                    </p>
-                    <h2
-                      className="font-display text-[var(--color-text-inverse)] max-w-3xl mb-4"
-                      style={{ fontSize: 'var(--text-h1b)', lineHeight: 1.05, letterSpacing: 'var(--tracking-heading)' }}
-                    >
-                      {t('post1Titulo')}
-                    </h2>
-                    <p
-                      className="!text-[var(--color-text-inverse)] opacity-90 max-w-xl hidden md:block"
-                      style={{ fontFamily: 'var(--font-body-light)', fontWeight: 300, lineHeight: 1.6 }}
-                    >
+                {/* Meta e resumo ficam no creme, por baixo: sobre a imagem
+                    obrigariam a um véu que rouba contraste ao título. */}
+                <div className="mt-8 md:mt-12 grid grid-cols-1 md:grid-cols-[1fr_1.4fr] gap-6 md:gap-16 items-start">
+                  <p className="label opacity-70">
+                    {t('post1Cat')} · {t('post1Data')}
+                  </p>
+                  <div>
+                    <p className="lead text-[var(--color-text-secondary)] max-w-xl mb-6">
                       {t('post1Resumo')}
                     </p>
+                    <span className="label inline-flex items-center gap-2.5">
+                      {t('lerMais')}
+                      <svg
+                        width="15" height="10" viewBox="0 0 15 10" fill="none" stroke="currentColor"
+                        strokeWidth="1" aria-hidden="true"
+                        className="shrink-0 transition-transform duration-300 ease-[var(--ease-out)] group-hover:translate-x-[3px]"
+                      >
+                        <path d="M0 5h13M9.5 1.5 13 5l-3.5 3.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </span>
                   </div>
                 </div>
-              </a>
+              </Link>
             </Reveal>
           </div>
         </section>
@@ -170,7 +192,7 @@ export default function BlogPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 md:gap-y-16">
               {RESTANTES.map((p, i) => (
                 <Reveal as="article" key={p.n} delay={(i % 3) * 0.08} className="group">
-                  <a href="/blog" className="block">
+                  <Link href={`/blog/${p.slug}`} className="block">
                     <div className="relative media aspect-[4/3] mb-5 overflow-hidden">
                       <Image
                         src={p.src}
@@ -190,7 +212,7 @@ export default function BlogPage() {
                     >
                       {t(`post${p.n}Titulo` as 'post2Titulo')}
                     </h3>
-                  </a>
+                  </Link>
                 </Reveal>
               ))}
             </div>
