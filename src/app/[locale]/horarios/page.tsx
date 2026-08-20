@@ -257,34 +257,41 @@ export default function HorariosPage() {
               </Reveal>
             </div>
 
+            {/* Título à esquerda, horários à direita. Antes a recorrência
+                ("primeira sexta-feira de cada mês") ficava por baixo do título
+                a quebrar em duas linhas, e a coluna seguinte misturava horas
+                com prosa — o que fazia a agenda ler-se como texto em vez de
+                horário. A descrição longa dos Primeiros Sábados saiu: já está
+                por inteiro na página das Celebrações, e aqui só atrapalhava a
+                leitura das horas. */}
             <div className="border-t border-[var(--color-border-light)]">
               {([
-                { n: '01', titulo: tc('sextasTitle'), quando: tc('sextasQuando'),  detalhe: [tc('sextasAdoracao'), tc('sextasMissa')] },
-                { n: '02', titulo: tc('sabadosTitle'), quando: tc('sabadosQuando'), detalhe: [tc('sabadosBasilica')] },
-                { n: '03', titulo: tc('tercoTitle'),   quando: tc('tercoQuando'),   detalhe: [tc('tercoOnde')] },
+                { n: '01', titulo: tc('sextasTitle'),  horas: [tc('sextasQuando'), tc('sextasAdoracao'), tc('sextasMissa')], nota: null },
+                { n: '02', titulo: tc('sabadosTitle'), horas: [tc('sabadosQuando')], nota: null },
+                { n: '03', titulo: tc('tercoTitle'),   horas: [tc('tercoQuando')],   nota: tc('tercoOnde') },
               ]).map((item, i) => (
                 <Reveal
                   key={item.n}
                   delay={i * 0.08}
                   y={20}
-                  className="grid grid-cols-[2.5rem_1fr] md:grid-cols-[4rem_minmax(0,15rem)_1fr] items-baseline gap-x-6 border-b border-[var(--color-border-light)] py-8 md:py-10"
+                  className="grid grid-cols-[2.5rem_1fr] md:grid-cols-[4rem_minmax(0,22rem)_1fr] items-baseline gap-x-6 md:gap-x-10 border-b border-[var(--color-border-light)] py-8 md:py-10"
                 >
                   <span className="label tabular-nums opacity-50">{item.n}</span>
-                  <div>
-                    <h3
-                      className="font-display"
-                      style={{ fontSize: 'var(--text-h3)', lineHeight: 1.15 }}
-                    >
-                      {item.titulo}
-                    </h3>
-                    <p className="schedule-time mt-2">{item.quando}</p>
-                  </div>
+
+                  <h3
+                    className="font-display"
+                    style={{ fontSize: 'var(--text-h3)', lineHeight: 1.15 }}
+                  >
+                    {item.titulo}
+                  </h3>
+
                   <div className="col-start-2 md:col-start-3 mt-3 md:mt-0 flex flex-col gap-1.5">
-                    {item.detalhe.map((d) => (
-                      <p key={d} className="text-[var(--color-text-secondary)] text-sm leading-relaxed max-w-md">
-                        {d}
-                      </p>
+                    {item.horas.map((h) => (
+                      <p key={h} className="schedule-time">{h}</p>
                     ))}
+                    {/* O Terço é na Igreja da Lapa, não na Basílica — a
+                        indicação do sítio tem de vir junto à hora. */}
+                    {item.nota && <p className="schedule-desc">{item.nota}</p>}
                   </div>
                 </Reveal>
               ))}
