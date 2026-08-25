@@ -17,6 +17,20 @@ const em = (chunks: ReactNode) => <em className="em-italic">{chunks}</em>
    mesmos dados, e duas cópias divergiriam à primeira alteração. */
 const [DESTAQUE, ...RESTANTES] = POSTS
 
+/**
+ * GALERIA — CONTEÚDO PROVISÓRIO. Não são as imagens das publicações: é um
+ * arquivo à parte, das fotografias da igreja. Ficam aqui em vez de em
+ * lib/posts.ts porque não são posts e ninguém mais precisa delas.
+ */
+const GALERIA = [
+  { n: 1, src: '/images/interior-nave.jpg' },
+  { n: 2, src: '/images/figma-fresco.jpg' },
+  { n: 3, src: '/images/cupula-torre.jpg' },
+  { n: 4, src: '/images/figma-statue-mary.jpg' },
+  { n: 5, src: '/images/figma-nave-aerial.jpg' },
+  { n: 6, src: '/images/hero-fachada.jpg' },
+] as const
+
 export default function BlogPage() {
   const t = useTranslations('blog')
 
@@ -223,6 +237,63 @@ export default function BlogPage() {
               <Button href="/blog" variant="ghost" arrow>{t('listagemLabel')}</Button>
             </Reveal>
           </div>
+        </section>
+
+        {/* ── PARTILHAS DE IMAGENS ──
+            Fica depois da listagem, não antes: a página tem de abrir nas
+            publicações, que é o que se vem cá procurar. Como remate, o
+            arquivo de fotografias funciona bem.
+            Tira horizontal em vez de grelha — a galeria é para percorrer, não
+            para comparar, e sangra pela margem direita a dizer que há mais
+            sem precisar de setas. Padrão do moodboard (Dar Elyah). */}
+        <section id="galeria" className="section-pad-lg bg-secondary scroll-mt-28 overflow-hidden">
+          <div className="container">
+            <div className="flex flex-wrap items-end justify-between gap-8 mb-12 md:mb-14">
+              <div className="max-w-xl">
+                <Reveal>
+                  <SectionLabel className="opacity-75">{t('galeriaLabel')}</SectionLabel>
+                </Reveal>
+                <MaskReveal
+                  as="h2"
+                  className="font-display mb-5"
+                  style={{ fontSize: 'var(--text-h2)', letterSpacing: 'var(--tracking-heading)', lineHeight: 1.1 }}
+                >
+                  {t.rich('galeriaTitleRich', { em })}
+                </MaskReveal>
+                <Reveal delay={0.15}>
+                  <p className="text-[var(--color-text-secondary)]">{t('galeriaText')}</p>
+                </Reveal>
+              </div>
+              <Reveal delay={0.2}>
+                <p className="label opacity-60">{t('galeriaNota')} →</p>
+              </Reveal>
+            </div>
+          </div>
+
+          {/* fora do .container: a tira tem de poder sangrar até à margem */}
+          <Reveal>
+            <ul className="filmstrip">
+              {GALERIA.map((g) => (
+                <li key={g.n}>
+                  <figure className="group">
+                    <div className="relative media aspect-[4/5]">
+                      <Image
+                        src={g.src}
+                        alt={t(`img${g.n}` as 'img1')}
+                        fill
+                        sizes="(min-width: 768px) 30vw, 80vw"
+                        className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
+                      />
+                    </div>
+                    <figcaption className="label opacity-70 mt-4">
+                      <span className="opacity-60 mr-2">{String(g.n).padStart(2, '0')}</span>
+                      {t(`img${g.n}` as 'img1')}
+                    </figcaption>
+                  </figure>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
         </section>
 
       </main>
