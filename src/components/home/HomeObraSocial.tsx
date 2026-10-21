@@ -27,8 +27,8 @@ const OBRAS = [
  * Animação (como a da lista da equipa em oralmente-ui): ao passar, o fundo azul
  * escuro sobe de baixo para cima (600ms, curva quint) e o texto muda de cor (400ms);
  * a fotografia só faz fade, sem se mexer: 800ms numa curva muito suave ao
- * entrar, 450ms ao sair. As três fotografias carregam logo (`eager`, são
- * pequenas) para não aparecerem a meio do hover.
+ * entrar, 450ms ao sair. As três fotografias carregam quando a secção se
+ * aproxima do ecrã (lazy, à medida de 246px), já prontas antes de o rato chegar.
  *
  * Entrada ("sequência calma", escolhida entre seis opções): quando a secção
  * chega a 75% do ecrã, o cabeçalho aparece com uma subida curta e depois cada
@@ -140,7 +140,7 @@ export default function HomeObraSocial() {
               aria-hidden="true"
               className="obra-foto max-lg:hidden pointer-events-none absolute left-1/2 top-1/2 h-[calc(282*var(--u))] w-[calc(246*var(--u))] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[calc(4*var(--u))] opacity-0 will-change-[opacity] group-hover/obra:opacity-100 group-focus-visible/obra:opacity-100"
             >
-              <Image src={o.foto} alt="" fill sizes="492px" loading="eager" className="object-cover" />
+              <Image src={o.foto} alt="" fill sizes="246px" className="object-cover" />
             </div>
           </a>
         ))}

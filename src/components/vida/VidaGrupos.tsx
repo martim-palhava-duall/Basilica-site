@@ -271,7 +271,7 @@ export default function VidaGrupos() {
                 aria-hidden="true"
                 className="obra-foto pointer-events-none absolute left-1/2 top-1/2 block h-[calc(282*var(--u))] w-[calc(246*var(--u))] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[calc(4*var(--u))] opacity-0 will-change-[opacity] group-hover/grupo:opacity-100 group-focus-visible/grupo:opacity-100"
               >
-                <Image src={gr.foto} alt="" fill sizes="492px" loading="eager" className="object-cover" />
+                <Image src={gr.foto} alt="" fill sizes="246px" className="object-cover" />
               </span>
             </button>
           ))}

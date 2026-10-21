@@ -25,8 +25,8 @@ type Linha = {
 const LINHAS: Linha[] = [
   { chave: 'oqueRezar',    href: '/celebracoes',              x: -214, y: 282,    imagem: 'antes',  foto: '/home/oque-rezar.jpg', fundo: '/home/oque-rezar-fundo.jpg' },
   { chave: 'oqueCelebrar', href: '/celebracoes#sacramentos',  x: -349, y: 388.66, imagem: 'depois', foto: '/home/oque-celebrar.jpg', fotoHover: '/home/oque-celebrar-hover.jpg' },
-  { chave: 'oqueVisitar',  href: '/basilica-e-convento',      x: -214, y: 495.32, imagem: 'antes',  foto: '/home/oque-visitar.png' },
-  { chave: 'oqueAjudar',   href: '/obra-social',              x: -349, y: 602,    imagem: 'depois', foto: '/home/oque-ajudar.png' },
+  { chave: 'oqueVisitar',  href: '/basilica-e-convento',      x: -214, y: 495.32, imagem: 'antes',  foto: '/home/oque-visitar.jpg' },
+  { chave: 'oqueAjudar',   href: '/obra-social',              x: -349, y: 602,    imagem: 'depois', foto: '/home/oque-ajudar.jpg' },
 ]
 
 /**

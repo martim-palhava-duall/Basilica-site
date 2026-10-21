@@ -12,7 +12,7 @@ import { CONTORNO, FORMAS, LINHAS, MARCA_VIEWBOX } from '@/components/layout/mar
  * Um clique numa ligação interna é intercetado: o ecrã passa a bege claro e a
  * marca da Basílica (a da frame do Figma, nó 201:6138) é desenhada a traço ao
  * centro — primeiro a silhueta inteira, de uma só linha, depois os restantes
- * contornos de baixo para cima (`cobrir`, 2,4s no mínimo). O que se vê é sempre a
+ * contornos de baixo para cima (`cobrir`, 1,6s no mínimo). O que se vê é sempre a
  * linha final da frame, revelada por uma máscara que segue os contornos: não há
  * troca de opacidades. Navega-se e,
  * quando a nova página chega, a marca sobe um pouco enquanto se esvanece e o
@@ -24,16 +24,17 @@ import { CONTORNO, FORMAS, LINHAS, MARCA_VIEWBOX } from '@/components/layout/mar
 type Fase = 'repouso' | 'cobrir' | 'revelar'
 
 /**
- * Calendário do traço (ms desde o clique). O véu cobre aos 500; a silhueta
- * desenha-se de 550 a 1800; cada linha leva 650 e entram em cascata de 750 a
- * 1600 (pela ordem `t`), acabando aos 2250 com a marca completa.
+ * Calendário do traço (ms desde o clique). O véu cobre aos 350; a silhueta
+ * desenha-se de 350 a 1250; cada linha leva 450 e entram em cascata de 450 a
+ * 1050 (pela ordem `t`), acabando aos 1500 com a marca completa. (Era 2,4s ao
+ * todo; encurtado para a navegação não parecer lenta, com as mesmas curvas.)
  */
-const TRACO = { contorno: { atraso: 550, dur: 1250 }, linhas: { atraso: 750, espalhar: 850, dur: 650 } }
+const TRACO = { contorno: { atraso: 350, dur: 900 }, linhas: { atraso: 450, espalhar: 600, dur: 450 } }
 /** Tempo mínimo com o véu a cobrir (o desenho acaba e respira um pouco); a navegação corre por baixo, em paralelo */
-const COBRIR = 2400
-/** A página só é trocada quando o véu já cobre tudo (a 500ms, com margem) */
-const TROCAR = 700
-const REVELAR = 1100
+const COBRIR = 1600
+/** A página só é trocada quando o véu já cobre tudo (a 350ms, com margem) */
+const TROCAR = 450
+const REVELAR = 800
 /** Curvas in-out suaves: nada arranca nem pára de repente */
 const EASE_SUAVE = 'cubic-bezier(0.45, 0, 0.55, 1)'
 const EASE_SAIDA = 'cubic-bezier(0.65, 0, 0.35, 1)'
@@ -118,7 +119,7 @@ export default function TransicaoPagina() {
         className="absolute inset-0 bg-[var(--bege-claro-2)]"
         style={{
           opacity: cheio ? 1 : 0,
-          transition: parado ? 'none' : `opacity ${cheio ? 500 : REVELAR}ms ${cheio ? EASE_SUAVE : EASE_SAIDA} ${saida ? 200 : 0}ms`,
+          transition: parado ? 'none' : `opacity ${cheio ? 350 : REVELAR}ms ${cheio ? EASE_SUAVE : EASE_SAIDA} ${saida ? 200 : 0}ms`,
         }}
       >
         <svg

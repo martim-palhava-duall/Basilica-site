@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl'
 import Revelar from '@/components/home/Revelar'
 
 /** Fotografia provisória: o desenho usa a mesma em todos até haver os retratos. */
-const FOTO = '/sobre/equipa-paroco.png'
+const FOTO = '/sobre/equipa-paroco.jpg'
 
 const VIGARIOS = [
   { chave: 'eq1Papel', nome: 'Pe. Miguel Teixeira Duarte' },

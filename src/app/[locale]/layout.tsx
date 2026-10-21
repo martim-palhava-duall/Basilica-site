@@ -21,6 +21,8 @@ export const metadata: Metadata = {
   },
 }
 
+const MENSAGENS_CLIENTE = ['basilica', 'common', 'contactos', 'donativos', 'horarios', 'inicio', 'nav', 'obra', 'sobre', 'vida']
+
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
 }
@@ -34,7 +36,11 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params
   setRequestLocale(locale)
-  const messages = await getMessages()
+  const todas = await getMessages()
+  // Para o browser só vão as mensagens que os componentes de cliente usam
+  // (useTranslations em ficheiros 'use client'); as restantes ficam no servidor.
+  // Um componente de cliente novo com outro namespace tem de o acrescentar aqui.
+  const messages = Object.fromEntries(MENSAGENS_CLIENTE.filter((ns) => ns in todas).map((ns) => [ns, todas[ns]]))
 
   return (
     <html lang={locale} suppressHydrationWarning>
