@@ -1,0 +1,37 @@
+import Image from 'next/image'
+import { useTranslations } from 'next-intl'
+import Revelar from '@/components/home/Revelar'
+
+/**
+ * Vida da Paróquia, abertura — design novo (Figma, nó 111:1980), desktop 1440, 877 de altura.
+ *
+ * Label e título (80px, 678 de largura) a 120 do topo do desenho e a
+ * fotografia de 1376×600 (2048×1365 recortada pelo Figma: ocupa 153% da
+ * altura, deslocada 48% para cima, ou seja enquadrada a 91% da altura).
+ */
+export default function VidaCapa() {
+  const t = useTranslations('vida')
+
+  return (
+    <section data-barra="var(--bege-claro-2)" className="w-full px-[calc(32*var(--u))] pt-[calc(120*var(--u))] bg-[var(--bege-claro-2)] text-[var(--azul-escuro)]">
+      <div className="flex w-full flex-col gap-[calc(64*var(--u))]">
+        <div className="flex w-full flex-col gap-[calc(24*var(--u))]">
+          <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))]">{t('label')}</p></Revelar>
+          <Revelar atraso={100}>
+            <h1
+              className="w-[calc(678*var(--u))] font-display text-[length:calc(80*var(--u))] leading-[1.2] font-normal"
+              style={{ textBox: 'trim-both cap alphabetic' } as React.CSSProperties}
+            >
+              {t('titulo')}
+            </h1>
+          </Revelar>
+        </div>
+        <Revelar atraso={200} className="w-full">
+          <div className="relative h-[calc(600*var(--u))] w-full overflow-hidden rounded-[calc(4*var(--u))]">
+            <Image src="/vida/capa.jpg" alt={t('capaAlt')} fill priority sizes="1376px" className="object-cover object-[50%_91%]" />
+          </div>
+        </Revelar>
+      </div>
+    </section>
+  )
+}

@@ -1,0 +1,72 @@
+import Image from 'next/image'
+import Link from 'next/link'
+import { useTranslations } from 'next-intl'
+import Revelar from '@/components/home/Revelar'
+import Seta from '@/components/home/Seta'
+
+/**
+ * Celebrações, Intenções de Missa — design novo (Figma, nó 148:825), desktop 1440, 561 de altura.
+ *
+ * Faixa vermelha: fotografia de 710×561 à esquerda e, à direita (678, centrado
+ * na vertical), o label, o título de 80px, dois textos curtos lado a lado, a
+ * linha com as horas de atendimento e o botão "Planear visita".
+ *
+ * O pedido faz-se no cartório, por isso as horas lêem-se de `horarios`
+ * (cartório). O desenho repete aqui as horas da adoração (11H00 às 12H00 · 18H00
+ * às 19H00), que parecem texto de teste: a fonte única manda.
+ */
+export default function CelebracoesIntencoes() {
+  const t = useTranslations('celebrar')
+  const h = useTranslations('horarios')
+
+  return (
+    <section
+      id="intencoes"
+      data-barra="var(--vermelho)"
+      data-barra-tom="escuro"
+      className="flex h-[calc(561*var(--u))] w-full items-center gap-[calc(20*var(--u))] bg-[var(--vermelho)] text-[var(--bege-claro-2)]"
+    >
+      <div className="relative h-[calc(561*var(--u))] w-[calc(710*var(--u))] shrink-0">
+        <Image src="/celebracoes/adoracao.jpg" alt={t('intAlt')} fill sizes="710px" className="object-cover" />
+      </div>
+
+      <div className="flex w-[calc(678*var(--u))] flex-col gap-[calc(80*var(--u))] px-[calc(32*var(--u))]">
+        <div className="flex w-[calc(614*var(--u))] flex-col gap-[calc(40*var(--u))]">
+          <div className="flex w-full flex-col gap-[calc(12*var(--u))]">
+            <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{t('intLabel')}</p></Revelar>
+            <Revelar atraso={100}>
+              <h2
+                className="font-display text-[length:calc(80*var(--u))] leading-none tracking-[calc(0.96*var(--u))] font-normal"
+                style={{ textBox: 'trim-both cap alphabetic' } as React.CSSProperties}
+              >
+                {t('intTitulo')}
+              </h2>
+            </Revelar>
+          </div>
+          <Revelar atraso={200}>
+            <div className="flex w-full items-start text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">
+              <p className="w-[calc(320*var(--u))] shrink-0">{t('intTexto1')}</p>
+              <p className="w-[calc(294*var(--u))] shrink-0">{t('intTexto2')}</p>
+            </div>
+          </Revelar>
+        </div>
+
+        <Revelar atraso={200}>
+          <div className="flex w-full flex-col gap-[calc(24*var(--u))]">
+            <div className="flex w-full items-start gap-[calc(40*var(--u))] border-y border-solid border-[rgba(249,246,243,0.2)] py-[calc(20*var(--u))]">
+              <p className="w-[calc(224*var(--u))] shrink-0 self-center text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold whitespace-nowrap">{h('cartorioDias')}</p>
+              <p className="w-[calc(350*var(--u))] text-right text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] font-bold">{h('cartorioHoras').replace(/ ÀS /g, ' às ')}</p>
+            </div>
+            <Link
+              href="/basilica-e-convento"
+              className="group/btn flex h-[calc(46.8*var(--u))] items-center gap-[calc(11.91*var(--u))] self-start px-[calc(29.6*var(--u))] rounded-[calc(4*var(--u))] border border-solid border-[var(--bege-claro-2)] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
+            >
+              {t('intCta')}
+              <Seta className="group-hover/btn:translate-x-[calc(4*var(--u))]" />
+            </Link>
+          </div>
+        </Revelar>
+      </div>
+    </section>
+  )
+}

@@ -1,0 +1,82 @@
+import { useTranslations } from 'next-intl'
+import Revelar from '@/components/home/Revelar'
+import SacramentosLista, { type Sacramento } from '@/components/celebracoes/SacramentosLista'
+
+/**
+ * Celebrações, Sacramentos — design novo (Figma, nó 111:1534; painel 140:1514), desktop 1440.
+ *
+ * Fundo bege claro, 180 de respiro. Título e lema, régua e, por baixo, a lista
+ * dos oito sacramentos com a fotografia fixa e o painel de "Saiba mais" (ver
+ * SacramentosLista). Os textos do painel vêm das mensagens já escritas para
+ * cada sacramento; os horários lêem-se do namespace `horarios` (fonte única).
+ */
+export default function CelebracoesSacramentos() {
+  const t = useTranslations('celebrar')
+  const c = useTranslations('celebracoes')
+  const h = useTranslations('horarios')
+
+  // Os horários da fonte única estão em maiúsculas; no painel lêem-se em texto
+  // corrente, por isso passam a minúsculas só aqui.
+  const min = (x: string) => x.toLowerCase()
+  const noCartorio = [{
+    horas: c('porMarcacao'),
+    dias: `${h('cartorioHead')} · ${min(h('cartorioDias'))}, ${min(h('cartorioHoras'))}`,
+  }]
+  const quando: Record<number, { horas: string; dias: string }[]> = {
+    2: [{ horas: min(h('adoracaoSemHoras')), dias: h('adoracaoSemDias') }],
+    4: [
+      { horas: min(h('confissoesDomHoras')), dias: h('confissoesDomDias') },
+      { horas: min(h('confissoesSemHoras')), dias: h('confissoesSemDias') },
+    ],
+    5: [{ horas: c('sac5Quando'), dias: c('sac5QuandoDesc') }],
+    8: [{ horas: c('sac8Quando'), dias: c('sac8QuandoDesc') }],
+  }
+
+  const items: Sacramento[] = Array.from({ length: 8 }, (_, i) => ({
+    n: String(i + 1).padStart(2, '0'),
+    titulo: c(`sac${i + 1}Title`),
+    desc: c(`sac${i + 1}Desc`),
+    longo: c(`sac${i + 1}Longo`),
+    longo2: c(`sac${i + 1}Longo2`),
+    preciso: c(`sac${i + 1}Preciso`),
+    quando: quando[i + 1] ?? noCartorio,
+  }))
+
+  return (
+    <section id="sacramentos"
+      data-barra="var(--bege-claro)"
+      className="flex w-full px-[calc(32*var(--u))] py-[calc(180*var(--u))] bg-[var(--bege-claro)] text-[var(--azul-escuro)]"
+    >
+      <div className="flex flex-col gap-[calc(64*var(--u))] w-full">
+        <div className="flex flex-col gap-[calc(35*var(--u))] w-full">
+          <div className="flex items-start justify-between w-full">
+            <Revelar>
+              <h2
+                className="font-display text-[length:calc(80*var(--u))] leading-[calc(96*var(--u))] tracking-[calc(0.96*var(--u))] font-normal whitespace-nowrap"
+                style={{ textBox: 'trim-both cap alphabetic' } as React.CSSProperties}
+              >
+                {t('sacTitulo')}
+              </h2>
+            </Revelar>
+            <p className="w-[calc(256*var(--u))] text-[length:calc(16*var(--u))] leading-[1.4] opacity-40">{t('sacLema')}</p>
+          </div>
+          <div aria-hidden="true" className="h-px w-full border-t border-solid border-[var(--azul-escuro)] opacity-25" />
+        </div>
+
+        <SacramentosLista
+          items={items}
+          textos={{
+            saibaMais: c('sacSaibaMais'),
+            fechar: c('painelFechar'),
+            quando: c('painelQuandoHead'),
+            preciso: c('painelPrecisoHead'),
+            galeria: c('painelGaleriaHead'),
+            cta: c('painelCta'),
+            anterior: 'Fotografia anterior',
+            seguinte: 'Fotografia seguinte',
+          }}
+        />
+      </div>
+    </section>
+  )
+}
