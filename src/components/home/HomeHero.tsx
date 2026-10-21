@@ -30,7 +30,7 @@ export default function HomeHero() {
   const t = useTranslations('inicio')
 
   return (
-    <section data-hero="espera" data-barra="var(--bege-claro-2)" className="relative w-full h-svh min-h-[calc(640*var(--u))] overflow-hidden bg-[var(--azul-escuro)]">
+    <section data-hero="espera" suppressHydrationWarning data-barra="var(--bege-claro-2)" className="relative w-full h-svh min-h-[calc(640*var(--u))] overflow-hidden bg-[var(--azul-escuro)]">
       <Image src="/home/hero.jpg" alt="" fill priority sizes="100vw" className="hero-foto object-cover" />
       <HeroArranque />
 

@@ -21,6 +21,8 @@ export const metadata: Metadata = {
   },
 }
 
+const TYPEKIT = 'https://use.typekit.net/tuk8ddf.css'
+
 const MENSAGENS_CLIENTE = ['basilica', 'common', 'contactos', 'donativos', 'horarios', 'inicio', 'nav', 'obra', 'sobre', 'vida']
 
 export function generateStaticParams() {
@@ -48,9 +50,16 @@ export default async function LocaleLayout({
         {/* Antes do primeiro paint: há JavaScript, por isso as entradas animadas podem começar escondidas */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
         <link rel="preconnect" href="https://use.typekit.net" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://p.typekit.net" crossOrigin="anonymous" />
         {/* Adobe Fonts kit — Forevs (display) + Area Normal (body). See globals.css
-            for the --font-display / --font-body assignment. */}
-        <link rel="stylesheet" href="https://use.typekit.net/tuk8ddf.css" />
+            for the --font-display / --font-body assignment.
+            Inserido por script para não bloquear o primeiro desenho da página: o CSS
+            do kit importa outro (p.typekit.net) e a cadeia atrasava tudo ~0,8s no
+            telemóvel. O hero espera pela fonte (HeroArranque), por isso o título não
+            aparece com a fonte de recurso. */}
+        <link rel="preload" as="style" href={TYPEKIT} />
+        <script dangerouslySetInnerHTML={{ __html: `(function(){var l=document.createElement('link');l.rel='stylesheet';l.href='${TYPEKIT}';l.id='typekit';document.head.appendChild(l)})()` }} />
+        <noscript><link rel="stylesheet" href={TYPEKIT} /></noscript>
       </head>
       <body>
         <SmoothScroll />

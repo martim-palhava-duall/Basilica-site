@@ -696,13 +696,14 @@ html { scrollbar-gutter: stable; }
 
 /* ── HOMEPAGE NOVA: entrada do hero ──
    Só CSS (transform e opacity), arrancada por HeroArranque quando a fotografia
-   e a fonte do título estão prontas (ou ao fim de 1,2s). Sem JavaScript ou com
+   e a fonte do título estão prontas (ou ao fim de 0,9s). Sem JavaScript ou com
    movimento reduzido nada fica escondido. As animações usam `backwards`: no
    fim, cada elemento volta ao seu estado normal (o logótipo e os botões têm
    transições próprias, que assim não ficam presas).
    Coreografia: a fotografia acende e assenta (zoom de 1,06); o logótipo e os
    botões aparecem; as duas linhas do título sobem de dentro da sua janela,
-   desencontradas; por fim os CTAs e o cartão do evento. */
+   desencontradas; por fim os CTAs e o cartão do evento. Tudo pousado em ~1,4s
+   (era ~2,6s: o hero parecia lento a chegar, sobretudo no telemóvel). */
 @media (prefers-reduced-motion: no-preference) {
   html.js [data-hero='espera'] .hero-foto,
   html.js [data-hero='espera'] .hero-logo,
@@ -711,13 +712,13 @@ html { scrollbar-gutter: stable; }
   html.js [data-hero='espera'] .hero-cartao { opacity: 0; }
   html.js [data-hero='espera'] .hero-janela > .hero-linha { transform: translate3d(0, 1.45em, 0); }
 
-  [data-hero='go'] .hero-foto { animation: hero-foto 2.6s cubic-bezier(0.215, 0.61, 0.355, 1) backwards; }
-  [data-hero='go'] .hero-logo { animation: hero-aparece 1.4s cubic-bezier(0.165, 0.84, 0.44, 1) 0.25s backwards; }
-  [data-hero='go'] .hero-botoes { animation: hero-esbate 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) 0.45s backwards; }
-  [data-hero='go'] .hero-janela > .hero-linha { animation: hero-sobe 1.4s cubic-bezier(0.165, 0.84, 0.44, 1) 0.4s backwards; }
-  [data-hero='go'] .hero-janela + .hero-janela > .hero-linha { animation-delay: 0.55s; }
-  [data-hero='go'] .hero-cta { animation: hero-aparece 1.1s cubic-bezier(0.165, 0.84, 0.44, 1) 0.95s backwards; }
-  [data-hero='go'] .hero-cartao { animation: hero-aparece 1.1s cubic-bezier(0.165, 0.84, 0.44, 1) 1.1s backwards; }
+  [data-hero='go'] .hero-foto { animation: hero-foto 1.8s cubic-bezier(0.215, 0.61, 0.355, 1) backwards; }
+  [data-hero='go'] .hero-logo { animation: hero-aparece 1.1s cubic-bezier(0.165, 0.84, 0.44, 1) 0.1s backwards; }
+  [data-hero='go'] .hero-botoes { animation: hero-esbate 0.9s cubic-bezier(0.165, 0.84, 0.44, 1) 0.2s backwards; }
+  [data-hero='go'] .hero-janela > .hero-linha { animation: hero-sobe 1.1s cubic-bezier(0.165, 0.84, 0.44, 1) 0.15s backwards; }
+  [data-hero='go'] .hero-janela + .hero-janela > .hero-linha { animation-delay: 0.27s; }
+  [data-hero='go'] .hero-cta { animation: hero-aparece 0.9s cubic-bezier(0.165, 0.84, 0.44, 1) 0.45s backwards; }
+  [data-hero='go'] .hero-cartao { animation: hero-aparece 0.9s cubic-bezier(0.165, 0.84, 0.44, 1) 0.55s backwards; }
 }
 @keyframes hero-foto { from { opacity: 0; transform: scale(1.06); } to { opacity: 1; transform: none; } }
 @keyframes hero-sobe { from { transform: translate3d(0, 1.45em, 0); } to { transform: translate3d(0, 0, 0); } }

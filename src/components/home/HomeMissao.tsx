@@ -120,9 +120,9 @@ export default function HomeMissao() {
       {/* ── Fotografia: 710 × 900, duas camadas como no Figma ── */}
       <div className="relative h-[calc(900*var(--u))] w-[calc(710*var(--u))] max-lg:h-[calc(480*var(--u))] max-lg:w-full shrink-0 overflow-hidden bg-[var(--bege-claro)]">
         <div className="absolute inset-0" style={zoom}>
-          <Image src="/home/missao-foto-fundo.jpg" alt="" fill sizes="710px" className="object-cover" />
+          <Image src="/home/missao-foto-fundo.jpg" alt="" fill sizes="(max-width: 1023px) 100vw, 710px" className="object-cover" />
           <div className="absolute left-0 w-full" style={{ top: '-2.83%', height: '118.28%' }}>
-            <Image src="/home/missao-foto.jpg" alt="Cúpula da Basílica da Estrela" fill sizes="710px" className="object-cover" />
+            <Image src="/home/missao-foto.jpg" alt="Cúpula da Basílica da Estrela" fill sizes="(max-width: 1023px) 100vw, 710px" className="object-cover" />
           </div>
         </div>
         {/* Cortina bege que sobe e revela a fotografia */}

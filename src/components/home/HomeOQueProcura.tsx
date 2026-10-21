@@ -170,7 +170,7 @@ function Entrada({
     >
       {linha.fundo && (
         <div className="absolute left-0 w-full" style={{ top: '-50.32%', height: '200.64%' }}>
-          <Image src={linha.fundo} alt="" fill sizes="112px" className="object-cover" />
+          <Image src={linha.fundo} alt="" fill sizes="(max-width: 1023px) 60px, 112px" className="object-cover" />
         </div>
       )}
       {/* 136×90 fixos; o zoom do "rezar" (136→117) é uma escala, não uma mudança de tamanho */}
@@ -178,14 +178,14 @@ function Entrada({
         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-transform duration-[600ms] ease-[var(--ease-out)]"
         style={linha.fundo ? { width: u(136), height: u(90), scale: ativa ? 0.86 : 1 } : { width: '100%', height: '100%' }}
       >
-        <Image src={linha.foto} alt="" fill sizes="136px" className="object-cover" />
+        <Image src={linha.foto} alt="" fill sizes="(max-width: 1023px) 72px, 136px" className="object-cover" />
       </div>
       {linha.fotoHover && (
         <Image
           src={linha.fotoHover}
           alt=""
           fill
-          sizes="112px"
+          sizes="(max-width: 1023px) 60px, 112px"
           className="object-cover transition-opacity duration-[450ms] ease-[var(--ease-out)]"
           style={{ opacity: ativa ? 1 : 0 }}
         />
