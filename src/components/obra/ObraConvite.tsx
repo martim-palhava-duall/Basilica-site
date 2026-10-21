@@ -56,7 +56,7 @@ export default function ObraConvite() {
         <Revelar atraso={300}>
           <Link
             href="/contactos"
-            className="group/btn flex items-center gap-[calc(12*var(--u))] self-start rounded-[calc(6*var(--u))] bg-[var(--bege-escuro-2)] px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap text-[var(--azul-escuro)] transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
+            className="group/btn flex w-fit items-center gap-[calc(12*var(--u))] self-start rounded-[calc(6*var(--u))] bg-[var(--bege-escuro-2)] px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap text-[var(--azul-escuro)] transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
           >
             {t('convCta')}
             <Seta className="group-hover/btn:translate-x-[calc(4*var(--u))]" />
