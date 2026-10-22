@@ -6,8 +6,8 @@ import Revelar from '@/components/home/Revelar'
  * Vida da Paróquia, abertura — design novo (Figma, nó 111:1980), desktop 1440, 877 de altura.
  *
  * Label e título (80px, 678 de largura) a 120 do topo do desenho e a
- * fotografia de 1376×600 (2048×1365 recortada pelo Figma: ocupa 153% da
- * altura, deslocada 48% para cima, ou seja enquadrada a 91% da altura).
+ * fotografia de 1376×600 (a procissão de entrada, 2048×1365, centrada como no
+ * Figma).
  */
 export default function VidaCapa() {
   const t = useTranslations('vida')
@@ -28,7 +28,7 @@ export default function VidaCapa() {
         </div>
         <Revelar atraso={200} className="w-full">
           <div className="relative h-[calc(600*var(--u))] w-full overflow-hidden rounded-[calc(4*var(--u))]">
-            <Image src="/vida/capa.jpg" alt={t('capaAlt')} fill priority sizes="1376px" className="object-cover object-[50%_91%]" />
+            <Image src="/vida/capa.jpg" alt={t('capaAlt')} fill priority sizes="1376px" className="object-cover" />
           </div>
         </Revelar>
       </div>
