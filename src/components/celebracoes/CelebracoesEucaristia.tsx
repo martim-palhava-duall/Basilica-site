@@ -2,7 +2,6 @@ import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import Revelar from '@/components/home/Revelar'
 import Seta from '@/components/home/Seta'
-import { u } from '@/lib/escala'
 
 const TRIM = { textBox: 'trim-both cap alphabetic' } as React.CSSProperties
 const LEVE = 'font-[family-name:var(--font-body-light)]'
@@ -35,8 +34,10 @@ function Horas({ horas }: { horas: string }) {
  * Celebrações, Eucaristia todos os dias — design novo (Figma, nó 111:1598), desktop 1440.
  *
  * Fundo bege claro 2, 180 de respiro. Cabeçalho (label, título de 80px, texto e
- * botão "Ver todos os horários"), régua e, por baixo, duas colunas de horários
- * (Missas e Adoração Eucarística) à esquerda e as intenções de Missa à direita.
+ * botão "Ver todos os horários"), régua e, por baixo, as colunas de horários:
+ * Missas, Confissões, Adoração Eucarística e as Missas noutras igrejas da
+ * paróquia (Lapa, Clarissas, Navegantes). O desenho tinha à direita "Rezar por
+ * alguém", que repetia a secção das Intenções de Missa e saiu a pedido.
  * As horas lêem-se do namespace `horarios` (fonte única).
  */
 export default function CelebracoesEucaristia() {
@@ -52,8 +53,24 @@ export default function CelebracoesEucaristia() {
       ],
     },
     {
+      titulo: h('confissoesHead'),
+      entradas: [
+        { horas: h('confissoesSemHoras'), dias: h('confissoesSemDias') },
+        { horas: h('confissoesDomHoras'), dias: h('confissoesDomDias') },
+      ],
+    },
+    {
       titulo: h('adoracaoHead'),
       entradas: [{ horas: h('adoracaoSemHoras'), dias: h('adoracaoSemDias') }],
+    },
+    {
+      titulo: t('eucOutrasIgrejas'),
+      entradas: [
+        { horas: h('lapaSabHoras'), dias: `${h('lapaTitle')} · ${h('lapaSabDias')}` },
+        { horas: h('lapaDomHoras'), dias: `${h('lapaTitle')} · ${h('lapaDomDias')}` },
+        { horas: h('clarissasHoras'), dias: `${h('clarissasTitle')} · ${h('clarissasDias')}` },
+        { horas: h('navegantesHoras'), dias: `${h('navegantesTitle')} · ${h('navegantesDias')}` },
+      ],
     },
   ]
 
@@ -96,9 +113,9 @@ export default function CelebracoesEucaristia() {
                   <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold">{c.titulo}</p>
                   <div className="flex flex-col gap-[calc(24*var(--u))]">
                     {c.entradas.map((e) => (
-                      <div key={e.horas} className="flex flex-col gap-[calc(3.19*var(--u))]">
+                      <div key={e.horas + e.dias} className="flex flex-col gap-[calc(3.19*var(--u))]">
                         <Horas horas={e.horas} />
-                        <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] whitespace-nowrap">{e.dias}</p>
+                        <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))]">{e.dias}</p>
                       </div>
                     ))}
                   </div>
@@ -106,22 +123,6 @@ export default function CelebracoesEucaristia() {
               ))}
             </div>
 
-            <div className="flex flex-col gap-[calc(40*var(--u))] w-[calc(445*var(--u))]">
-              <div className="flex flex-col gap-[calc(32*var(--u))] w-full">
-                <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold">{t('eucIntencoesLabel')}</p>
-                <div className="flex flex-col gap-[calc(24*var(--u))] w-full">
-                  <p className="font-display text-[length:calc(40*var(--u))] leading-[calc(35.2*var(--u))] tracking-[calc(-0.192*var(--u))]">{t('eucIntencoesTitulo')}</p>
-                  <p className={`${LEVE} text-[length:calc(20*var(--u))] leading-[1.4]`} style={TRIM}>{t('eucIntencoesTexto')}</p>
-                </div>
-              </div>
-              <Link href="/horarios" className="group/cta self-start flex items-center gap-[calc(12*var(--u))] text-[length:calc(16*var(--u))] leading-[1.5] whitespace-nowrap">
-                {t('eucIntencoesCta')}
-                <span className="relative block w-[calc(13*var(--u))] h-[calc(7*var(--u))] overflow-visible">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/home/seta-conhecer.svg" alt="" width={13} height={7} className="block transition-transform duration-[400ms] ease-[var(--ease-out)] group-hover/cta:translate-x-[calc(4*var(--u))]" style={{ width: u(13), height: u(7) }} />
-                </span>
-              </Link>
-            </div>
           </div>
         </Revelar>
       </div>

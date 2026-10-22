@@ -867,10 +867,6 @@
     "eucTitulo": "Eucaristia todos os dias",
     "eucCta": "Ver todos os horários",
     "eucTexto": "A Basílica celebra a Eucaristia diariamente. Os horários podem sofrer alterações em dias de solenidade.",
-    "eucIntencoesLabel": "Intenções de Missa",
-    "eucIntencoesTitulo": "Rezar por alguém",
-    "eucIntencoesTexto": "É possível pedir que uma Eucaristia seja celebrada por uma intenção particular — por um defunto, em ação de graças ou por um pedido pessoal.",
-    "eucIntencoesCta": "Pedir uma intenção",
     "confLabel": "Confissões",
     "confTitulo": "Sacramento da Reconciliação",
     "confTexto": "Há sempre um sacerdote disponível nos horários indicados. Fora deles, o atendimento pode ser combinado no secretariado.",
@@ -957,7 +953,8 @@
     "dev3QuandoT": "Oração da novena, nos nove dias antes da solenidade do Sagrado Coração de Jesus",
     "dev4QuandoT": "Terço da Misericórdia, da Sexta-feira Santa ao sábado antes do Domingo da Divina Misericórdia",
     "dev3Hora": "18h30",
-    "dev4Hora": "15h00"
+    "dev4Hora": "15h00",
+    "eucOutrasIgrejas": "Noutras igrejas da paróquia"
   },
   "ancoras": {
     "conhecer": "Conhecer a Basílica",
