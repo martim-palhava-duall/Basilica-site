@@ -25,7 +25,7 @@ import { BILHETEIRA, externo } from '@/lib/links'
  *
  * Hovers (o desenho não os define): botões de contorno enchem-se de bege, os
  * cheios trocam de cor, as setas avançam; o cartão do evento enche-se de azul,
- * a seta sai e volta a entrar e leva o mesmo brilho na borda dos botões (btn-luz).
+ * a seta sai e volta a entrar e leva o brilho na borda dos botões, na variante suave (btn-luz luz-suave).
  */
 export default function HomeHero() {
   const t = useTranslations('inicio')
@@ -89,7 +89,7 @@ export default function HomeHero() {
       <div className="hero-cartao max-lg:hidden absolute right-[calc(32*var(--u))] bottom-[calc(62*var(--u))] w-[calc(212*var(--u))]">
       <Link
         href="/blog/celebracao-da-missa-do-galo"
-        className="btn-luz group/card w-full p-[calc(4*var(--u))] rounded-[calc(4*var(--u))] overflow-hidden flex flex-col gap-[calc(10*var(--u))] text-white bg-[rgba(28,43,57,0.6)] transition-colors duration-[450ms] ease-[var(--ease-out)] hover:bg-[var(--azul-escuro)]"
+        className="btn-luz luz-suave group/card w-full p-[calc(4*var(--u))] rounded-[calc(4*var(--u))] overflow-hidden flex flex-col gap-[calc(10*var(--u))] text-white bg-[rgba(28,43,57,0.6)] transition-colors duration-[450ms] ease-[var(--ease-out)] hover:bg-[var(--azul-escuro)]"
       >
         <div className="flex flex-col gap-[calc(8*var(--u))] items-center w-full">
           <div className="relative h-[calc(120*var(--u))] w-full rounded-[calc(2*var(--u))] overflow-hidden">

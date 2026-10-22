@@ -771,6 +771,14 @@ html { scrollbar-gutter: stable; }
   animation: btn-gira 3.6s linear infinite paused;
 }
 @keyframes btn-gira { to { --btn-ang: 360deg; } }
+/* Variante suave, para caixas grandes (o cartão do evento na hero): num cartão
+   desse tamanho os dois arcos ficavam longos e brancos demais. Aqui a luz é
+   mais transparente e os arcos mais curtos, e roda mais devagar. */
+.btn-luz.luz-suave::after {
+  --btn-luz: color-mix(in srgb, currentColor 30%, transparent);
+  background: conic-gradient(from var(--btn-ang), transparent 0deg 140deg, var(--btn-luz) 165deg, transparent 180deg 320deg, var(--btn-luz) 345deg, transparent 360deg);
+  animation-duration: 5s;
+}
 /* Ligações só de texto (sem caixa) não levam o anel de luz: só a seta anima */
 .group\/btn.sem-luz::after { display: none; }
 @media (hover: hover) and (pointer: fine) {
