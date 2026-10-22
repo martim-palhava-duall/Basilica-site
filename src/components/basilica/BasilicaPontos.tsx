@@ -36,8 +36,8 @@ const PONTOS: { n: string; chave: string; foto: string; posicao?: string }[] = [
  * fotografia está fixa — com uma linha parada a meio do ecrã, os últimos só
  * chegavam lá depois de a fotografia se soltar, e as fotos deles nunca se viam.
  *
- * Troca da fotografia: a nova entra por cima da anterior (fade e um zoom curto
- * que assenta), e só depois de carregada; a anterior fica por baixo até lá, para
+ * Troca da fotografia: a nova entra por cima da anterior (só um fade longo e
+ * suave, sem zoom), e só depois de carregada; a anterior fica por baixo até lá, para
  * nunca aparecer o fundo vazio a meio. Todas carregam quando a secção se
  * aproxima do ecrã.
  */
@@ -123,11 +123,10 @@ export default function BasilicaPontos() {
                 <div
                   key={p.n}
                   aria-hidden={!cima}
-                  className="absolute inset-0 transition-[opacity,transform] duration-[900ms] ease-[var(--ease-out)]"
+                  className="absolute inset-0 transition-opacity duration-[1100ms] ease-[var(--ease-suave)]"
                   style={{
                     zIndex: cima ? 2 : i === baixo ? 1 : 0,
                     opacity: visivel ? 1 : 0,
-                    transform: cima ? 'scale(1)' : 'scale(1.04)',
                     // A de baixo e as escondidas trocam sem transição: só a de cima anima
                     transitionDuration: cima ? undefined : '0ms',
                   }}
