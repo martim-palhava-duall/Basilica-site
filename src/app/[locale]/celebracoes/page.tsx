@@ -26,7 +26,7 @@ export const metadata: Metadata = { title: 'Celebrações' }
 export default function CelebracoesPage({ params }: { params: Promise<{ locale: string }> }) {
   setRequestLocale(use(params).locale)
   const t = useTranslations('ancoras')
-  const ancoras = [{ id: 'sacramentos', label: t('sacramentos') }, { id: 'eucaristia', label: t('eucaristia') }, { id: 'confissoes', label: t('confissoes') }, { id: 'adoracao', label: t('adoracao') }, { id: 'devocoes', label: t('devocoes') }, { id: 'intencoes', label: t('intencoes') }, { id: 'entronizacao', label: t('entronizacao') }, { id: 'bencao', label: t('bencao') }, { id: 'terco', label: t('terco') }]
+  const ancoras = [{ id: 'sacramentos', label: t('sacramentos') }, { id: 'eucaristia', label: t('eucaristia') }, { id: 'confissoes', label: t('confissoes') }, { id: 'adoracao', label: t('adoracao') }, { id: 'devocoes', label: t('devocoes') }, { id: 'intencoes', label: t('intencoes') }, { id: 'bencao', label: t('bencao') }, { id: 'entronizacao', label: t('entronizacao') }, { id: 'terco', label: t('terco') }]
 
   return (
     <PaginaInterior ancoras={ancoras}>
@@ -38,8 +38,8 @@ export default function CelebracoesPage({ params }: { params: Promise<{ locale: 
       <CelebracoesAdoracao />
       <CelebracoesDevocoes />
       <CelebracoesIntencoes />
-      <CelebracoesEntronizacao />
       <CelebracoesBencao />
+      <CelebracoesEntronizacao />
       <CelebracoesTerco />
       <CelebracoesContacto />
     </PaginaInterior>
