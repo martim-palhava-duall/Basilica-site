@@ -5,17 +5,23 @@ import { useEffect, useRef, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import Revelar from '@/components/home/Revelar'
 
-/** Fotografia de cada ponto. O desenho só traz uma (a nave); as restantes ficam
- *  por fornecer, e basta trocar o `foto` de cada entrada. */
-const PONTOS = [
-  { n: '01', chave: 'pi1', foto: '/home/somos-interior.jpg' },
-  { n: '02', chave: 'pi2', foto: '/home/somos-interior.jpg' },
-  { n: '03', chave: 'pi3', foto: '/home/somos-interior.jpg' },
-  { n: '04', chave: 'pi4', foto: '/home/somos-interior.jpg' },
-  { n: '05', chave: 'pi5', foto: '/home/somos-interior.jpg' },
-  { n: '06', chave: 'pi6', foto: '/home/somos-interior.jpg' },
-  { n: '07', chave: 'pi7', foto: '/home/somos-interior.jpg' },
-] as const
+/**
+ * Fotografia de cada ponto (Figma, nó 201:6113 "Conhecer a basilica", uma por
+ * ponto, com o nome do ponto). No desenho, as molduras "pinturas" e "Tumulo da
+ * rainha" têm as fotografias trocadas (o túmulo com o medalhão da Rainha está em
+ * "pinturas"); aqui vão pelo que mostram. Duas vêm recortadas no desenho: o teto
+ * pintado (encostado à direita, a meio da altura) e a fachada (mais para baixo),
+ * e o `posicao` reproduz esse enquadramento.
+ */
+const PONTOS: { n: string; chave: string; foto: string; posicao?: string }[] = [
+  { n: '01', chave: 'pi1', foto: '/basilica/conhecer-atrio.jpg' },
+  { n: '02', chave: 'pi2', foto: '/basilica/conhecer-interior.jpg' },
+  { n: '03', chave: 'pi3', foto: '/basilica/conhecer-pinturas-teto.jpg', posicao: '100% 53%' },
+  { n: '04', chave: 'pi4', foto: '/basilica/conhecer-tumulo-rainha.jpg' },
+  { n: '05', chave: 'pi5', foto: '/basilica/conhecer-presepio.jpg' },
+  { n: '06', chave: 'pi6', foto: '/basilica/conhecer-sacristia.jpg' },
+  { n: '07', chave: 'pi7', foto: '/basilica/conhecer-fachada.jpg', posicao: '50% 66%' },
+]
 
 /**
  * Basílica e Convento, Conhecer a Basílica — design novo (Figma, nó 111:1134), desktop 1440.
@@ -88,7 +94,7 @@ export default function BasilicaPontos() {
                 className="absolute inset-0 transition-opacity duration-[700ms] ease-[var(--ease-out)]"
                 style={{ opacity: i === ativo ? 1 : 0 }}
               >
-                <Image src={p.foto} alt="" fill sizes="678px" className="object-cover" />
+                <Image src={p.foto} alt={t(`${p.chave}Titulo`)} fill sizes="678px" className="object-cover" style={p.posicao ? { objectPosition: p.posicao } : undefined} />
               </div>
             ))}
           </div>
