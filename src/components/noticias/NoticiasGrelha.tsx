@@ -1,23 +1,9 @@
 import { useTranslations } from 'next-intl'
 import NoticiasFiltroGrelha, { type Cartao } from '@/components/noticias/NoticiasFiltroGrelha'
+import { NOTICIAS_GRELHA } from '@/lib/noticias'
 
-/**
- * Fotografias dos nove cartões, na ordem do desenho (provisórias, de teste), e
- * a categoria de cada um para os filtros — a distribuição é de teste até haver
- * notícias reais.
- */
-const CARTOES: Cartao[] = [
-  { slug: 'noticia-1', foto: '/home/dest-1.jpg', categoria: 'noticias' },
-  { slug: 'noticia-2', foto: '/celebracoes/adoracao.jpg', categoria: 'eventos' },
-  { slug: 'noticia-3', foto: '/home/donativos.jpg', categoria: 'jovens' },
-  // a estátua vem recortada no Figma (522×783, deslocada), como no cartão dos Destaques
-  { slug: 'noticia-4', foto: '/home/dest-2.jpg', categoria: 'visitas', recorte: { left: -36, top: -58.31, width: 522, height: 783 } },
-  { slug: 'noticia-5', foto: '/home/oque-ajudar.jpg', categoria: 'obra' },
-  { slug: 'noticia-6', foto: '/home/missao-thumb.jpg', categoria: 'celebracoes' },
-  { slug: 'noticia-7', foto: '/celebracoes/sextas.jpg', categoria: 'noticias' },
-  { slug: 'noticia-8', foto: '/home/dest-3.jpg', categoria: 'eventos' },
-  { slug: 'noticia-9', foto: '/noticias/fachada.jpg', categoria: 'jovens' },
-]
+/** Os nove cartões e as categorias vêm da fonte única das notícias (lib/noticias) */
+const CARTOES: Cartao[] = NOTICIAS_GRELHA.map(({ slug, foto, categoria, recorte }) => ({ slug, foto, categoria: categoria!, recorte }))
 
 /**
  * Notícias, grelha — design novo (Figma, nó 111:2695), desktop 1440.
