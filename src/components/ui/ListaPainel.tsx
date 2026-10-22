@@ -232,7 +232,7 @@ export default function ListaPainel({
                   >
                     {galeria.map((f, k) => (
                       <div key={k} className="relative h-[calc(400*var(--u))] shrink-0 overflow-hidden rounded-[calc(4*var(--u))]" style={{ width: u(f.largura) }}>
-                        <Image src={f.src} alt="" fill sizes="391px" className="object-cover" />
+                        <Image src={f.src} alt="" fill sizes="600px" className="object-cover" />
                       </div>
                     ))}
                   </div>

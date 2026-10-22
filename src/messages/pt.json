@@ -753,15 +753,19 @@
     "galTitulo": "A Basílica, <i>vista de dentro</i>",
     "galAnterior": "Imagem anterior",
     "galSeguinte": "Imagem seguinte",
-    "galAlt1": "Capela-mor da Basílica da Estrela",
-    "galAlt2": "Cúpula e galeria da Basílica da Estrela",
-    "galAlt3": "Nave lateral da Basílica da Estrela",
+    "galAlt1": "Capela lateral da Basílica da Estrela, com a imagem de Nossa Senhora",
+    "galAlt2": "Cúpula da Basílica da Estrela vista de baixo",
+    "galAlt3": "Capela interior com pinturas e tetos decorados",
     "acLabel": "Destaques",
     "acTitulo": "<i>O que vai</i> acontecer",
     "convLabel": "Visitar",
     "convL1": "Conheça a <i>Basílica</i>",
     "convL2": "e o <i>Convento da Estrela</i>",
-    "convCta": "Planear visita"
+    "convCta": "Planear visita",
+    "galAlt4": "Nave da Basílica da Estrela vista de cima",
+    "galAlt5": "Abóbadas e cúpula da Basílica da Estrela, vistas do cruzeiro",
+    "galAlt6": "Presbitério da Basílica da Estrela, com o candelabro das trevas",
+    "galAlt7": "Altar da Basílica da Estrela visto de cima"
   },
   "basilica": {
     "label": "Visitar",

@@ -7,6 +7,7 @@ import { createPortal } from 'react-dom'
 import { getLenis } from '@/lib/lenis'
 import Seta from '@/components/home/Seta'
 import { u } from '@/lib/escala'
+import { GALERIA_PAINEL } from '@/lib/galeria'
 
 export type Sacramento = {
   n: string
@@ -32,12 +33,8 @@ export type Textos = {
 
 const TRIM = { textBox: 'trim-both cap alphabetic' } as React.CSSProperties
 const FOTO = '/celebracoes/sacramento.jpg'
-/** Fotografias do painel: as três do desenho, iguais em todos até haver as próprias */
-const GALERIA = [
-  { src: '/celebracoes/galeria-1.jpg', largura: 375 },
-  { src: '/celebracoes/galeria-2.jpg', largura: 217 },
-  { src: FOTO, largura: 391 },
-]
+/** Fotografias do painel: as das galerias do site (lib/galeria) */
+const GALERIA = GALERIA_PAINEL
 const FOLGA_GALERIA = 12
 const DESLOCAMENTOS = GALERIA.map((_, i) => GALERIA.slice(0, i).reduce((s, g) => s + g.largura + FOLGA_GALERIA, 0))
 
@@ -226,7 +223,7 @@ export default function SacramentosLista({ items, textos }: { items: Sacramento[
                   >
                     {GALERIA.map((g, i) => (
                       <div key={i} className="relative h-[calc(400*var(--u))] shrink-0 rounded-[calc(4*var(--u))] overflow-hidden" style={{ width: u(g.largura) }}>
-                        <Image src={g.src} alt="" fill sizes="391px" className="object-cover" />
+                        <Image src={g.src} alt="" fill sizes="600px" className="object-cover" />
                       </div>
                     ))}
                   </div>

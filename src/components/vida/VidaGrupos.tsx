@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { useTranslations } from 'next-intl'
 import ListaPainel, { type FotoGaleria } from '@/components/ui/ListaPainel'
+import { GALERIA_PAINEL } from '@/lib/galeria'
 
 const i = (chunks: ReactNode) => (
   <span className="italic font-light" style={{ fontFamily: "'forevs-light', var(--font-display)" }}>{chunks}</span>
@@ -16,12 +17,8 @@ const GRUPOS = [
   { n: '03', chave: 'gc3', foto: '/vida/grupos.jpg', subs: 3 },
 ] as const
 
-/** Galeria do painel: as três fotografias do desenho (iguais nos três grupos até haver as próprias) */
-const GALERIA: FotoGaleria[] = [
-  { src: '/celebracoes/galeria-1.jpg', largura: 375 },
-  { src: '/celebracoes/galeria-2.jpg', largura: 217 },
-  { src: '/celebracoes/sacramento.jpg', largura: 391 },
-]
+/** Galeria do painel: as fotografias das galerias do site (lib/galeria) */
+const GALERIA: FotoGaleria[] = GALERIA_PAINEL
 
 /**
  * Vida da Paróquia, Grupos Culturais — design novo (Figma, nó 111:1995), desktop 1440.

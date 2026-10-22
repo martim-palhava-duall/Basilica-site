@@ -1,18 +1,15 @@
 import type { ReactNode } from 'react'
 import { useTranslations } from 'next-intl'
 import ListaPainel, { type FotoGaleria } from '@/components/ui/ListaPainel'
+import { GALERIA_PAINEL } from '@/lib/galeria'
 
 const i = (chunks: ReactNode) => (
   <span className="italic font-light" style={{ fontFamily: "'forevs-light', var(--font-display)" }}>{chunks}</span>
 )
 const min = (s: string) => s.replace(/ ÀS /g, ' às ')
 
-/** Galeria do painel: a mesma dos Sacramentos e dos Grupos Culturais, até haver fotografias próprias */
-const GALERIA: FotoGaleria[] = [
-  { src: '/celebracoes/galeria-1.jpg', largura: 375 },
-  { src: '/celebracoes/galeria-2.jpg', largura: 217 },
-  { src: '/celebracoes/sacramento.jpg', largura: 391 },
-]
+/** Galeria do painel: as fotografias das galerias do site (lib/galeria) */
+const GALERIA: FotoGaleria[] = GALERIA_PAINEL
 
 /**
  * Celebrações, Devoções — pedido do cliente: "algo parecido aos sacramentos mas

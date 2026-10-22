@@ -5,13 +5,10 @@ import { useState, type ReactNode } from 'react'
 import { useTranslations } from 'next-intl'
 import Revelar from '@/components/home/Revelar'
 import { u } from '@/lib/escala'
+import { FOTOS_GALERIA } from '@/lib/galeria'
 
-/** Fotografias da galeria (a 2.ª é a mesma da cúpula do bloco Visitar). */
-const FOTOS = [
-  { src: '/sobre/galeria-1.jpg', alt: 'galAlt1' },
-  { src: '/sobre/visitar-cupula.jpg', alt: 'galAlt2' },
-  { src: '/sobre/galeria-3.jpg', alt: 'galAlt3' },
-] as const
+/** Fotografias da galeria (lib/galeria): as sete da frame "Galeria" do Figma */
+const FOTOS = FOTOS_GALERIA.map((src, k) => ({ src, alt: `galAlt${k + 1}` }))
 
 const LARGURA = 794
 const ESPACO = 40
@@ -28,8 +25,8 @@ const i = (chunks: ReactNode) => (
  *
  * Galeria em carrossel contínuo: a fotografia ativa fica centrada (794×624) e
  * as vizinhas espreitam dos dois lados, a 40 de distância. Ao avançar, a pista
- * desliza um passo; como há só três fotografias, são montados cinco lugares
- * (os extremos repetem as imagens) para o movimento nunca ter saltos.
+ * desliza um passo; são montados cinco lugares à volta da ativa (dois de
+ * cada lado, a repetir as imagens quando dá a volta) para o movimento nunca ter saltos.
  * Em baixo, a barra de progresso à esquerda e as setas à direita.
  * A altura das fotografias acompanha o ecrã (ecrã menos 330px), entre 480 e os 624
  * do desenho: num ecrã de 900 de altura ficam com 570. A secção já não cabe
