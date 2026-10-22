@@ -775,7 +775,7 @@ html { scrollbar-gutter: stable; }
    desse tamanho os dois arcos ficavam longos e brancos demais. Aqui a luz é
    mais transparente e os arcos mais curtos, e roda mais devagar. */
 .btn-luz.luz-suave::after {
-  --btn-luz: color-mix(in srgb, currentColor 30%, transparent);
+  --btn-luz: color-mix(in srgb, currentColor 15%, transparent);
   background: conic-gradient(from var(--btn-ang), transparent 0deg 140deg, var(--btn-luz) 165deg, transparent 180deg 320deg, var(--btn-luz) 345deg, transparent 360deg);
   animation-duration: 5s;
 }
