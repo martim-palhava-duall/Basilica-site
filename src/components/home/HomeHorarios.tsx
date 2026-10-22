@@ -147,7 +147,7 @@ export default function HomeHorarios() {
         ))}
       </div>
 
-      {/* ── Acolhimento ── */}
+      {/* ── Acolhimento: o CTA leva aos horários de abertura e ao acesso, na página Visitar ── */}
       <div className="flex flex-col gap-[calc(40*var(--u))] w-[calc(563*var(--u))] max-lg:w-full max-lg:gap-[calc(32*var(--u))]" style={surge(1500)}>
         <div className="flex flex-col gap-[calc(16*var(--u))] w-full">
           <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold">{t('horAcolhLabel')}</p>
@@ -156,7 +156,7 @@ export default function HomeHorarios() {
             <p className={`${LEVE} text-[length:calc(20*var(--u))] leading-[1.4]`} style={TRIM}>{t('horAcolhTexto')}</p>
           </div>
         </div>
-        <Link href="/basilica-e-convento" className="group/cta self-start flex items-center gap-[calc(12*var(--u))] text-[length:calc(16*var(--u))] leading-[1.5] whitespace-nowrap">
+        <Link href="/basilica-e-convento#horarios" className="group/cta self-start flex items-center gap-[calc(12*var(--u))] text-[length:calc(16*var(--u))] leading-[1.5] whitespace-nowrap">
           {t('horAcolhCta')}
           <span className="relative block w-[calc(13*var(--u))] h-[calc(7*var(--u))] overflow-visible">
             {/* eslint-disable-next-line @next/next/no-img-element */}

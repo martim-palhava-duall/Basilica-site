@@ -90,11 +90,13 @@ export default function TransicaoPagina() {
     return () => document.removeEventListener('click', aoClicar, true)
   }, [router, mudarFase])
 
-  // A nova página chegou: volta ao topo e o véu sai
+  // A nova página chegou: volta ao topo (ou à âncora do link, se a tiver) e o véu sai
   useEffect(() => {
     if (faseRef.current !== 'cobrir') return
-    getLenis()?.scrollTo(0, { immediate: true })
-    window.scrollTo(0, 0)
+    const alvo = window.location.hash ? document.getElementById(decodeURIComponent(window.location.hash.slice(1))) : null
+    const y = alvo ? alvo.getBoundingClientRect().top + window.scrollY : 0
+    getLenis()?.scrollTo(y, { immediate: true })
+    window.scrollTo(0, y)
     limpar()
     // O desenho acaba antes de o véu sair: espera o que falta do tempo mínimo
     const falta = Math.max(0, COBRIR - (performance.now() - inicio.current))
