@@ -24,7 +24,7 @@ export default function VidaParoquiaPage({ params }: { params: Promise<{ locale:
   const ancoras = [
     { id: 'grupos', label: t('vidaGrupos') },
     { id: 'movimentos', label: t('vidaMovimentos') },
-    { id: 'cti', label: t('vidaCti') },
+    { id: 'doze', label: t('vidaCti') },
     { id: 'salas', label: t('vidaSalas') },
   ]
 

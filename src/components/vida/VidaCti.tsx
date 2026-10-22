@@ -3,18 +3,27 @@ import { useTranslations } from 'next-intl'
 import Revelar from '@/components/home/Revelar'
 
 /**
- * Vida da Paróquia, CTI Juvenil — design novo (Figma, nó 111:2138), desktop 1440, 1235 de altura.
+ * Vida da Paróquia, o Doze (Centro de Jovens do Sagrado Coração de Jesus) — desenho
+ * do CTI Juvenil (Figma, nó 111:2138), desktop 1440, 1235 de altura.
  *
  * Label e frase grande (64px, 1027 de largura) a 180 do topo; em baixo, a
  * 180 do fim e alinhadas pela base, duas fotografias (329×394 e 445×519, 20
- * entre elas) que terminam na margem direita.
+ * entre elas) que terminam na margem direita. Em baixo à esquerda, alinhados
+ * pela mesma base, o texto e a tabela "Aberto / Para quem / Onde", como no
+ * Terço das Famílias. Os factos (porta 12, horário, atividades) vêm da
+ * reportagem da Renascença de 17/03/2026 sobre o centro.
  */
 export default function VidaCti() {
   const t = useTranslations('vida')
+  const linhas = [
+    { rotulo: t('ctiAbertoLabel'), texto: t('ctiAberto'), nota: t('ctiAbertoHoras') },
+    { rotulo: t('ctiParaLabel'), texto: t('ctiPara') },
+    { rotulo: t('ctiOndeLabel'), texto: t('ctiOnde') },
+  ]
 
   return (
     <section
-      id="cti"
+      id="doze"
       data-barra="var(--bege-claro-2)"
       className="relative h-[calc(1235*var(--u))] w-full bg-[var(--bege-claro-2)] text-[var(--azul-escuro)]"
     >
@@ -27,6 +36,28 @@ export default function VidaCti() {
           >
             {t('ctiFrase')}
           </p>
+        </Revelar>
+      </div>
+
+      <div className="absolute bottom-[calc(180*var(--u))] left-[calc(32*var(--u))] w-[calc(451*var(--u))]">
+        <Revelar atraso={200}>
+          <div className="flex w-full flex-col gap-[calc(40*var(--u))]">
+            <p className="text-[length:calc(16*var(--u))] leading-[1.5]">{t('ctiTexto')}</p>
+            <div className="flex w-full flex-col">
+              {linhas.map((l, i) => (
+                <div
+                  key={l.rotulo}
+                  className={`flex w-full items-start gap-[calc(40*var(--u))] border-b border-solid border-[rgba(28,43,57,0.25)] py-[calc(20*var(--u))] ${i === 0 ? 'border-t' : ''}`}
+                >
+                  <p className="w-[calc(117*var(--u))] shrink-0 self-center text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold">{l.rotulo}</p>
+                  <div className="flex min-w-px flex-1 flex-col items-end gap-[calc(4*var(--u))] text-right text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] font-bold">
+                    <p className="w-full">{l.texto}</p>
+                    {l.nota && <p className="opacity-60">{l.nota}</p>}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </Revelar>
       </div>
 
