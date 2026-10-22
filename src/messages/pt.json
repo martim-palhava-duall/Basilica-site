@@ -954,7 +954,26 @@
     "dev4QuandoT": "Terço da Misericórdia, da Sexta-feira Santa ao sábado antes do Domingo da Divina Misericórdia",
     "dev3Hora": "18h30",
     "dev4Hora": "15h00",
-    "eucOutrasIgrejas": "Noutras igrejas da paróquia"
+    "eucOutrasIgrejas": "Noutras igrejas da paróquia",
+    "entLabel": "Entronização do Sagrado Coração de Jesus",
+    "entTitulo": "Jesus no centro da casa",
+    "entTexto1": "Na entronização, a família coloca uma imagem do Sagrado Coração de Jesus no lugar de honra da casa e consagra-se a Ele. É uma devoção com raízes nesta Basílica, erguida em honra do Sagrado Coração.",
+    "entTexto2": "Um sacerdote vai a casa, lê-se o Evangelho, faz-se a consagração da família e a bênção da imagem. Basta a família reunida e uma imagem ou quadro do Sagrado Coração.",
+    "entQuandoLabel": "Como pedir",
+    "entQuando": "Por marcação, no cartório",
+    "entQuandoNota": "Pode fazer-se junto com a bênção da casa",
+    "entCta": "Pedir entronização",
+    "entAlt": "Imagem de São José com o Menino Jesus, na Basílica da Estrela",
+    "benLabel": "Bênção da Casa",
+    "benTitulo": "Abençoar o lar",
+    "benTexto": "Uma casa nova, uma mudança, um tempo especial na vida da família ou simplesmente o desejo de pôr o lar sob a proteção de Deus. Um sacerdote da paróquia vai a casa rezar com a família e abençoar cada divisão.",
+    "benCta": "Pedir bênção",
+    "benQuandoLabel": "Quando",
+    "benQuando": "Durante todo o ano",
+    "benComoLabel": "Como pedir",
+    "benComo": "No cartório ou com um sacerdote",
+    "benDuracaoLabel": "Duração",
+    "benDuracao": "Cerca de 30 minutos"
   },
   "ancoras": {
     "conhecer": "Conhecer a Basílica",
@@ -991,7 +1010,9 @@
     "obraAcao": "Ação social",
     "obraContribuir": "Como contribuir",
     "obraObras": "Obras da Paróquia",
-    "devocoes": "Devoções"
+    "devocoes": "Devoções",
+    "entronizacao": "Entronização",
+    "bencao": "Bênção da Casa"
   },
   "donar": {
     "label": "Donativos",

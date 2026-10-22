@@ -8,6 +8,8 @@ import CelebracoesIntro from '@/components/celebracoes/CelebracoesIntro'
 import CelebracoesConfissoes from '@/components/celebracoes/CelebracoesConfissoes'
 import CelebracoesEucaristia from '@/components/celebracoes/CelebracoesEucaristia'
 import CelebracoesDevocoes from '@/components/celebracoes/CelebracoesDevocoes'
+import CelebracoesEntronizacao from '@/components/celebracoes/CelebracoesEntronizacao'
+import CelebracoesBencao from '@/components/celebracoes/CelebracoesBencao'
 import CelebracoesIntencoes from '@/components/celebracoes/CelebracoesIntencoes'
 import CelebracoesTerco from '@/components/celebracoes/CelebracoesTerco'
 import CelebracoesContacto from '@/components/celebracoes/CelebracoesContacto'
@@ -24,7 +26,7 @@ export const metadata: Metadata = { title: 'Celebrações' }
 export default function CelebracoesPage({ params }: { params: Promise<{ locale: string }> }) {
   setRequestLocale(use(params).locale)
   const t = useTranslations('ancoras')
-  const ancoras = [{ id: 'sacramentos', label: t('sacramentos') }, { id: 'eucaristia', label: t('eucaristia') }, { id: 'confissoes', label: t('confissoes') }, { id: 'adoracao', label: t('adoracao') }, { id: 'devocoes', label: t('devocoes') }, { id: 'intencoes', label: t('intencoes') }, { id: 'terco', label: t('terco') }]
+  const ancoras = [{ id: 'sacramentos', label: t('sacramentos') }, { id: 'eucaristia', label: t('eucaristia') }, { id: 'confissoes', label: t('confissoes') }, { id: 'adoracao', label: t('adoracao') }, { id: 'devocoes', label: t('devocoes') }, { id: 'intencoes', label: t('intencoes') }, { id: 'entronizacao', label: t('entronizacao') }, { id: 'bencao', label: t('bencao') }, { id: 'terco', label: t('terco') }]
 
   return (
     <PaginaInterior ancoras={ancoras}>
@@ -36,6 +38,8 @@ export default function CelebracoesPage({ params }: { params: Promise<{ locale: 
       <CelebracoesAdoracao />
       <CelebracoesDevocoes />
       <CelebracoesIntencoes />
+      <CelebracoesEntronizacao />
+      <CelebracoesBencao />
       <CelebracoesTerco />
       <CelebracoesContacto />
     </PaginaInterior>
