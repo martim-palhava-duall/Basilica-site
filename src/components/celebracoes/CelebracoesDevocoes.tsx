@@ -19,27 +19,27 @@ const GALERIA: FotoGaleria[] = [
  * com devoções". Substitui as antigas secções das Primeiras Sextas-Feiras (Figma
  * 111:1710) e dos Primeiros Sábados (111:1742) e acrescenta as duas novenas.
  *
- * Mesmo desenho dos Grupos Culturais da Vida da Paróquia (ListaPainel), com o
- * hover da lista dos Sacramentos: a barra sob o rato fica a cheio, as outras
- * recuam para 30% e a fotografia aparece ao centro; ao clicar, abrem o painel com a introdução, "Quando" (e "Programa" nas
- * Primeiras Sextas), a galeria e "Pedir informações".
+ * Barras com o desenho dos Grupos Culturais da Vida da Paróquia (ListaPainel):
+ * ao passar, enchem-se de azul com a fotografia ao centro. Ao clicar abrem o
+ * painel com o desenho do dos Sacramentos (Figma 140:1514): introdução, "Quando"
+ * (destaques a 32px), "O que é preciso", a galeria e "Pedir informações".
  *
- * Os textos das Sextas e dos Sábados são os das secções antigas; as horas do
- * programa das Sextas vêm do namespace `horarios` (fonte única). Os textos das
- * duas novenas são provisórios, para o cliente rever.
+ * Os textos das Sextas e dos Sábados são os das secções antigas; as horas das
+ * Sextas vêm do namespace `horarios` (fonte única). Os textos das duas novenas
+ * e os de "O que é preciso" são provisórios, para o cliente rever.
  */
 export default function CelebracoesDevocoes() {
   const t = useTranslations('celebrar')
+  const c = useTranslations('celebracoes')
   const h = useTranslations('horarios')
 
-  const adoracaoTarde = min(h('adoracaoSemHoras').split(' · ')[1] ?? '')
-  const missaTarde = h('missasSemHoras').split(' · ').pop() ?? ''
-  const quando = t('sextasQuandoLabel')
+  // Os horários da fonte única estão em maiúsculas; no painel lêem-se em texto corrente
+  const adoracaoTarde = min(h('adoracaoSemHoras').split(' · ')[1] ?? '').toLowerCase()
+  const missaTarde = (h('missasSemHoras').split(' · ').pop() ?? '').toLowerCase()
 
   return (
     <ListaPainel
       id="devocoes"
-      hover="realce"
       label={t('devLabel')}
       titulo={t.rich('devTitulo', { i })}
       cta={{ texto: t('devCta'), href: '/contactos' }}
@@ -52,10 +52,11 @@ export default function CelebracoesDevocoes() {
           foto: '/celebracoes/sextas.jpg',
           intro: t('sextasCitacao'),
           intro2: t('sextasTexto'),
-          blocos: [
-            { titulo: quando, texto: t('sextasQuando') },
-            { titulo: t('sextasProgramaLabel'), texto: `${t('sextasPrograma')}, ${adoracaoTarde}. Santa Missa às ${missaTarde}.` },
+          quando: [
+            { destaque: adoracaoTarde, texto: t('dev1Adoracao') },
+            { destaque: missaTarde, texto: t('dev1Missa') },
           ],
+          preciso: t('dev1Preciso'),
         },
         {
           n: '02',
@@ -64,7 +65,9 @@ export default function CelebracoesDevocoes() {
           foto: '/home/oque-celebrar.jpg',
           intro: t('dev2Intro'),
           intro2: t('sabTexto'),
-          blocos: [{ titulo: quando, texto: t('sabQuando') }],
+          // A hora é a da antiga Agenda Paroquial (a do desenho), por confirmar com a paróquia
+          quando: [{ destaque: t('agSabadosHora').toLowerCase(), texto: t('dev2QuandoT') }],
+          preciso: t('dev2Preciso'),
         },
         {
           n: '03',
@@ -73,7 +76,8 @@ export default function CelebracoesDevocoes() {
           foto: '/celebracoes/adoracao.jpg',
           intro: t('dev3Intro'),
           intro2: t('dev3Intro2'),
-          blocos: [{ titulo: quando, texto: t('dev3Quando') }],
+          quando: [{ destaque: t('dev3QuandoD'), texto: t('dev3QuandoT') }],
+          preciso: t('dev3Preciso'),
         },
         {
           n: '04',
@@ -82,12 +86,20 @@ export default function CelebracoesDevocoes() {
           foto: '/home/somos-interior.jpg',
           intro: t('dev4Intro'),
           intro2: t('dev4Intro2'),
-          blocos: [{ titulo: quando, texto: t('dev4Quando') }],
+          quando: [{ destaque: t('dev4QuandoD'), texto: t('dev4QuandoT') }],
+          preciso: t('dev4Preciso'),
         },
       ]}
       galeria={GALERIA}
       painelCta={{ texto: t('devPainelCta'), href: '/contactos' }}
-      rotulos={{ fechar: t('devFechar'), galeria: t('devGaleria'), anterior: t('devAnterior'), seguinte: t('devSeguinte') }}
+      rotulos={{
+        fechar: t('devFechar'),
+        galeria: t('devGaleria'),
+        anterior: t('devAnterior'),
+        seguinte: t('devSeguinte'),
+        quando: c('painelQuandoHead'),
+        preciso: c('painelPrecisoHead'),
+      }}
     />
   )
 }
