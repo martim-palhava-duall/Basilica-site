@@ -725,6 +725,27 @@ html { scrollbar-gutter: stable; }
 @keyframes hero-aparece { from { opacity: 0; transform: translate3d(0, 20px, 0); } to { opacity: 1; transform: translate3d(0, 0, 0); } }
 @keyframes hero-esbate { from { opacity: 0; } to { opacity: 1; } }
 
+/* ── Nome do rodapé: entrada (RevelarMarca) ──
+   Cada peça ergue-se de baixo enquanto uma máscara a descobre de baixo para cima
+   (clip-path + translate, só compositor). "Basílica" primeiro, depois "Sagrado",
+   "Coração" e "Jesus", em cascata. Com movimento reduzido nada fica escondido. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-revelar='espera'] .rodape-peca {
+    clip-path: inset(100% 0 0 0);
+    transform: translateY(22%);
+  }
+  [data-revelar='entrou'] .rodape-peca {
+    clip-path: inset(0 0 0 0);
+    transform: none;
+    transition:
+      clip-path 1500ms cubic-bezier(0.16, 1, 0.3, 1) var(--atraso, 0ms),
+      transform 1700ms cubic-bezier(0.16, 1, 0.3, 1) var(--atraso, 0ms);
+  }
+  [data-revelar] .rodape-peca:nth-child(2) { --atraso: 280ms; }
+  [data-revelar] .rodape-peca:nth-child(3) { --atraso: 380ms; }
+  [data-revelar] .rodape-peca:nth-child(4) { --atraso: 480ms; }
+}
+
 /* ── Botões: hover "dois brilhos" ──
    Dois pontos de luz percorrem a borda do botão, devagar, enquanto o rato está
    em cima (escolhido entre as opções de /hovers). Vale para todos os botões com
