@@ -7,6 +7,7 @@ import { useTranslations } from 'next-intl'
 import { useMenu } from '@/components/home/MenuContext'
 import Seta from '@/components/home/Seta'
 import { u } from '@/lib/escala'
+import { BILHETEIRA, externo } from '@/lib/links'
 
 /**
  * Menu de ecrã — design novo (Figma, nó 111:148), desktop 1440.
@@ -23,7 +24,7 @@ import { u } from '@/lib/escala'
 const COL1: [string, string][] = [
   ['menuHome', '/'],
   ['menuSobre', '/sobre-a-basilica'],
-  ['menuVisitar', '/basilica-e-convento'],
+  ['menuVisitar', BILHETEIRA],
   ['menuCelebracoes', '/celebracoes'],
   ['menuDonativos', '/donativos'],
 ]
@@ -111,7 +112,8 @@ export default function HomeMenu() {
               </button>
             </span>
             <Link
-              href="/basilica-e-convento"
+              href={BILHETEIRA}
+              {...externo(BILHETEIRA)}
               onClick={fechar}
               className="btn-luz h-[calc(32*var(--u))] px-[calc(20*var(--u))] flex items-center rounded-[calc(4*var(--u))] bg-[var(--texto-escuro)] text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] text-[rgba(247,242,238,0.85)] transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
             >
@@ -131,7 +133,7 @@ export default function HomeMenu() {
         <ul className="menu-lista absolute top-[calc(120*var(--u))] w-[calc(329*var(--u))] flex flex-col gap-[calc(32*var(--u))]" style={{ left: u(32) }}>
           {COL1.map(([chave, href], i) => (
             <li key={chave} style={entra(260 + i * 60)}>
-              <Link href={href} onClick={fechar} className="menu-link">{t(chave)}</Link>
+              <Link href={href} {...externo(href)} onClick={fechar} className="menu-link">{t(chave)}</Link>
             </li>
           ))}
         </ul>

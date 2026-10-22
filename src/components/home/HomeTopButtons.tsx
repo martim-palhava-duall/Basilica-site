@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { useMenu } from '@/components/home/MenuContext'
 import { u } from '@/lib/escala'
+import { BILHETEIRA, externo } from '@/lib/links'
 
 /**
  * Menu + Visitar, canto superior direito do hero (Figma 173:3932).
@@ -40,7 +41,8 @@ export default function HomeTopButtons() {
         </button>
       </span>
       <Link
-        href="/basilica-e-convento"
+        href={BILHETEIRA}
+        {...externo(BILHETEIRA)}
         className="btn-luz h-[calc(32*var(--u))] px-[calc(20*var(--u))] flex items-center rounded-[calc(4*var(--u))] bg-[var(--bege-claro-2)] text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] text-[rgba(18,28,36,0.85)] transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
       >
         {t('heroVisitar')}

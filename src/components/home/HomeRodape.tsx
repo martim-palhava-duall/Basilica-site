@@ -3,10 +3,11 @@ import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import Seta from '@/components/home/Seta'
 import NomeRodape from '@/components/home/NomeRodape'
+import { BILHETEIRA, externo } from '@/lib/links'
 
 const COL_BASILICA: [string, string][] = [
   ['menuSobre', '/sobre-a-basilica'],
-  ['menuVisitar', '/basilica-e-convento'],
+  ['menuVisitar', BILHETEIRA],
   ['menuCelebracoes', '/celebracoes'],
   ['menuVida', '/vida-paroquia'],
   ['menuObra', '/obra-social'],
@@ -38,7 +39,7 @@ export default function HomeRodape() {
   const t = useTranslations('inicio')
   const lista = (itens: [string, string][]) =>
     itens.map(([chave, href]) => (
-      <li key={chave}><Link href={href} className={`block ${LINK}`}>{t(chave)}</Link></li>
+      <li key={chave}><Link href={href} {...externo(href)} className={`block ${LINK}`}>{t(chave)}</Link></li>
     ))
 
   return (

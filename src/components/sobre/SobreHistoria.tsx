@@ -9,15 +9,16 @@ import { u } from '@/lib/escala'
 const TRIM = { textBox: 'trim-both cap alphabetic' } as React.CSSProperties
 
 /** Cada década, com a fotografia que a acompanha. Só a de 1750 tem texto e foto
- *  definitivos; as outras usam a mesma fotografia e texto provisório até haver
- *  conteúdo (chaves `hist1760`…`hist1800` nas mensagens). */
+ *  definitivos; as outras têm texto provisório (chaves `hist1760`…`hist1800` nas
+ *  mensagens) e, para se ver como a secção funciona, outras fotografias da
+ *  Basílica já usadas no site — a trocar pelas de cada época quando as houver. */
 const DECADAS = [
   { ano: 1750, foto: '/sobre/historia-1750.png' },
-  { ano: 1760, foto: '/sobre/historia-1750.png' },
-  { ano: 1770, foto: '/sobre/historia-1750.png' },
-  { ano: 1780, foto: '/sobre/historia-1750.png' },
-  { ano: 1790, foto: '/sobre/historia-1750.png' },
-  { ano: 1800, foto: '/sobre/historia-1750.png' },
+  { ano: 1760, foto: '/home/somos-fachada.jpg' },
+  { ano: 1770, foto: '/basilica/conhecer-fachada.jpg' },
+  { ano: 1780, foto: '/images/cupula-torre.jpg' },
+  { ano: 1790, foto: '/basilica/conhecer-tumulo-rainha.jpg' },
+  { ano: 1800, foto: '/basilica/conhecer-presepio.jpg' },
 ] as const
 
 /** Opacidade de cada ano consoante a distância à década ativa (Figma: 1, .4, .3, .2, .1, .05).
