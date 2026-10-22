@@ -2,8 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import Seta from '@/components/home/Seta'
-import RevelarMarca from '@/components/home/RevelarMarca'
-import { u } from '@/lib/escala'
+import NomeRodape from '@/components/home/NomeRodape'
 
 const COL_BASILICA: [string, string][] = [
   ['menuSobre', '/sobre-a-basilica'],
@@ -115,16 +114,8 @@ export default function HomeRodape() {
       </div>
 
       {/* ── Nome da Basílica, em letras grandes ── */}
-      {/* Revela-se ao entrar no ecrã: as peças erguem-se de baixo, em cascata (RevelarMarca) */}
-      <RevelarMarca label={t('rodMarcaAlt')} className="max-lg:flex max-lg:flex-wrap max-lg:items-end max-lg:justify-between max-lg:gap-y-[calc(12*var(--u))]">
-        {/* Mobile: as peças saem das posições do desenho e ficam em fluxo, à largura do ecrã */}
-        {/* eslint-disable @next/next/no-img-element */}
-        <img src="/home/footer-basilica.svg" alt="" className="rodape-peca max-lg:static max-lg:w-full! max-lg:h-auto! absolute" style={{ left: u(36.64), top: u(517.02), width: u(1371.364), height: u(137.329) }} />
-        <img src="/home/footer-sagrado.svg" alt="" className="rodape-peca max-lg:static max-lg:w-[30%]! max-lg:h-auto! absolute" style={{ left: u(34), top: u(692.3), width: u(349.886), height: u(57.133) }} />
-        <img src="/home/footer-coracao.svg" alt="" className="rodape-peca max-lg:static max-lg:w-[31%]! max-lg:h-auto! absolute" style={{ left: 'calc(33.33% + 61.48 * var(--u))', top: u(680.21), width: u(359.829), height: u(82.614) }} />
-        <img src="/home/footer-jesus.svg" alt="" className="rodape-peca max-lg:static max-lg:w-[26%]! max-lg:h-auto! absolute" style={{ left: 'calc(75% + 22.79 * var(--u))', top: u(692.49), width: u(304.555), height: u(65.349) }} />
-        {/* eslint-enable @next/next/no-img-element */}
-      </RevelarMarca>
+      {/* Nome da Basílica: revela-se ao entrar no ecrã (NomeRodape) */}
+      <NomeRodape label={t('rodMarcaAlt')} className="absolute left-0 top-[calc(517.02*var(--u))]" />
 
       {/* ── Barra legal ── */}
       <div className="absolute left-0 top-[calc(826.82*var(--u))] max-lg:static max-lg:h-auto max-lg:flex-col max-lg:items-start max-lg:gap-[calc(12*var(--u))] max-lg:px-0 flex items-center justify-between w-full h-[calc(40*var(--u))] pt-[calc(24*var(--u))] px-[calc(32*var(--u))] border-t border-solid border-[rgba(247,242,238,0.2)] text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))]">
