@@ -42,8 +42,10 @@ const DESLOCAMENTOS = GALERIA.map((_, i) => GALERIA.slice(0, i).reduce((s, g) =>
  * Sacramentos, lista e painel — design novo (Figma, nós 111:1534 e 140:1514).
  *
  * Fotografia fixa à esquerda e, à direita, os oito sacramentos: o ativo está a
- * cheio e os outros a 30% (ativa-se o que passa da linha a 45% do ecrã, ou o
- * que está sob o rato). "Saiba mais" abre um painel de 1000px que desliza pela
+ * cheio e os outros a 30% (ou o que está sob o rato). O ativo é o último cujo
+ * topo já passou uma linha de leitura que desce sobre a fotografia fixa enquanto
+ * a lista passa por ela — como no Conhecer a Basílica: com uma linha parada a
+ * meio do ecrã, os últimos só ficavam ativos depois de a fotografia se soltar. "Saiba mais" abre um painel de 1000px que desliza pela
  * direita, com a descrição, quando, o que é preciso, a galeria e o botão para
  * marcar; o resto do ecrã fica coberto por um véu a 20% que o fecha ao clicar.
  * É um diálogo modal: prende o scroll, fecha com Escape e devolve o foco ao
@@ -54,6 +56,8 @@ export default function SacramentosLista({ items, textos }: { items: Sacramento[
   const [aberto, setAberto] = useState<number | null>(null)
   const [foto, setFoto] = useState(0)
   const itens = useRef<(HTMLElement | null)[]>([])
+  const fotoRef = useRef<HTMLDivElement>(null)
+  const listaRef = useRef<HTMLDivElement>(null)
   const fecharRef = useRef<HTMLButtonElement>(null)
   const origemRef = useRef<HTMLButtonElement | null>(null)
   const painelRef = useRef<HTMLDivElement>(null)
@@ -68,12 +72,18 @@ export default function SacramentosLista({ items, textos }: { items: Sacramento[
   if (aberto !== null) ultimo.current = aberto
   const s = items[ultimo.current]
 
-  // Ativo = o último ponto cujo topo já passou da linha a 45% do ecrã
+  // Ativo = o último cujo topo já passou a linha de leitura, que desce sobre a
+  // fotografia fixa de cima a baixo enquanto a lista passa por ela
   useEffect(() => {
     let pendente = false
     const atualizar = () => {
       pendente = false
-      const linha = window.innerHeight * 0.45
+      const foto = fotoRef.current?.getBoundingClientRect()
+      const lista = listaRef.current?.getBoundingClientRect()
+      if (!foto || !lista) return
+      const percurso = Math.max(lista.height - foto.height, 1)
+      const p = Math.min(Math.max((foto.top - lista.top) / percurso, 0), 1)
+      const linha = foto.top + p * foto.height
       let i = 0
       itens.current.forEach((el, k) => {
         if (el && el.getBoundingClientRect().top <= linha) i = k
@@ -248,12 +258,12 @@ export default function SacramentosLista({ items, textos }: { items: Sacramento[
     <>
       <div className="flex items-start justify-between w-full">
         {/* Fotografia fixa */}
-        <div className="sticky top-[calc(120*var(--u))] h-[calc(629*var(--u))] w-[calc(678*var(--u))] shrink-0 rounded-[calc(4*var(--u))] overflow-hidden">
+        <div ref={fotoRef} className="sticky top-[calc(120*var(--u))] h-[calc(629*var(--u))] w-[calc(678*var(--u))] shrink-0 rounded-[calc(4*var(--u))] overflow-hidden">
           <Image src={FOTO} alt="" fill sizes="678px" className="object-cover" />
         </div>
 
         {/* Lista */}
-        <div className="flex flex-col gap-[calc(48*var(--u))] w-[calc(562*var(--u))]">
+        <div ref={listaRef} className="flex flex-col gap-[calc(48*var(--u))] w-[calc(562*var(--u))]">
           {items.map((it, i) => (
             <article
               key={it.n}
