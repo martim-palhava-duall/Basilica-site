@@ -76,7 +76,11 @@ export default function CelebracoesDevocoes() {
           foto: '/celebracoes/adoracao.jpg',
           intro: t('dev3Intro'),
           intro2: t('dev3Intro2'),
-          quando: [{ destaque: t('dev3QuandoD'), texto: t('dev3QuandoT') }],
+          // Horas provisórias (inventadas a pedido, até a paróquia as confirmar)
+          quando: [
+            { destaque: t('dev3Hora'), texto: t('dev3QuandoT') },
+            { destaque: missaTarde, texto: t('dev1Missa') },
+          ],
           preciso: t('dev3Preciso'),
         },
         {
@@ -86,7 +90,8 @@ export default function CelebracoesDevocoes() {
           foto: '/home/somos-interior.jpg',
           intro: t('dev4Intro'),
           intro2: t('dev4Intro2'),
-          quando: [{ destaque: t('dev4QuandoD'), texto: t('dev4QuandoT') }],
+          // 15h00, a "hora da Misericórdia"; provisória, até a paróquia a confirmar
+          quando: [{ destaque: t('dev4Hora'), texto: t('dev4QuandoT') }],
           preciso: t('dev4Preciso'),
         },
       ]}

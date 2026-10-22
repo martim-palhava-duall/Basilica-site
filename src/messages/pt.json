@@ -951,10 +951,10 @@
     "dev1Adoracao": "Adoração e Confissões, na primeira sexta-feira de cada mês",
     "dev1Missa": "Santa Missa",
     "dev2QuandoT": "Primeiro sábado de cada mês",
-    "dev3QuandoD": "Nove dias",
-    "dev3QuandoT": "antes da solenidade do Sagrado Coração de Jesus",
-    "dev4QuandoD": "Nove dias",
-    "dev4QuandoT": "da Sexta-feira Santa ao sábado antes do Domingo da Divina Misericórdia"
+    "dev3QuandoT": "Oração da novena, nos nove dias antes da solenidade do Sagrado Coração de Jesus",
+    "dev4QuandoT": "Terço da Misericórdia, da Sexta-feira Santa ao sábado antes do Domingo da Divina Misericórdia",
+    "dev3Hora": "18h30",
+    "dev4Hora": "15h00"
   },
   "ancoras": {
     "conhecer": "Conhecer a Basílica",
