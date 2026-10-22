@@ -37,11 +37,12 @@ const LINHAS: Linha[] = [
  * grandes, cada uma com uma miniatura e um link para a página respetiva. Ao
  * passar numa entrada, o texto passa de Forevs Light Italic a Forevs Regular, na
  * cor bege claro, ganha a fotografia do hover e uma seta que entra a deslizar
- * no fim da linha; as outras recuam para 35%, para a escolhida se destacar.
- * Rápido mas sem solavancos: tudo em --ease-suave (cubic-out, responde logo mas
- * sem o arranque seco de uma expo/quart) e entre 450 e 550ms — a troca de letra
- * em 450, o recuo das outras e a seta (só 12px) em 500, a miniatura em 550, o
- * zoom do "rezar" em 700. Ao sair, tudo regressa pelo mesmo caminho.
+ * no fim da linha; as outras recuam para 17%, para a escolhida ficar sozinha.
+ * Ritmo do menu de bestsportsagency.com: a reação é imediata e a suavidade está na
+ * cauda longa do movimento. O recuo das outras (200ms) e a troca de letra (250ms)
+ * são quase instantâneos; a seta acende em 250ms e desliza 28px para fora, como
+ * as legendas laterais da referência, em 500ms numa expo-out (--ease-entrada), tal
+ * como a miniatura; o zoom do "rezar" em 700. Ao sair, tudo regressa pelo mesmo caminho.
  *
  * Mobile: sem posições fixas — uma coluna com as quatro entradas a 34px, a
  * miniatura a 60 × 40 e a seta sempre visível (não há hover em ecrãs de toque).
@@ -117,7 +118,7 @@ export default function HomeOQueProcura() {
 }
 
 const TRIM = { textBox: 'trim-both cap alphabetic' } as React.CSSProperties
-const BASE = 'col-start-1 row-start-1 whitespace-nowrap text-[length:calc(96*var(--u))] leading-[calc(100.8*var(--u))] tracking-[calc(-0.576*var(--u))] max-lg:text-[length:calc(34*var(--u))] max-lg:leading-[calc(38*var(--u))] max-lg:tracking-normal transition-opacity duration-[450ms] ease-[var(--ease-suave)]'
+const BASE = 'col-start-1 row-start-1 whitespace-nowrap text-[length:calc(96*var(--u))] leading-[calc(100.8*var(--u))] tracking-[calc(-0.576*var(--u))] max-lg:text-[length:calc(34*var(--u))] max-lg:leading-[calc(38*var(--u))] max-lg:tracking-normal transition-opacity duration-[250ms] ease-[var(--ease-out)]'
 /** Seta do hover: a do botão (seta.svg), à escala do texto de 96px */
 const SETA_L = 42
 const SETA_A = 28
@@ -158,7 +159,7 @@ function Entrada({
 
   const thumb = (
     <div
-      className="relative h-[calc(74.66*var(--u))] w-[calc(112*var(--u))] max-lg:h-[calc(40*var(--u))] max-lg:w-[calc(60*var(--u))] shrink-0 overflow-hidden rounded-[calc(4*var(--u))] transition-transform duration-[550ms] ease-[var(--ease-suave)]"
+      className="relative h-[calc(74.66*var(--u))] w-[calc(112*var(--u))] max-lg:h-[calc(40*var(--u))] max-lg:w-[calc(60*var(--u))] shrink-0 overflow-hidden rounded-[calc(4*var(--u))] transition-transform duration-[500ms] ease-[var(--ease-entrada)]"
       style={{ transform: `translate3d(${desliza}px, 0, 0)` }}
     >
       {linha.fundo && (
@@ -168,7 +169,7 @@ function Entrada({
       )}
       {/* 136×90 fixos; o zoom do "rezar" (136→117) é uma escala, não uma mudança de tamanho */}
       <div
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-transform duration-[700ms] ease-[var(--ease-suave)]"
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-transform duration-[700ms] ease-[var(--ease-entrada)]"
         style={linha.fundo ? { width: u(136), height: u(90), scale: ativa ? 0.9 : 1 } : { width: '100%', height: '100%' }}
       >
         <Image src={linha.foto} alt="" fill sizes="(max-width: 1023px) 72px, 136px" className="object-cover" />
@@ -179,7 +180,7 @@ function Entrada({
           alt=""
           fill
           sizes="(max-width: 1023px) 60px, 112px"
-          className="object-cover transition-opacity duration-[500ms] ease-[var(--ease-suave)]"
+          className="object-cover transition-opacity duration-[300ms] ease-[var(--ease-out)]"
           style={{ opacity: ativa ? 1 : 0 }}
         />
       )}
@@ -214,12 +215,13 @@ function Entrada({
   const seta = (
     <span
       aria-hidden="true"
-      className="seta shrink-0 text-[var(--bege-claro)] transition-[opacity,transform] duration-[500ms] ease-[var(--ease-suave)] max-lg:ml-auto max-lg:w-[calc(21*var(--u))]! max-lg:h-[calc(14*var(--u))]! max-lg:opacity-100! max-lg:transform-none!"
+      className="seta shrink-0 text-[var(--bege-claro)] max-lg:ml-auto max-lg:w-[calc(21*var(--u))]! max-lg:h-[calc(14*var(--u))]! max-lg:opacity-100! max-lg:transform-none!"
       style={{
         width: u(SETA_L),
         height: u(SETA_A),
         opacity: ativa ? 1 : 0,
-        transform: `translate3d(calc(${folga && ativa ? folga : 0}px + ${ativa ? 0 : -12} * var(--u)), 0, 0)`,
+        transform: `translate3d(calc(${folga && ativa ? folga : 0}px + ${ativa ? 0 : -28} * var(--u)), 0, 0)`,
+        transition: 'opacity 250ms var(--ease-out), transform 500ms var(--ease-entrada)',
       }}
     />
   )
@@ -231,8 +233,8 @@ function Entrada({
       onMouseLeave={onSair}
       onFocus={onEntrar}
       onBlur={onSair}
-      className="flex items-center gap-[calc(32*var(--u))] max-lg:gap-[calc(14*var(--u))] outline-none transition-opacity duration-[500ms] ease-[var(--ease-suave)]"
-      style={{ opacity: recuada ? 0.35 : 1 }}
+      className="flex items-center gap-[calc(32*var(--u))] max-lg:gap-[calc(14*var(--u))] outline-none transition-opacity duration-[200ms] ease-[var(--ease-out)]"
+      style={{ opacity: recuada ? 0.17 : 1 }}
     >
       {linha.imagem === 'antes' ? <>{thumb}{textoEl}</> : <>{textoEl}{thumb}</>}
       {seta}
