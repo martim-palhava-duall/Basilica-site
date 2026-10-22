@@ -20,8 +20,9 @@ const INOUT = 'cubic-bezier(0.76, 0, 0.24, 1)'
  * Quem Somos — design novo (Figma, nó 115:309), desktop 1440.
  *
  * Fundo bege claro 2, 180px de respiro, título centrado em 783 de largura que
- * quebra sozinho em duas linhas, e por baixo duas fotografias — a fachada à
- * esquerda (794×600) e, à direita (518), o interior com o texto e o botão.
+ * quebra sozinho em duas linhas, e por baixo duas fotografias (Figma 201:598) —
+ * uma celebração no altar-mor à esquerda (794×600) e, à direita (518), a nave
+ * vista de cima (a mesma do "Interior" do Conhecer a Basílica), com o texto e o botão.
  *
  * Mobile: título a 40px; as duas fotografias empilham-se a toda a largura
  * (fachada 280 de altura, interior 220), com o texto e o botão no fim.
@@ -105,10 +106,10 @@ export default function HomeQuemSomos() {
         </div>
 
         <div className="flex items-center justify-between w-full max-lg:flex-col max-lg:gap-[calc(16*var(--u))]">
-          {foto(0, '/home/somos-fachada.jpg', t('somosAlt1'), 'h-[calc(600*var(--u))] w-[calc(794*var(--u))] max-lg:h-[calc(280*var(--u))] max-lg:w-full', '(max-width: 1023px) 100vw, 794px')}
+          {foto(0, '/home/somos-celebracao.jpg', t('somosAlt1'), 'h-[calc(600*var(--u))] w-[calc(794*var(--u))] max-lg:h-[calc(280*var(--u))] max-lg:w-full', '(max-width: 1023px) 100vw, 794px')}
 
           <div className="flex flex-col gap-[calc(64*var(--u))] items-start w-[calc(518*var(--u))] max-lg:w-full max-lg:gap-[calc(32*var(--u))]">
-            {foto(1, '/home/somos-interior.jpg', t('somosAlt2'), 'h-[calc(417*var(--u))] w-full max-lg:h-[calc(220*var(--u))]', '(max-width: 1023px) 100vw, 518px')}
+            {foto(1, '/basilica/conhecer-interior.jpg', t('somosAlt2'), 'h-[calc(417*var(--u))] w-full max-lg:h-[calc(220*var(--u))]', '(max-width: 1023px) 100vw, 518px')}
             <div className="flex flex-col gap-[calc(24*var(--u))] items-start w-full" style={surge(900)}>
               <p className="text-[length:calc(16*var(--u))] leading-[1.5]">{t('somosTexto')}</p>
               <Link
