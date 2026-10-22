@@ -8,10 +8,11 @@ import { u } from '@/lib/escala'
 
 const TRIM = { textBox: 'trim-both cap alphabetic' } as React.CSSProperties
 
-/** Cada década, com a fotografia que a acompanha. Só a de 1750 tem texto e foto
- *  definitivos; as outras têm texto provisório (chaves `hist1760`…`hist1800` nas
- *  mensagens) e, para se ver como a secção funciona, outras fotografias da
- *  Basílica já usadas no site — a trocar pelas de cada época quando as houver. */
+/** Cada década, com a fotografia que a acompanha. Os textos estão nas mensagens
+ *  (`hist1750`…`hist1800`; os de 1790 e 1800 escritos a partir de pesquisa, a
+ *  rever com a paróquia). Só a fotografia de 1750 é da época; as outras são
+ *  fotografias atuais da Basílica, já usadas no site, para se ver como a secção
+ *  funciona — a trocar pelas de cada época quando as houver. */
 const DECADAS = [
   { ano: 1750, foto: '/sobre/historia-1750.png' },
   { ano: 1760, foto: '/home/somos-fachada.jpg' },
