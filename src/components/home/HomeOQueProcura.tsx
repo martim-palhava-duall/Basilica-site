@@ -37,8 +37,11 @@ const LINHAS: Linha[] = [
  * grandes, cada uma com uma miniatura e um link para a página respetiva. Ao
  * passar numa entrada, o texto passa de Forevs Light Italic a Forevs Regular, na
  * cor bege claro, ganha a fotografia do hover e uma seta que entra a deslizar
- * no fim da linha; as outras recuam para 20%, para a escolhida ficar sozinha.
- * Ao sair, a seta volta para trás e tudo regressa, sem saltos (600ms, ease-out).
+ * no fim da linha; as outras recuam para 40%, para a escolhida se destacar.
+ * Tudo na curva in-out das mudanças de estado (--ease-inout), devagar: a troca
+ * de letra em 800ms, o recuo das outras em 900ms, a miniatura e a seta em
+ * 800–900ms (a seta só 12px), o zoom do "rezar" em 1,1s. Ao sair, tudo regressa
+ * pelo mesmo caminho.
  *
  * Mobile: sem posições fixas — uma coluna com as quatro entradas a 34px, a
  * miniatura a 60 × 40 e a seta sempre visível (não há hover em ecrãs de toque).
@@ -114,7 +117,7 @@ export default function HomeOQueProcura() {
 }
 
 const TRIM = { textBox: 'trim-both cap alphabetic' } as React.CSSProperties
-const BASE = 'col-start-1 row-start-1 whitespace-nowrap text-[length:calc(96*var(--u))] leading-[calc(100.8*var(--u))] tracking-[calc(-0.576*var(--u))] max-lg:text-[length:calc(34*var(--u))] max-lg:leading-[calc(38*var(--u))] max-lg:tracking-normal transition-opacity duration-[400ms] ease-[var(--ease-out)]'
+const BASE = 'col-start-1 row-start-1 whitespace-nowrap text-[length:calc(96*var(--u))] leading-[calc(100.8*var(--u))] tracking-[calc(-0.576*var(--u))] max-lg:text-[length:calc(34*var(--u))] max-lg:leading-[calc(38*var(--u))] max-lg:tracking-normal transition-opacity duration-[800ms] ease-[var(--ease-inout)]'
 /** Seta do hover: a do botão (seta.svg), à escala do texto de 96px */
 const SETA_L = 42
 const SETA_A = 28
@@ -155,7 +158,7 @@ function Entrada({
 
   const thumb = (
     <div
-      className="relative h-[calc(74.66*var(--u))] w-[calc(112*var(--u))] max-lg:h-[calc(40*var(--u))] max-lg:w-[calc(60*var(--u))] shrink-0 overflow-hidden rounded-[calc(4*var(--u))] transition-transform duration-[600ms] ease-[var(--ease-out)]"
+      className="relative h-[calc(74.66*var(--u))] w-[calc(112*var(--u))] max-lg:h-[calc(40*var(--u))] max-lg:w-[calc(60*var(--u))] shrink-0 overflow-hidden rounded-[calc(4*var(--u))] transition-transform duration-[900ms] ease-[var(--ease-inout)]"
       style={{ transform: `translate3d(${desliza}px, 0, 0)` }}
     >
       {linha.fundo && (
@@ -165,8 +168,8 @@ function Entrada({
       )}
       {/* 136×90 fixos; o zoom do "rezar" (136→117) é uma escala, não uma mudança de tamanho */}
       <div
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-transform duration-[600ms] ease-[var(--ease-out)]"
-        style={linha.fundo ? { width: u(136), height: u(90), scale: ativa ? 0.86 : 1 } : { width: '100%', height: '100%' }}
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-transform duration-[1100ms] ease-[var(--ease-inout)]"
+        style={linha.fundo ? { width: u(136), height: u(90), scale: ativa ? 0.9 : 1 } : { width: '100%', height: '100%' }}
       >
         <Image src={linha.foto} alt="" fill sizes="(max-width: 1023px) 72px, 136px" className="object-cover" />
       </div>
@@ -176,7 +179,7 @@ function Entrada({
           alt=""
           fill
           sizes="(max-width: 1023px) 60px, 112px"
-          className="object-cover transition-opacity duration-[450ms] ease-[var(--ease-out)]"
+          className="object-cover transition-opacity duration-[800ms] ease-[var(--ease-inout)]"
           style={{ opacity: ativa ? 1 : 0 }}
         />
       )}
@@ -211,12 +214,12 @@ function Entrada({
   const seta = (
     <span
       aria-hidden="true"
-      className="seta shrink-0 text-[var(--bege-claro)] transition-[opacity,transform] duration-[600ms] ease-[var(--ease-out)] max-lg:ml-auto max-lg:w-[calc(21*var(--u))]! max-lg:h-[calc(14*var(--u))]! max-lg:opacity-100! max-lg:transform-none!"
+      className="seta shrink-0 text-[var(--bege-claro)] transition-[opacity,transform] duration-[800ms] ease-[var(--ease-inout)] max-lg:ml-auto max-lg:w-[calc(21*var(--u))]! max-lg:h-[calc(14*var(--u))]! max-lg:opacity-100! max-lg:transform-none!"
       style={{
         width: u(SETA_L),
         height: u(SETA_A),
         opacity: ativa ? 1 : 0,
-        transform: `translate3d(calc(${folga && ativa ? folga : 0}px + ${ativa ? 0 : -24} * var(--u)), 0, 0)`,
+        transform: `translate3d(calc(${folga && ativa ? folga : 0}px + ${ativa ? 0 : -12} * var(--u)), 0, 0)`,
       }}
     />
   )
@@ -228,8 +231,8 @@ function Entrada({
       onMouseLeave={onSair}
       onFocus={onEntrar}
       onBlur={onSair}
-      className="flex items-center gap-[calc(32*var(--u))] max-lg:gap-[calc(14*var(--u))] outline-none transition-opacity duration-[600ms] ease-[var(--ease-out)]"
-      style={{ opacity: recuada ? 0.2 : 1 }}
+      className="flex items-center gap-[calc(32*var(--u))] max-lg:gap-[calc(14*var(--u))] outline-none transition-opacity duration-[900ms] ease-[var(--ease-inout)]"
+      style={{ opacity: recuada ? 0.4 : 1 }}
     >
       {linha.imagem === 'antes' ? <>{thumb}{textoEl}</> : <>{textoEl}{thumb}</>}
       {seta}
