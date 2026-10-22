@@ -60,7 +60,7 @@ export default function CelebracoesAgenda() {
             <div aria-hidden="true" className="h-px w-full border-t border-solid border-[var(--azul-escuro)] opacity-25" />
           </div>
 
-          <Link href="/celebracoes#sextas" className="group/cta self-start flex items-center gap-[calc(12*var(--u))] text-[length:calc(16*var(--u))] leading-[1.5] whitespace-nowrap">
+          <Link href="/celebracoes#devocoes" className="group/cta self-start flex items-center gap-[calc(12*var(--u))] text-[length:calc(16*var(--u))] leading-[1.5] whitespace-nowrap">
             {t('agCta')}
             <span className="relative block h-[calc(7*var(--u))] w-[calc(13*var(--u))] overflow-visible">
               {/* eslint-disable-next-line @next/next/no-img-element */}

@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 
 const TYPEKIT = 'https://use.typekit.net/tuk8ddf.css'
 
-const MENSAGENS_CLIENTE = ['basilica', 'common', 'contactos', 'donativos', 'horarios', 'inicio', 'nav', 'obra', 'sobre', 'vida']
+const MENSAGENS_CLIENTE = ['basilica', 'common', 'contactos', 'donativos', 'horarios', 'inicio', 'nav', 'obra', 'sobre']
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))

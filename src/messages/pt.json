@@ -921,7 +921,31 @@
     "ctaLabel": "Contacto",
     "ctaTitulo": "Precisa de marcar <i>alguma</i><br></br><i>celebração?</i>",
     "ctaTexto": "Batizados, casamentos, intenções de missa ou acompanhamento espiritual — fale com o secretariado.",
-    "ctaCta": "Entrar em contacto"
+    "ctaCta": "Entrar em contacto",
+    "devLabel": "Devoções",
+    "devTitulo": "Rezar <i>ao longo do ano</i>",
+    "devCta": "Entre em contacto",
+    "devSaibaMais": "Saiba mais",
+    "devPainelCta": "Pedir informações",
+    "devFechar": "Fechar",
+    "devGaleria": "Galeria",
+    "devAnterior": "Anterior",
+    "devSeguinte": "Seguinte",
+    "dev1Titulo": "Primeiras Sextas",
+    "dev1Texto": "Comunhão em reparação ao Sagrado Coração de Jesus, na primeira sexta-feira de cada mês.",
+    "dev2Titulo": "Primeiros Sábados",
+    "dev2Texto": "Devoção reparadora ao Imaculado Coração de Maria, pedida em Fátima, no primeiro sábado de cada mês.",
+    "dev2Intro": "Cinco sábados de reparação",
+    "dev3Titulo": "Novena do S.C.J.",
+    "dev3Texto": "Nove dias de oração que preparam a solenidade do Sagrado Coração de Jesus, a quem a Basílica é dedicada.",
+    "dev3Intro": "Nove dias a preparar a festa da casa",
+    "dev3Intro2": "Nos nove dias que antecedem a solenidade do Sagrado Coração de Jesus, a comunidade reza em conjunto e confia ao Coração de Cristo as suas intenções. Numa Basílica que Lhe é dedicada, a novena é o tempo de preparação para a festa maior do ano.",
+    "dev3Quando": "Nos nove dias antes da solenidade do Sagrado Coração de Jesus",
+    "dev4Titulo": "Novena da Divina Misericórdia",
+    "dev4Texto": "Nove dias de oração confiados à misericórdia de Deus, da Sexta-feira Santa ao Domingo da Misericórdia.",
+    "dev4Intro": "Jesus, eu confio em Vós",
+    "dev4Intro2": "Pedida por Jesus a Santa Faustina Kowalska, a novena começa na Sexta-feira Santa e termina no sábado antes do Domingo da Divina Misericórdia, o segundo domingo da Páscoa. Em cada dia reza-se o Terço da Misericórdia por uma intenção diferente.",
+    "dev4Quando": "Da Sexta-feira Santa ao sábado antes do Domingo da Divina Misericórdia"
   },
   "ancoras": {
     "conhecer": "Conhecer a Basílica",
@@ -957,7 +981,8 @@
     "vidaSalas": "Reserva de Salas",
     "obraAcao": "Ação social",
     "obraContribuir": "Como contribuir",
-    "obraObras": "Obras da Paróquia"
+    "obraObras": "Obras da Paróquia",
+    "devocoes": "Devoções"
   },
   "donar": {
     "label": "Donativos",

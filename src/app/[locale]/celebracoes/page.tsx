@@ -7,8 +7,7 @@ import CelebracoesCapa from '@/components/celebracoes/CelebracoesCapa'
 import CelebracoesIntro from '@/components/celebracoes/CelebracoesIntro'
 import CelebracoesConfissoes from '@/components/celebracoes/CelebracoesConfissoes'
 import CelebracoesEucaristia from '@/components/celebracoes/CelebracoesEucaristia'
-import CelebracoesSextas from '@/components/celebracoes/CelebracoesSextas'
-import CelebracoesSabados from '@/components/celebracoes/CelebracoesSabados'
+import CelebracoesDevocoes from '@/components/celebracoes/CelebracoesDevocoes'
 import CelebracoesIntencoes from '@/components/celebracoes/CelebracoesIntencoes'
 import CelebracoesTerco from '@/components/celebracoes/CelebracoesTerco'
 import CelebracoesAgenda from '@/components/celebracoes/CelebracoesAgenda'
@@ -26,7 +25,7 @@ export const metadata: Metadata = { title: 'Celebrações' }
 export default function CelebracoesPage({ params }: { params: Promise<{ locale: string }> }) {
   setRequestLocale(use(params).locale)
   const t = useTranslations('ancoras')
-  const ancoras = [{ id: 'sacramentos', label: t('sacramentos') }, { id: 'eucaristia', label: t('eucaristia') }, { id: 'confissoes', label: t('confissoes') }, { id: 'adoracao', label: t('adoracao') }, { id: 'sextas', label: t('sextas') }, { id: 'sabados', label: t('sabados') }, { id: 'intencoes', label: t('intencoes') }, { id: 'terco', label: t('terco') }, { id: 'agenda', label: t('agenda') }]
+  const ancoras = [{ id: 'sacramentos', label: t('sacramentos') }, { id: 'eucaristia', label: t('eucaristia') }, { id: 'confissoes', label: t('confissoes') }, { id: 'adoracao', label: t('adoracao') }, { id: 'devocoes', label: t('devocoes') }, { id: 'intencoes', label: t('intencoes') }, { id: 'terco', label: t('terco') }, { id: 'agenda', label: t('agenda') }]
 
   return (
     <PaginaInterior ancoras={ancoras}>
@@ -36,8 +35,7 @@ export default function CelebracoesPage({ params }: { params: Promise<{ locale: 
       <CelebracoesEucaristia />
       <CelebracoesConfissoes />
       <CelebracoesAdoracao />
-      <CelebracoesSextas />
-      <CelebracoesSabados />
+      <CelebracoesDevocoes />
       <CelebracoesIntencoes />
       <CelebracoesTerco />
       <CelebracoesAgenda />
