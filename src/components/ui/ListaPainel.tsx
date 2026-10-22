@@ -39,6 +39,9 @@ const FOLGA_GALERIA = 12
  * escuro sobe de baixo (600ms, curva quint), o texto passa a bege e a fotografia
  * do item aparece, parada no centro, só com fade.
  *
+ * Com `hover="realce"` o hover é o da lista dos Sacramentos: sem enchimento, a
+ * barra sob o rato fica a cheio e as outras recuam para 30%.
+ *
  * Clicar numa barra abre o painel do item: mesmo desenho do painel dos
  * Sacramentos, um diálogo de 1000px que desliza pela direita com o título, a
  * introdução, os blocos de texto, a galeria e o botão; o resto do ecrã fica
@@ -56,6 +59,7 @@ export default function ListaPainel({
   galeria,
   painelCta,
   rotulos,
+  hover = 'barra',
 }: {
   id: string
   fundo?: string
@@ -71,7 +75,15 @@ export default function ListaPainel({
   /** botão no fim do painel */
   painelCta: { texto: string; href: string }
   rotulos: { fechar: string; galeria: string; anterior: string; seguinte: string }
+  /**
+   * 'barra': a barra enche-se de azul e o texto passa a bege (Grupos Culturais).
+   * 'realce': como a lista dos Sacramentos — a barra sob o rato fica a cheio e
+   * as outras recuam para 30% (500ms), sem enchimento (Devoções).
+   */
+  hover?: 'barra' | 'realce'
 }) {
+  const realce = hover === 'realce'
+  const [realcado, setRealcado] = useState<number | null>(null)
   const DESLOCAMENTOS = galeria.map((_, k) => galeria.slice(0, k).reduce((acc, g) => acc + g.largura + FOLGA_GALERIA, 0))
   const [aberto, setAberto] = useState<number | null>(null)
   const [foto, setFoto] = useState(0)
@@ -265,13 +277,20 @@ export default function ListaPainel({
                 origemRef.current = e.currentTarget
                 setAberto(k)
               }}
-              className={`group/grupo relative z-0 flex w-full cursor-pointer items-center justify-between border-t border-solid text-left border-[rgba(28,43,57,0.3)] py-[calc(40*var(--u))] outline-none transition-colors duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:z-10 hover:text-[var(--bege-claro-2)] focus-visible:text-[var(--bege-claro-2)] border-x-0 ${k === itens.length - 1 ? 'border-b' : 'border-b-0'}`}
+              onMouseEnter={realce ? () => setRealcado(k) : undefined}
+              onMouseLeave={realce ? () => setRealcado((r) => (r === k ? null : r)) : undefined}
+              onFocus={realce ? () => setRealcado(k) : undefined}
+              onBlur={realce ? () => setRealcado((r) => (r === k ? null : r)) : undefined}
+              style={realce ? { opacity: realcado !== null && realcado !== k ? 0.3 : 1 } : undefined}
+              className={`group/grupo relative z-0 flex w-full cursor-pointer items-center justify-between border-t border-solid text-left border-[rgba(28,43,57,0.3)] py-[calc(40*var(--u))] outline-none hover:z-10 border-x-0 ${realce ? 'transition-opacity duration-[500ms] ease-[var(--ease-out)]' : 'transition-colors duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-[var(--bege-claro-2)] focus-visible:text-[var(--bege-claro-2)]'} ${k === itens.length - 1 ? 'border-b' : 'border-b-0'}`}
             >
               {/* Enchimento: sobe de baixo (scaleY, só compositor), por trás do texto */}
-              <span
-                aria-hidden="true"
-                className="absolute inset-x-0 -inset-y-px -z-10 origin-bottom scale-y-0 bg-[var(--azul-escuro)] transition-transform duration-[600ms] ease-[var(--quint)] group-hover/grupo:scale-y-100 group-focus-visible/grupo:scale-y-100"
-              />
+              {!realce && (
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-x-0 -inset-y-px -z-10 origin-bottom scale-y-0 bg-[var(--azul-escuro)] transition-transform duration-[600ms] ease-[var(--quint)] group-hover/grupo:scale-y-100 group-focus-visible/grupo:scale-y-100"
+                />
+              )}
 
               <span className="flex items-center gap-[calc(24*var(--u))] px-[calc(32*var(--u))]">
                 <span className="w-[calc(80*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] tracking-[calc(-0.064*var(--u))]">{gr.n}</span>

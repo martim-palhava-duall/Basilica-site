@@ -19,9 +19,9 @@ const GALERIA: FotoGaleria[] = [
  * com devoções". Substitui as antigas secções das Primeiras Sextas-Feiras (Figma
  * 111:1710) e dos Primeiros Sábados (111:1742) e acrescenta as duas novenas.
  *
- * Mesmo desenho dos Grupos Culturais da Vida da Paróquia (ListaPainel): quatro
- * barras que, ao passar, se enchem de azul com a fotografia ao centro e, ao
- * clicar, abrem o painel com a introdução, "Quando" (e "Programa" nas
+ * Mesmo desenho dos Grupos Culturais da Vida da Paróquia (ListaPainel), com o
+ * hover da lista dos Sacramentos: a barra sob o rato fica a cheio, as outras
+ * recuam para 30% e a fotografia aparece ao centro; ao clicar, abrem o painel com a introdução, "Quando" (e "Programa" nas
  * Primeiras Sextas), a galeria e "Pedir informações".
  *
  * Os textos das Sextas e dos Sábados são os das secções antigas; as horas do
@@ -39,6 +39,7 @@ export default function CelebracoesDevocoes() {
   return (
     <ListaPainel
       id="devocoes"
+      hover="realce"
       label={t('devLabel')}
       titulo={t.rich('devTitulo', { i })}
       cta={{ texto: t('devCta'), href: '/contactos' }}
