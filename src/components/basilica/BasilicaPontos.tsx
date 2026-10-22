@@ -9,14 +9,14 @@ import Revelar from '@/components/home/Revelar'
  * Fotografia de cada ponto (Figma, nó 201:6113 "Conhecer a basilica", uma por
  * ponto, com o nome do ponto). No desenho, as molduras "pinturas" e "Tumulo da
  * rainha" têm as fotografias trocadas (o túmulo com o medalhão da Rainha está em
- * "pinturas"); aqui vão pelo que mostram. Duas vêm recortadas no desenho: o teto
- * pintado (encostado à direita, a meio da altura) e a fachada (mais para baixo),
+ * "pinturas"); aqui vão pelo que mostram. Duas vêm recortadas no desenho: o
+ * retábulo das pinturas (encostado à direita, um pouco acima do meio) e a fachada (mais para baixo),
  * e o `posicao` reproduz esse enquadramento.
  */
 const PONTOS: { n: string; chave: string; foto: string; posicao?: string }[] = [
   { n: '01', chave: 'pi1', foto: '/basilica/conhecer-atrio.jpg' },
   { n: '02', chave: 'pi2', foto: '/basilica/conhecer-interior.jpg' },
-  { n: '03', chave: 'pi3', foto: '/basilica/conhecer-pinturas-teto.jpg', posicao: '100% 53%' },
+  { n: '03', chave: 'pi3', foto: '/basilica/conhecer-pinturas.jpg', posicao: '100% 37%' },
   { n: '04', chave: 'pi4', foto: '/basilica/conhecer-tumulo-rainha.jpg' },
   { n: '05', chave: 'pi5', foto: '/basilica/conhecer-presepio.jpg' },
   { n: '06', chave: 'pi6', foto: '/basilica/conhecer-sacristia.jpg' },
