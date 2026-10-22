@@ -4,12 +4,12 @@ import Image from 'next/image'
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import { useTranslations } from 'next-intl'
 
+const ENTRADA = 'var(--ease-entrada)'
+const SUAVE = 'var(--ease-suave)'
+const INOUT = 'var(--ease-inout)'
+
 /** Destaque a vermelho dentro do título (<v> nas mensagens) */
 const v = (chunks: ReactNode) => <span className="text-[var(--vermelho)]">{chunks}</span>
-
-const QUART = 'cubic-bezier(0.165, 0.84, 0.44, 1)'
-const CUBICA = 'cubic-bezier(0.215, 0.61, 0.355, 1)'
-const INOUT = 'cubic-bezier(0.76, 0, 0.24, 1)'
 
 /**
  * Missão — design novo (Figma, nó 115:199), desktop 1440, 900 de altura.
@@ -61,15 +61,15 @@ export default function HomeMissao() {
     espera
       ? { transform: 'translate3d(0, 115%, 0)' }
       : anima
-        ? { transform: 'translate3d(0, 0, 0)', transition: `transform 1200ms ${QUART} ${200 + k * 120}ms` }
+        ? { transform: 'translate3d(0, 0, 0)', transition: `transform 1400ms ${ENTRADA} ${200 + k * 110}ms` }
         : {}
   const aparece = (atraso: number): CSSProperties =>
     espera
       ? { opacity: 0, transform: 'translate3d(0, 20px, 0)' }
       : anima
-        ? { opacity: 1, transform: 'none', transition: `opacity 1000ms ${QUART} ${atraso}ms, transform 1200ms ${QUART} ${atraso}ms` }
+        ? { opacity: 1, transform: 'none', transition: `opacity 1000ms ${SUAVE} ${atraso}ms, transform 1400ms ${ENTRADA} ${atraso}ms` }
         : {}
-  const zoom: CSSProperties = espera ? { transform: 'scale(1.12)' } : anima ? { transform: 'scale(1)', transition: `transform 1800ms ${CUBICA}` } : {}
+  const zoom: CSSProperties = espera ? { transform: 'scale(1.12)' } : anima ? { transform: 'scale(1)', transition: `transform 2200ms ${SUAVE}` } : {}
 
   const linhas: { conteudo: ReactNode; recuo: boolean }[] = [
     { conteudo: t('missaoL1'), recuo: false },
@@ -132,7 +132,7 @@ export default function HomeMissao() {
             className="absolute inset-0 bg-[var(--bege-claro)]"
             style={{
               transform: anima ? 'translate3d(0, -100%, 0)' : 'translate3d(0, 0, 0)',
-              transition: anima ? `transform 1300ms ${INOUT} 100ms` : 'none',
+              transition: anima ? `transform 1500ms ${INOUT} 100ms` : 'none',
             }}
           />
         )}

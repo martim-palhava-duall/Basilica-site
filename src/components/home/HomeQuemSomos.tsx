@@ -6,15 +6,14 @@ import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 
 import { useTranslations } from 'next-intl'
 import Seta from '@/components/home/Seta'
 
+const ENTRADA = 'var(--ease-entrada)'
+const SUAVE = 'var(--ease-suave)'
+const INOUT = 'var(--ease-inout)'
+
 /** Palavras em itálico leve dentro do título (<i> nas mensagens) */
 const i = (chunks: ReactNode) => (
   <span className="italic font-light" style={{ fontFamily: "'forevs-light', var(--font-display)", lineHeight: 0 }}>{chunks}</span>
 )
-
-const EXPO = 'cubic-bezier(0.16, 1, 0.3, 1)'
-const QUART = 'cubic-bezier(0.165, 0.84, 0.44, 1)'
-const CUBICA = 'cubic-bezier(0.215, 0.61, 0.355, 1)'
-const INOUT = 'cubic-bezier(0.76, 0, 0.24, 1)'
 
 /**
  * Quem Somos — design novo (Figma, nó 115:309), desktop 1440.
@@ -64,10 +63,10 @@ export default function HomeQuemSomos() {
     espera
       ? { opacity: 0, transform: 'translate3d(0, 12px, 0)' }
       : entrou
-        ? { opacity: 1, transform: 'none', transition: `opacity 1400ms ${EXPO} ${atraso}ms, transform 1600ms ${EXPO} ${atraso}ms` }
+        ? { opacity: 1, transform: 'none', transition: `opacity 1100ms ${SUAVE} ${atraso}ms, transform 1600ms ${ENTRADA} ${atraso}ms` }
         : undefined
   const zoom = (k: number): CSSProperties | undefined =>
-    espera ? { transform: 'scale(1.12)' } : entrou ? { transform: 'scale(1)', transition: `transform 1900ms ${CUBICA} ${250 + k * 200}ms` } : undefined
+    espera ? { transform: 'scale(1.12)' } : entrou ? { transform: 'scale(1)', transition: `transform 2200ms ${SUAVE} ${250 + k * 200}ms` } : undefined
 
   const foto = (k: number, src: string, alt: string, cls: string, sizes: string) => (
     <div className={`relative ${cls} rounded-[calc(4*var(--u))] overflow-hidden`}>
@@ -78,7 +77,7 @@ export default function HomeQuemSomos() {
         <div
           aria-hidden="true"
           className="absolute inset-0 bg-[var(--bege-claro-2)]"
-          style={entrou ? { transform: 'translate3d(0, -100%, 0)', transition: `transform 1300ms ${INOUT} ${250 + k * 200}ms` } : undefined}
+          style={entrou ? { transform: 'translate3d(0, -100%, 0)', transition: `transform 1500ms ${INOUT} ${250 + k * 200}ms` } : undefined}
         />
       )}
     </div>
@@ -97,7 +96,7 @@ export default function HomeQuemSomos() {
           <div style={{ clipPath: 'inset(calc(-20 * var(--u)) calc(-40 * var(--u)) calc(-30 * var(--u)) calc(-40 * var(--u)))' }}>
             <div
               style={
-                espera ? { transform: 'translate3d(0, 110%, 0)' } : entrou ? { transform: 'none', transition: `transform 1300ms ${QUART} 100ms` } : undefined
+                espera ? { transform: 'translate3d(0, 110%, 0)' } : entrou ? { transform: 'none', transition: `transform 1300ms ${ENTRADA} 100ms` } : undefined
               }
             >
               <h2 className="font-display text-[length:calc(80*var(--u))] leading-[1.2] tracking-[calc(-0.576*var(--u))] max-lg:text-[length:calc(40*var(--u))] max-lg:leading-[1.15] max-lg:tracking-normal font-normal">{t.rich('somosTitulo', { i, br: () => <br /> })}</h2>

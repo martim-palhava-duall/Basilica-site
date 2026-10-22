@@ -3,8 +3,9 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 
 /**
- * Entrada de texto: aparece e sobe 32px (1,2s, ease-out quart) quando chega a 80% do ecrã. Só isso — a
- * animação do site é sempre simples e discreta.
+ * Entrada de texto: sobe 28px (1,4s, --ease-entrada) e acende (1s, --ease-suave) quando chega a 80% do
+ * ecrã. O fade é mais curto e numa curva mais calma do que o movimento, para o texto não acender de
+ * repente e ficar parado à espera de assentar. Só isso — a animação do site é sempre simples e discreta.
  *
  * O conteúdo está visível por omissão (servidor e antes de hidratar). Só depois
  * de montado, e só se o bloco ainda estiver abaixo do ecrã, é que fica oculto à
@@ -48,13 +49,13 @@ export default function Revelar({
       className={className}
       style={
         estado === 'escondido'
-          ? { opacity: 0, transform: 'translateY(calc(32 * var(--u)))' }
+          ? { opacity: 0, transform: 'translateY(calc(28 * var(--u)))' }
           : {
               opacity: 1,
               transform: 'none',
               transition:
                 estado === 'visivel'
-                  ? `opacity 1200ms var(--ease-out) ${atraso}ms, transform 1200ms var(--ease-out) ${atraso}ms`
+                  ? `opacity 1000ms var(--ease-suave) ${atraso}ms, transform 1400ms var(--ease-entrada) ${atraso}ms`
                   : undefined,
             }
       }

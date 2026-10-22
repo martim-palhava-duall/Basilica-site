@@ -7,6 +7,10 @@ import Revelar from '@/components/home/Revelar'
 import Seta from '@/components/home/Seta'
 import { u } from '@/lib/escala'
 
+const ENTRADA = 'var(--ease-entrada)'
+const SUAVE = 'var(--ease-suave)'
+const INOUT = 'var(--ease-inout)'
+
 /**
  * Notícias de exemplo — o desenho tem três cartões com títulos de teste.
  * A fotografia do 2.º vem recortada no Figma (522×783, deslocada), por isso
@@ -18,10 +22,6 @@ const NOTICIAS = [
   { slug: 'noticia-8', foto: '/home/dest-3.jpg' },
 ] as const
 
-const EXPO = 'cubic-bezier(0.16, 1, 0.3, 1)'
-const QUART = 'cubic-bezier(0.165, 0.84, 0.44, 1)'
-const CUBICA = 'cubic-bezier(0.215, 0.61, 0.355, 1)'
-const INOUT = 'cubic-bezier(0.76, 0, 0.24, 1)'
 const clamp01 = (v: number) => Math.min(Math.max(v, 0), 1)
 const suave = (t: number) => t * t * (3 - 2 * t)
 
@@ -120,7 +120,7 @@ export default function NoticiasBloco({
 
   const surge = (atraso: number, dy = 12, dur = 1600, dx = 0): CSSProperties =>
     visto
-      ? { opacity: 1, transform: 'none', transition: `opacity ${dur - 200}ms ${EXPO} ${atraso}ms, transform ${dur}ms ${EXPO} ${atraso}ms` }
+      ? { opacity: 1, transform: 'none', transition: `opacity ${dur - 200}ms ${ENTRADA} ${atraso}ms, transform ${dur}ms ${ENTRADA} ${atraso}ms` }
       : { opacity: 0, transform: `translate3d(${dx}px, ${dy}px, 0)` }
   const noScroll = (inicio: number): CSSProperties => {
     const o = suave(clamp01((p - inicio) / 0.35))
@@ -137,9 +137,9 @@ export default function NoticiasBloco({
         return undefined
       case 2:
         if (peca === 'label') return surge(0)
-        if (peca === 'tituloMascara') return visto ? { transform: 'none', transition: `transform 1300ms ${QUART} 100ms` } : { transform: 'translate3d(0, 115%, 0)' }
+        if (peca === 'tituloMascara') return visto ? { transform: 'none', transition: `transform 1300ms ${ENTRADA} 100ms` } : { transform: 'translate3d(0, 115%, 0)' }
         if (peca === 'cta') return surge(300)
-        if (peca === 'imagem') return visto ? { transform: 'scale(1)', transition: `transform 1900ms ${CUBICA} ${350 + k * 200}ms` } : { transform: 'scale(1.12)' }
+        if (peca === 'imagem') return visto ? { transform: 'scale(1)', transition: `transform 1900ms ${SUAVE} ${350 + k * 200}ms` } : { transform: 'scale(1.12)' }
         if (peca === 'cortina') return visto ? { transform: 'translate3d(0, -100%, 0)', transition: `transform 1300ms ${INOUT} ${350 + k * 200}ms` } : { transform: 'none' }
         if (peca === 'texto') return surge(1000 + k * 200)
         return undefined
@@ -168,11 +168,11 @@ export default function NoticiasBloco({
         const sy = 0.88
         if (peca === 'moldura')
           return visto
-            ? { opacity: 1, transform: 'none', transition: `opacity 900ms ${EXPO} ${350 + k * 200}ms, transform 1800ms ${EXPO} ${350 + k * 200}ms` }
+            ? { opacity: 1, transform: 'none', transition: `opacity 900ms ${ENTRADA} ${350 + k * 200}ms, transform 1800ms ${ENTRADA} ${350 + k * 200}ms` }
             : { opacity: 0, transform: `scale(${sx}, ${sy})` }
         if (peca === 'imagem')
           return visto
-            ? { transform: 'none', transition: `transform 1800ms ${EXPO} ${350 + k * 200}ms` }
+            ? { transform: 'none', transition: `transform 1800ms ${ENTRADA} ${350 + k * 200}ms` }
             : { transform: `scale(${(1.06 / sx).toFixed(4)}, ${(1.06 / sy).toFixed(4)})` }
         if (peca === 'texto') return surge(900 + k * 200)
         return undefined
@@ -183,7 +183,7 @@ export default function NoticiasBloco({
         if (peca === 'cta') return surge(200)
         if (peca === 'cortinaH')
           return visto ? { transform: 'translate3d(101%, 0, 0)', transition: `transform 1500ms ${INOUT} ${350 + k * 220}ms` } : { transform: 'none' }
-        if (peca === 'imagem') return visto ? { transform: 'none', transition: `transform 1900ms ${CUBICA} ${350 + k * 220}ms` } : { transform: 'translate3d(-4%, 0, 0) scale(1.06)' }
+        if (peca === 'imagem') return visto ? { transform: 'none', transition: `transform 1900ms ${SUAVE} ${350 + k * 220}ms` } : { transform: 'translate3d(-4%, 0, 0) scale(1.06)' }
         if (peca === 'texto') return surge(950 + k * 220, 0, 1500, -12)
         return undefined
       case 8: {
@@ -200,7 +200,7 @@ export default function NoticiasBloco({
         if (peca === 'cta') return surge(200)
         if (peca === 'imagem')
           return visto
-            ? { opacity: 1, transform: 'none', transition: `opacity 1400ms ${EXPO} ${350 + k * 200}ms, transform 2200ms ${EXPO} ${350 + k * 200}ms` }
+            ? { opacity: 1, transform: 'none', transition: `opacity 1400ms ${ENTRADA} ${350 + k * 200}ms, transform 2200ms ${ENTRADA} ${350 + k * 200}ms` }
             : { opacity: 0, transform: 'translate3d(0, -6%, 0) scale(1.14)' }
         if (peca === 'texto') return surge(800 + k * 200, 8, 1500)
         return undefined
@@ -210,7 +210,7 @@ export default function NoticiasBloco({
         if (peca === 'cta') return surge(200)
         if (peca === 'cartao')
           return visto
-            ? { opacity: 1, transform: 'none', transition: `opacity 1400ms ${EXPO} ${400 + k * 200}ms, transform 2000ms ${EXPO} ${400 + k * 200}ms` }
+            ? { opacity: 1, transform: 'none', transition: `opacity 1400ms ${ENTRADA} ${400 + k * 200}ms, transform 2000ms ${ENTRADA} ${400 + k * 200}ms` }
             : { opacity: 0, transform: 'translate3d(0, 24px, 0) scale(0.95)' }
         return undefined
       case 11: {
@@ -226,7 +226,7 @@ export default function NoticiasBloco({
       }
       case 12:
         if (peca === 'label') return surge(0, 0, 1200)
-        if (peca === 'palavra') return visto ? { transform: 'none', transition: `transform 1300ms ${QUART} ${100 + k * 110}ms` } : { transform: 'translate3d(0, 160%, 0)' }
+        if (peca === 'palavra') return visto ? { transform: 'none', transition: `transform 1300ms ${ENTRADA} ${100 + k * 110}ms` } : { transform: 'translate3d(0, 160%, 0)' }
         if (peca === 'cta') return surge(500, 0)
         if (peca === 'cartao') return visto ? { opacity: 1, transition: `opacity 1800ms cubic-bezier(0.37, 0, 0.63, 1) ${700 + k * 220}ms` } : { opacity: 0 }
         return undefined

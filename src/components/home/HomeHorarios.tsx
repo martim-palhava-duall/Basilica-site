@@ -6,12 +6,13 @@ import { useTranslations } from 'next-intl'
 import Seta from '@/components/home/Seta'
 import { u } from '@/lib/escala'
 
+const ENTRADA = 'var(--ease-entrada)'
+
 type Entrada = { horas: string; dias: string }
 type Coluna = { titulo: string; entradas: Entrada[] }
 
 const TRIM = { textBox: 'trim-both cap alphabetic' } as React.CSSProperties
 const LEVE = 'font-[family-name:var(--font-body-light)]'
-const EXPO = 'cubic-bezier(0.16, 1, 0.3, 1)'
 
 /**
  * Horários — design novo (Figma, nó 148:471), desktop 1440.
@@ -64,7 +65,7 @@ export default function HomeHorarios() {
     estado === 'espera'
       ? { opacity: 0, transform: dy ? `translate3d(0, ${dy}px, 0)` : 'none' }
       : estado === 'entrou'
-        ? { opacity: 1, transform: 'none', transition: `opacity ${dur - 200}ms ${EXPO} ${atraso}ms, transform ${dur}ms ${EXPO} ${atraso}ms` }
+        ? { opacity: 1, transform: 'none', transition: `opacity ${dur - 400}ms var(--ease-suave) ${atraso}ms, transform ${dur}ms ${ENTRADA} ${atraso}ms` }
         : undefined
 
   const colunas: Coluna[] = [

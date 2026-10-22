@@ -26,7 +26,6 @@ const ESTADOS = {
 const clamp01 = (v: number) => Math.min(Math.max(v, 0), 1)
 // smootherstep: arranca e pousa ainda mais devagar do que o smoothstep
 const suave = (t: number) => t * t * t * (t * (t * 6 - 15) + 10)
-const mistura = (a: number, b: number, t: number) => a + (b - a) * t
 
 /* Mobile (abaixo de 1024, ver globals.css): os mesmos três estados, com valores
    próprios, entram pelas variáveis CSS que a classe do logótipo define em `max-lg:`.

@@ -23,7 +23,7 @@ export default function HomeBarra() {
       style={{
         backgroundColor: barra.cor,
         transform: recolhido && !barra.oculta ? 'translateY(0)' : 'translateY(-100%)',
-        transition: 'transform 500ms var(--ease-out), background-color 400ms var(--ease-out)',
+        transition: 'transform 650ms var(--ease-entrada), background-color 500ms var(--ease-suave)',
       }}
     >
       <div

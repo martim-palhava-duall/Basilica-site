@@ -6,6 +6,8 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { useTranslations } from 'next-intl'
 import Seta from '@/components/home/Seta'
 
+const ENTRADA = 'var(--ease-entrada)'
+
 const TRIM = { textBox: 'trim-both cap alphabetic' } as React.CSSProperties
 
 /** As três obras: cada barra inteira é um link para o site próprio da obra. */
@@ -35,7 +37,6 @@ const OBRAS = [
  * barra, uma a uma, com uma subida lenta (curva expo, 1,6 a 1,7s). Só
  * `transform` e `opacity`; com movimento reduzido tudo aparece já no lugar.
  */
-const EXPO = 'cubic-bezier(0.16, 1, 0.3, 1)'
 
 export default function HomeObraSocial() {
   const t = useTranslations('inicio')
@@ -66,7 +67,7 @@ export default function HomeObraSocial() {
     estado === 'espera'
       ? { opacity: 0, transform: `translate3d(0, ${dy}px, 0)` }
       : estado === 'entrou'
-        ? { opacity: 1, transform: 'none', transition: `opacity ${dur - 200}ms ${EXPO} ${atraso}ms, transform ${dur}ms ${EXPO} ${atraso}ms` }
+        ? { opacity: 1, transform: 'none', transition: `opacity ${dur - 400}ms var(--ease-suave) ${atraso}ms, transform ${dur}ms ${ENTRADA} ${atraso}ms` }
         : undefined
 
   return (

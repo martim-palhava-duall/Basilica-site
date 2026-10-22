@@ -2,7 +2,8 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useRef, useState, type CSSProperties } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { seguirScroll } from '@/lib/lenis'
 import { useTranslations } from 'next-intl'
 import { u } from '@/lib/escala'
 
@@ -60,45 +61,34 @@ export default function HomeOQueProcura() {
   const t = useTranslations('inicio')
   const [ativa, setAtiva] = useState<string | null>(null)
   const secRef = useRef<HTMLElement>(null)
-  // null: sem animação (servidor, antes de hidratar ou movimento reduzido) → tudo visível
-  const [p, setP] = useState<number | null>(null)
+  const rotuloRef = useRef<HTMLParagraphElement>(null)
+  const frasesRef = useRef<(HTMLDivElement | null)[]>([])
 
+  // Ligado ao scroll, ao ritmo do scroll suave (seguirScroll). Os estilos escrevem-se
+  // direto nos elementos, sem passar pelo React: nada se volta a desenhar a cada passo.
+  // Sem efeito (servidor, antes de hidratar, movimento reduzido) fica tudo visível.
   useEffect(() => {
     const el = secRef.current
     if (!el) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    let pend = false
-    const aplicar = () => {
-      pend = false
+    return seguirScroll(() => {
       const r = el.getBoundingClientRect()
-      setP(clamp01((window.innerHeight - r.top) / window.innerHeight))
-    }
-    const rolar = () => {
-      if (!pend) {
-        pend = true
-        requestAnimationFrame(aplicar)
-      }
-    }
-    aplicar()
-    window.addEventListener('scroll', rolar, { passive: true })
-    window.addEventListener('resize', rolar)
-    return () => {
-      window.removeEventListener('scroll', rolar)
-      window.removeEventListener('resize', rolar)
-    }
+      const p = clamp01((window.innerHeight - r.top) / window.innerHeight)
+      if (rotuloRef.current) rotuloRef.current.style.opacity = suave(clamp01((p - 0.05) / 0.35)).toFixed(3)
+      frasesRef.current.forEach((f, i) => {
+        if (!f) return
+        const o = suave(clamp01((p - 0.12 - i * 0.07) / 0.4))
+        f.style.opacity = o.toFixed(3)
+        f.style.transform = `translate3d(0, ${(18 * (1 - o)).toFixed(2)}px, 0)`
+      })
+    })
   }, [])
-
-  const frase = (i: number): CSSProperties | undefined => {
-    if (p === null) return undefined
-    const o = suave(clamp01((p - 0.12 - i * 0.07) / 0.4))
-    return { opacity: o, transform: `translate3d(0, ${(18 * (1 - o)).toFixed(1)}px, 0)` }
-  }
 
   return (
     <section ref={secRef} data-barra="var(--vermelho)" data-barra-tom="escuro" className="relative w-full h-[calc(900*var(--u))] max-lg:h-auto max-lg:px-[calc(20*var(--u))] max-lg:py-[calc(96*var(--u))] bg-[var(--vermelho)] text-[var(--bege-claro-2)]">
       <p
         className="absolute left-0 top-[calc(140*var(--u))] max-lg:static max-lg:mb-[calc(48*var(--u))] w-full text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] text-center"
-        style={p === null ? undefined : { opacity: suave(clamp01((p - 0.05) / 0.35)) }}
+        ref={rotuloRef}
       >
         {t('oqueLabel')}
       </p>
@@ -106,7 +96,7 @@ export default function HomeOQueProcura() {
       <div role="list" className="max-lg:flex max-lg:flex-col max-lg:gap-[calc(28*var(--u))]">
         {LINHAS.map((l, i) => (
           <div key={l.chave} role="listitem" className="absolute max-lg:static" style={{ left: `calc(50% + ${l.x} * var(--u))`, top: u(l.y) }}>
-            <div style={frase(i)}>
+            <div ref={(el) => { frasesRef.current[i] = el }}>
               <Entrada
                 linha={l}
                 texto={t(l.chave)}
