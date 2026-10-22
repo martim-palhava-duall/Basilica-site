@@ -27,7 +27,8 @@ const i = (chunks: ReactNode) => (
  * as vizinhas espreitam dos dois lados, a 40 de distância. Ao avançar, a pista
  * desliza um passo; são montados cinco lugares à volta da ativa (dois de
  * cada lado, a repetir as imagens quando dá a volta) para o movimento nunca ter saltos.
- * Em baixo, a barra de progresso à esquerda e as setas à direita.
+ * Em baixo, a barra de progresso à esquerda (enche-se até à fotografia atual)
+ * e as setas à direita.
  * A altura das fotografias acompanha o ecrã (ecrã menos 330px), entre 480 e os 624
  * do desenho: num ecrã de 900 de altura ficam com 570. A secção já não cabe
  * inteira num ecrã baixo, para as fotografias não ficarem curtas.
@@ -82,9 +83,10 @@ export default function SobreGaleria({ fundo = 'var(--bege-claro-2)' }: { fundo?
       {/* ── Progresso e setas ── */}
       <div className="relative h-[calc(32*var(--u))] w-[calc(1376*var(--u))] overflow-hidden">
         <div className="absolute left-0 top-1/2 h-[calc(2*var(--u))] w-[calc(166*var(--u))] -translate-y-1/2 bg-[rgba(28,43,57,0.1)]">
+          {/* Enche-se da esquerda até à fotografia atual (1/N, 2/N… N/N); só `transform` */}
           <div
-            className="h-[calc(2*var(--u))] bg-[var(--azul-escuro)] transition-transform duration-[1100ms] ease-[var(--ease-out)]"
-            style={{ width: u(166 / N), transform: `translateX(calc(${atual * (166 / N)} * var(--u)))` }}
+            className="h-[calc(2*var(--u))] w-full origin-left bg-[var(--azul-escuro)] transition-transform duration-[1100ms] ease-[var(--ease-out)]"
+            style={{ transform: `scaleX(${(atual + 1) / N})` }}
           />
         </div>
 
