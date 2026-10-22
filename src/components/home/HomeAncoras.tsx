@@ -7,6 +7,12 @@ import { escalaAncoras, escalaUi, u } from '@/lib/escala'
 
 export type Ancora = { id: string; label: string }
 
+/** Solta um Lenis preso (bloqueado a meio de um scroll): parar e arrancar repõe o estado, só com a API pública */
+const soltar = (l: NonNullable<ReturnType<typeof getLenis>>) => {
+  l.stop()
+  l.start()
+}
+
 /**
  * Âncoras das páginas interiores — design novo (Figma, nó 137:2).
  *
@@ -68,12 +74,20 @@ export default function HomeAncoras({ itens }: { itens: Ancora[] }) {
     setAtiva(id)
     travada.current = true
     window.clearTimeout(destravar.current)
+    const lenis = getLenis()
     const livre = () => {
       window.clearTimeout(destravar.current)
       travada.current = false
     }
-    destravar.current = window.setTimeout(livre, 1600) // rede de segurança
-    const lenis = getLenis()
+    destravar.current = window.setTimeout(() => {
+      livre()
+      // Rede de segurança: se o Lenis ficou preso a meio de um scroll, solta-o
+      if (lenis?.isLocked) soltar(lenis)
+    }, 1600)
+    // O Lenis ignora em silêncio um scrollTo enquanto está bloqueado (`lock`) ou parado:
+    // um bloqueio que ficou por soltar (scroll interrompido, separador em segundo plano,
+    // navegação a meio) deixava as âncoras mortas até recarregar a página.
+    if (lenis?.isLocked) soltar(lenis)
     const desvio = -(ALTURA_BARRA * escalaUi() + ALTURA * escalaAncoras())
     const distancia = Math.abs(el.getBoundingClientRect().top + desvio)
     if (lenis) {
@@ -82,6 +96,7 @@ export default function HomeAncoras({ itens }: { itens: Ancora[] }) {
         duration: Math.min(1.1, 0.6 + distancia / 6000),
         easing: (t: number) => 1 - Math.pow(1 - t, 4),
         lock: true,
+        force: true,
         onComplete: livre,
       })
     } else {

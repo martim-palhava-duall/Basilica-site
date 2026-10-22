@@ -1008,7 +1008,7 @@
     "vidaCti": "O Doze",
     "vidaSalas": "Reserva de Salas",
     "obraAcao": "Ação social",
-    "obraContribuir": "Como contribuir",
+    "obraContribuir": "Ajudar e ser ajudado",
     "obraObras": "Obras da Paróquia",
     "devocoes": "Devoções",
     "entronizacao": "Entronização",
@@ -1234,16 +1234,18 @@
     "acaoFrase": "Caridade, escuta e fraternidade fazem parte da missão da Basílica no apoio aos mais necessitados.",
     "anterior": "Anterior",
     "seguinte": "Seguinte",
-    "comoLabel": "Como contribuir",
-    "comoTitulo": "Cinco formas de ajudar",
-    "comoTexto": "Cada uma responde a uma situação diferente — de quem passa uma vez pela Basílica a quem a acompanha há anos. Todas conduzem ao mesmo formulário, no fim desta página.",
+    "comoLabel": "Uma só comunidade",
+    "comoTitulo": "Ajudar e ser ajudado",
+    "comoTexto": "Na paróquia, quem ajuda e quem precisa de ajuda são muitas vezes as mesmas pessoas, em momentos diferentes da vida. Aqui ficam as respostas mais comuns; todos os pedidos seguem para o mesmo formulário, no fim desta página.",
     "forma1Titulo": "O que fazem?",
-    "forma1Texto": "Um donativo pontual, de qualquer valor, feito no momento. É a forma mais simples de contribuir.",
+    "forma1Texto": "A obra social da paróquia acompanha famílias, idosos e doentes: recolhe e distribui cabazes, visita quem está só, organiza campanhas de alimentos e vestuário e dá atendimento vicentino a quem pede ajuda. Funciona todo o ano, com uma equipa de voluntários.",
     "forma2Titulo": "Quero ajudar",
-    "forma4Titulo": "Preciso de ajuda",
     "convLabel": "Ajudar",
     "convL1": "<i>Também quer</i> ajudar?",
     "convTexto": "Com tempo, com bens ou com um donativo — o secretariado paroquial encaminha conforme a necessidade do momento.",
-    "convCta": "Entrar em contacto"
+    "convCta": "Entrar em contacto",
+    "forma2Texto": "Pode dar tempo, bens ou um donativo. Com tempo, juntando-se aos voluntários nas recolhas, nas visitas e no atendimento; com bens, entregando alimentos, roupa ou outros bens essenciais no secretariado; ou com um donativo, de qualquer valor. Diga-nos no formulário o que pode dar e nós encaminhamos.",
+    "forma3Titulo": "Preciso de ajuda",
+    "forma3Texto": "Se você, ou alguém que conhece, precisa de apoio, pode ir ao atendimento vicentino, falar com o secretariado paroquial ou escrever-nos pelo formulário. Cada pedido é ouvido com discrição e encaminhado para a resposta certa, incluindo as situações de emergência social."
   }
 }
