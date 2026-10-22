@@ -5,7 +5,7 @@ import Seta from '@/components/home/Seta'
 
 const TRIM = { textBox: 'trim-both cap alphabetic' } as React.CSSProperties
 
-const LINHAS = ['salaQuem', 'salaComo', 'salaHorarios'] as const
+const LINHAS = ['salaQuem', 'salaComo'] as const
 
 /**
  * Basílica e Convento, Reservas na Sala — design novo (Figma, nó 122:2024), desktop 1440.
@@ -14,11 +14,13 @@ const LINHAS = ['salaQuem', 'salaComo', 'salaHorarios'] as const
  * o texto; à direita (678) três linhas separadas por réguas (título de 32px à
  * esquerda, texto de 248 à direita) e o botão "Entrar em contacto".
  *
- * O desenho repete, em "Horários", o texto de "Quem pode reservar" (parece
- * texto de teste): fica como está até haver o definitivo.
+ * Em "Horários" o desenho repetia o texto de "Quem pode reservar" (texto de
+ * teste); mostra as horas e os dias, os mesmos da Reserva de Salas da Vida da
+ * Paróquia (`vida.salaHoras` / `vida.salaDias`), para as duas não divergirem.
  */
 export default function BasilicaSala() {
   const t = useTranslations('basilica')
+  const v = useTranslations('vida')
 
   return (
     <section id="reservas"
@@ -55,6 +57,21 @@ export default function BasilicaSala() {
                 </div>
               </div>
             ))}
+            <div className="flex flex-col gap-[calc(32*var(--u))] w-full">
+              <div aria-hidden="true" className="h-px w-full border-t border-solid border-[var(--bege-claro-2)] opacity-25" />
+              <div className="flex items-center justify-between w-full">
+                <h3
+                  className="font-display text-[length:calc(32*var(--u))] leading-[1.2] tracking-[calc(0.96*var(--u))] font-normal whitespace-nowrap"
+                  style={TRIM}
+                >
+                  {t('salaHorariosTitulo')}
+                </h3>
+                <div className="flex w-[calc(248*var(--u))] flex-col gap-[calc(3.19*var(--u))]">
+                  <p className="text-[length:calc(16*var(--u))] leading-[calc(17*var(--u))] font-bold whitespace-nowrap">{v('salaHoras')}</p>
+                  <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] whitespace-nowrap">{v('salaDias')}</p>
+                </div>
+              </div>
+            </div>
             <div aria-hidden="true" className="h-px w-full border-t border-solid border-[var(--bege-claro-2)] opacity-25" />
           </div>
 
