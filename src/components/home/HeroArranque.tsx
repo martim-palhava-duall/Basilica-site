@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import { esperarVeu } from '@/lib/transicao'
 
 /**
  * Arranca a entrada do hero (CSS em globals.css, "entrada do hero"): espera que
@@ -12,7 +13,9 @@ import { useEffect, useRef } from 'react'
  * browser chega a esta parte da página: não espera pelo JavaScript do site,
  * que no telemóvel demorava segundos a ficar ativo e mantinha o hero escondido.
  * Quando se chega à homepage por navegação interna (o script do HTML não volta
- * a correr), o efeito faz o mesmo.
+ * a correr), o efeito faz o mesmo — mas só depois de o véu da transição de página
+ * começar a sair (esperarVeu): a homepage monta por trás dele, e a entrada corria
+ * escondida. Assim volta a ver-se como na primeira visita.
  */
 const ESPERA_MAX = 900
 
@@ -21,8 +24,10 @@ const SCRIPT = `(function(){var s=document.currentScript&&document.currentScript
 
 function arrancar(secao: HTMLElement) {
   let feito = false
+  let cancelado = false
+  let t = 0
   const go = () => {
-    if (feito) return
+    if (feito || cancelado) return
     feito = true
     // Sem rAF: com o separador em segundo plano o rAF não corre, e a entrada
     // ficaria presa no estado escondido.
@@ -30,6 +35,7 @@ function arrancar(secao: HTMLElement) {
   }
   const img = secao.querySelector<HTMLImageElement>('img.hero-foto')
   const prontos: Promise<unknown>[] = []
+  // A espera pela fotografia e pela fonte já corre por trás do véu; o arranque só depois de ele sair
   if (img?.decode) prontos.push(img.decode().catch(() => {}))
   // O CSS do kit da Adobe entra por script (layout): só depois de ele chegar é
   // que o browser conhece a Forevs e o pedido da fonte faz sentido
@@ -38,9 +44,15 @@ function arrancar(secao: HTMLElement) {
     ? new Promise<void>((r) => { kit.addEventListener('load', () => r(), { once: true }); kit.addEventListener('error', () => r(), { once: true }) })
     : Promise.resolve()
   if (document.fonts?.load) prontos.push(cssKit.then(() => document.fonts.load("italic 300 120px forevs-light, italic 400 120px forevs")).catch(() => {}))
-  Promise.all(prontos).then(go)
-  const t = window.setTimeout(go, ESPERA_MAX)
-  return () => window.clearTimeout(t)
+  esperarVeu().then(() => {
+    if (cancelado) return
+    Promise.all(prontos).then(go)
+    t = window.setTimeout(go, ESPERA_MAX)
+  })
+  return () => {
+    cancelado = true
+    window.clearTimeout(t)
+  }
 }
 
 export default function HeroArranque() {

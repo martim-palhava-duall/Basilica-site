@@ -4,6 +4,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { getLenis } from '@/lib/lenis'
 import { u } from '@/lib/escala'
+import { marcarTransicao } from '@/lib/transicao'
 import { CONTORNO, FORMAS, LINHAS, MARCA_VIEWBOX } from '@/components/layout/marcaTraco'
 
 /**
@@ -55,6 +56,8 @@ export default function TransicaoPagina() {
   const mudarFase = useCallback((f: Fase) => {
     faseRef.current = f
     setFase(f)
+    // Para quem espera pelo véu (a entrada do hero): ver lib/transicao
+    marcarTransicao(f)
   }, [])
   const limpar = () => {
     timers.current.forEach((t) => window.clearTimeout(t))
