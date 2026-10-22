@@ -10,7 +10,6 @@ import CelebracoesEucaristia from '@/components/celebracoes/CelebracoesEucaristi
 import CelebracoesDevocoes from '@/components/celebracoes/CelebracoesDevocoes'
 import CelebracoesIntencoes from '@/components/celebracoes/CelebracoesIntencoes'
 import CelebracoesTerco from '@/components/celebracoes/CelebracoesTerco'
-import CelebracoesAgenda from '@/components/celebracoes/CelebracoesAgenda'
 import CelebracoesContacto from '@/components/celebracoes/CelebracoesContacto'
 import CelebracoesSacramentos from '@/components/celebracoes/CelebracoesSacramentos'
 import PaginaInterior from '@/components/home/PaginaInterior'
@@ -25,7 +24,7 @@ export const metadata: Metadata = { title: 'Celebrações' }
 export default function CelebracoesPage({ params }: { params: Promise<{ locale: string }> }) {
   setRequestLocale(use(params).locale)
   const t = useTranslations('ancoras')
-  const ancoras = [{ id: 'sacramentos', label: t('sacramentos') }, { id: 'eucaristia', label: t('eucaristia') }, { id: 'confissoes', label: t('confissoes') }, { id: 'adoracao', label: t('adoracao') }, { id: 'devocoes', label: t('devocoes') }, { id: 'intencoes', label: t('intencoes') }, { id: 'terco', label: t('terco') }, { id: 'agenda', label: t('agenda') }]
+  const ancoras = [{ id: 'sacramentos', label: t('sacramentos') }, { id: 'eucaristia', label: t('eucaristia') }, { id: 'confissoes', label: t('confissoes') }, { id: 'adoracao', label: t('adoracao') }, { id: 'devocoes', label: t('devocoes') }, { id: 'intencoes', label: t('intencoes') }, { id: 'terco', label: t('terco') }]
 
   return (
     <PaginaInterior ancoras={ancoras}>
@@ -38,7 +37,6 @@ export default function CelebracoesPage({ params }: { params: Promise<{ locale: 
       <CelebracoesDevocoes />
       <CelebracoesIntencoes />
       <CelebracoesTerco />
-      <CelebracoesAgenda />
       <CelebracoesContacto />
     </PaginaInterior>
   )
