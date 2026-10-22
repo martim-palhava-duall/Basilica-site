@@ -7,7 +7,7 @@ import Seta from '@/components/home/Seta'
 /**
  * Celebrações, Entronização do Sagrado Coração de Jesus — sem desenho próprio
  * (pedido do cliente): o mesmo desenho das Intenções de Missa (Figma, nó
- * 148:825), em vermelho (fica antes do Contacto, que é azul escuro).
+ * 148:825), em azul escuro (as Intenções, duas secções acima, já são vermelhas).
  * Fotografia de 710×561 à esquerda e, à direita, o label, o título de 80px, dois textos curtos lado a lado, a linha com o modo
  * de pedir e o botão para os contactos. A fotografia (São José com o Menino,
  * padroeiro das famílias) é provisória.
@@ -18,9 +18,9 @@ export default function CelebracoesEntronizacao() {
   return (
     <section
       id="entronizacao"
-      data-barra="var(--vermelho)"
+      data-barra="var(--azul-escuro)"
       data-barra-tom="escuro"
-      className="flex h-[calc(561*var(--u))] w-full items-center gap-[calc(20*var(--u))] bg-[var(--vermelho)] text-[var(--bege-claro-2)]"
+      className="flex h-[calc(561*var(--u))] w-full items-center gap-[calc(20*var(--u))] bg-[var(--azul-escuro)] text-[var(--bege-claro-2)]"
     >
       <div className="relative h-[calc(561*var(--u))] w-[calc(710*var(--u))] shrink-0">
         <Image src="/celebracoes/sextas.jpg" alt={t('entAlt')} fill sizes="710px" className="object-cover object-[50%_30%]" />
