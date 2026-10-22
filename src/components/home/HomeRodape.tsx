@@ -7,7 +7,7 @@ import { BILHETEIRA, externo } from '@/lib/links'
 
 const COL_BASILICA: [string, string][] = [
   ['menuSobre', '/sobre-a-basilica'],
-  ['menuVisitar', BILHETEIRA],
+  ['menuVisitar', '/basilica-e-convento'],
   ['menuCelebracoes', '/celebracoes'],
   ['menuVida', '/vida-paroquia'],
   ['menuObra', '/obra-social'],
@@ -108,7 +108,7 @@ export default function HomeRodape() {
             <Image src="/home/menu-foto.jpg" alt="" fill sizes="(max-width: 1023px) 100vw, 328px" className="object-cover" />
           </div>
         </div>
-        <Link href="/basilica-e-convento" className={`group/btn sem-luz self-start flex items-center gap-[calc(9.6*var(--u))] text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] ${LINK}`}>
+        <Link href={BILHETEIRA} {...externo(BILHETEIRA)} className={`group/btn sem-luz self-start flex items-center gap-[calc(9.6*var(--u))] text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] ${LINK}`}>
           {t('rodPlanear')}
           <Seta className="group-hover/btn:translate-x-[calc(4*var(--u))]" />
         </Link>

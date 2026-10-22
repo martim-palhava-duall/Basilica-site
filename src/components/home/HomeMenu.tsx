@@ -24,7 +24,7 @@ import { BILHETEIRA, externo } from '@/lib/links'
 const COL1: [string, string][] = [
   ['menuHome', '/'],
   ['menuSobre', '/sobre-a-basilica'],
-  ['menuVisitar', BILHETEIRA],
+  ['menuVisitar', '/basilica-e-convento'],
   ['menuCelebracoes', '/celebracoes'],
   ['menuDonativos', '/donativos'],
 ]
@@ -112,8 +112,7 @@ export default function HomeMenu() {
               </button>
             </span>
             <Link
-              href={BILHETEIRA}
-              {...externo(BILHETEIRA)}
+              href="/basilica-e-convento"
               onClick={fechar}
               className="btn-luz h-[calc(32*var(--u))] px-[calc(20*var(--u))] flex items-center rounded-[calc(4*var(--u))] bg-[var(--texto-escuro)] text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] text-[rgba(247,242,238,0.85)] transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
             >
@@ -177,7 +176,8 @@ export default function HomeMenu() {
           </div>
 
           <Link
-            href="/basilica-e-convento"
+            href={BILHETEIRA}
+            {...externo(BILHETEIRA)}
             onClick={fechar}
             className="group/btn sem-luz self-start inline-flex items-center gap-[calc(9.6*var(--u))] text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] text-[var(--texto-escuro)]"
           >

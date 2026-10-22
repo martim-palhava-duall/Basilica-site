@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl'
 import Revelar from '@/components/home/Revelar'
 import Seta from '@/components/home/Seta'
 import Paralax from '@/components/home/Paralax'
+import { BILHETEIRA, externo } from '@/lib/links'
 
 const i = (chunks: ReactNode) => (
   <span className="italic font-light" style={{ fontFamily: "'forevs-light', var(--font-display)" }}>{chunks}</span>
@@ -54,7 +55,8 @@ export default function SobreConvento() {
       <div className="absolute left-[calc(917*var(--u))] top-[calc(456*var(--u))]">
         <Revelar atraso={250}>
           <Link
-            href="/sobre-a-basilica#visitar"
+            href={BILHETEIRA}
+            {...externo(BILHETEIRA)}
             className="group/btn flex items-center gap-[calc(11.91*var(--u))] h-[calc(46.8*var(--u))] px-[calc(29.6*var(--u))] rounded-[calc(4*var(--u))] bg-[var(--vermelho)] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap text-[var(--bege-claro-2)] transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
           >
             {t('convCta')}

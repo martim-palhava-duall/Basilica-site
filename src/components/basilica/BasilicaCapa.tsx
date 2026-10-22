@@ -6,7 +6,7 @@ import Revelar from '@/components/home/Revelar'
  * Basílica e Convento, abertura — design novo (Figma, nó 111:1102), desktop 1440.
  *
  * Label e título (80px, numa linha, caixa trimada às maiúsculas) a 80 do
- * topo, e a fotografia da fachada, 1376×600, enquadrada pelo topo. Termina na
+ * topo, e a fotografia da nave (Figma 201:1301), 1376×600, enquadrada por baixo. Termina na
  * própria fotografia, como a abertura do Sobre nós.
  */
 export default function BasilicaCapa() {
@@ -31,7 +31,7 @@ export default function BasilicaCapa() {
         </div>
         <Revelar atraso={200} className="w-full">
           <div className="relative h-[calc(600*var(--u))] w-full rounded-[calc(4*var(--u))] overflow-hidden">
-            <Image src="/home/somos-fachada.jpg" alt={t('capaAlt')} fill priority sizes="1376px" className="object-cover object-top" />
+            <Image src="/basilica/capa.jpg" alt={t('capaAlt')} fill priority sizes="1376px" className="object-cover object-bottom" />
           </div>
         </Revelar>
       </div>

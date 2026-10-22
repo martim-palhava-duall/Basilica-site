@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import Revelar from '@/components/home/Revelar'
 import Seta from '@/components/home/Seta'
+import { BILHETEIRA, externo } from '@/lib/links'
 
 const TRIM = { textBox: 'trim-both cap alphabetic' } as React.CSSProperties
 const LINHA = 'whitespace-nowrap font-display text-[length:calc(96*var(--u))] leading-[calc(100.8*var(--u))] tracking-[calc(-0.576*var(--u))]'
@@ -99,7 +100,8 @@ export default function SobreVisitar() {
               {t('visitarTexto2')}
             </p>
             <Link
-              href="/sobre-a-basilica#visitar"
+              href={BILHETEIRA}
+              {...externo(BILHETEIRA)}
               className="group/btn flex items-center gap-[calc(12.01*var(--u))] px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] rounded-[calc(4*var(--u))] border border-solid border-[var(--azul-escuro)] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
             >
               {t('visitarCta')}

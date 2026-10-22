@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import Revelar from '@/components/home/Revelar'
 import Seta from '@/components/home/Seta'
+import { BILHETEIRA, externo } from '@/lib/links'
 
 /**
  * Celebrações, Intenções de Missa — design novo (Figma, nó 148:825), desktop 1440, 561 de altura.
@@ -58,7 +59,8 @@ export default function CelebracoesIntencoes() {
               <p className="w-[calc(350*var(--u))] text-right text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] font-bold">{h('cartorioHoras').replace(/ ÀS /g, ' às ')}</p>
             </div>
             <Link
-              href="/basilica-e-convento"
+              href={BILHETEIRA}
+              {...externo(BILHETEIRA)}
               className="group/btn flex h-[calc(46.8*var(--u))] items-center gap-[calc(11.91*var(--u))] self-start px-[calc(29.6*var(--u))] rounded-[calc(4*var(--u))] border border-solid border-[var(--bege-claro-2)] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
             >
               {t('intCta')}

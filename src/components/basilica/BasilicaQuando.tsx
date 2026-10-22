@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import Revelar from '@/components/home/Revelar'
 import Seta from '@/components/home/Seta'
+import { BILHETEIRA, externo } from '@/lib/links'
 
 const TRIM = { textBox: 'trim-both cap alphabetic' } as React.CSSProperties
 
@@ -60,7 +61,8 @@ export default function BasilicaQuando() {
               <h2 className="font-display text-[length:calc(80*var(--u))] leading-[calc(96*var(--u))] tracking-[calc(0.96*var(--u))] font-normal whitespace-nowrap">{t('quandoTitulo')}</h2>
             </Revelar>
             <Link
-              href="#"
+              href={BILHETEIRA}
+              {...externo(BILHETEIRA)}
               className="group/btn flex items-center gap-[calc(11.91*var(--u))] h-[calc(46.8*var(--u))] px-[calc(29.6*var(--u))] rounded-[calc(4*var(--u))] border border-solid border-[var(--bege-claro-2)] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap text-[var(--bege-claro-2)] transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)] hover:bg-[var(--bege-claro-2)] hover:text-[var(--vermelho)]"
             >
               {t('quandoCta')}

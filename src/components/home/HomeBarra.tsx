@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { useMenu } from '@/components/home/MenuContext'
-import { BILHETEIRA, externo } from '@/lib/links'
 
 /**
  * Barra que aparece ao fazer scroll — design novo (Figma, nó 179:73).
@@ -45,8 +44,7 @@ export default function HomeBarra() {
           </button>
         </span>
         <Link
-          href={BILHETEIRA}
-          {...externo(BILHETEIRA)}
+          href="/basilica-e-convento"
           className={`btn-luz h-[calc(32*var(--u))] px-[calc(20*var(--u))] flex items-center rounded-[calc(4*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)] ${clara ? 'bg-[var(--bege-claro-2)] text-[rgba(18,28,36,0.85)]' : 'bg-[var(--azul-escuro)] text-[rgba(247,242,238,0.85)]'}`}
         >
           {t('heroVisitar')}

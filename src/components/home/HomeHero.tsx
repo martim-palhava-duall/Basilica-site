@@ -5,6 +5,7 @@ import HomeLogo from '@/components/home/HomeLogo'
 import HomeTopButtons from '@/components/home/HomeTopButtons'
 import Seta from '@/components/home/Seta'
 import HeroArranque from '@/components/home/HeroArranque'
+import { BILHETEIRA, externo } from '@/lib/links'
 
 /**
  * Hero da homepage — design novo (Figma, nó 173:3884), desktop 1440.
@@ -23,8 +24,8 @@ import HeroArranque from '@/components/home/HeroArranque'
  * arrancada por HeroArranque quando a fotografia e a fonte estão prontas.
  *
  * Hovers (o desenho não os define): botões de contorno enchem-se de bege, os
- * cheios trocam de cor, as setas avançam; o cartão do evento enche-se de azul
- * e a seta sai e volta a entrar.
+ * cheios trocam de cor, as setas avançam; o cartão do evento enche-se de azul,
+ * a seta sai e volta a entrar e leva o mesmo brilho na borda dos botões (btn-luz).
  */
 export default function HomeHero() {
   const t = useTranslations('inicio')
@@ -66,7 +67,8 @@ export default function HomeHero() {
       {/* Mobile: a 20 das margens e a 32 do fundo */}
       <div className="hero-cta absolute left-[calc(32*var(--u))] bottom-[calc(61.8*var(--u))] max-lg:left-[calc(20*var(--u))] max-lg:bottom-[calc(32*var(--u))] max-lg:gap-[calc(10*var(--u))] flex gap-[calc(15.91*var(--u))] h-[calc(47.8*var(--u))]">
         <Link
-          href="/basilica-e-convento"
+          href={BILHETEIRA}
+          {...externo(BILHETEIRA)}
           className="group/btn flex items-center gap-[calc(11.91*var(--u))] px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] rounded-[calc(4*var(--u))] bg-[var(--vermelho)] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap text-[#f9f5f0] transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
         >
           {t('heroCtaVisita')}
@@ -82,9 +84,12 @@ export default function HomeHero() {
 
       {/* Cartão de evento: 212 de largura, 62 do fundo, 32 da direita. No mobile
           não cabe com o título e os botões: fica só no desktop. */}
+      {/* O invólucro posiciona; o cartão leva o hover dos botões (btn-luz: dois brilhos
+          a percorrer a borda), que precisa de posição relativa */}
+      <div className="hero-cartao max-lg:hidden absolute right-[calc(32*var(--u))] bottom-[calc(62*var(--u))] w-[calc(212*var(--u))]">
       <Link
         href="/blog/celebracao-da-missa-do-galo"
-        className="hero-cartao group/card max-lg:hidden absolute right-[calc(32*var(--u))] bottom-[calc(62*var(--u))] w-[calc(212*var(--u))] p-[calc(4*var(--u))] rounded-[calc(4*var(--u))] overflow-hidden flex flex-col gap-[calc(10*var(--u))] bg-[rgba(28,43,57,0.6)] transition-colors duration-[450ms] ease-[var(--ease-out)] hover:bg-[var(--azul-escuro)]"
+        className="btn-luz group/card w-full p-[calc(4*var(--u))] rounded-[calc(4*var(--u))] overflow-hidden flex flex-col gap-[calc(10*var(--u))] text-white bg-[rgba(28,43,57,0.6)] transition-colors duration-[450ms] ease-[var(--ease-out)] hover:bg-[var(--azul-escuro)]"
       >
         <div className="flex flex-col gap-[calc(8*var(--u))] items-center w-full">
           <div className="relative h-[calc(120*var(--u))] w-full rounded-[calc(2*var(--u))] overflow-hidden">
@@ -123,6 +128,7 @@ export default function HomeHero() {
           </div>
         </div>
       </Link>
+      </div>
     </section>
   )
 }

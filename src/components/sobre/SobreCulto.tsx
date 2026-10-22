@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl'
 import Revelar from '@/components/home/Revelar'
 import Seta from '@/components/home/Seta'
 import { u } from '@/lib/escala'
+import { BILHETEIRA, externo } from '@/lib/links'
 
 /** Fotografia provisória: o desenho usa a mesma nos três espaços. */
 const FOTO = '/sobre/culto.jpg'
@@ -68,7 +69,8 @@ export default function SobreCulto() {
                 {t('cultoRodape')}
               </p>
               <Link
-                href="/sobre-a-basilica#visitar"
+                href={BILHETEIRA}
+                {...externo(BILHETEIRA)}
                 className="group/btn flex items-center gap-[calc(12.01*var(--u))] px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] rounded-[calc(4*var(--u))] border border-solid border-[var(--bege-claro-2)] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
               >
                 {t('cultoCta')}
