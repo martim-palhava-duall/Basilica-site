@@ -3,20 +3,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { u } from '@/lib/escala'
 
-/**
- * Opções de entrada do nome do rodapé (página provisória /rodape-opcoes).
- * A 0 é a atual. O CSS de cada uma está em globals.css ("nome do rodapé").
- */
-export const OPCOES_NOME = [
-  { n: 0, nome: 'Erguer com máscara (atual)', texto: 'Cada peça sobe de baixo enquanto uma máscara a descobre de baixo para cima, em cascata.' },
-  { n: 1, nome: 'Fade lento', texto: 'As peças acendem só com opacidade, devagar, uma a uma — sem movimento.' },
-  { n: 2, nome: 'Desfocado a nítido', texto: 'As peças começam desfocadas e transparentes e ganham nitidez, como uma fotografia a entrar em foco.' },
-  { n: 3, nome: 'Cortina da esquerda', texto: 'Cada peça é descoberta da esquerda para a direita, como uma linha a ser escrita.' },
-  { n: 4, nome: 'Do centro para os lados', texto: 'Cada peça abre-se do centro para as pontas, em simetria.' },
-  { n: 5, nome: 'Subida suave', texto: 'As peças sobem um pouco e acendem, sem máscara, numa curva longa.' },
-  { n: 6, nome: 'Ligado ao scroll', texto: 'O nome acompanha o scroll: sobe e acende à medida que o rodapé entra, peça a peça, e recua se se voltar atrás.' },
-] as const
-
 /** Peças do nome (os SVG do desenho), com o topo relativo ao bloco (que no rodapé começa a 517 do topo) */
 const PECAS = [
   { src: '/home/footer-basilica.svg', left: u(36.64), top: 0, width: 1371.364, height: 137.329, mobile: 'max-lg:w-full!' },
@@ -30,62 +16,22 @@ const PECAS = [
  * num bloco de 246 de altura a toda a largura (no mobile ficam em fluxo, à
  * largura do ecrã, com as três de baixo numa linha).
  *
- * Entrada: quando "Basílica" chega a 90% do ecrã, `data-revelar` passa de
- * "espera" a "entrou" e o CSS da opção (`data-nome-op`) faz o resto; corre uma
- * vez. A opção 6 é ligada ao scroll (`--p`, de 0 a 1). Visível por omissão
- * (servidor, antes de hidratar, movimento reduzido ou se já estiver à vista).
+ * Entrada ("subida suave", escolhida entre sete opções): quando "Basílica"
+ * chega a 90% do ecrã, as peças sobem um pouco e acendem, sem máscara, numa
+ * curva longa, em cascata (CSS em globals.css, "nome do rodapé"). Corre uma vez.
+ * Visível por omissão (servidor, antes de hidratar, movimento reduzido ou se
+ * já estiver à vista).
  */
-export default function NomeRodape({
-  label,
-  opcao = 0,
-  className = '',
-  forcar = false,
-}: {
-  label: string
-  opcao?: number
-  className?: string
-  /** corre a entrada mesmo que o nome já esteja à vista (botão "Repetir" da página de opções) */
-  forcar?: boolean
-}) {
+export default function NomeRodape({ label, className = '' }: { label: string; className?: string }) {
   const ref = useRef<HTMLDivElement>(null)
   const [estado, setEstado] = useState<'parado' | 'espera' | 'entrou'>('parado')
 
   useEffect(() => {
-    const el = ref.current
-    const alvo = el?.querySelector('img')
-    if (!el || !alvo) return
+    // O bloco é observado pela primeira peça (no desktop as peças são absolutas)
+    const alvo = ref.current?.querySelector('img')
+    if (!alvo) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-
-    if (opcao === 6) {
-      setEstado('entrou')
-      let pend = false
-      const aplicar = () => {
-        pend = false
-        const r = alvo.getBoundingClientRect()
-        const p = Math.min(Math.max((window.innerHeight - r.top) / (window.innerHeight * 0.55), 0), 1)
-        el.style.setProperty('--p', p.toFixed(3))
-      }
-      const rolar = () => {
-        if (!pend) {
-          pend = true
-          requestAnimationFrame(aplicar)
-        }
-      }
-      aplicar()
-      window.addEventListener('scroll', rolar, { passive: true })
-      window.addEventListener('resize', rolar)
-      return () => {
-        window.removeEventListener('scroll', rolar)
-        window.removeEventListener('resize', rolar)
-      }
-    }
-
-    if (alvo.getBoundingClientRect().top < window.innerHeight * 0.9) {
-      if (!forcar) return
-      setEstado('espera')
-      const t = window.setTimeout(() => setEstado('entrou'), 80)
-      return () => window.clearTimeout(t)
-    }
+    if (alvo.getBoundingClientRect().top < window.innerHeight * 0.9) return
     setEstado('espera')
     const obs = new IntersectionObserver(
       ([e]) => {
@@ -98,7 +44,7 @@ export default function NomeRodape({
     )
     obs.observe(alvo)
     return () => obs.disconnect()
-  }, [opcao, forcar])
+  }, [])
 
   return (
     <div
@@ -106,7 +52,6 @@ export default function NomeRodape({
       role="img"
       aria-label={label}
       data-revelar={estado}
-      data-nome-op={opcao}
       className={`h-[calc(246*var(--u))] w-full max-lg:static max-lg:h-auto max-lg:flex max-lg:flex-wrap max-lg:items-end max-lg:justify-between max-lg:gap-y-[calc(12*var(--u))] ${className}`}
     >
       {PECAS.map((p, k) => (
