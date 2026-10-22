@@ -97,7 +97,7 @@ export default function HomeHero() {
               <Image src="/home/hero-evento.jpg" alt="" fill sizes="204px" className="object-cover" />
             </div>
           </div>
-          <div className="flex items-end justify-between pb-[calc(4*var(--u))] w-full">
+          <div className="flex items-end justify-between pb-[calc(4*var(--u))] px-[calc(4*var(--u))] w-full">
             <div className="flex flex-col gap-[calc(4*var(--u))] w-[calc(179*var(--u))]">
               <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] text-[rgba(255,255,255,0.6)]">{t('heroEventoMeta')}</p>
               <p className="font-display text-[length:calc(20*var(--u))] leading-none text-white" style={{ textBox: 'trim-both cap alphabetic' } as React.CSSProperties}>
