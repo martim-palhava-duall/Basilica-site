@@ -106,19 +106,22 @@ export default function SacramentosLista({ items, textos }: { items: Sacramento[
   }, [])
 
   // Com o painel aberto a página por trás não pode correr (o Lenis precisa de
-  // ser parado à parte). O painel volta ao topo e à primeira fotografia.
+  // ser parado à parte). O bloqueio vai no <html>, não no <body>: com o <html>
+  // já cortado pelo Lenis, um overflow no <body> torna-o num contentor de scroll
+  // e a fotografia fixa (sticky) perde a referência e salta para fora do ecrã.
+  // O painel volta ao topo e à primeira fotografia.
   useEffect(() => {
     if (!estaAberto) return
     const lenis = getLenis()
     lenis?.stop()
-    document.body.style.overflow = 'hidden'
+    document.documentElement.style.overflow = 'hidden'
     fecharRef.current?.focus({ preventScroll: true })
     const tecla = (e: KeyboardEvent) => e.key === 'Escape' && setAberto(null)
     window.addEventListener('keydown', tecla)
     return () => {
       window.removeEventListener('keydown', tecla)
       lenis?.start()
-      document.body.style.overflow = ''
+      document.documentElement.style.overflow = ''
       origemRef.current?.focus({ preventScroll: true })
     }
   }, [estaAberto])

@@ -103,14 +103,14 @@ export default function ListaPainel({
     if (!estaAberto) return
     const lenis = getLenis()
     lenis?.stop()
-    document.body.style.overflow = 'hidden'
+    document.documentElement.style.overflow = 'hidden'
     fecharRef.current?.focus({ preventScroll: true })
     const tecla = (e: KeyboardEvent) => e.key === 'Escape' && setAberto(null)
     window.addEventListener('keydown', tecla)
     return () => {
       window.removeEventListener('keydown', tecla)
       lenis?.start()
-      document.body.style.overflow = ''
+      document.documentElement.style.overflow = ''
       origemRef.current?.focus({ preventScroll: true })
     }
   }, [estaAberto])
