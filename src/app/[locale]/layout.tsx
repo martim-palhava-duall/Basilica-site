@@ -6,7 +6,22 @@ import SmoothScroll from '@/components/layout/SmoothScroll'
 import TransicaoPagina from '@/components/layout/TransicaoPagina'
 import '../globals.css'
 
+// Base dos endereços absolutos (imagem de partilha): o domínio de produção na Vercel, ou o local
+const BASE = process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : 'http://localhost:3000'
+
+/**
+ * Identidade (Figma, nó 226:870): favicon (src/app/favicon.ico + PNG 32/192/512 em
+ * public), webclip (apple-touch-icon, 180) e imagem de partilha (1200×630).
+ */
 export const metadata: Metadata = {
+  metadataBase: new URL(BASE),
+  icons: {
+    icon: [
+      { url: '/icon-32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+  },
   title: {
     default: 'Basílica da Estrela — Lisboa',
     template: '%s | Basílica da Estrela',
@@ -18,6 +33,13 @@ export const metadata: Metadata = {
     description: 'Mais do que um monumento. Uma casa de oração no coração de Lisboa.',
     locale: 'pt_PT',
     type: 'website',
+    images: [{ url: '/share-image.jpg', width: 1200, height: 630, alt: 'Basílica da Estrela, Sagrado Coração de Jesus' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Basílica da Estrela — Lisboa',
+    description: 'Mais do que um monumento. Uma casa de oração no coração de Lisboa.',
+    images: ['/share-image.jpg'],
   },
 }
 
