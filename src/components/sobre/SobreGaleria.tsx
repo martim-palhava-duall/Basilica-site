@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl'
 import Revelar from '@/components/home/Revelar'
 import { u } from '@/lib/escala'
 import { FOTOS_GALERIA } from '@/lib/galeria'
+import { ESTILO_GESTOS, useGaleriaGestos } from '@/lib/useGaleriaGestos'
 
 /** Fotografias da galeria (lib/galeria): as sete da frame "Galeria" do Figma */
 const FOTOS = FOTOS_GALERIA.map((src, k) => ({ src, alt: `galAlt${k + 1}` }))
@@ -27,6 +28,8 @@ const i = (chunks: ReactNode) => (
  * as vizinhas espreitam dos dois lados, a 40 de distância. Ao avançar, a pista
  * desliza um passo; são montados cinco lugares à volta da ativa (dois de
  * cada lado, a repetir as imagens quando dá a volta) para o movimento nunca ter saltos.
+ * Também se anda a arrastar com o rato ou o dedo e com o scroll horizontal do
+ * trackpad (lib/useGaleriaGestos).
  * Em baixo, a barra de progresso à esquerda (enche-se até à fotografia atual)
  * e as setas à direita.
  * A altura das fotografias acompanha o ecrã (ecrã menos 330px), entre 480 e os 624
@@ -45,6 +48,9 @@ export default function SobreGaleria({ fundo = 'var(--bege-claro-2)' }: { fundo?
   // por isso cada fotografia mantém a identidade ao deslizar.
   const lugares = [-2, -1, 0, 1, 2].map((d) => ativa + d)
 
+  // Arrastar e scroll horizontal do trackpad (ver lib/useGaleriaGestos)
+  const { ref: pista, arrasto, arrastando } = useGaleriaGestos<HTMLDivElement>({ ir, limiar: 80 })
+
   return (
     <section id="imagens"
       data-barra={fundo}
@@ -62,7 +68,12 @@ export default function SobreGaleria({ fundo = 'var(--bege-claro-2)' }: { fundo?
 
       {/* ── Pista ── */}
       <Revelar atraso={200} className="w-full">
-        <div className="relative h-[var(--gal-h)] w-full overflow-hidden" aria-roledescription="carousel">
+        <div
+          ref={pista}
+          className="relative h-[var(--gal-h)] w-full overflow-hidden"
+          style={{ ...ESTILO_GESTOS, cursor: arrastando ? 'grabbing' : 'grab' }}
+          aria-roledescription="carousel"
+        >
           {lugares.map((k) => {
             const foto = FOTOS[mod(k, N)]
             const d = k - ativa
@@ -71,7 +82,11 @@ export default function SobreGaleria({ fundo = 'var(--bege-claro-2)' }: { fundo?
                 key={k}
                 aria-hidden={d !== 0}
                 className="absolute left-1/2 top-0 h-[var(--gal-h)] rounded-[calc(4*var(--u))] overflow-hidden transition-transform duration-[1100ms] ease-[var(--ease-out)]"
-                style={{ width: u(LARGURA), transform: `translateX(calc(${-LARGURA / 2 + d * PASSO} * var(--u)))` }}
+                style={{
+                  width: u(LARGURA),
+                  transform: `translateX(calc(${-LARGURA / 2 + d * PASSO} * var(--u) + ${arrasto}px))`,
+                  transitionDuration: arrastando ? '0ms' : undefined,
+                }}
               >
                 <Image src={foto.src} alt={d === 0 ? t(foto.alt) : ''} fill sizes="794px" className="object-cover" />
               </div>

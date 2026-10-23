@@ -8,6 +8,7 @@ import Revelar from '@/components/home/Revelar'
 import Seta from '@/components/home/Seta'
 import { getLenis } from '@/lib/lenis'
 import { u } from '@/lib/escala'
+import { ESTILO_GESTOS, useGaleriaGestos } from '@/lib/useGaleriaGestos'
 
 const TRIM = { textBox: 'trim-both cap alphabetic' } as React.CSSProperties
 
@@ -84,6 +85,9 @@ export default function ListaPainel({
   const DESLOCAMENTOS = galeria.map((_, k) => galeria.slice(0, k).reduce((acc, g) => acc + g.largura + FOLGA_GALERIA, 0))
   const [aberto, setAberto] = useState<number | null>(null)
   const [foto, setFoto] = useState(0)
+  const irFoto = (d: number) => setFoto((f) => Math.min(Math.max(f + d, 0), galeria.length - 1))
+  // Arrastar e scroll horizontal do trackpad (ver lib/useGaleriaGestos)
+  const { ref: pista, arrasto, arrastando } = useGaleriaGestos<HTMLDivElement>({ ir: irFoto, limiar: 60 })
   const fecharRef = useRef<HTMLButtonElement>(null)
   const origemRef = useRef<HTMLButtonElement | null>(null)
   const painelRef = useRef<HTMLDivElement>(null)
@@ -216,7 +220,7 @@ export default function ListaPainel({
                       type="button"
                       aria-label={b.rotulo}
                       disabled={foto + b.d < 0 || foto + b.d >= galeria.length}
-                      onClick={() => setFoto((f) => Math.min(Math.max(f + b.d, 0), galeria.length - 1))}
+                      onClick={() => irFoto(b.d)}
                       className="absolute top-[calc(2*var(--u))] h-[calc(20*var(--u))] w-[calc(32*var(--u))] overflow-hidden opacity-70 transition-opacity duration-[400ms] hover:opacity-100 disabled:cursor-default disabled:opacity-30"
                       style={{ left: u(b.left) }}
                     >
@@ -225,10 +229,10 @@ export default function ListaPainel({
                     </button>
                   ))}
                 </div>
-                <div className="-mr-[calc(64*var(--u))] mt-[calc(24*var(--u))] overflow-hidden">
+                <div ref={pista} className="-mr-[calc(64*var(--u))] mt-[calc(24*var(--u))] overflow-hidden" style={{ ...ESTILO_GESTOS, cursor: arrastando ? 'grabbing' : 'grab' }}>
                   <div
                     className="flex w-max gap-[calc(12*var(--u))] transition-transform duration-[1100ms] ease-[var(--ease-out)]"
-                    style={{ transform: `translateX(calc(${-DESLOCAMENTOS[foto]} * var(--u)))` }}
+                    style={{ transform: `translateX(calc(${-DESLOCAMENTOS[foto]} * var(--u) + ${arrasto}px))`, transitionDuration: arrastando ? '0ms' : undefined }}
                   >
                     {galeria.map((f, k) => (
                       <div key={k} className="relative h-[calc(400*var(--u))] shrink-0 overflow-hidden rounded-[calc(4*var(--u))]" style={{ width: u(f.largura) }}>
