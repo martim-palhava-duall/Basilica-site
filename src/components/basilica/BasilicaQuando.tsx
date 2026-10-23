@@ -16,13 +16,15 @@ const horas = (s: string) => s.replace(' ÀS ', ' às ')
  *
  * Fundo vermelho. Cabeçalho (Horários e Acesso, título, texto e botão
  * "Comprar bilhete"), régua, três colunas (horário, como chegar, onde) e, por
- * baixo, "Tipos de visita" com três cartões em contorno. Ao passar num cartão,
- * enche-se de bege e mostra a seta (é o cartão da "Opção 3" do desenho).
+ * baixo, "Tipos de visita" com três cartões em contorno. Cada cartão é uma ligação
+ * externa à bilheteira (BILHETEIRA, num separador novo): ao passar, enche-se de
+ * bege, mostra a seta e leva o brilho na borda dos botões (btn-luz, na variante
+ * suave, como o cartão da hero). Fica focável por teclado como qualquer ligação.
  *
  * A altura (1417) é a do desenho: 182 em cima e 245 em baixo.
  * O horário de visita lê-se do namespace `horarios` (fonte única), que tem as
- * mesmas horas de acolhimento. O destino do botão (plataforma externa de
- * bilhetes) ainda não existe.
+ * mesmas horas de acolhimento. O destino dos botões e dos cartões (plataforma
+ * externa de bilhetes) ainda é provisório (ver lib/links).
  */
 export default function BasilicaQuando() {
   const t = useTranslations('basilica')
@@ -103,9 +105,10 @@ export default function BasilicaQuando() {
         <div className="flex gap-[calc(20*var(--u))] items-stretch w-full">
           {TIPOS.map((k, i) => (
             <Revelar key={k} atraso={100 + i * 120} className="flex">
-              <div
-                tabIndex={0}
-                className="group/tipo flex flex-col justify-between gap-[calc(32*var(--u))] w-[calc(445*var(--u))] p-[calc(20*var(--u))] rounded-[calc(4*var(--u))] border border-solid border-[var(--bege-claro-2)] outline-none transition-[background-color,color] duration-[450ms] ease-[var(--ease-out)] hover:bg-[var(--bege-claro-2)] hover:text-[var(--vermelho)] focus-visible:bg-[var(--bege-claro-2)] focus-visible:text-[var(--vermelho)]"
+              <Link
+                href={BILHETEIRA}
+                {...externo(BILHETEIRA)}
+                className="btn-luz luz-suave group/tipo flex flex-col justify-between gap-[calc(32*var(--u))] w-[calc(445*var(--u))] p-[calc(20*var(--u))] rounded-[calc(4*var(--u))] border border-solid border-[var(--bege-claro-2)] outline-none transition-[background-color,color] duration-[450ms] ease-[var(--ease-out)] hover:bg-[var(--bege-claro-2)] hover:text-[var(--vermelho)] focus-visible:bg-[var(--bege-claro-2)] focus-visible:text-[var(--vermelho)]"
               >
                 <div className="flex flex-col gap-[calc(6*var(--u))] w-full">
                   <div className="flex items-center justify-between w-full">
@@ -118,7 +121,7 @@ export default function BasilicaQuando() {
                   <p className="text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] font-bold">{t(`${k}Duracao`)}</p>
                   <p className="text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))]">{t(`${k}Texto`)}</p>
                 </div>
-              </div>
+              </Link>
             </Revelar>
           ))}
         </div>
