@@ -17,6 +17,9 @@ import { BILHETEIRA, externo } from '@/lib/links'
  * expressões em percentagem do Figma (25% + 21px, 50% + 10px, 75%...), que a
  * 1440 dão os valores certos e a outras larguras acompanham o ecrã.
  *
+ * Ordem (pedido do cliente): Home, Sobre, Vida da Paróquia, Visitar, Celebrar,
+ * Obra, Donativos, Notícias, Contactos; lê-se da coluna 1 para a 2.
+ *
  * Destinos provisórios: o desenho tem "Sobre a Basílica" e "Visitar" como
  * entradas separadas, mas as páginas novas ainda não existem — as duas apontam
  * para a página da Basílica, "Visitar" na secção do mesmo nome.
@@ -24,15 +27,15 @@ import { BILHETEIRA, externo } from '@/lib/links'
 const COL1: [string, string][] = [
   ['menuHome', '/'],
   ['menuSobre', '/sobre-a-basilica'],
+  ['menuVida', '/vida-paroquia'],
   ['menuVisitar', '/basilica-e-convento'],
   ['menuCelebracoes', '/celebracoes'],
-  ['menuDonativos', '/donativos'],
 ]
 const COL2: [string, string][] = [
-  ['menuVida', '/vida-paroquia'],
   ['menuObra', '/obra-social'],
-  ['menuContactos', '/contactos'],
+  ['menuDonativos', '/donativos'],
   ['menuNoticias', '/blog'],
+  ['menuContactos', '/contactos'],
 ]
 
 export default function HomeMenu() {

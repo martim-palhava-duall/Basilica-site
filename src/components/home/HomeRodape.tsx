@@ -5,17 +5,18 @@ import Seta from '@/components/home/Seta'
 import NomeRodape from '@/components/home/NomeRodape'
 import { BILHETEIRA, externo } from '@/lib/links'
 
+// Mesma ordem do menu de ecrã (Sobre, Vida da Paróquia, Visitar, Celebrar, Obra, Donativos, Notícias, Contactos)
 const COL_BASILICA: [string, string][] = [
   ['menuSobre', '/sobre-a-basilica'],
+  ['menuVida', '/vida-paroquia'],
   ['menuVisitar', '/basilica-e-convento'],
   ['menuCelebracoes', '/celebracoes'],
-  ['menuVida', '/vida-paroquia'],
   ['menuObra', '/obra-social'],
   ['menuNoticias', '/blog'],
 ]
 const COL_CONTACTO: [string, string][] = [
-  ['menuContactos', '/contactos'],
   ['menuDonativos', '/donativos'],
+  ['menuContactos', '/contactos'],
 ]
 
 const LINK = 'transition-colors duration-[400ms] ease-[var(--ease-out)] hover:text-[var(--bege-claro-2)]'
