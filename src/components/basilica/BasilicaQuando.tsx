@@ -71,7 +71,7 @@ export default function BasilicaQuando() {
           </div>
         </div>
         <Revelar atraso={200}>
-          <p className="w-[calc(444*var(--u))] font-[family-name:var(--font-body-light)] text-[length:calc(20*var(--u))] leading-[calc(32*var(--u))]" style={TRIM}>{t('quandoTexto')}</p>
+          <p className="w-[calc(444*var(--u))] font-[family-name:var(--font-body-light)] text-[length:calc(16*var(--u))] leading-[1.5]" style={TRIM}>{t('quandoTexto')}</p>
         </Revelar>
       </div>
 

@@ -98,7 +98,7 @@ export default function CelebracoesEucaristia() {
           </div>
         </div>
         <Revelar atraso={200}>
-          <p className={`${LEVE} w-[calc(444*var(--u))] text-[length:calc(20*var(--u))] leading-[calc(32*var(--u))]`} style={TRIM}>{t('eucTexto')}</p>
+          <p className={`${LEVE} w-[calc(444*var(--u))] text-[length:calc(16*var(--u))] leading-[1.5]`} style={TRIM}>{t('eucTexto')}</p>
         </Revelar>
       </div>
 

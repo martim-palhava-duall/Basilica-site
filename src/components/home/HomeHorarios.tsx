@@ -126,7 +126,7 @@ export default function HomeHorarios() {
           </div>
         </div>
         <div style={surge(250)}>
-          <p className={`${LEVE} w-[calc(444*var(--u))] max-lg:w-full text-[length:calc(20*var(--u))] leading-[calc(32*var(--u))] max-lg:text-[length:calc(18*var(--u))] max-lg:leading-[calc(28*var(--u))]`} style={TRIM}>{t('horTexto')}</p>
+          <p className={`${LEVE} w-[calc(444*var(--u))] max-lg:w-full text-[length:calc(16*var(--u))] leading-[1.5]`} style={TRIM}>{t('horTexto')}</p>
         </div>
       </div>
 
@@ -153,7 +153,7 @@ export default function HomeHorarios() {
           <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold">{t('horAcolhLabel')}</p>
           <div className="flex flex-col gap-[calc(24*var(--u))] w-[calc(562*var(--u))] max-lg:w-full">
             <p className="font-display text-[length:calc(40*var(--u))] leading-[calc(35.2*var(--u))] tracking-[calc(-0.192*var(--u))] max-lg:text-[length:calc(30*var(--u))] max-lg:leading-[calc(32*var(--u))]">{t('horAcolhTitulo')}</p>
-            <p className={`${LEVE} text-[length:calc(20*var(--u))] leading-[1.4]`} style={TRIM}>{t('horAcolhTexto')}</p>
+            <p className={`${LEVE} text-[length:calc(16*var(--u))] leading-[1.5]`} style={TRIM}>{t('horAcolhTexto')}</p>
           </div>
         </div>
         <Link href="/basilica-e-convento#horarios" className="group/cta self-start flex items-center gap-[calc(12*var(--u))] text-[length:calc(16*var(--u))] leading-[1.5] whitespace-nowrap">
