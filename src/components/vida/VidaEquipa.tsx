@@ -14,13 +14,14 @@ const VIGARIOS = [
 ] as const
 
 /**
- * Sobre nós, Equipa Pastoral — design novo (Figma, nó 170:3184), desktop 1440.
+ * Vida da Paróquia, Equipa Pastoral — design novo (Figma, nó 224:67), desktop 1440.
+ * Passou da página Sobre nós para esta; os textos continuam no namespace `sobre`.
  *
  * Título centrado com subtítulo; o pároco com retrato (562×535) e a biografia
  * em duas colunas de 329; uma régua; e a grelha de três colunas dos vigários e
  * colaboradores (retrato de 321 de altura, função e nome).
  */
-export default function SobreEquipa() {
+export default function VidaEquipa() {
   const t = useTranslations('sobre')
 
   return (

@@ -13,7 +13,7 @@ type Entrada = { horas: string; dias: string }
  * por linha, com o "às" em minúsculas como no desenho; listas simples de horas
  * ("12H00 · 19H00") ficam numa linha, em maiúsculas.
  */
-function Horas({ horas }: { horas: string }) {
+export function Horas({ horas }: { horas: string }) {
   if (horas.includes('ÀS') && horas.includes(' · ')) {
     return (
       <div className="text-[length:calc(16*var(--u))] leading-[1.4] font-bold whitespace-nowrap">

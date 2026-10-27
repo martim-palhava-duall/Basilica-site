@@ -14,9 +14,8 @@ const MOVIMENTOS = [
 /**
  * Vida da Paróquia, Movimentos — design novo (Figma, nó 111:2061), desktop 1440, 1281 de altura.
  *
- * Fundo vermelho, 180 de respiro e 31 de margem. Linha com o título
- * "Movimentos" (Forevs 80, altura de linha 100%, bege claro 2) e o lema à
- * direita, alinhado pela base; três cartões (444, 444 e 445, com 22 entre eles) de
+ * Fundo vermelho, 180 de respiro e 31 de margem. Linha com a etiqueta
+ * "Movimentos" (12px) e o lema à direita; três cartões (444, 444 e 445, com 22 entre eles) de
  * fotografia de 541 de altura, título de 40px e frase; por baixo, uma régua,
  * a frase de 20px e o botão "Entre em contacto". O desenho não traz hover nem
  * ligações nos cartões.
@@ -32,14 +31,9 @@ export default function VidaMovimentos() {
       className="flex w-full flex-col gap-[calc(80*var(--u))] px-[calc(31*var(--u))] py-[calc(180*var(--u))] bg-[var(--vermelho)] text-[var(--bege-claro-2)]"
     >
       <Revelar>
-        <div className="flex w-full items-end justify-between whitespace-nowrap">
-          <h2
-            className="font-display text-[length:calc(80*var(--u))] leading-none font-normal"
-            style={{ textBox: 'trim-both cap alphabetic' } as React.CSSProperties}
-          >
-            {t('movLabel')}
-          </h2>
-          <p className="text-right text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{t('movLema')}</p>
+        <div className="flex w-full items-center justify-between whitespace-nowrap text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">
+          <p>{t('movLabel')}</p>
+          <p className="text-right">{t('movLema')}</p>
         </div>
       </Revelar>
 

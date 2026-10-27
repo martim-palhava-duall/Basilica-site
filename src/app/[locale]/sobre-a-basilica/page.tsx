@@ -8,7 +8,6 @@ import SobreConvento from '@/components/sobre/SobreConvento'
 import SobreAcontecer from '@/components/sobre/SobreAcontecer'
 import SobreGaleria from '@/components/sobre/SobreGaleria'
 import SobreCulto from '@/components/sobre/SobreCulto'
-import SobreEquipa from '@/components/sobre/SobreEquipa'
 import SobreHistoria from '@/components/sobre/SobreHistoria'
 import SobreVisitar from '@/components/sobre/SobreVisitar'
 import SobreParoquia from '@/components/sobre/SobreParoquia'
@@ -23,15 +22,14 @@ export const metadata: Metadata = { title: 'Sobre nós' }
 export default function SobreNosPage({ params }: { params: Promise<{ locale: string }> }) {
   setRequestLocale(use(params).locale)
   const t = useTranslations('ancoras')
-  const ancoras = [{ id: 'paroquia', label: t('paroquia') }, { id: 'visitar', label: t('visitar') }, { id: 'historia', label: t('historia') }, { id: 'equipa', label: t('equipa') }, { id: 'culto', label: t('culto') }, { id: 'imagens', label: t('imagens') }, { id: 'acontecer', label: t('acontecer') }]
+  const ancoras = [{ id: 'paroquia', label: t('paroquia') }, { id: 'historia', label: t('historia') }, { id: 'visitar', label: t('visitar') }, { id: 'culto', label: t('culto') }, { id: 'imagens', label: t('imagens') }, { id: 'acontecer', label: t('acontecer') }]
 
   return (
     <PaginaInterior ancoras={ancoras}>
       <SobreCapa />
       <SobreParoquia />
-      <SobreVisitar />
       <SobreHistoria />
-      <SobreEquipa />
+      <SobreVisitar />
       <SobreCulto />
       <SobreGaleria />
       <SobreAcontecer />

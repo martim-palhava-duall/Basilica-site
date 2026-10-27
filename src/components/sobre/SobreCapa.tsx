@@ -5,7 +5,7 @@ import Revelar from '@/components/home/Revelar'
 /**
  * Sobre nós, abertura — design novo (Figma, nó 170:3118), desktop 1440.
  *
- * Label e título (80px, caixa trimada às maiúsculas) a 80 do topo da secção,
+ * Label e título (80px, caixa trimada às maiúsculas) a 120 do topo da secção,
  * e a fotografia de 1376×600, sem deformar (cobre a caixa e corta por cima e por baixo). A secção termina na própria
  * fotografia: o respiro seguinte vem do topo da secção que lhe segue.
  */
@@ -15,7 +15,7 @@ export default function SobreCapa() {
   return (
     <section
       data-barra="var(--bege-claro-2)"
-      className="w-full px-[calc(32*var(--u))] pt-[calc(80*var(--u))] bg-[var(--bege-claro-2)] text-[var(--azul-escuro)]"
+      className="w-full px-[calc(32*var(--u))] pt-[calc(120*var(--u))] bg-[var(--bege-claro-2)] text-[var(--azul-escuro)]"
     >
       <div className="flex flex-col gap-[calc(64*var(--u))] w-full">
         <div className="flex flex-col gap-[calc(24*var(--u))] w-full">
