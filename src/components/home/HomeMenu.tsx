@@ -257,15 +257,15 @@ export default function HomeMenu() {
             ref={fecharMobRef}
             type="button"
             onClick={fechar}
-            className="btn-luz max-lg:min-w-[calc(84*var(--u))] max-lg:justify-center h-[calc(32*var(--u))] px-[calc(20*var(--u))] flex items-center rounded-[calc(6*var(--u))] border border-solid border-[rgba(247,242,238,0.45)] text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] text-[var(--bege-claro-2)]"
+            className="btn-luz min-w-[calc(76*var(--u))] justify-center h-[calc(36*var(--u))] px-[calc(16*var(--u))] flex items-center rounded-[calc(4*var(--u))] border border-solid border-[rgba(247,242,238,0.4)] text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] text-[var(--bege-claro-2)]"
           >
             {t('menuFechar')}
           </button>
         </div>
 
         <div className="flex flex-1 flex-col px-[calc(20*var(--u))] pb-[calc(24*var(--u))] pt-[calc(24*var(--u))]">
-          {/* Páginas: lista grande (40, passo de 45 como no Figma, onde as caixas de texto têm 27 + 18 de espaço), em Forevs Light, compacta como na referência; se não couber, o painel rola */}
-          <ul className="flex flex-col pb-[calc(44*var(--u))]">
+          {/* Páginas: lista grande (40, passo de 45 como no Figma, onde as caixas de texto têm 27 + 18 de espaço), em Forevs Regular, como no Figma; se não couber, o painel rola */}
+          <ul className="flex flex-col pb-[calc(26*var(--u))]">
             {[...COL1, ...COL2].map(([chave, href], i) => (
               <li key={chave} style={entra(220 + i * 40)}>
                 <Link
@@ -276,7 +276,7 @@ export default function HomeMenu() {
                 >
                   <span
                     className="block font-display text-[length:calc(40*var(--u))] leading-[calc(45*var(--u))] transition-transform duration-[400ms] ease-[var(--ease-out)] group-active:translate-x-[calc(6*var(--u))]"
-                    style={{ fontWeight: 300 }}
+                    style={{ fontWeight: 400 }}
                   >
                     {t(chave)}
                   </span>
@@ -288,7 +288,7 @@ export default function HomeMenu() {
           {/* Horário e contacto, um por cima do outro (Figma 239:4) */}
           <div className="flex flex-col gap-[calc(28*var(--u))] pb-[calc(44*var(--u))]" style={entra(560)}>
             <div className="flex flex-col gap-[calc(8*var(--u))]">
-              <p className="text-[length:calc(12*var(--u))] leading-[calc(14*var(--u))] opacity-60">{t('menuHorarioHead')}</p>
+              <p className="text-[length:calc(15*var(--u))] leading-[calc(18*var(--u))] opacity-60">{t('menuHorarioHead')}</p>
               <div className="flex flex-col gap-[calc(8*var(--u))]">
                 <p className="flex flex-col gap-[calc(2*var(--u))] text-[length:calc(12*var(--u))] leading-[calc(14*var(--u))]"><span className="text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] font-bold">{th('missasSemHoras')}</span>{th('missasSemDias')}</p>
                 <p className="flex flex-col gap-[calc(2*var(--u))] text-[length:calc(12*var(--u))] leading-[calc(14*var(--u))]"><span className="text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] font-bold">{th('missasDomHoras')}</span>{th('missasDomDias')}</p>
@@ -315,7 +315,7 @@ export default function HomeMenu() {
               <span className="relative block h-[calc(168*var(--u))] w-full overflow-hidden">
                 <Image src="/home/menu-foto.jpg" alt="" fill sizes="390px" className="object-cover" />
               </span>
-              <span className="border-t border-solid border-[rgba(247,242,238,0.22)] px-[calc(18*var(--u))] py-[calc(16*var(--u))] font-display text-[length:calc(24*var(--u))] leading-[1.2]">{t('menuBilhete')}</span>
+              <span className="flex min-h-[calc(90*var(--u))] items-center px-[calc(18*var(--u))] font-display text-[length:calc(24*var(--u))] leading-[1.2]">{t('menuBilhete')}</span>
               <span className="flex items-center justify-between border-t border-solid border-[rgba(247,242,238,0.22)] px-[calc(18*var(--u))] py-[calc(18*var(--u))]">
                 <span className="text-[length:calc(16*var(--u))] leading-none">{t('menuPlanear')}</span>
                 <span aria-hidden="true" className="flex h-[calc(44*var(--u))] w-[calc(44*var(--u))] items-center justify-center rounded-full bg-[var(--bege-claro-2)] text-[var(--azul-escuro)]">
