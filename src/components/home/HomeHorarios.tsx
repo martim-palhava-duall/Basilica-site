@@ -25,8 +25,9 @@ const LEVE = 'font-[family-name:var(--font-body-light)]'
  * linha de teste nas últimas colunas; aqui entram os dados reais. A coluna
  * "Abertura e encerramento" do desenho corresponde às horas de acolhimento.
  *
- * Mobile: cabeçalho em coluna (título a 44px, botão por baixo), horários numa
- * grelha de duas colunas e o acolhimento a toda a largura.
+ * Mobile: cabeçalho em coluna (título a 40px, botão por baixo), horários numa
+ * grelha de duas colunas (horas a 14px, para "10H00 · 12H00 · 19H00" caber na
+ * coluna de 165) e o acolhimento a toda a largura.
  *
  * Entrada ("horas que acendem", escolhida entre seis opções): quando a secção
  * chega a 75% do ecrã, o cabeçalho aparece com uma subida curta, depois os nomes
@@ -177,7 +178,7 @@ function HorasEntrada({ horas }: { horas: string }) {
   const intervalos = horas.includes('ÀS') && horas.includes(' · ')
   if (intervalos) {
     return (
-      <div className="text-[length:calc(16*var(--u))] leading-[1.4] font-bold whitespace-nowrap">
+      <div className="text-[length:calc(16*var(--u))] max-lg:text-[length:calc(14*var(--u))] leading-[1.4] font-bold whitespace-nowrap">
         {horas.split(' · ').map((l) => (
           <p key={l}>{l.replace(' ÀS ', ' às ')}</p>
         ))}
@@ -186,7 +187,7 @@ function HorasEntrada({ horas }: { horas: string }) {
   }
   const unico = horas.includes('ÀS')
   return (
-    <p className={`text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] font-bold whitespace-nowrap ${unico ? '' : 'uppercase'}`}>
+    <p className={`text-[length:calc(16*var(--u))] max-lg:text-[length:calc(14*var(--u))] leading-[calc(19*var(--u))] max-lg:leading-[calc(17*var(--u))] font-bold whitespace-nowrap ${unico ? '' : 'uppercase'}`}>
       {horas.replace(' ÀS ', ' às ')}
     </p>
   )
