@@ -12,7 +12,7 @@ const INOUT = 'var(--ease-inout)'
 
 /** Palavras em itálico leve dentro do título (<i> nas mensagens) */
 const i = (chunks: ReactNode) => (
-  <span className="italic font-light" style={{ fontFamily: "'forevs-light', var(--font-display)", lineHeight: 0 }}>{chunks}</span>
+  <span className="italic font-light" style={{ fontFamily: "var(--font-display)", lineHeight: 0 }}>{chunks}</span>
 )
 
 /**

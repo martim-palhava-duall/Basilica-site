@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl'
 import NoticiasBloco from '@/components/home/NoticiasBloco'
 
 const i = (chunks: ReactNode) => (
-  <span className="italic font-light" style={{ fontFamily: "'forevs-light', var(--font-display)" }}>{chunks}</span>
+  <span className="italic font-light" style={{ fontFamily: "var(--font-display)" }}>{chunks}</span>
 )
 
 /**

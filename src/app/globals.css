@@ -65,19 +65,19 @@
     --color-border-light:   rgb(27 43 57 / 0.07);
 
     /* TIPOGRAFIA — Adobe Fonts kit (ver layout.tsx <head>).
-       O kit serve 16 faces:
-         forevs            400, 400i, 700, 700i
+       O kit serve 26 faces:
+         forevs            200 a 900 (200, 300, 400, 500, 700, 800, 900), normal e itálico
+                           → o Light e o Light Itálico são o peso 300 da própria `forevs`
          area-normal       400, 400i, 700, 700i
          area-normal-light 300, 300i   ← família SEPARADA, não é peso da anterior
          area-extended / area-extended-light (não usadas aqui)
 
-       ⚠️ A Adobe serve os Light como família própria. `font-weight: 300` sobre
+       ⚠️ A Adobe serve os Light da Area como família própria. `font-weight: 300` sobre
        `area-normal` é ignorado — é preciso usar --font-body-light.
 
-       Em falta no kit (font-weight:300/500 sobre estas famílias não tem efeito):
-         · forevs Light   → o título do hero pede 300 e renderiza a 400
-         · area-normal Medium (500) → nav e botões pedem 500, renderizam a 400
-       Para os ter, adicionar ao Web Project em fonts.adobe.com (o link não muda). */
+       Em falta no kit: area-normal Medium (500) — nav e botões pedem 500 e
+       renderizam a 400. Para o ter, adicionar ao Web Project em fonts.adobe.com
+       (o link não muda). */
     --font-display: 'forevs', Georgia, serif;
     --font-body:    'area-normal', system-ui, sans-serif;
     --font-body-light: 'area-normal-light', system-ui, sans-serif;
@@ -546,13 +546,11 @@
   }
 
   /* ── HOMEPAGE NOVA: título do hero ──
-     Figma: Forevs Light Italic 120/147.2. O kit da Adobe não tem Forevs Light
-     — só 400 e 700 — por isso, enquanto não for acrescentada, cai para a
-     Forevs Italic 400. Se a Light entrar no kit com a família "forevs-light"
-     (como a Area, que tem "area-normal-light"), passa a ser usada sem mexer
-     em mais nada. */
+     Figma: Forevs Light Italic 120/147.2. O kit da Adobe (tuk8ddf) já traz a
+     Forevs em todos os pesos (200 a 900, normal e itálico), por isso o Light é o
+     peso 300 da família `forevs`; não há família "forevs-light" à parte. */
   .hero-linha {
-    font-family: 'forevs-light', var(--font-display);
+    font-family: var(--font-display);
     font-style: italic;
     font-weight: 300;
     font-size: calc(120 * var(--u));

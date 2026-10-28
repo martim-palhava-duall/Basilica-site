@@ -27,7 +27,7 @@ export default function NoticiaCorpo() {
         <Revelar>
           <blockquote
             className="text-[length:calc(40*var(--u))] leading-[1.2] italic font-light"
-            style={{ fontFamily: "'forevs-light', var(--font-display)" }}
+            style={{ fontFamily: "var(--font-display)" }}
           >
             {t('citacao')}
           </blockquote>

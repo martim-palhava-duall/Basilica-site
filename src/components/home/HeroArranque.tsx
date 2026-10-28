@@ -20,7 +20,7 @@ import { esperarVeu } from '@/lib/transicao'
 const ESPERA_MAX = 900
 
 // O mesmo que `arrancar`, em JavaScript simples, para o script do HTML
-const SCRIPT = `(function(){var s=document.currentScript&&document.currentScript.closest('[data-hero]');if(!s)return;var f=0;function go(){if(f)return;f=1;s.dataset.hero='go'}var p=[];var i=s.querySelector('img.hero-foto');if(i&&i.decode)p.push(i.decode().catch(function(){}));var k=document.getElementById('typekit');var c=k&&!k.sheet?new Promise(function(r){k.addEventListener('load',r);k.addEventListener('error',r)}):Promise.resolve();if(document.fonts&&document.fonts.load)p.push(c.then(function(){return document.fonts.load("italic 300 120px forevs-light, italic 400 120px forevs")}).catch(function(){}));Promise.all(p).then(go);setTimeout(go,${ESPERA_MAX})})()`
+const SCRIPT = `(function(){var s=document.currentScript&&document.currentScript.closest('[data-hero]');if(!s)return;var f=0;function go(){if(f)return;f=1;s.dataset.hero='go'}var p=[];var i=s.querySelector('img.hero-foto');if(i&&i.decode)p.push(i.decode().catch(function(){}));var k=document.getElementById('typekit');var c=k&&!k.sheet?new Promise(function(r){k.addEventListener('load',r);k.addEventListener('error',r)}):Promise.resolve();if(document.fonts&&document.fonts.load)p.push(c.then(function(){return document.fonts.load("italic 300 120px forevs")}).catch(function(){}));Promise.all(p).then(go);setTimeout(go,${ESPERA_MAX})})()`
 
 function arrancar(secao: HTMLElement) {
   let feito = false
@@ -43,7 +43,7 @@ function arrancar(secao: HTMLElement) {
   const cssKit = kit && !kit.sheet
     ? new Promise<void>((r) => { kit.addEventListener('load', () => r(), { once: true }); kit.addEventListener('error', () => r(), { once: true }) })
     : Promise.resolve()
-  if (document.fonts?.load) prontos.push(cssKit.then(() => document.fonts.load("italic 300 120px forevs-light, italic 400 120px forevs")).catch(() => {}))
+  if (document.fonts?.load) prontos.push(cssKit.then(() => document.fonts.load("italic 300 120px forevs")).catch(() => {}))
   esperarVeu().then(() => {
     if (cancelado) return
     Promise.all(prontos).then(go)

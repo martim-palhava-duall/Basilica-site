@@ -7,7 +7,7 @@ import { BILHETEIRA, externo } from '@/lib/links'
 
 const TRIM = { textBox: 'trim-both cap alphabetic' } as React.CSSProperties
 const LINHA = 'whitespace-nowrap font-display text-[length:calc(96*var(--u))] leading-[calc(100.8*var(--u))] tracking-[calc(-0.576*var(--u))]'
-const ITALICO = { fontFamily: "'forevs-light', var(--font-display)" }
+const ITALICO = { fontFamily: "var(--font-display)" }
 
 /** Miniatura 112×74,66 com 4px de raio, como no "O que procura?" da homepage */
 function Thumb({ children }: { children: React.ReactNode }) {

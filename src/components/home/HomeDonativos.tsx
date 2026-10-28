@@ -39,7 +39,7 @@ export default function HomeDonativos() {
         <Revelar atraso={100}>
           <h2 className="font-display text-[length:calc(96*var(--u))] leading-[calc(105.6*var(--u))] tracking-[calc(-0.576*var(--u))] max-lg:text-[length:calc(48*var(--u))] max-lg:leading-[calc(52*var(--u))] max-lg:tracking-normal font-normal">
             <span className="block">{t('donT1')}</span>
-            <span className="block italic font-light" style={{ fontFamily: "'forevs-light', var(--font-display)" }}>
+            <span className="block italic font-light" style={{ fontFamily: "var(--font-display)" }}>
               {t('donT2')}
             </span>
           </h2>

@@ -36,7 +36,7 @@ export default function DonativosSustentar() {
           <Revelar atraso={250}>
             <p
               className="pb-[calc(0.8*var(--u))] italic text-[length:calc(40*var(--u))] leading-[1.2] text-[var(--bege-escuro-2)]"
-              style={{ fontFamily: "'forevs-light', var(--font-display)", fontWeight: 300 }}
+              style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
             >
               {t('susCitacao')}
             </p>

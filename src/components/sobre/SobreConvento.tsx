@@ -8,7 +8,7 @@ import Paralax from '@/components/home/Paralax'
 import { BILHETEIRA, externo } from '@/lib/links'
 
 const i = (chunks: ReactNode) => (
-  <span className="italic font-light" style={{ fontFamily: "'forevs-light', var(--font-display)" }}>{chunks}</span>
+  <span className="italic font-light" style={{ fontFamily: "var(--font-display)" }}>{chunks}</span>
 )
 
 /**

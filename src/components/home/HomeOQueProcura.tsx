@@ -197,7 +197,7 @@ function Entrada({
       <span
         ref={itRef}
         className={`${BASE} justify-self-start italic`}
-        style={{ ...TRIM, fontFamily: "'forevs-light', var(--font-display)", fontWeight: 300, opacity: ativa ? 0 : 1 }}
+        style={{ ...TRIM, fontFamily: "var(--font-display)", fontWeight: 300, opacity: ativa ? 0 : 1 }}
       >
         {texto}
       </span>

@@ -4,7 +4,7 @@ import NoticiasBloco from '@/components/home/NoticiasBloco'
 
 /** Itálico leve dentro do título (<i> nas mensagens) */
 const i = (chunks: ReactNode) => (
-  <span className="italic font-light" style={{ fontFamily: "'forevs-light', var(--font-display)" }}>{chunks}</span>
+  <span className="italic font-light" style={{ fontFamily: "var(--font-display)" }}>{chunks}</span>
 )
 
 /** Destaques — design novo (Figma, nó 115:363). O desenho está em NoticiasBloco. */

@@ -83,7 +83,7 @@ export default function HomeObraSocial() {
         <div className="flex items-start justify-between w-full max-lg:flex-col max-lg:gap-[calc(32*var(--u))]">
           <h2 className="font-display text-[length:calc(80*var(--u))] leading-none font-normal w-[calc(418*var(--u))] max-lg:w-auto max-lg:text-[length:calc(44*var(--u))]" style={TRIM}>
             <span className="block" style={surge(100)}>{t('obraT1')}</span>
-            <span className="block italic font-light" style={{ fontFamily: "'forevs-light', var(--font-display)", ...surge(180) }}>
+            <span className="block italic font-light" style={{ fontFamily: "var(--font-display)", ...surge(180) }}>
               {t('obraT2')}
             </span>
           </h2>

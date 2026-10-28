@@ -4,7 +4,7 @@ import ListaPainel, { type FotoGaleria } from '@/components/ui/ListaPainel'
 import { GALERIA_PAINEL } from '@/lib/galeria'
 
 const i = (chunks: ReactNode) => (
-  <span className="italic font-light" style={{ fontFamily: "'forevs-light', var(--font-display)" }}>{chunks}</span>
+  <span className="italic font-light" style={{ fontFamily: "var(--font-display)" }}>{chunks}</span>
 )
 
 /**
