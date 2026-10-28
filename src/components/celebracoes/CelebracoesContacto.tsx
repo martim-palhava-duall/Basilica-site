@@ -24,7 +24,7 @@ export default function CelebracoesContacto() {
   return (
     <section
       data-barra="var(--bege-claro-2)"
-      className="relative h-[calc(825*var(--u))] w-full overflow-hidden bg-[var(--azul-escuro)] text-[var(--bege-claro-2)]"
+      className="relative h-[calc(825*var(--u))] w-full max-lg:flex max-lg:h-auto max-lg:min-h-[calc(600*var(--u))] max-lg:flex-col max-lg:justify-center max-lg:gap-[calc(40*var(--u))] max-lg:px-[calc(20*var(--u))] max-lg:py-[calc(72*var(--u))] overflow-hidden bg-[var(--azul-escuro)] text-[var(--bege-claro-2)]"
     >
       <Paralax>
         <div className="absolute" style={{ left: '-2.55%', top: '-26.48%', width: '112.5%', height: '130.88%' }}>
@@ -41,19 +41,19 @@ export default function CelebracoesContacto() {
         }}
       />
 
-      <div className="absolute left-[calc(265*var(--u))] top-[calc(222*var(--u))] flex w-[calc(768*var(--u))] flex-col gap-[calc(8.895*var(--u))]">
+      <div className="absolute left-[calc(265*var(--u))] top-[calc(222*var(--u))] max-lg:relative max-lg:left-auto max-lg:top-auto max-lg:w-full flex w-[calc(768*var(--u))] flex-col gap-[calc(8.895*var(--u))]">
         <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{t('ctaLabel')}</p></Revelar>
         <Revelar atraso={100}>
-          <h2 className="font-display text-[length:calc(96*var(--u))] leading-[calc(105.6*var(--u))] tracking-[calc(-0.576*var(--u))] font-normal">
+          <h2 className="font-display text-[length:calc(96*var(--u))] max-lg:text-[length:calc(44*var(--u))] leading-[calc(105.6*var(--u))] max-lg:leading-[calc(48*var(--u))] tracking-[calc(-0.576*var(--u))] max-lg:tracking-normal font-normal">
             {t.rich('ctaTitulo', { i, br: () => <br /> })}
           </h2>
         </Revelar>
       </div>
 
-      <div className="absolute left-[calc(850*var(--u))] top-[calc(391.9*var(--u))] w-[calc(325*var(--u))]">
+      <div className="absolute left-[calc(850*var(--u))] top-[calc(391.9*var(--u))] max-lg:relative max-lg:left-auto max-lg:top-auto max-lg:w-full w-[calc(325*var(--u))]">
         <Revelar atraso={250}>
           <div className="flex w-full flex-col items-start gap-[calc(40*var(--u))]">
-            <p className="font-[family-name:var(--font-body-light)] text-[length:calc(20*var(--u))] leading-[1.4]">{t('ctaTexto')}</p>
+            <p className="font-[family-name:var(--font-body-light)] text-[length:calc(20*var(--u))] max-lg:text-[length:calc(16*var(--u))] leading-[1.4]">{t('ctaTexto')}</p>
             <Link
               href="/contactos"
               className="group/btn flex items-center gap-[calc(12*var(--u))] rounded-[calc(6*var(--u))] bg-[var(--bege-escuro-2)] px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap text-[var(--azul-escuro)] transition-[background-color] duration-[400ms] ease-[var(--ease-out)]"

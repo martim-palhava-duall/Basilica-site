@@ -37,7 +37,7 @@ const FOTO = '/celebracoes/sacramento.jpg'
 /** Fotografias do painel: as das galerias do site (lib/galeria) */
 const GALERIA = GALERIA_PAINEL
 const FOLGA_GALERIA = 12
-const DESLOCAMENTOS = GALERIA.map((_, i) => GALERIA.slice(0, i).reduce((s, g) => s + g.largura + FOLGA_GALERIA, 0))
+const DESLOCAMENTOS = GALERIA.map((_, i) => GALERIA.slice(0, i).reduce((s, g) => s + g.largura, 0))
 
 /**
  * Sacramentos, lista e painel — design novo (Figma, nós 111:1534 e 140:1514).
@@ -51,6 +51,9 @@ const DESLOCAMENTOS = GALERIA.map((_, i) => GALERIA.slice(0, i).reduce((s, g) =>
  * marcar; o resto do ecrã fica coberto por um véu a 20% que o fecha ao clicar.
  * É um diálogo modal: prende o scroll, fecha com Escape e devolve o foco ao
  * botão que o abriu.
+ *
+ * Mobile: a fotografia fica parada em cima (260 de altura), a lista toda a cheio (sem o
+ * esbater) e o painel a toda a largura, com a galeria a 62%.
  */
 export default function SacramentosLista({ items, textos }: { items: Sacramento[]; textos: Textos }) {
   const [ativo, setAtivo] = useState(0)
@@ -159,7 +162,7 @@ export default function SacramentosLista({ items, textos }: { items: Sacramento[
         // O Lenis, parado, descarta o scroll de roda em toda a página; este atributo
         // deixa o painel rolar por si.
         data-lenis-prevent
-        className="absolute right-0 top-0 h-full w-[calc(1000*var(--u))] max-w-full overflow-y-auto overflow-x-hidden bg-[var(--bege-claro-2)] text-[var(--azul-escuro)]"
+        className="absolute right-0 top-0 h-full w-[calc(1000*var(--u))] max-w-full [--gk:1] max-lg:[--gk:0.62] overflow-y-auto overflow-x-hidden bg-[var(--bege-claro-2)] text-[var(--azul-escuro)]"
         style={{
           transform: estaAberto ? 'translateX(0)' : 'translateX(100%)',
           transition: `transform ${estaAberto ? 700 : 500}ms var(--ease-inout)`,
@@ -181,29 +184,29 @@ export default function SacramentosLista({ items, textos }: { items: Sacramento[
           </span>
         </button>
 
-        <div className="flex flex-col gap-[calc(64*var(--u))] px-[calc(64*var(--u))] pt-[calc(80*var(--u))] pb-[calc(80*var(--u))]">
-          <h2 className="font-display text-[length:calc(80*var(--u))] leading-[calc(96*var(--u))] tracking-[calc(0.96*var(--u))] font-normal" style={TRIM}>{s.titulo}</h2>
+        <div className="flex flex-col gap-[calc(64*var(--u))] max-lg:gap-[calc(40*var(--u))] px-[calc(64*var(--u))] max-lg:px-[calc(20*var(--u))] pt-[calc(80*var(--u))] max-lg:pt-[calc(72*var(--u))] pb-[calc(80*var(--u))] max-lg:pb-[calc(56*var(--u))]">
+          <h2 className="font-display text-[length:calc(80*var(--u))] max-lg:text-[length:calc(44*var(--u))] leading-[calc(96*var(--u))] max-lg:leading-[calc(48*var(--u))] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal font-normal" style={TRIM}>{s.titulo}</h2>
 
-          <div className="flex flex-col gap-[calc(80*var(--u))] w-full">
-            <div className="flex flex-col gap-[calc(80*var(--u))] w-[calc(872*var(--u))] max-w-full">
-              <div className="flex flex-col gap-[calc(32*var(--u))] w-full">
-                <p className="font-display text-[length:calc(32*var(--u))] leading-[1.2] tracking-[calc(0.96*var(--u))]" style={TRIM}>{s.longo}</p>
+          <div className="flex flex-col gap-[calc(80*var(--u))] max-lg:gap-[calc(40*var(--u))] w-full">
+            <div className="flex flex-col gap-[calc(80*var(--u))] max-lg:gap-[calc(32*var(--u))] w-[calc(872*var(--u))] max-w-full">
+              <div className="flex flex-col gap-[calc(32*var(--u))] max-lg:gap-[calc(20*var(--u))] w-full">
+                <p className="font-display text-[length:calc(32*var(--u))] max-lg:text-[length:calc(24*var(--u))] leading-[1.2] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal" style={TRIM}>{s.longo}</p>
                 <p className="text-[length:calc(16*var(--u))] leading-[1.5]">{s.longo2}</p>
               </div>
 
-              <div className="flex gap-[calc(20*var(--u))] items-start w-full">
-                <div className="flex flex-col gap-[calc(20*var(--u))] w-[calc(426*var(--u))]">
+              <div className="flex gap-[calc(20*var(--u))] items-start max-lg:flex-col max-lg:gap-[calc(32*var(--u))] w-full">
+                <div className="flex flex-col gap-[calc(20*var(--u))] w-[calc(426*var(--u))] max-lg:w-full">
                   <p className="text-[length:calc(16*var(--u))] leading-[1.5] opacity-40">{textos.quando}</p>
                   <div className="flex flex-col gap-[calc(12*var(--u))] w-full">
                     {s.quando.map((q) => (
                       <div key={q.horas} className="flex flex-col gap-[calc(12*var(--u))]">
-                        <p className="font-display text-[length:calc(32*var(--u))] leading-[1.2] tracking-[calc(0.96*var(--u))]">{q.horas}</p>
+                        <p className="font-display text-[length:calc(32*var(--u))] max-lg:text-[length:calc(24*var(--u))] leading-[1.2] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal">{q.horas}</p>
                         <p className="text-[length:calc(16*var(--u))] leading-[1.5]">{q.dias}</p>
                       </div>
                     ))}
                   </div>
                 </div>
-                <div className="flex flex-col gap-[calc(20*var(--u))] w-[calc(426*var(--u))] text-[length:calc(16*var(--u))] leading-[1.5]">
+                <div className="flex flex-col gap-[calc(20*var(--u))] w-[calc(426*var(--u))] max-lg:w-full text-[length:calc(16*var(--u))] leading-[1.5]">
                   <p className="opacity-40">{textos.preciso}</p>
                   <p>{s.preciso}</p>
                 </div>
@@ -225,21 +228,21 @@ export default function SacramentosLista({ items, textos }: { items: Sacramento[
                       aria-label={b.rotulo}
                       disabled={foto + b.d < 0 || foto + b.d >= GALERIA.length}
                       onClick={() => irFoto(b.d)}
-                      className="absolute top-[calc(2*var(--u))] h-[calc(20*var(--u))] w-[calc(32*var(--u))] overflow-hidden opacity-70 hover:opacity-100 disabled:opacity-30 disabled:cursor-default transition-opacity duration-[400ms]"
-                      style={{ left: u(b.left) }}
+                      className="absolute left-[var(--sx)] max-lg:left-auto max-lg:right-[var(--sr)] top-[calc(2*var(--u))] h-[calc(20*var(--u))] w-[calc(32*var(--u))] overflow-hidden opacity-70 hover:opacity-100 disabled:opacity-30 disabled:cursor-default transition-opacity duration-[400ms]"
+                      style={{ ['--sx' as string]: u(b.left), ['--sr' as string]: u(b.d < 0 ? 40 : 0) }}
                     >
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src="/sobre/galeria-setas.svg" alt="" width={81} height={13} className="absolute max-w-none" style={{ width: u(81), height: u(13), left: u(b.img), top: u(3.5) }} />
                     </button>
                   ))}
                 </div>
-                <div ref={pista} className="mt-[calc(24*var(--u))] -mr-[calc(64*var(--u))] overflow-hidden" style={{ ...ESTILO_GESTOS, cursor: arrastando ? 'grabbing' : 'grab' }}>
+                <div ref={pista} className="mt-[calc(24*var(--u))] -mr-[calc(64*var(--u))] max-lg:-mr-[calc(20*var(--u))] overflow-hidden" style={{ ...ESTILO_GESTOS, cursor: arrastando ? 'grabbing' : 'grab' }}>
                   <div
                     className="flex gap-[calc(12*var(--u))] w-max transition-transform duration-[1100ms] ease-[var(--ease-out)]"
-                    style={{ transform: `translateX(calc(${-DESLOCAMENTOS[foto]} * var(--u) + ${arrasto}px))`, transitionDuration: arrastando ? '0ms' : undefined }}
+                    style={{ transform: `translateX(calc((${-DESLOCAMENTOS[foto]} * var(--gk) - ${FOLGA_GALERIA * foto}) * var(--u) + ${arrasto}px))`, transitionDuration: arrastando ? '0ms' : undefined }}
                   >
                     {GALERIA.map((g, i) => (
-                      <div key={i} className="relative h-[calc(400*var(--u))] shrink-0 rounded-[calc(4*var(--u))] overflow-hidden" style={{ width: u(g.largura) }}>
+                      <div key={i} className="relative h-[calc(400*var(--u))] max-lg:h-[calc(280*var(--u))] shrink-0 rounded-[calc(4*var(--u))] overflow-hidden" style={{ width: `calc(${g.largura} * var(--gk) * var(--u))` }}>
                         <Image src={g.src} alt="" fill sizes="600px" className="object-cover" />
                       </div>
                     ))}
@@ -263,14 +266,14 @@ export default function SacramentosLista({ items, textos }: { items: Sacramento[
 
   return (
     <>
-      <div className="flex items-start justify-between w-full">
-        {/* Fotografia fixa */}
-        <div ref={fotoRef} className="sticky top-[calc(120*var(--u))] h-[calc(629*var(--u))] w-[calc(678*var(--u))] shrink-0 rounded-[calc(4*var(--u))] overflow-hidden">
+      <div className="flex items-start justify-between w-full max-lg:flex-col max-lg:gap-[calc(40*var(--u))]">
+        {/* Fotografia fixa (no mobile fica em cima, parada) */}
+        <div ref={fotoRef} className="sticky top-[calc(120*var(--u))] max-lg:relative max-lg:top-auto h-[calc(629*var(--u))] w-[calc(678*var(--u))] max-lg:h-[calc(260*var(--u))] max-lg:w-full shrink-0 rounded-[calc(4*var(--u))] overflow-hidden">
           <Image src={FOTO} alt="" fill sizes="678px" className="object-cover" />
         </div>
 
         {/* Lista */}
-        <div ref={listaRef} className="flex flex-col gap-[calc(48*var(--u))] w-[calc(562*var(--u))]">
+        <div ref={listaRef} className="flex flex-col gap-[calc(48*var(--u))] max-lg:gap-[calc(32*var(--u))] w-[calc(562*var(--u))] max-lg:w-full">
           {items.map((it, i) => (
             <article
               key={it.n}
@@ -278,12 +281,12 @@ export default function SacramentosLista({ items, textos }: { items: Sacramento[
                 itens.current[i] = el
               }}
               onMouseEnter={() => setAtivo(i)}
-              className="flex flex-col gap-[calc(24*var(--u))] pb-[calc(24*var(--u))] border-b border-solid border-[rgba(28,43,57,0.3)] transition-opacity duration-[500ms] ease-[var(--ease-out)]"
+              className="flex flex-col gap-[calc(24*var(--u))] max-lg:gap-[calc(16*var(--u))] pb-[calc(24*var(--u))] border-b border-solid border-[rgba(28,43,57,0.3)] transition-opacity duration-[500ms] ease-[var(--ease-out)] max-lg:opacity-100!"
               style={{ opacity: i === ativo ? 1 : 0.3 }}
             >
               <div className="flex flex-col gap-[calc(16*var(--u))] w-full">
                 <span className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] tracking-[calc(-0.064*var(--u))]">{it.n}</span>
-                <h3 className="font-display text-[length:calc(48*var(--u))] leading-[calc(96*var(--u))] tracking-[calc(0.96*var(--u))] font-normal" style={TRIM}>{it.titulo}</h3>
+                <h3 className="font-display text-[length:calc(48*var(--u))] max-lg:text-[length:calc(32*var(--u))] leading-[calc(96*var(--u))] max-lg:leading-[calc(36*var(--u))] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal font-normal" style={TRIM}>{it.titulo}</h3>
               </div>
               <p className="text-[length:calc(16*var(--u))] leading-[1.5]">{it.desc}</p>
               <button

@@ -25,19 +25,19 @@ export default function CelebracoesIntencoes() {
       id="intencoes"
       data-barra="var(--vermelho)"
       data-barra-tom="escuro"
-      className="flex h-[calc(561*var(--u))] w-full items-center gap-[calc(20*var(--u))] bg-[var(--vermelho)] text-[var(--bege-claro-2)]"
+      className="flex h-[calc(561*var(--u))] max-lg:h-auto max-lg:flex-col max-lg:items-stretch max-lg:gap-[calc(40*var(--u))] w-full items-center gap-[calc(20*var(--u))] max-lg:pb-[calc(72*var(--u))] bg-[var(--vermelho)] text-[var(--bege-claro-2)]"
     >
-      <div className="relative h-[calc(561*var(--u))] w-[calc(710*var(--u))] shrink-0">
+      <div className="relative h-[calc(561*var(--u))] w-[calc(710*var(--u))] max-lg:h-[calc(320*var(--u))] max-lg:w-full shrink-0">
         <Image src="/celebracoes/adoracao.jpg" alt={t('intAlt')} fill sizes="710px" className="object-cover" />
       </div>
 
-      <div className="flex w-[calc(678*var(--u))] flex-col gap-[calc(80*var(--u))] px-[calc(32*var(--u))]">
-        <div className="flex w-[calc(614*var(--u))] flex-col gap-[calc(40*var(--u))]">
+      <div className="flex w-[calc(678*var(--u))] max-lg:w-full flex-col gap-[calc(80*var(--u))] max-lg:gap-[calc(32*var(--u))] px-[calc(32*var(--u))] max-lg:px-[calc(20*var(--u))]">
+        <div className="flex w-[calc(614*var(--u))] max-lg:w-full flex-col gap-[calc(40*var(--u))] max-lg:gap-[calc(28*var(--u))]">
           <div className="flex w-full flex-col gap-[calc(12*var(--u))]">
             <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{t('intLabel')}</p></Revelar>
             <Revelar atraso={100}>
               <h2
-                className="font-display text-[length:calc(80*var(--u))] leading-none tracking-[calc(0.96*var(--u))] font-normal"
+                className="font-display text-[length:calc(80*var(--u))] max-lg:text-[length:calc(44*var(--u))] leading-none tracking-[calc(0.96*var(--u))] max-lg:tracking-normal font-normal"
                 style={{ textBox: 'trim-both cap alphabetic' } as React.CSSProperties}
               >
                 {t('intTitulo')}
@@ -45,18 +45,18 @@ export default function CelebracoesIntencoes() {
             </Revelar>
           </div>
           <Revelar atraso={200}>
-            <div className="flex w-full items-start text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">
-              <p className="w-[calc(320*var(--u))] shrink-0">{t('intTexto1')}</p>
-              <p className="w-[calc(294*var(--u))] shrink-0">{t('intTexto2')}</p>
+            <div className="flex w-full items-start max-lg:flex-col max-lg:gap-[calc(12*var(--u))] text-[length:max(11px,calc(12*var(--u)))] max-lg:text-[length:calc(14*var(--u))] leading-[1.4] max-lg:leading-[1.5]">
+              <p className="w-[calc(320*var(--u))] max-lg:w-full shrink-0">{t('intTexto1')}</p>
+              <p className="w-[calc(294*var(--u))] max-lg:w-full shrink-0">{t('intTexto2')}</p>
             </div>
           </Revelar>
         </div>
 
         <Revelar atraso={200}>
           <div className="flex w-full flex-col gap-[calc(24*var(--u))]">
-            <div className="flex w-full items-start gap-[calc(40*var(--u))] border-y border-solid border-[rgba(249,246,243,0.2)] py-[calc(20*var(--u))]">
-              <p className="w-[calc(224*var(--u))] shrink-0 self-center text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold whitespace-nowrap">{h('cartorioDias')}</p>
-              <p className="w-[calc(350*var(--u))] text-right text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] font-bold">{h('cartorioHoras').replace(/ ÀS /g, ' às ')}</p>
+            <div className="flex w-full items-start gap-[calc(40*var(--u))] max-lg:gap-[calc(20*var(--u))] border-y border-solid border-[rgba(249,246,243,0.2)] py-[calc(20*var(--u))]">
+              <p className="w-[calc(224*var(--u))] max-lg:w-[calc(130*var(--u))] shrink-0 self-center text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold whitespace-nowrap">{h('cartorioDias')}</p>
+              <p className="w-[calc(350*var(--u))] max-lg:w-auto max-lg:min-w-px max-lg:flex-1 text-right text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] font-bold">{h('cartorioHoras').replace(/ ÀS /g, ' às ')}</p>
             </div>
             <Link
               href={BILHETEIRA}
