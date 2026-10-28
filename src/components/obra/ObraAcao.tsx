@@ -30,6 +30,8 @@ function SetaFaixa({ lado }: { lado: 'esq' | 'dir' }) {
  * título de 40px e frase) que corre na horizontal — o quarto cartão sai do
  * ecrã, como no desenho, e as setas de baixo avançam e recuam um cartão;
  * por baixo, régua e a frase de 20px.
+ *
+ * Mobile: os cartões ficam empilhados (sem faixa nem setas), a toda a largura.
  */
 export default function ObraAcao() {
   const t = useTranslations('obra')
@@ -56,18 +58,18 @@ export default function ObraAcao() {
       id="acao"
       data-barra="var(--vermelho)"
       data-barra-tom="escuro"
-      className="flex w-full flex-col gap-[calc(80*var(--u))] py-[calc(180*var(--u))] bg-[var(--vermelho)] text-[var(--bege-claro-2)]"
+      className="flex w-full flex-col gap-[calc(80*var(--u))] max-lg:gap-[calc(48*var(--u))] py-[calc(180*var(--u))] max-lg:py-[calc(96*var(--u))] bg-[var(--vermelho)] text-[var(--bege-claro-2)]"
     >
-      <Revelar className="px-[calc(31*var(--u))]">
-        <div className="flex w-full items-end justify-between">
+      <Revelar className="px-[calc(31*var(--u))] max-lg:px-[calc(20*var(--u))]">
+        <div className="flex w-full items-end justify-between max-lg:flex-col max-lg:items-start max-lg:gap-[calc(16*var(--u))]">
           <h2
-            className="font-display text-[length:calc(80*var(--u))] leading-none font-normal whitespace-nowrap"
+            className="font-display text-[length:calc(80*var(--u))] max-lg:text-[length:calc(40*var(--u))] leading-none font-normal whitespace-nowrap max-lg:whitespace-normal"
             style={{ textBox: 'trim-both cap alphabetic' } as React.CSSProperties}
           >
             <span className="block">{t('acaoT1')}</span>
             <span className="block">{t('acaoT2')}</span>
           </h2>
-          <p className="text-right text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap">{t('acaoLema')}</p>
+          <p className="text-right max-lg:text-left text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap max-lg:whitespace-normal">{t('acaoLema')}</p>
         </div>
       </Revelar>
 
@@ -75,17 +77,17 @@ export default function ObraAcao() {
         <ul
           ref={faixa}
           onScroll={aoCorrer}
-          className="flex gap-[calc(16*var(--u))] overflow-x-auto px-[calc(31*var(--u))] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="flex gap-[calc(16*var(--u))] overflow-x-auto px-[calc(31*var(--u))] max-lg:flex-col max-lg:gap-[calc(40*var(--u))] max-lg:overflow-visible max-lg:px-[calc(20*var(--u))] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {CARTOES.map((c) => (
-            <li key={c.chave} className="shrink-0 self-start" style={{ width: u(c.largura) }}>
+            <li key={c.chave} className="shrink-0 self-start max-lg:w-full!" style={{ width: u(c.largura) }}>
               <article className="flex flex-col gap-[calc(20*var(--u))]">
-                <div className="relative h-[calc(541*var(--u))] w-full overflow-hidden rounded-[calc(4*var(--u))]">
+                <div className="relative h-[calc(541*var(--u))] max-lg:h-[calc(300*var(--u))] w-full overflow-hidden rounded-[calc(4*var(--u))]">
                   <Image src={c.foto} alt={t(`${c.chave}Alt`)} fill sizes="445px" className="object-cover" />
                 </div>
                 <div className="flex w-full flex-col gap-[calc(20*var(--u))]">
-                  <h3 className="font-display text-[length:calc(40*var(--u))] leading-[calc(35.2*var(--u))] tracking-[calc(-0.192*var(--u))] font-normal whitespace-nowrap">{t(`${c.chave}Titulo`)}</h3>
-                  <p className="text-[length:calc(16*var(--u))] leading-[1.2]">{t(`${c.chave}Texto`)}</p>
+                  <h3 className="font-display text-[length:calc(40*var(--u))] max-lg:text-[length:calc(30*var(--u))] leading-[calc(35.2*var(--u))] max-lg:leading-[calc(34*var(--u))] tracking-[calc(-0.192*var(--u))] font-normal whitespace-nowrap max-lg:whitespace-normal">{t(`${c.chave}Titulo`)}</h3>
+                  <p className="text-[length:calc(16*var(--u))] leading-[1.2] max-lg:leading-[1.5]">{t(`${c.chave}Texto`)}</p>
                 </div>
               </article>
             </li>
@@ -93,17 +95,17 @@ export default function ObraAcao() {
         </ul>
       </Revelar>
 
-      <div className="flex w-full flex-col gap-[calc(40*var(--u))] px-[calc(31*var(--u))]">
-        <div aria-hidden="true" className="h-px w-full bg-[rgba(247,242,238,0.25)]" />
+      <div className="flex w-full flex-col gap-[calc(40*var(--u))] px-[calc(31*var(--u))] max-lg:px-[calc(20*var(--u))]">
+        <div aria-hidden="true" className="h-px w-full max-lg:-mx-[calc(20*var(--u))] max-lg:w-[calc(100%+40*var(--u))] bg-[rgba(247,242,238,0.25)]" />
         <Revelar>
-          <div className="flex w-full items-center justify-between">
+          <div className="flex w-full items-center justify-between max-lg:flex-col max-lg:items-start">
             <p
-              className="w-[calc(542*var(--u))] text-[length:calc(20*var(--u))] leading-[calc(32*var(--u))]"
+              className="w-[calc(542*var(--u))] max-lg:w-full text-[length:calc(20*var(--u))] max-lg:text-[length:calc(16*var(--u))] leading-[calc(32*var(--u))] max-lg:leading-[1.5]"
               style={{ fontFamily: 'var(--font-body-light)', textBox: 'trim-both cap alphabetic' } as React.CSSProperties}
             >
               {t('acaoFrase')}
             </p>
-            <div className="flex items-center gap-[calc(32*var(--u))]">
+            <div className="flex items-center gap-[calc(32*var(--u))] max-lg:hidden">
               <button
                 type="button"
                 aria-label={t('anterior')}
