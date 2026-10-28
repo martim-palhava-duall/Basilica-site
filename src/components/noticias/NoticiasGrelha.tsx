@@ -40,7 +40,7 @@ export default function NoticiasGrelha() {
     <section
       id="noticias"
       data-barra="var(--bege-claro-2)"
-      className="relative flex w-full flex-col items-center gap-[calc(80*var(--u))] px-[calc(32*var(--u))] py-[calc(120*var(--u))] bg-[var(--bege-claro-2)] text-[var(--azul-escuro)]"
+      className="relative flex w-full flex-col items-center gap-[calc(80*var(--u))] max-lg:gap-[calc(32*var(--u))] px-[calc(32*var(--u))] py-[calc(120*var(--u))] max-lg:px-[calc(20*var(--u))] max-lg:py-[calc(56*var(--u))] bg-[var(--bege-claro-2)] text-[var(--azul-escuro)]"
     >
       <NoticiasFiltroGrelha
         cartoes={CARTOES}

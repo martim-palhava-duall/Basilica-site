@@ -50,7 +50,7 @@ export default function NoticiasFiltroGrelha({
   return (
     <>
       {/* ── Filtros: centrados no espaço de 120 acima da grelha ── */}
-      <div role="group" aria-label={filtrosAria} className="absolute left-[calc(32*var(--u))] top-[calc(44*var(--u))] flex flex-wrap items-center gap-[calc(4*var(--u))]">
+      <div role="group" aria-label={filtrosAria} className="absolute left-[calc(32*var(--u))] top-[calc(44*var(--u))] flex flex-wrap items-center gap-[calc(4*var(--u))] max-lg:static max-lg:w-[calc(100%+40*var(--u))] max-lg:-mx-[calc(20*var(--u))] max-lg:flex-nowrap max-lg:overflow-x-auto max-lg:px-[calc(20*var(--u))] max-lg:[scrollbar-width:none] max-lg:[&::-webkit-scrollbar]:hidden">
         {filtros.map((f) => {
           const on = f.chave === ativo
           return (
@@ -69,10 +69,10 @@ export default function NoticiasFiltroGrelha({
         })}
       </div>
 
-      <div className="grid w-full grid-cols-3 gap-x-[calc(21*var(--u))] gap-y-[calc(48*var(--u))]">
+      <div className="grid w-full grid-cols-3 max-lg:grid-cols-2 gap-x-[calc(21*var(--u))] max-lg:gap-x-[calc(16*var(--u))] gap-y-[calc(48*var(--u))] max-lg:gap-y-[calc(32*var(--u))]">
         {visiveis.map((c) => (
           <Link key={`${ativo}-${c.slug}`} href={`/blog/${c.slug}`} className="cartao-entra group/card flex w-full flex-col gap-[calc(12*var(--u))]">
-            <div className="relative h-[calc(295.98*var(--u))] w-full overflow-hidden rounded-[calc(4*var(--u))]">
+            <div className="relative h-[calc(295.98*var(--u))] max-lg:h-[calc(160*var(--u))] w-full overflow-hidden rounded-[calc(4*var(--u))]">
               {c.recorte ? (
                 <div className="absolute" style={{ left: u(c.recorte.left), top: u(c.recorte.top), width: u(c.recorte.width), height: u(c.recorte.height) }}>
                   <Image src={c.foto} alt="" fill sizes="522px" className="object-cover" />
@@ -81,11 +81,11 @@ export default function NoticiasFiltroGrelha({
                 <Image src={c.foto} alt="" fill sizes="445px" className="object-cover" />
               )}
             </div>
-            <p className="pt-[calc(8*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] text-[rgba(29,35,40,0.6)]">
+            <p className="pt-[calc(8*var(--u))] max-lg:pt-0 text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] text-[rgba(29,35,40,0.6)]">
               {meta.replace('{categoria}', categorias[c.categoria] ?? '').replace('{data}', data)}
             </p>
-            <div className="flex w-full items-center justify-between gap-[calc(16*var(--u))]">
-              <h3 className="font-display text-[length:calc(32*var(--u))] leading-[calc(35.2*var(--u))] font-normal">{tituloCartao}</h3>
+            <div className="flex w-full items-center justify-between gap-[calc(16*var(--u))] max-lg:gap-[calc(8*var(--u))]">
+              <h3 className="font-display text-[length:calc(32*var(--u))] max-lg:text-[length:calc(21*var(--u))] leading-[calc(35.2*var(--u))] max-lg:leading-[calc(25*var(--u))] font-normal">{tituloCartao}</h3>
               <Seta className="shrink-0 opacity-0 -translate-x-[calc(8*var(--u))] !transition-[opacity,transform] group-hover/card:opacity-100 group-hover/card:translate-x-0 group-focus-visible/card:opacity-100 group-focus-visible/card:translate-x-0" />
             </div>
           </Link>

@@ -15,18 +15,18 @@ export default function NoticiaCorpo() {
   const corpo = 'text-[length:calc(16*var(--u))] leading-[1.5]'
 
   return (
-    <section data-barra="var(--bege-claro-2)" className="w-full px-[calc(381*var(--u))] py-[calc(120*var(--u))] bg-[var(--bege-claro-2)] text-[var(--azul-escuro)]">
-      <article className="flex w-full flex-col gap-[calc(59*var(--u))]">
+    <section data-barra="var(--bege-claro-2)" className="w-full px-[calc(381*var(--u))] py-[calc(120*var(--u))] max-lg:px-[calc(20*var(--u))] max-lg:py-[calc(56*var(--u))] bg-[var(--bege-claro-2)] text-[var(--azul-escuro)]">
+      <article className="flex w-full flex-col gap-[calc(59*var(--u))] max-lg:gap-[calc(32*var(--u))]">
         <Revelar>
-          <div className="flex w-full flex-col gap-[calc(32*var(--u))]">
-            <h2 className="font-display text-[length:calc(64*var(--u))] leading-[1.2] font-normal">{t('h2')}</h2>
+          <div className="flex w-full flex-col gap-[calc(32*var(--u))] max-lg:gap-[calc(20*var(--u))]">
+            <h2 className="font-display text-[length:calc(64*var(--u))] max-lg:text-[length:calc(32*var(--u))] leading-[1.2] font-normal">{t('h2')}</h2>
             <p className={corpo}>{t('p1')}</p>
           </div>
         </Revelar>
 
         <Revelar>
           <blockquote
-            className="text-[length:calc(40*var(--u))] leading-[1.2] italic font-light"
+            className="text-[length:calc(40*var(--u))] max-lg:text-[length:calc(26*var(--u))] leading-[1.2] italic font-light"
             style={{ fontFamily: "var(--font-display)" }}
           >
             {t('citacao')}
@@ -36,7 +36,7 @@ export default function NoticiaCorpo() {
         <Revelar><p className={corpo}>{t('p2')}</p></Revelar>
 
         <Revelar>
-          <div className="relative h-[calc(500*var(--u))] w-full overflow-hidden rounded-[calc(4*var(--u))]">
+          <div className="relative h-[calc(500*var(--u))] max-lg:h-[calc(260*var(--u))] w-full overflow-hidden rounded-[calc(4*var(--u))]">
             <Image src="/noticias/corpo-1.jpg" alt={t('foto1Alt')} fill sizes="678px" className="object-cover" />
           </div>
         </Revelar>
@@ -53,7 +53,7 @@ export default function NoticiaCorpo() {
         </Revelar>
 
         <Revelar>
-          <div className="relative h-[calc(500*var(--u))] w-full overflow-hidden rounded-[calc(4*var(--u))]">
+          <div className="relative h-[calc(500*var(--u))] max-lg:h-[calc(260*var(--u))] w-full overflow-hidden rounded-[calc(4*var(--u))]">
             <Image src="/noticias/corpo-2.jpg" alt={t('foto2Alt')} fill sizes="678px" className="object-cover" />
           </div>
         </Revelar>
