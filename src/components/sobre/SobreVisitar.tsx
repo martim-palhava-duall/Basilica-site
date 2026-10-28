@@ -19,11 +19,11 @@ function Thumb({ children }: { children: React.ReactNode }) {
  *
  * Três frases grandes desencontradas, cada uma com uma miniatura, em posições
  * absolutas como no desenho (x a partir da esquerda). Na primeira palavra(s)
- * de cada frase o itálico leve, na restante o Forevs normal. Em baixo, o local
+ * de cada frase o Forevs normal, na restante o itálico leve (trocado a pedido do Martim). Em baixo, o local
  * à esquerda e o texto com o botão "Planear visita" à direita.
  *
  * Mobile: uma lista de três linhas separadas por réguas, cada uma com a miniatura à
- * esquerda e a frase em duas linhas (o itálico em cima, o resto por baixo).
+ * esquerda e a frase em duas linhas (o Forevs normal em cima, o itálico leve por baixo).
  *
  * É o destino de "Visitar" no menu (#visitar).
  */
@@ -53,8 +53,8 @@ export default function SobreVisitar() {
               </div>
             </Thumb>
             <p className={LINHA} style={TRIM}>
-              <span className="italic font-light max-lg:block" style={ITALICO}>{t('visitarL1a')} </span>
-              {t('visitarL1b')}
+              <span className="max-lg:block">{t('visitarL1a')} </span>
+              <span className="italic font-light" style={ITALICO}>{t('visitarL1b')}</span>
             </p>
           </div>
         </Revelar>
@@ -65,8 +65,8 @@ export default function SobreVisitar() {
         <Revelar atraso={270}>
           <div className="flex items-center gap-[calc(32*var(--u))] max-lg:flex-row-reverse max-lg:justify-end max-lg:gap-[calc(18*var(--u))]">
             <p className={LINHA} style={TRIM}>
-              <span className="italic font-light max-lg:block" style={ITALICO}>{t('visitarL2a')}</span>
-              {' '}{t('visitarL2b')}
+              <span className="max-lg:block">{t('visitarL2a')}</span>
+              {' '}<span className="italic font-light" style={ITALICO}>{t('visitarL2b')}</span>
             </p>
             <Thumb>
               <Image src="/home/dest-3.jpg" alt="" fill sizes="112px" className="object-cover" />
@@ -83,8 +83,8 @@ export default function SobreVisitar() {
               <Image src="/home/oque-rezar.jpg" alt="" fill sizes="112px" className="object-cover" />
             </Thumb>
             <p className={LINHA} style={TRIM}>
-              <span className="italic font-light max-lg:block" style={ITALICO}>{t('visitarL3a')} </span>
-              {t('visitarL3b')}
+              <span className="max-lg:block">{t('visitarL3a')} </span>
+              <span className="italic font-light" style={ITALICO}>{t('visitarL3b')}</span>
             </p>
           </div>
         </Revelar>
