@@ -27,7 +27,7 @@ export default function HomeBarra() {
       }}
     >
       <div
-        className="absolute right-[calc(32*var(--u))] flex items-center gap-[calc(12*var(--u))]"
+        className="absolute right-[calc(32*var(--u))] max-lg:right-[calc(20*var(--u))] flex items-center gap-[calc(12*var(--u))]"
         style={{ top: 'calc(50% + 0.1px)', transform: 'translateY(-50%)' }}
       >
         <span className="flex opacity-85 hover:opacity-100 transition-opacity duration-[400ms]">
@@ -38,7 +38,7 @@ export default function HomeBarra() {
             aria-expanded={aberto}
             aria-controls="home-menu"
             onClick={abrir}
-            className={`btn-luz h-[calc(32*var(--u))] px-[calc(20*var(--u))] flex items-center rounded-[calc(6*var(--u))] border border-solid text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] transition-[background-color,color,border-color] duration-[400ms] ease-[var(--ease-out)] ${clara ? 'border-[var(--bege-claro-2)] text-[var(--bege-claro-2)]' : 'border-[var(--texto-escuro)] text-[var(--texto-escuro)]'}`}
+            className={`btn-luz max-lg:min-w-[calc(84*var(--u))] max-lg:justify-center h-[calc(32*var(--u))] px-[calc(20*var(--u))] flex items-center rounded-[calc(6*var(--u))] border border-solid text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] transition-[background-color,color,border-color] duration-[400ms] ease-[var(--ease-out)] ${clara ? 'border-[var(--bege-claro-2)] text-[var(--bege-claro-2)]' : 'border-[var(--texto-escuro)] text-[var(--texto-escuro)]'}`}
           >
             {t('heroMenu')}
           </button>

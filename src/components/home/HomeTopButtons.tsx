@@ -35,7 +35,7 @@ export default function HomeTopButtons() {
           aria-expanded={aberto}
           aria-controls="home-menu"
           onClick={abrir}
-          className="btn-luz h-[calc(32*var(--u))] px-[calc(20*var(--u))] flex items-center rounded-[calc(6*var(--u))] border border-solid border-[var(--bege-claro-2)] text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] text-[var(--bege-claro-2)] transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
+          className="btn-luz max-lg:min-w-[calc(84*var(--u))] max-lg:justify-center h-[calc(32*var(--u))] px-[calc(20*var(--u))] flex items-center rounded-[calc(6*var(--u))] border border-solid border-[var(--bege-claro-2)] text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] text-[var(--bege-claro-2)] transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
         >
           {t('heroMenu')}
         </button>

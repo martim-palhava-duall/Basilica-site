@@ -251,12 +251,12 @@ export default function HomeMenu() {
         }}
       >
         {/* Barra: 64 de altura, como a barra de scroll (o logótipo, fixo e claro, fica centrado nela) */}
-        <div className="sticky top-0 z-10 flex h-[calc(64*var(--u))] shrink-0 items-center justify-end border-b border-solid border-[rgba(247,242,238,0.12)] bg-[var(--azul-escuro)] px-[calc(20*var(--u))]">
+        <div className="sticky top-0 z-10 flex h-[calc(64*var(--u))] shrink-0 items-center justify-end bg-[var(--azul-escuro)] px-[calc(20*var(--u))] shadow-[inset_0_-1px_0_rgba(247,242,238,0.12)]">
           <button
             ref={fecharMobRef}
             type="button"
             onClick={fechar}
-            className="btn-luz h-[calc(32*var(--u))] px-[calc(20*var(--u))] flex items-center rounded-[calc(6*var(--u))] border border-solid border-[rgba(247,242,238,0.45)] text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] text-[var(--bege-claro-2)]"
+            className="btn-luz max-lg:min-w-[calc(84*var(--u))] max-lg:justify-center h-[calc(32*var(--u))] px-[calc(20*var(--u))] flex items-center rounded-[calc(6*var(--u))] border border-solid border-[rgba(247,242,238,0.45)] text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] text-[var(--bege-claro-2)]"
           >
             {t('menuFechar')}
           </button>
