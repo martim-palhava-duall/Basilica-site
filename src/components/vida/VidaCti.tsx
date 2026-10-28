@@ -25,13 +25,13 @@ export default function VidaCti() {
     <section
       id="doze"
       data-barra="var(--bege-claro-2)"
-      className="relative h-[calc(1235*var(--u))] w-full bg-[var(--bege-claro-2)] text-[var(--azul-escuro)]"
+      className="relative h-[calc(1235*var(--u))] w-full max-lg:flex max-lg:h-auto max-lg:flex-col max-lg:gap-[calc(40*var(--u))] max-lg:px-[calc(20*var(--u))] max-lg:py-[calc(96*var(--u))] bg-[var(--bege-claro-2)] text-[var(--azul-escuro)]"
     >
-      <div className="absolute left-[calc(32*var(--u))] top-[calc(180*var(--u))] flex w-[calc(1027*var(--u))] flex-col gap-[calc(12*var(--u))]">
+      <div className="absolute left-[calc(32*var(--u))] top-[calc(180*var(--u))] max-lg:static max-lg:order-1 flex w-[calc(1027*var(--u))] max-lg:w-full flex-col gap-[calc(12*var(--u))]">
         <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] tracking-[calc(-0.064*var(--u))]">{t('ctiLabel')}</p></Revelar>
         <Revelar atraso={100}>
           <p
-            className="font-display text-[length:calc(64*var(--u))] leading-[1.2] font-normal"
+            className="font-display text-[length:calc(64*var(--u))] max-lg:text-[length:calc(28*var(--u))] leading-[1.2] font-normal"
             style={{ textBox: 'trim-both cap alphabetic' } as React.CSSProperties}
           >
             {t('ctiFrase')}
@@ -39,7 +39,7 @@ export default function VidaCti() {
         </Revelar>
       </div>
 
-      <div className="absolute bottom-[calc(180*var(--u))] left-[calc(32*var(--u))] w-[calc(451*var(--u))]">
+      <div className="absolute bottom-[calc(180*var(--u))] left-[calc(32*var(--u))] max-lg:static max-lg:order-3 w-[calc(451*var(--u))] max-lg:w-full">
         <Revelar atraso={200}>
           <div className="flex w-full flex-col gap-[calc(40*var(--u))]">
             <p className="text-[length:calc(16*var(--u))] leading-[1.5]">{t('ctiTexto')}</p>
@@ -61,14 +61,14 @@ export default function VidaCti() {
         </Revelar>
       </div>
 
-      <div className="absolute bottom-[calc(180*var(--u))] left-[calc(614*var(--u))] flex items-end gap-[calc(20*var(--u))]">
+      <div className="absolute bottom-[calc(180*var(--u))] left-[calc(614*var(--u))] max-lg:static max-lg:order-2 max-lg:w-full flex items-end gap-[calc(20*var(--u))]">
         <Revelar atraso={150}>
-          <div className="relative h-[calc(394*var(--u))] w-[calc(329*var(--u))] overflow-hidden rounded-[calc(4*var(--u))]">
+          <div className="relative h-[calc(394*var(--u))] w-[calc(329*var(--u))] max-lg:h-[calc(200*var(--u))] max-lg:w-[calc(150*var(--u))] overflow-hidden rounded-[calc(4*var(--u))]">
             <Image src="/vida/cti-1.jpg" alt={t('ctiAlt1')} fill sizes="329px" className="object-cover" />
           </div>
         </Revelar>
         <Revelar atraso={270}>
-          <div className="relative h-[calc(519*var(--u))] w-[calc(445*var(--u))] overflow-hidden rounded-[calc(4*var(--u))]">
+          <div className="relative h-[calc(519*var(--u))] w-[calc(445*var(--u))] max-lg:h-[calc(260*var(--u))] max-lg:w-[calc(180*var(--u))] overflow-hidden rounded-[calc(4*var(--u))]">
             <Image src="/vida/cti-2.jpg" alt={t('ctiAlt2')} fill sizes="445px" className="object-cover" />
           </div>
         </Revelar>

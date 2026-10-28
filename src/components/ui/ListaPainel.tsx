@@ -43,7 +43,10 @@ const FOLGA_GALERIA = 12
  * Devoções das Celebrações. Desktop 1440.
  *
  * Fundo da secção (por omissão bege escuro 2), 180 de respiro; cabeçalho com o
- * label, o título (80px) e um botão; por baixo, barras de 1440 com régua. É o
+ * label, o título (80px) e um botão; por baixo, barras de 1440 com régua.
+ *
+ * Mobile: cabeçalho em coluna (título a 40), barras em coluna como na Obra Social (ao
+ * tocar enchem-se de azul), painel a toda a largura e galeria com fotografias a 62%. É o
  * mesmo desenho de barras da Obra Social da homepage: ao passar, o fundo azul
  * escuro sobe de baixo (600ms, curva quint), o texto passa a bege e a fotografia
  * do item aparece, parada no centro, só com fade.
@@ -82,7 +85,7 @@ export default function ListaPainel({
   painelCta: { texto: string; href: string }
   rotulos: { fechar: string; galeria: string; anterior: string; seguinte: string; quando?: string; preciso?: string }
 }) {
-  const DESLOCAMENTOS = galeria.map((_, k) => galeria.slice(0, k).reduce((acc, g) => acc + g.largura + FOLGA_GALERIA, 0))
+  const DESLOCAMENTOS = galeria.map((_, k) => galeria.slice(0, k).reduce((acc, g) => acc + g.largura, 0))
   const [aberto, setAberto] = useState<number | null>(null)
   const [foto, setFoto] = useState(0)
   const irFoto = (d: number) => setFoto((f) => Math.min(Math.max(f + d, 0), galeria.length - 1))
@@ -147,7 +150,7 @@ export default function ListaPainel({
         ref={painelRef}
         // O Lenis, parado, descarta o scroll de roda em toda a página; este atributo deixa o painel rolar por si.
         data-lenis-prevent
-        className="absolute right-0 top-0 h-full w-[calc(1000*var(--u))] max-w-full overflow-y-auto overflow-x-hidden bg-[var(--bege-claro-2)] text-[var(--azul-escuro)]"
+        className="absolute right-0 top-0 h-full w-[calc(1000*var(--u))] max-w-full [--gk:1] max-lg:[--gk:0.62] overflow-y-auto overflow-x-hidden bg-[var(--bege-claro-2)] text-[var(--azul-escuro)]"
         style={{
           transform: estaAberto ? 'translateX(0)' : 'translateX(100%)',
           transition: `transform ${estaAberto ? 700 : 500}ms var(--ease-inout)`,
@@ -168,30 +171,30 @@ export default function ListaPainel({
           </span>
         </button>
 
-        <div className="flex flex-col gap-[calc(64*var(--u))] px-[calc(64*var(--u))] pb-[calc(76*var(--u))] pt-[calc(80*var(--u))]">
-          <h2 className="font-display text-[length:calc(80*var(--u))] leading-[calc(96*var(--u))] tracking-[calc(0.96*var(--u))] font-normal" style={TRIM}>{g.titulo}</h2>
+        <div className="flex flex-col gap-[calc(64*var(--u))] max-lg:gap-[calc(40*var(--u))] px-[calc(64*var(--u))] max-lg:px-[calc(20*var(--u))] pb-[calc(76*var(--u))] max-lg:pb-[calc(56*var(--u))] pt-[calc(80*var(--u))] max-lg:pt-[calc(72*var(--u))]">
+          <h2 className="font-display text-[length:calc(80*var(--u))] max-lg:text-[length:calc(44*var(--u))] leading-[calc(96*var(--u))] max-lg:leading-[calc(48*var(--u))] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal font-normal" style={TRIM}>{g.titulo}</h2>
 
-          <div className="flex w-full flex-col gap-[calc(80*var(--u))]">
-            <div className="flex w-[calc(872*var(--u))] max-w-full flex-col gap-[calc(32*var(--u))]">
-              <p className="font-display text-[length:calc(32*var(--u))] leading-[1.2] tracking-[calc(0.96*var(--u))]" style={TRIM}>{g.intro}</p>
+          <div className="flex w-full flex-col gap-[calc(80*var(--u))] max-lg:gap-[calc(40*var(--u))]">
+            <div className="flex w-[calc(872*var(--u))] max-w-full flex-col gap-[calc(32*var(--u))] max-lg:gap-[calc(20*var(--u))]">
+              <p className="font-display text-[length:calc(32*var(--u))] max-lg:text-[length:calc(24*var(--u))] leading-[1.2] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal" style={TRIM}>{g.intro}</p>
               {g.intro2 && <p className="text-[length:calc(16*var(--u))] leading-[1.5]">{g.intro2}</p>}
             </div>
 
             {g.quando && (
-              <div className="flex w-[calc(872*var(--u))] max-w-full items-start gap-[calc(20*var(--u))]">
-                <div className="flex w-[calc(426*var(--u))] flex-col gap-[calc(20*var(--u))]">
+              <div className="flex w-[calc(872*var(--u))] max-w-full items-start gap-[calc(20*var(--u))] max-lg:flex-col max-lg:gap-[calc(32*var(--u))]">
+                <div className="flex w-[calc(426*var(--u))] max-lg:w-full flex-col gap-[calc(20*var(--u))]">
                   <p className="text-[length:calc(16*var(--u))] leading-[1.5] opacity-40">{rotulos.quando}</p>
                   <div className="flex w-full flex-col gap-[calc(12*var(--u))]">
                     {g.quando.map((q) => (
                       <div key={q.destaque} className="flex flex-col gap-[calc(12*var(--u))]">
-                        <p className="font-display text-[length:calc(32*var(--u))] leading-[1.2] tracking-[calc(0.96*var(--u))]">{q.destaque}</p>
+                        <p className="font-display text-[length:calc(32*var(--u))] max-lg:text-[length:calc(24*var(--u))] leading-[1.2] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal">{q.destaque}</p>
                         <p className="text-[length:calc(16*var(--u))] leading-[1.5]">{q.texto}</p>
                       </div>
                     ))}
                   </div>
                 </div>
                 {g.preciso && (
-                  <div className="flex w-[calc(426*var(--u))] flex-col gap-[calc(20*var(--u))] text-[length:calc(16*var(--u))] leading-[1.5]">
+                  <div className="flex w-[calc(426*var(--u))] max-lg:w-full flex-col gap-[calc(20*var(--u))] text-[length:calc(16*var(--u))] leading-[1.5]">
                     <p className="opacity-40">{rotulos.preciso}</p>
                     <p>{g.preciso}</p>
                   </div>
@@ -201,7 +204,7 @@ export default function ListaPainel({
 
             {g.blocos?.map((b) => (
               <div key={b.titulo} className="flex w-[calc(872*var(--u))] max-w-full flex-col gap-[calc(12*var(--u))]">
-                <p className="font-display text-[length:calc(32*var(--u))] leading-[1.2] tracking-[calc(0.96*var(--u))]" style={TRIM}>{b.titulo}</p>
+                <p className="font-display text-[length:calc(32*var(--u))] max-lg:text-[length:calc(24*var(--u))] leading-[1.2] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal" style={TRIM}>{b.titulo}</p>
                 <p className="text-[length:calc(16*var(--u))] leading-[1.5]">{b.texto}</p>
               </div>
             ))}
@@ -221,21 +224,21 @@ export default function ListaPainel({
                       aria-label={b.rotulo}
                       disabled={foto + b.d < 0 || foto + b.d >= galeria.length}
                       onClick={() => irFoto(b.d)}
-                      className="absolute top-[calc(2*var(--u))] h-[calc(20*var(--u))] w-[calc(32*var(--u))] overflow-hidden opacity-70 transition-opacity duration-[400ms] hover:opacity-100 disabled:cursor-default disabled:opacity-30"
-                      style={{ left: u(b.left) }}
+                      className="absolute left-[var(--sx)] max-lg:left-auto max-lg:right-[var(--sr)] top-[calc(2*var(--u))] h-[calc(20*var(--u))] w-[calc(32*var(--u))] overflow-hidden opacity-70 transition-opacity duration-[400ms] hover:opacity-100 disabled:cursor-default disabled:opacity-30"
+                      style={{ ['--sx' as string]: u(b.left), ['--sr' as string]: u(b.d < 0 ? 40 : 0) }}
                     >
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src="/sobre/galeria-setas.svg" alt="" width={81} height={13} className="absolute max-w-none" style={{ width: u(81), height: u(13), left: u(b.img), top: u(3.5) }} />
                     </button>
                   ))}
                 </div>
-                <div ref={pista} className="-mr-[calc(64*var(--u))] mt-[calc(24*var(--u))] overflow-hidden" style={{ ...ESTILO_GESTOS, cursor: arrastando ? 'grabbing' : 'grab' }}>
+                <div ref={pista} className="-mr-[calc(64*var(--u))] max-lg:-mr-[calc(20*var(--u))] mt-[calc(24*var(--u))] overflow-hidden" style={{ ...ESTILO_GESTOS, cursor: arrastando ? 'grabbing' : 'grab' }}>
                   <div
                     className="flex w-max gap-[calc(12*var(--u))] transition-transform duration-[1100ms] ease-[var(--ease-out)]"
-                    style={{ transform: `translateX(calc(${-DESLOCAMENTOS[foto]} * var(--u) + ${arrasto}px))`, transitionDuration: arrastando ? '0ms' : undefined }}
+                    style={{ transform: `translateX(calc((${-DESLOCAMENTOS[foto]} * var(--gk) - ${FOLGA_GALERIA * foto}) * var(--u) + ${arrasto}px))`, transitionDuration: arrastando ? '0ms' : undefined }}
                   >
                     {galeria.map((f, k) => (
-                      <div key={k} className="relative h-[calc(400*var(--u))] shrink-0 overflow-hidden rounded-[calc(4*var(--u))]" style={{ width: u(f.largura) }}>
+                      <div key={k} className="relative h-[calc(400*var(--u))] max-lg:h-[calc(280*var(--u))] shrink-0 overflow-hidden rounded-[calc(4*var(--u))]" style={{ width: `calc(${f.largura} * var(--gk) * var(--u))` }}>
                         <Image src={f.src} alt="" fill sizes="600px" className="object-cover" />
                       </div>
                     ))}
@@ -261,17 +264,17 @@ export default function ListaPainel({
     <section
       id={id}
       data-barra={fundo}
-      className="flex w-full flex-col items-center gap-[calc(80*var(--u))] px-0 py-[calc(180*var(--u))] text-[var(--azul-escuro)]"
+      className="flex w-full flex-col items-center gap-[calc(80*var(--u))] max-lg:gap-[calc(40*var(--u))] px-0 py-[calc(180*var(--u))] max-lg:py-[calc(96*var(--u))] text-[var(--azul-escuro)]"
       style={{ backgroundColor: fundo }}
     >
       {/* ── Cabeçalho ── */}
-      <div className="flex h-[calc(123*var(--u))] w-full flex-col gap-[calc(24*var(--u))] px-[calc(32*var(--u))]">
+      <div className="flex h-[calc(123*var(--u))] max-lg:h-auto w-full flex-col gap-[calc(24*var(--u))] px-[calc(32*var(--u))] max-lg:px-[calc(20*var(--u))]">
         <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{label}</p></Revelar>
-        <div className="flex h-[calc(72*var(--u))] w-full items-start justify-between">
-          <Revelar atraso={100} className="h-[calc(72*var(--u))] w-[calc(672*var(--u))]">
-            <div className="relative h-[calc(72*var(--u))] w-full">
+        <div className="flex h-[calc(72*var(--u))] max-lg:h-auto w-full items-start justify-between max-lg:flex-col max-lg:gap-[calc(28*var(--u))]">
+          <Revelar atraso={100} className="h-[calc(72*var(--u))] w-[calc(672*var(--u))] max-lg:h-auto max-lg:w-full">
+            <div className="relative h-[calc(72*var(--u))] max-lg:h-auto w-full">
               <h2
-                className="absolute left-0 top-[calc(32.45*var(--u))] -translate-y-1/2 font-display text-[length:calc(80*var(--u))] leading-[calc(105.6*var(--u))] font-normal whitespace-nowrap"
+                className="absolute left-0 top-[calc(32.45*var(--u))] -translate-y-1/2 max-lg:static max-lg:translate-y-0 font-display text-[length:calc(80*var(--u))] max-lg:text-[length:calc(40*var(--u))] leading-[calc(105.6*var(--u))] max-lg:leading-[calc(44*var(--u))] font-normal whitespace-nowrap max-lg:whitespace-normal"
                 style={TRIM}
               >
                 {titulo}
@@ -300,23 +303,23 @@ export default function ListaPainel({
                 origemRef.current = e.currentTarget
                 setAberto(k)
               }}
-              className={`group/grupo relative z-0 flex w-full cursor-pointer items-center justify-between border-t border-solid text-left border-[rgba(28,43,57,0.3)] py-[calc(40*var(--u))] outline-none transition-colors duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:z-10 hover:text-[var(--bege-claro-2)] focus-visible:text-[var(--bege-claro-2)] border-x-0 ${k === itens.length - 1 ? 'border-b' : 'border-b-0'}`}
+              className={`group/grupo relative z-0 flex w-full cursor-pointer items-center justify-between max-lg:flex-col max-lg:items-start max-lg:gap-[calc(16*var(--u))] border-t border-solid text-left border-[rgba(28,43,57,0.3)] py-[calc(40*var(--u))] max-lg:py-[calc(28*var(--u))] outline-none transition-colors duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:z-10 hover:text-[var(--bege-claro-2)] focus-visible:text-[var(--bege-claro-2)] active:text-[var(--bege-claro-2)] border-x-0 ${k === itens.length - 1 ? 'border-b' : 'border-b-0'}`}
             >
               {/* Enchimento: sobe de baixo (scaleY, só compositor), por trás do texto */}
               <span
                 aria-hidden="true"
-                className="absolute inset-x-0 -inset-y-px -z-10 origin-bottom scale-y-0 bg-[var(--azul-escuro)] transition-transform duration-[600ms] ease-[var(--quint)] group-hover/grupo:scale-y-100 group-focus-visible/grupo:scale-y-100"
+                className="absolute inset-x-0 -inset-y-px -z-10 origin-bottom scale-y-0 bg-[var(--azul-escuro)] transition-transform duration-[600ms] ease-[var(--quint)] group-hover/grupo:scale-y-100 group-focus-visible/grupo:scale-y-100 group-active/grupo:scale-y-100"
               />
 
-              <span className="flex items-center gap-[calc(24*var(--u))] px-[calc(32*var(--u))]">
-                <span className="w-[calc(80*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] tracking-[calc(-0.064*var(--u))]">{gr.n}</span>
-                <span className="w-[calc(352*var(--u))] font-display text-[length:calc(40*var(--u))] leading-[calc(35.2*var(--u))] tracking-[calc(-0.192*var(--u))] whitespace-nowrap">
+              <span className="flex items-center gap-[calc(24*var(--u))] max-lg:gap-[calc(16*var(--u))] px-[calc(32*var(--u))] max-lg:px-[calc(20*var(--u))]">
+                <span className="w-[calc(80*var(--u))] max-lg:w-[calc(24*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] tracking-[calc(-0.064*var(--u))]">{gr.n}</span>
+                <span className="w-[calc(352*var(--u))] max-lg:w-auto font-display text-[length:calc(40*var(--u))] max-lg:text-[length:calc(30*var(--u))] leading-[calc(35.2*var(--u))] max-lg:leading-[calc(32*var(--u))] tracking-[calc(-0.192*var(--u))] whitespace-nowrap">
                   {gr.titulo}
                 </span>
               </span>
 
-              <span className="flex w-[calc(384*var(--u))] flex-col gap-[calc(24*var(--u))]">
-                <span className="block max-w-[calc(448*var(--u))] pr-[calc(32*var(--u))] text-[length:calc(16*var(--u))] leading-[calc(22*var(--u))]">{gr.texto}</span>
+              <span className="flex w-[calc(384*var(--u))] max-lg:w-full max-lg:gap-[calc(14*var(--u))] max-lg:pl-[calc(60*var(--u))] max-lg:pr-[calc(20*var(--u))] flex-col gap-[calc(24*var(--u))]">
+                <span className="block max-w-[calc(448*var(--u))] pr-[calc(32*var(--u))] max-lg:pr-0 text-[length:calc(16*var(--u))] leading-[calc(22*var(--u))]">{gr.texto}</span>
                 <span className="flex items-center gap-[calc(12*var(--u))] text-[length:calc(16*var(--u))] leading-[1.5]">
                   <span className="underline decoration-from-font underline-offset-[from-font]">{saibaMais}</span>
                   <Seta className="group-hover/grupo:translate-x-[calc(4*var(--u))]" />
@@ -326,7 +329,7 @@ export default function ListaPainel({
               {/* Fotografia: parada no centro da barra, só aparece (fade) */}
               <span
                 aria-hidden="true"
-                className="obra-foto pointer-events-none absolute left-1/2 top-1/2 block h-[calc(282*var(--u))] w-[calc(246*var(--u))] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[calc(4*var(--u))] opacity-0 will-change-[opacity] group-hover/grupo:opacity-100 group-focus-visible/grupo:opacity-100"
+                className="obra-foto max-lg:hidden pointer-events-none absolute left-1/2 top-1/2 block h-[calc(282*var(--u))] w-[calc(246*var(--u))] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[calc(4*var(--u))] opacity-0 will-change-[opacity] group-hover/grupo:opacity-100 group-focus-visible/grupo:opacity-100"
               >
                 <Image src={gr.foto} alt="" fill sizes="246px" className="object-cover" />
               </span>

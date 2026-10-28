@@ -49,15 +49,15 @@ export default function VidaHorarios() {
     <section
       id="horarios"
       data-barra="var(--bege-escuro-2)"
-      className="flex w-full scroll-mt-[calc(64*var(--u))] flex-col gap-[calc(80*var(--u))] px-[calc(32*var(--u))] py-[calc(180*var(--u))] bg-[var(--bege-escuro-2)] text-[var(--azul-escuro)]"
+      className="flex w-full scroll-mt-[calc(64*var(--u))] flex-col gap-[calc(80*var(--u))] max-lg:gap-[calc(56*var(--u))] px-[calc(32*var(--u))] py-[calc(180*var(--u))] max-lg:px-[calc(20*var(--u))] max-lg:py-[calc(96*var(--u))] bg-[var(--bege-escuro-2)] text-[var(--azul-escuro)]"
     >
       {/* ── Cabeçalho ── */}
       <div className="flex w-full flex-col gap-[calc(24*var(--u))]">
         <div className="flex w-full flex-col gap-[calc(12*var(--u))]">
           <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{t('horLabel')}</p></Revelar>
-          <div className="flex w-full items-center justify-between">
+          <div className="flex w-full items-center justify-between max-lg:flex-col max-lg:items-start max-lg:gap-[calc(24*var(--u))]">
             <Revelar atraso={100}>
-              <h2 className="font-display text-[length:calc(80*var(--u))] leading-[calc(96*var(--u))] tracking-[calc(0.96*var(--u))] font-normal whitespace-nowrap">{t('horTitulo')}</h2>
+              <h2 className="font-display text-[length:calc(80*var(--u))] max-lg:text-[length:calc(40*var(--u))] leading-[calc(96*var(--u))] max-lg:leading-[calc(46*var(--u))] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal font-normal whitespace-nowrap max-lg:whitespace-normal">{t('horTitulo')}</h2>
             </Revelar>
             <Link
               href="/celebracoes"
@@ -69,15 +69,15 @@ export default function VidaHorarios() {
           </div>
         </div>
         <Revelar atraso={200}>
-          <p className={`${LEVE} w-[calc(444*var(--u))] text-[length:calc(20*var(--u))] leading-[calc(32*var(--u))]`} style={TRIM}>{t('horTexto')}</p>
+          <p className={`${LEVE} w-[calc(444*var(--u))] max-lg:w-full text-[length:calc(20*var(--u))] max-lg:text-[length:calc(16*var(--u))] leading-[calc(32*var(--u))] max-lg:leading-[1.5]`} style={TRIM}>{t('horTexto')}</p>
         </Revelar>
       </div>
 
       {/* ── Colunas de horas ── */}
       <Revelar>
-        <div className="flex min-h-[calc(196.57*var(--u))] items-start gap-[calc(40*var(--u))]">
+        <div className="flex min-h-[calc(196.57*var(--u))] items-start gap-[calc(40*var(--u))] max-lg:grid max-lg:min-h-0 max-lg:grid-cols-2 max-lg:gap-x-[calc(20*var(--u))] max-lg:gap-y-[calc(48*var(--u))]">
           {colunas.map((c) => (
-            <div key={c.titulo} className="flex w-[calc(213*var(--u))] flex-col gap-[calc(32*var(--u))]">
+            <div key={c.titulo} className="flex w-[calc(213*var(--u))] max-lg:w-auto flex-col gap-[calc(32*var(--u))] max-lg:gap-[calc(20*var(--u))]">
               <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold">{c.titulo}</p>
               <div className="flex flex-col gap-[calc(24*var(--u))]">
                 {c.entradas.map((e) => (
@@ -93,15 +93,15 @@ export default function VidaHorarios() {
       </Revelar>
 
       {/* ── Acolhimento ── */}
-      <div className="flex w-[calc(563*var(--u))] flex-col gap-[calc(40*var(--u))]">
+      <div className="flex w-[calc(563*var(--u))] max-lg:w-full flex-col gap-[calc(40*var(--u))] max-lg:gap-[calc(32*var(--u))]">
         <div className="flex w-full flex-col gap-[calc(16*var(--u))]">
           <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold">{t('acolhLabel')}</p></Revelar>
           <div className="flex w-full flex-col gap-[calc(24*var(--u))]">
             <Revelar atraso={100}>
-              <h3 className="font-display text-[length:calc(40*var(--u))] leading-[calc(35.2*var(--u))] tracking-[calc(-0.192*var(--u))] font-normal">{t('acolhTitulo')}</h3>
+              <h3 className="font-display text-[length:calc(40*var(--u))] max-lg:text-[length:calc(30*var(--u))] leading-[calc(35.2*var(--u))] max-lg:leading-[calc(34*var(--u))] tracking-[calc(-0.192*var(--u))] font-normal">{t('acolhTitulo')}</h3>
             </Revelar>
             <Revelar atraso={200}>
-              <p className={`${LEVE} text-[length:calc(20*var(--u))] leading-[1.4]`} style={TRIM}>{t('acolhTexto')}</p>
+              <p className={`${LEVE} text-[length:calc(20*var(--u))] max-lg:text-[length:calc(16*var(--u))] leading-[1.4] max-lg:leading-[1.5]`} style={TRIM}>{t('acolhTexto')}</p>
             </Revelar>
           </div>
         </div>

@@ -16,7 +16,7 @@ type Entrada = { horas: string; dias: string }
 export function Horas({ horas }: { horas: string }) {
   if (horas.includes('ÀS') && horas.includes(' · ')) {
     return (
-      <div className="text-[length:calc(16*var(--u))] leading-[1.4] font-bold whitespace-nowrap">
+      <div className="text-[length:calc(16*var(--u))] max-lg:text-[length:calc(14*var(--u))] leading-[1.4] font-bold whitespace-nowrap">
         {horas.split(' · ').map((l) => (
           <p key={l}>{l.replace(' ÀS ', ' às ')}</p>
         ))}
@@ -24,7 +24,7 @@ export function Horas({ horas }: { horas: string }) {
     )
   }
   return (
-    <p className={`text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] font-bold whitespace-nowrap ${horas.includes('ÀS') ? '' : 'uppercase'}`}>
+    <p className={`text-[length:calc(16*var(--u))] max-lg:text-[length:calc(14*var(--u))] leading-[calc(19*var(--u))] max-lg:leading-[calc(17*var(--u))] font-bold whitespace-nowrap ${horas.includes('ÀS') ? '' : 'uppercase'}`}>
       {horas.replace(' ÀS ', ' às ')}
     </p>
   )
