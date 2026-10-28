@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { useTranslations } from 'next-intl'
-import Seta from '@/components/home/Seta'
 import { u } from '@/lib/escala'
 
 const ENTRADA = 'var(--ease-entrada)'
@@ -25,7 +24,7 @@ const LEVE = 'font-[family-name:var(--font-body-light)]'
  * linha de teste nas últimas colunas; aqui entram os dados reais. A coluna
  * "Abertura e encerramento" do desenho corresponde às horas de acolhimento.
  *
- * Mobile: cabeçalho em coluna (título a 40px, botão por baixo), horários numa
+ * Mobile: título a 40px, horários numa
  * grelha de duas colunas (horas a 14px, para "10H00 · 12H00 · 19H00" caber na
  * coluna de 165) e o acolhimento a toda a largura.
  *
@@ -111,19 +110,10 @@ export default function HomeHorarios() {
       <div className="flex flex-col gap-[calc(24*var(--u))] w-full">
         <div className="flex flex-col gap-[calc(12*var(--u))] w-full">
           <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]" style={surge(0)}>{t('horLabel')}</p>
-          <div className="flex items-center justify-between w-full max-lg:flex-col max-lg:items-start max-lg:gap-[calc(24*var(--u))]">
+          <div className="flex items-center justify-between w-full">
             <h2 className="font-display text-[length:calc(80*var(--u))] leading-[calc(96*var(--u))] tracking-[calc(0.96*var(--u))] max-lg:text-[length:calc(40*var(--u))] max-lg:leading-[calc(46*var(--u))] max-lg:tracking-normal font-normal whitespace-nowrap" style={surge(100)}>
               {t('horTitulo')}
             </h2>
-            <div style={surge(200)}>
-              <Link
-                href="/horarios"
-                className="group/btn flex items-center gap-[calc(11.91*var(--u))] h-[calc(46.8*var(--u))] px-[calc(29.6*var(--u))] rounded-[calc(4*var(--u))] bg-[var(--texto-escuro)] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap text-[var(--bege-claro-2)] transition-[background-color] duration-[400ms] ease-[var(--ease-out)]"
-              >
-                {t('horCta')}
-                <Seta className="group-hover/btn:translate-x-[calc(4*var(--u))]" />
-              </Link>
-            </div>
           </div>
         </div>
         <div style={surge(250)}>

@@ -26,8 +26,8 @@ const i = (chunks: ReactNode) => (
  * Mobile: título a 40px; as duas fotografias empilham-se a toda a largura
  * (fachada 280 de altura, interior 220), com o texto e o botão no fim.
  *
- * Entrada ("máscara e cortinas", escolhida entre seis opções): quando a secção
- * chega a 75% do ecrã, o título sobe dentro da sua janela (como no hero e na
+ * Entrada ("máscara e cortinas", escolhida entre seis opções), rápida (cerca de 1s
+ * até tudo assentar): quando a secção chega a 88% do ecrã, o título sobe dentro da sua janela (como no hero e na
  * Missão); as duas fotografias são descobertas por cortinas bege que sobem,
  * desencontradas, com um zoom que assenta; por fim o texto e o botão. Só
  * `transform` e `opacity`; com movimento reduzido tudo aparece já no lugar.
@@ -42,7 +42,7 @@ export default function HomeQuemSomos() {
     const el = secRef.current
     if (!el) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    if (el.getBoundingClientRect().top < window.innerHeight * 0.75) return
+    if (el.getBoundingClientRect().top < window.innerHeight * 0.88) return
     setEstado('espera')
     const obs = new IntersectionObserver(
       ([e]) => {
@@ -51,7 +51,7 @@ export default function HomeQuemSomos() {
           obs.disconnect()
         }
       },
-      { rootMargin: '0px 0px -25% 0px' }
+      { rootMargin: '0px 0px -12% 0px' }
     )
     obs.observe(el)
     return () => obs.disconnect()
@@ -63,10 +63,10 @@ export default function HomeQuemSomos() {
     espera
       ? { opacity: 0, transform: 'translate3d(0, 12px, 0)' }
       : entrou
-        ? { opacity: 1, transform: 'none', transition: `opacity 1100ms ${SUAVE} ${atraso}ms, transform 1600ms ${ENTRADA} ${atraso}ms` }
+        ? { opacity: 1, transform: 'none', transition: `opacity 650ms ${SUAVE} ${atraso}ms, transform 900ms ${ENTRADA} ${atraso}ms` }
         : undefined
   const zoom = (k: number): CSSProperties | undefined =>
-    espera ? { transform: 'scale(1.12)' } : entrou ? { transform: 'scale(1)', transition: `transform 2200ms ${SUAVE} ${250 + k * 200}ms` } : undefined
+    espera ? { transform: 'scale(1.12)' } : entrou ? { transform: 'scale(1)', transition: `transform 1300ms ${SUAVE} ${80 + k * 110}ms` } : undefined
 
   const foto = (k: number, src: string, alt: string, cls: string, sizes: string) => (
     <div className={`relative ${cls} rounded-[calc(4*var(--u))] overflow-hidden`}>
@@ -77,7 +77,7 @@ export default function HomeQuemSomos() {
         <div
           aria-hidden="true"
           className="absolute inset-0 bg-[var(--bege-claro-2)]"
-          style={entrou ? { transform: 'translate3d(0, -100%, 0)', transition: `transform 1500ms ${INOUT} ${250 + k * 200}ms` } : undefined}
+          style={entrou ? { transform: 'translate3d(0, -100%, 0)', transition: `transform 900ms ${INOUT} ${80 + k * 110}ms` } : undefined}
         />
       )}
     </div>
@@ -96,7 +96,7 @@ export default function HomeQuemSomos() {
           <div style={{ clipPath: 'inset(calc(-20 * var(--u)) calc(-40 * var(--u)) calc(-30 * var(--u)) calc(-40 * var(--u)))' }}>
             <div
               style={
-                espera ? { transform: 'translate3d(0, 110%, 0)' } : entrou ? { transform: 'none', transition: `transform 1300ms ${ENTRADA} 100ms` } : undefined
+                espera ? { transform: 'translate3d(0, 110%, 0)' } : entrou ? { transform: 'none', transition: `transform 800ms ${ENTRADA} 0ms` } : undefined
               }
             >
               <h2 className="font-display text-[length:calc(80*var(--u))] leading-[1.2] tracking-[calc(-0.576*var(--u))] max-lg:text-[length:calc(40*var(--u))] max-lg:leading-[1.15] max-lg:tracking-normal font-normal">{t.rich('somosTitulo', { i, br: () => <br /> })}</h2>
@@ -109,7 +109,7 @@ export default function HomeQuemSomos() {
 
           <div className="flex flex-col gap-[calc(64*var(--u))] items-start w-[calc(518*var(--u))] max-lg:w-full max-lg:gap-[calc(32*var(--u))]">
             {foto(1, '/basilica/conhecer-interior.jpg', t('somosAlt2'), 'h-[calc(417*var(--u))] w-full max-lg:h-[calc(220*var(--u))]', '(max-width: 1023px) 100vw, 518px')}
-            <div className="flex flex-col gap-[calc(24*var(--u))] items-start w-full" style={surge(900)}>
+            <div className="flex flex-col gap-[calc(24*var(--u))] items-start w-full" style={surge(420)}>
               <p className="text-[length:calc(16*var(--u))] leading-[1.5]">{t('somosTexto')}</p>
               <Link
                 href="/vida-paroquia"
