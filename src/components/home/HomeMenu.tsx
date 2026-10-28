@@ -303,27 +303,28 @@ export default function HomeMenu() {
             ))}
           </ul>
 
-          {/* CTA da bilheteira (ligação externa): o destaque do menu — bloco bege cheio, letra grande
-              e o ícone num círculo azul */}
+          {/* Bilheteira (ligação externa): o destaque do menu. Foto, frase e "Planear visita" são um
+              só bloco bege, que é todo o link */}
           <div className="flex flex-col gap-[calc(14*var(--u))]" style={entra(560)}>
             <Link
               href={BILHETEIRA}
               {...externo(BILHETEIRA)}
               onClick={fechar}
-              className="btn-luz flex h-[calc(72*var(--u))] items-center justify-between rounded-[calc(10*var(--u))] bg-[var(--bege-claro-2)] pl-[calc(22*var(--u))] pr-[calc(14*var(--u))] text-[var(--azul-escuro)]"
+              className="btn-luz flex flex-col gap-[calc(14*var(--u))] rounded-[calc(10*var(--u))] bg-[var(--bege-claro-2)] p-[calc(12*var(--u))] text-[var(--azul-escuro)]"
             >
-              <span className="font-display text-[length:calc(30*var(--u))] leading-none">{t('menuPlanear')}</span>
-              <span aria-hidden="true" className="flex h-[calc(44*var(--u))] w-[calc(44*var(--u))] items-center justify-center rounded-full bg-[var(--azul-escuro)] text-[var(--bege-claro-2)]">
-                <span className="seta-externa" />
+              <span className="flex items-center gap-[calc(14*var(--u))]">
+                <span className="relative block h-[calc(56*var(--u))] w-[calc(56*var(--u))] shrink-0 overflow-hidden rounded-[calc(8*var(--u))]">
+                  <Image src="/home/menu-foto.jpg" alt="" fill sizes="56px" className="object-cover" />
+                </span>
+                <span className="text-[length:calc(13*var(--u))] leading-[1.4] opacity-75">{t('menuBilhete')}</span>
+              </span>
+              <span className="flex items-center justify-between pl-[calc(4*var(--u))]">
+                <span className="font-display text-[length:calc(30*var(--u))] leading-none">{t('menuPlanear')}</span>
+                <span aria-hidden="true" className="flex h-[calc(44*var(--u))] w-[calc(44*var(--u))] items-center justify-center rounded-full bg-[var(--azul-escuro)] text-[var(--bege-claro-2)]">
+                  <span className="seta-externa" />
+                </span>
               </span>
             </Link>
-
-            <div className="flex items-center gap-[calc(14*var(--u))] rounded-[calc(10*var(--u))] bg-[rgba(247,242,238,0.07)] p-[calc(10*var(--u))]">
-              <div className="relative h-[calc(60*var(--u))] w-[calc(60*var(--u))] shrink-0 overflow-hidden rounded-[calc(8*var(--u))]">
-                <Image src="/home/menu-foto.jpg" alt="" fill sizes="60px" className="object-cover" />
-              </div>
-              <p className="text-[length:calc(13*var(--u))] leading-[1.4] opacity-75">{t('menuBilhete')}</p>
-            </div>
 
             <div className="flex flex-wrap items-center gap-x-[calc(18*var(--u))] gap-y-[calc(4*var(--u))] text-[length:calc(13*var(--u))] leading-[1.3]">
               <span className="opacity-40">Facebook</span>
