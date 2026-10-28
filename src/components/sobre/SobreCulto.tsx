@@ -30,21 +30,21 @@ export default function SobreCulto() {
     <section id="culto"
       data-barra="var(--azul-escuro)"
       data-barra-tom="escuro"
-      className="flex flex-col w-full px-[calc(31*var(--u))] py-[calc(180*var(--u))] bg-[var(--azul-escuro)] text-[var(--bege-claro-2)]"
+      className="flex flex-col w-full px-[calc(31*var(--u))] py-[calc(180*var(--u))] max-lg:px-[calc(20*var(--u))] max-lg:py-[calc(96*var(--u))] bg-[var(--azul-escuro)] text-[var(--bege-claro-2)]"
     >
-      <div className="flex flex-col gap-[calc(80*var(--u))] w-full">
+      <div className="flex flex-col gap-[calc(80*var(--u))] max-lg:gap-[calc(48*var(--u))] w-full">
         <Revelar>
-          <div className="flex items-center justify-between w-full text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap">
+          <div className="flex items-center justify-between w-full max-lg:flex-col max-lg:items-start max-lg:gap-[calc(8*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap">
             <p>{t('cultoLabel')}</p>
             <p className="text-right">{t('cultoLema')}</p>
           </div>
         </Revelar>
 
-        <div className="flex items-start gap-[calc(22*var(--u))] w-full">
+        <div className="flex items-start gap-[calc(22*var(--u))] max-lg:flex-col max-lg:gap-[calc(40*var(--u))] w-full">
           {ESPACOS.map((e, i) => (
-            <Revelar key={e.chave} atraso={100 + i * 120}>
-              <div className="flex flex-col gap-[calc(20*var(--u))]" style={{ width: u(e.largura) }}>
-                <div className="relative h-[calc(541*var(--u))] w-full rounded-[calc(4*var(--u))] overflow-hidden">
+            <Revelar key={e.chave} atraso={100 + i * 120} className="max-lg:w-full">
+              <div className="flex flex-col gap-[calc(20*var(--u))] max-lg:w-full!" style={{ width: u(e.largura) }}>
+                <div className="relative h-[calc(541*var(--u))] max-lg:h-[calc(300*var(--u))] w-full rounded-[calc(4*var(--u))] overflow-hidden">
                   <Image src={FOTO} alt="" fill sizes="445px" className="object-cover" />
                 </div>
                 <div className="flex flex-col gap-[calc(20*var(--u))] w-full">
@@ -61,9 +61,9 @@ export default function SobreCulto() {
         <Revelar>
           <div className="flex flex-col gap-[calc(40*var(--u))] w-full">
             <div aria-hidden="true" className="h-px w-full border-t border-solid border-[var(--bege-claro-2)] opacity-25" />
-            <div className="flex items-center justify-between w-full">
+            <div className="flex items-center justify-between w-full max-lg:flex-col max-lg:items-start max-lg:gap-[calc(28*var(--u))]">
               <p
-                className="w-[calc(542*var(--u))] font-[family-name:var(--font-body-light)] text-[length:calc(20*var(--u))] leading-[calc(32*var(--u))]"
+                className="w-[calc(542*var(--u))] max-lg:w-full font-[family-name:var(--font-body-light)] text-[length:calc(20*var(--u))] max-lg:text-[length:calc(16*var(--u))] leading-[calc(32*var(--u))] max-lg:leading-[1.5]"
                 style={{ textBox: 'trim-both cap alphabetic' } as React.CSSProperties}
               >
                 {t('cultoRodape')}

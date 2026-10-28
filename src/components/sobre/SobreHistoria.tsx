@@ -62,20 +62,20 @@ export default function SobreHistoria() {
     <section id="historia"
       data-barra="var(--vermelho)"
       data-barra-tom="escuro"
-      className="relative w-full h-[calc(947*var(--u))] bg-[var(--vermelho)] text-[var(--bege-claro-2)]"
+      className="relative w-full h-[calc(947*var(--u))] max-lg:h-auto max-lg:flex max-lg:flex-col max-lg:gap-[calc(32*var(--u))] max-lg:px-[calc(20*var(--u))] max-lg:py-[calc(72*var(--u))] bg-[var(--vermelho)] text-[var(--bege-claro-2)]"
     >
       {/* ── Cabeçalho ── */}
-      <div className="absolute left-[calc(32*var(--u))] top-[calc(123*var(--u))] flex flex-col gap-[calc(35*var(--u))] w-[calc(1376*var(--u))]">
+      <div className="absolute left-[calc(32*var(--u))] top-[calc(123*var(--u))] max-lg:static flex flex-col gap-[calc(35*var(--u))] max-lg:gap-[calc(28*var(--u))] w-[calc(1376*var(--u))] max-lg:w-full">
         <div className="flex flex-col gap-[calc(24*var(--u))] w-full">
           <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{t('histLabel')}</p></Revelar>
-          <div className="flex items-start justify-between w-full">
+          <div className="flex items-start justify-between w-full max-lg:flex-col max-lg:gap-[calc(20*var(--u))]">
             <Revelar atraso={100}>
-              <h2 className="font-display text-[length:calc(80*var(--u))] leading-[calc(96*var(--u))] tracking-[calc(0.96*var(--u))] font-normal whitespace-nowrap" style={TRIM}>
+              <h2 className="font-display text-[length:calc(80*var(--u))] leading-[calc(96*var(--u))] max-lg:text-[length:calc(44*var(--u))] max-lg:leading-[calc(48*var(--u))] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal font-normal whitespace-nowrap" style={TRIM}>
                 {t('histTitulo')}
               </h2>
             </Revelar>
             <Revelar atraso={200}>
-              <p className="w-[calc(445*var(--u))] text-[length:calc(16*var(--u))] leading-[1.5]">{t('histTexto')}</p>
+              <p className="w-[calc(445*var(--u))] max-lg:w-full text-[length:calc(16*var(--u))] leading-[1.5]">{t('histTexto')}</p>
             </Revelar>
           </div>
         </div>
@@ -83,11 +83,11 @@ export default function SobreHistoria() {
       </div>
 
       {/* ── Anos ── */}
-      <Revelar atraso={150} className="absolute left-[calc(32*var(--u))] top-[calc(342*var(--u))] w-[calc(900*var(--u))] overflow-hidden">
+      <Revelar atraso={150} className="absolute left-[calc(32*var(--u))] top-[calc(342*var(--u))] w-[calc(900*var(--u))] max-lg:static max-lg:order-2 max-lg:w-full overflow-hidden">
         <div
           ref={linha}
           role="tablist"
-          className="flex w-max items-center gap-[calc(32*var(--u))] font-display text-[length:calc(48*var(--u))] leading-[calc(96*var(--u))] tracking-[calc(0.96*var(--u))] whitespace-nowrap transition-transform duration-[700ms] ease-[var(--ease-out)]"
+          className="flex w-max items-center gap-[calc(32*var(--u))] font-display text-[length:calc(48*var(--u))] max-lg:text-[length:calc(36*var(--u))] max-lg:gap-[calc(24*var(--u))] leading-[calc(96*var(--u))] max-lg:leading-[calc(56*var(--u))] tracking-[calc(0.96*var(--u))] whitespace-nowrap transition-transform duration-[700ms] ease-[var(--ease-out)]"
           style={{ transform: `translateX(${-(deslocamentos[ativa] ?? 0)}px)` }}
         >
           {DECADAS.map((d, i) => (
@@ -107,7 +107,7 @@ export default function SobreHistoria() {
       </Revelar>
 
       {/* ── Texto da década ── */}
-      <div className="absolute left-[calc(32*var(--u))] top-[calc(701*var(--u))] w-[calc(445*var(--u))] grid">
+      <div className="absolute left-[calc(32*var(--u))] top-[calc(701*var(--u))] w-[calc(445*var(--u))] max-lg:static max-lg:order-4 max-lg:w-full grid">
         {DECADAS.map((d, i) => (
           <div
             key={d.ano}
@@ -115,14 +115,14 @@ export default function SobreHistoria() {
             className={`col-start-1 row-start-1 flex flex-col gap-[calc(32*var(--u))] ${FADE}`}
             style={{ opacity: i === ativa ? 1 : 0, pointerEvents: i === ativa ? undefined : 'none' }}
           >
-            <p className="font-display text-[length:calc(64*var(--u))] leading-[calc(96*var(--u))]" style={TRIM}>{t('histDecada', { ano: d.ano })}</p>
+            <p className="font-display text-[length:calc(64*var(--u))] max-lg:text-[length:calc(40*var(--u))] leading-[calc(96*var(--u))] max-lg:leading-[calc(48*var(--u))]" style={TRIM}>{t('histDecada', { ano: d.ano })}</p>
             <p className="text-[length:calc(16*var(--u))] leading-[1.5]">{t(`hist${d.ano}`)}</p>
           </div>
         ))}
       </div>
 
       {/* ── Fotografia ── */}
-      <div className="absolute left-[calc(963*var(--u))] top-[calc(342*var(--u))] h-[calc(541*var(--u))] w-[calc(445*var(--u))] rounded-[calc(4*var(--u))] overflow-hidden">
+      <div className="absolute left-[calc(963*var(--u))] top-[calc(342*var(--u))] h-[calc(541*var(--u))] w-[calc(445*var(--u))] max-lg:relative max-lg:left-auto max-lg:top-auto max-lg:order-3 max-lg:h-[calc(360*var(--u))] max-lg:w-full rounded-[calc(4*var(--u))] overflow-hidden">
         {DECADAS.map((d, i) => (
           <div key={d.ano} className={`absolute inset-0 ${FADE}`} style={{ opacity: i === ativa ? 1 : 0 }}>
             <Image src={d.foto} alt={i === ativa ? t('histFotoAlt') : ''} fill sizes="445px" className="object-cover object-bottom" />
@@ -130,7 +130,8 @@ export default function SobreHistoria() {
         ))}
       </div>
 
-      {/* ── Setas: o SVG do Figma tem as duas; cada botão mostra uma metade ── */}
+      {/* ── Setas: o SVG do Figma tem as duas; cada botão mostra uma metade (no mobile, juntas, em fila) ── */}
+      <div className="contents max-lg:flex max-lg:order-5 max-lg:gap-[calc(24*var(--u))]">
       {([
         { rotulo: 'histAnterior', left: 839, img: 3.5, destino: ativa - 1, desativada: ativa === 0 },
         { rotulo: 'histSeguinte', left: 895, img: -52.5, destino: ativa + 1, desativada: ativa === DECADAS.length - 1 },
@@ -141,13 +142,14 @@ export default function SobreHistoria() {
           aria-label={t(b.rotulo)}
           disabled={b.desativada}
           onClick={() => ir(b.destino)}
-          className={`group/seta absolute top-[calc(867*var(--u))] h-[calc(20*var(--u))] w-[calc(32*var(--u))] overflow-hidden transition-opacity duration-[400ms] ease-[var(--ease-out)] ${b.desativada ? 'opacity-30 cursor-default' : 'opacity-70 hover:opacity-100'}`}
+          className={`group/seta absolute max-lg:static top-[calc(867*var(--u))] h-[calc(20*var(--u))] w-[calc(32*var(--u))] overflow-hidden transition-opacity duration-[400ms] ease-[var(--ease-out)] ${b.desativada ? 'opacity-30 cursor-default' : 'opacity-70 hover:opacity-100'}`}
           style={{ left: u(b.left) }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/sobre/historia-setas.svg" alt="" width={81} height={13} className="absolute max-w-none" style={{ width: u(81), height: u(13), left: u(b.img), top: u(3.5) }} />
         </button>
       ))}
+      </div>
     </section>
   )
 }
