@@ -9,7 +9,7 @@ import { useMenu } from '@/components/home/MenuContext'
  *
  * 64px, com a cor da secção por baixo (e, se for escura, versão clara) e régua em baixo; o logótipo (HomeLogo) vem ocupar
  * o lado esquerdo e à direita ficam Menu (contorno escuro) e Visitar (azul
- * escuro). Desce do topo quando a página passa dos 40px e sobe ao voltar.
+ * escuro; no mobile só o Menu). Desce do topo quando a página passa dos 40px e sobe ao voltar.
  */
 export default function HomeBarra() {
   const t = useTranslations('inicio')
@@ -45,7 +45,7 @@ export default function HomeBarra() {
         </span>
         <Link
           href="/basilica-e-convento"
-          className={`btn-luz h-[calc(32*var(--u))] px-[calc(20*var(--u))] flex items-center rounded-[calc(4*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)] ${clara ? 'bg-[var(--bege-claro-2)] text-[rgba(18,28,36,0.85)]' : 'bg-[var(--azul-escuro)] text-[rgba(247,242,238,0.85)]'}`}
+          className={`btn-luz max-lg:hidden h-[calc(32*var(--u))] px-[calc(20*var(--u))] flex items-center rounded-[calc(4*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)] ${clara ? 'bg-[var(--bege-claro-2)] text-[rgba(18,28,36,0.85)]' : 'bg-[var(--azul-escuro)] text-[rgba(247,242,238,0.85)]'}`}
         >
           {t('heroVisitar')}
         </Link>

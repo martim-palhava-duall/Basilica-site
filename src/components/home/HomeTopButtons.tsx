@@ -6,7 +6,8 @@ import { useMenu } from '@/components/home/MenuContext'
 import { u } from '@/lib/escala'
 
 /**
- * Menu + Visitar, canto superior direito do hero (Figma 173:3932).
+ * Menu + Visitar, canto superior direito do hero (Figma 173:3932). No mobile fica só
+ * o Menu (pedido do cliente): o Visitar já está na lista do menu.
  *
  * Hovers (o desenho não os define, são escolha de implementação, coerentes
  * com o resto): o contorno enche-se de bege; o botão cheio passa a vermelho.
@@ -41,7 +42,7 @@ export default function HomeTopButtons() {
       </span>
       <Link
         href="/basilica-e-convento"
-        className="btn-luz h-[calc(32*var(--u))] px-[calc(20*var(--u))] flex items-center rounded-[calc(4*var(--u))] bg-[var(--bege-claro-2)] text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] text-[rgba(18,28,36,0.85)] transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
+        className="btn-luz max-lg:hidden h-[calc(32*var(--u))] px-[calc(20*var(--u))] flex items-center rounded-[calc(4*var(--u))] bg-[var(--bege-claro-2)] text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] text-[rgba(18,28,36,0.85)] transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
       >
         {t('heroVisitar')}
       </Link>
