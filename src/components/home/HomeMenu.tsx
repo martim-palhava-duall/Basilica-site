@@ -262,61 +262,69 @@ export default function HomeMenu() {
           </button>
         </div>
 
-        <div className="flex flex-1 flex-col justify-between gap-[calc(20*var(--u))] px-[calc(20*var(--u))] pb-[calc(24*var(--u))] pt-[calc(24*var(--u))]">
-          {/* Horário e contacto */}
-          <div className="grid grid-cols-[1fr_auto] gap-[calc(16*var(--u))]" style={entra(200)}>
-            <div className="flex flex-col gap-[calc(14*var(--u))]">
-              <p className="font-display text-[length:calc(16*var(--u))] leading-[1.2] opacity-60">{t('menuHorarioHead')}</p>
-              <div className="flex flex-col gap-[calc(14*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[1.35]">
-                <p><span className="block whitespace-nowrap text-[length:calc(13*var(--u))] font-bold">{th('missasSemHoras')}</span>{th('missasSemDias')}</p>
-                <p><span className="block whitespace-nowrap text-[length:calc(13*var(--u))] font-bold">{th('missasDomHoras')}</span>{th('missasDomDias')}</p>
-              </div>
-            </div>
-            <div className="flex flex-col gap-[calc(14*var(--u))]">
-              <p className="font-display text-[length:calc(16*var(--u))] leading-[1.2] opacity-60">{t('menuContacto')}</p>
-              <div className="flex flex-col gap-[calc(14*var(--u))] text-[length:calc(13*var(--u))] leading-[1.35]">
-                <a href="tel:+351213960915">213 960 915</a>
-                <a href="mailto:geral@basilicadaestrela.pt" className="whitespace-nowrap">geral@basilicadaestrela.pt</a>
-              </div>
-            </div>
-          </div>
-
-          <div aria-hidden="true" className="h-px w-full bg-[rgba(247,242,238,0.12)]" />
-
-          {/* Páginas */}
-          <ul className="flex flex-1 flex-col justify-center" style={{ gap: 'min(calc(6 * var(--u)), 0.8svh)' }}>
+        <div className="flex flex-1 flex-col px-[calc(20*var(--u))] pb-[calc(28*var(--u))] pt-[calc(8*var(--u))]">
+          {/* Páginas: lista numerada em Forevs Light, com réguas finas que se desenham
+              da esquerda para a direita, uma a uma, e o texto a subir em cascata */}
+          <ul className="flex flex-col">
             {[...COL1, ...COL2].map(([chave, href], i) => (
-              <li key={chave} style={entra(260 + i * 40)}>
-                <Link
-                  href={href}
-                  onClick={fechar}
-                  aria-current={pathname === href ? 'page' : undefined}
-                  className="block font-display text-[length:min(calc(36*var(--u)),3.9svh)] leading-[1.1] transition-opacity duration-[350ms] ease-[var(--ease-out)] aria-[current=page]:opacity-45"
-                >
-                  {t(chave)}
-                </Link>
+              <li key={chave} className="relative">
+                <span
+                  aria-hidden="true"
+                  className={`absolute inset-x-0 top-0 h-px origin-left bg-[rgba(247,242,238,0.14)] ${i === 0 ? 'hidden' : ''}`}
+                  style={{
+                    transform: aberto ? 'scaleX(1)' : 'scaleX(0)',
+                    transition: aberto
+                      ? `transform 900ms var(--ease-entrada) ${esperaLogo + 120 + i * 45}ms`
+                      : 'transform 200ms var(--ease-out)',
+                  }}
+                />
+                <div style={entra(160 + i * 45)}>
+                  <Link
+                    href={href}
+                    onClick={fechar}
+                    aria-current={pathname === href ? 'page' : undefined}
+                    className="group flex items-baseline gap-[calc(16*var(--u))] py-[min(calc(9*var(--u)),1.1svh)] aria-[current=page]:opacity-45"
+                  >
+                    <span className="w-[calc(22*var(--u))] shrink-0 text-[length:max(11px,calc(11*var(--u)))] tabular-nums opacity-40">{String(i + 1).padStart(2, '0')}</span>
+                    <span
+                      className="font-display text-[length:min(calc(32*var(--u)),3.8svh)] leading-[1.15] transition-transform duration-[400ms] ease-[var(--ease-out)] group-active:translate-x-[calc(6*var(--u))]"
+                      style={{ fontWeight: 300 }}
+                    >
+                      {t(chave)}
+                    </span>
+                  </Link>
+                </div>
               </li>
             ))}
+            <li aria-hidden="true" className="h-px origin-left bg-[rgba(247,242,238,0.14)]" style={{ transform: aberto ? 'scaleX(1)' : 'scaleX(0)', transition: aberto ? `transform 900ms var(--ease-entrada) ${esperaLogo + 120 + 9 * 45}ms` : 'transform 200ms var(--ease-out)' }} />
           </ul>
 
-          <div aria-hidden="true" className="h-px w-full bg-[rgba(247,242,238,0.12)]" />
-
-          {/* CTA da bilheteira (ligação externa) */}
-          <div className="flex flex-col gap-[calc(14*var(--u))]" style={entra(620)}>
+          {/* Em baixo: bilheteira, horário e contacto, redes — discretos */}
+          <div className="mt-auto flex flex-col gap-[calc(18*var(--u))] pt-[calc(20*var(--u))]" style={entra(560)}>
             <Link
               href={BILHETEIRA}
               {...externo(BILHETEIRA)}
               onClick={fechar}
-              className="btn-luz flex items-center justify-between rounded-[calc(6*var(--u))] bg-[var(--bege-claro-2)] px-[calc(20*var(--u))] py-[calc(18*var(--u))] text-[var(--azul-escuro)]"
+              className="btn-luz flex h-[calc(52*var(--u))] items-center justify-between rounded-[calc(6*var(--u))] bg-[var(--bege-claro-2)] px-[calc(20*var(--u))] text-[length:calc(14*var(--u))] leading-[1.4] text-[var(--azul-escuro)]"
             >
-              <span className="font-display text-[length:calc(26*var(--u))] leading-none">{t('menuPlanear')}</span>
-              <span aria-hidden="true" className="seta-externa-grande" />
+              {t('menuPlanear')}
+              <span aria-hidden="true" className="seta-externa" />
             </Link>
-            <div className="flex flex-wrap items-center gap-x-[calc(18*var(--u))] gap-y-[calc(6*var(--u))] text-[length:calc(14*var(--u))] leading-[1.2]">
-              <span className="opacity-40">Facebook</span>
-              <a href="https://instagram.com/basilicadaestrela" target="_blank" rel="noopener noreferrer" className="opacity-60">Instagram</a>
-              <span className="opacity-40">Whatsapp</span>
-              <span className="opacity-40">Youtube</span>
+
+            <div className="flex flex-col gap-[calc(6*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">
+              <p className="font-display text-[length:calc(14*var(--u))] leading-[1.2] opacity-55">{t('menuHorarioHead')}</p>
+              <p className="flex justify-between gap-[calc(12*var(--u))]"><span className="opacity-60">{th('missasSemDias')}</span><span>{th('missasSemHoras')}</span></p>
+              <p className="flex justify-between gap-[calc(12*var(--u))]"><span className="opacity-60">{th('missasDomDias')}</span><span className="whitespace-nowrap">{th('missasDomHoras')}</span></p>
+            </div>
+
+            <div className="flex items-center justify-between gap-[calc(12*var(--u))] border-t border-solid border-[rgba(247,242,238,0.14)] pt-[calc(14*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">
+              <span className="flex flex-col opacity-80">
+                <a href="tel:+351213960915">213 960 915</a>
+                <a href="mailto:geral@basilicadaestrela.pt">geral@basilicadaestrela.pt</a>
+              </span>
+              <span className="flex gap-[calc(14*var(--u))] opacity-60">
+                <a href="https://instagram.com/basilicadaestrela" target="_blank" rel="noopener noreferrer">Instagram</a>
+              </span>
             </div>
           </div>
         </div>
