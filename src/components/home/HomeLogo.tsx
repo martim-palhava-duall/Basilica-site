@@ -14,14 +14,22 @@ const ALTURA = 168.718
 /* Os três estados, cada um com a sua escala e posição de topo. O logótipo é o
    mesmo desenho nos três, por isso muda por escala.
    - topo: 25% maior que no hero do Figma (411 × 211), a pedido do Martim
-   - barra: 52px de altura, centrado na barra de scroll de 64px (o Figma
-     179:73 tem 88 e 60, que ao Martim pareceu alto)
-   - menu: 117 × 60 no cabeçalho do painel (Figma 111:197), centrado nos 88px */
+   - barra: só o símbolo, 40px de altura, centrado na barra de scroll de 64px
+   - menu: só o símbolo, 48px de altura, centrado nos 88px do cabeçalho do painel */
 const ESTADOS = {
   topo:      { escala: 1.25,               top: 10.5 },
-  barra:     { escala: 52 / ALTURA,        top: 6 },
-  menu:      { escala: 117 / LARGURA,      top: 14.5 },
+  barra:     { escala: 0.3517,             top: 9.85 },
+  menu:      { escala: 0.422,              top: 17.4 },
 }
+
+/* Na barra e no menu só fica o símbolo (a frase "Basílica da Estrela" desaparece).
+   O símbolo mede 151,9 × 113,7 e começa a 69,1 do lado esquerdo e a 6,1 do topo do
+   logótipo completo; ao encolher, desliza para a esquerda (MARCA_X × escala) para
+   encostar à margem, como o logótipo completo encostava. */
+const MARCA_X = 69.1
+
+/** Opacidade da frase "Basílica da Estrela": acende no topo e some a meio do encolher */
+const frase = (p: number) => 1 - clamp01(suave(p) / 0.45)
 
 const clamp01 = (v: number) => Math.min(Math.max(v, 0), 1)
 // smootherstep: arranca e pousa ainda mais devagar do que o smoothstep
@@ -32,7 +40,7 @@ const suave = (t: number) => t * t * t * (t * (t * 6 - 15) + 10)
    No desktop as variáveis não existem e valem os de ESTADOS.
    - topo: 224 × 115, a 14 do topo
    - barra: 49 de altura (0,29); menu: 51 de altura (0,3023, 99 de largura), a 6,5 do topo (Figma 239:4) */
-const MOBILE = 'max-lg:left-[calc(20*var(--u))] max-lg:[--logo-topo-e:0.68] max-lg:[--logo-topo-y:14] max-lg:[--logo-barra-e:0.29] max-lg:[--logo-barra-y:8] max-lg:[--logo-menu-e:0.3023] max-lg:[--logo-menu-y:6.5]'
+const MOBILE = 'max-lg:left-[calc(20*var(--u))] max-lg:[--logo-topo-e:0.68] max-lg:[--logo-topo-y:14] max-lg:[--logo-barra-e:0.3517] max-lg:[--logo-barra-y:9.85] max-lg:[--logo-menu-e:0.3517] max-lg:[--logo-menu-y:9.85]'
 
 const v = (nome: string, desktop: number) => `var(--logo-${nome}, ${desktop})`
 
@@ -40,9 +48,11 @@ const v = (nome: string, desktop: number) => `var(--logo-${nome}, ${desktop})`
 function transformPara(p: number, aberto: boolean, sai: boolean) {
   let escala: string
   let top: string
+  let x: string
   if (aberto) {
     escala = v('menu-e', ESTADOS.menu.escala)
     top = v('menu-y', ESTADOS.menu.top)
+    x = `calc(${-MARCA_X} * ${escala} * var(--u))`
   } else {
     const e = suave(p)
     const e0 = v('topo-e', ESTADOS.topo.escala)
@@ -51,9 +61,10 @@ function transformPara(p: number, aberto: boolean, sai: boolean) {
     const y1 = v('barra-y', ESTADOS.barra.top)
     escala = `calc(${e0} + (${e1} - ${e0}) * ${e})`
     top = `calc(${y0} + (${y1} - ${y0}) * ${e})`
+    x = `calc(${-MARCA_X} * ${escala} * ${e} * var(--u))`
   }
   // Só `transform`: corre todo na placa gráfica
-  return `translate3d(0, calc(${top} * var(--u)), 0) scale(${escala}) translateY(${sai ? '-160%' : '0'})`
+  return `translate3d(${x}, calc(${top} * var(--u)), 0) scale(${escala}) translateY(${sai ? '-160%' : '0'})`
 }
 
 /**
@@ -107,6 +118,7 @@ export default function HomeLogo() {
   useEffect(() => {
     if (!emHome) {
       progresso.current = 1
+      ref.current?.style.setProperty('--frase', '0')
       return
     }
     // O progresso alvo vem do scroll; o mostrado aproxima-se dele com uma inércia
@@ -118,7 +130,10 @@ export default function HomeLogo() {
     const desenhar = (p: number) => {
       progresso.current = p
       const el = ref.current
-      if (el) el.style.transform = transformPara(p, atual.current.aberto, atual.current.sai)
+      if (el) {
+        el.style.transform = transformPara(p, atual.current.aberto, atual.current.sai)
+        el.style.setProperty('--frase', String(frase(p)))
+      }
     }
     const passo = (t: number) => {
       const dt = ultimo ? Math.min(t - ultimo, 64) : 16.7
@@ -200,6 +215,7 @@ export default function HomeLogo() {
           : 'opacity 400ms var(--ease-out)',
         opacity: sai ? 0 : 1,
         pointerEvents: sai ? 'none' : undefined,
+        ['--frase' as string]: emHome ? 1 : 0,
       }}
     >
       {/* Camada da entrada do hero (só anima dentro da secção com data-hero) */}
@@ -212,7 +228,7 @@ export default function HomeLogo() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={v.marca} alt="" width={151.901} height={113.741} className="absolute" style={{ width: u(151.901), height: u(113.741), left: '21.01%', top: '3.63%' }} />
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={v.wordmark} alt="" width={289.658} height={27.7794} className="absolute left-0" style={{ width: u(289.658), height: u(27.7794), top: '79.85%' }} />
+          <img src={v.wordmark} alt="" width={289.658} height={27.7794} className="absolute left-0" style={{ width: u(289.658), height: u(27.7794), top: '79.85%', opacity: aberto ? 0 : 'var(--frase, 1)', transition: 'opacity 400ms var(--ease-out)' }} />
         </span>
       ))}
       </span>
