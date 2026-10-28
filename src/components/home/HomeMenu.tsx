@@ -282,7 +282,7 @@ export default function HomeMenu() {
             </div>
           </div>
 
-          {/* Páginas: lista grande, em Forevs Light, compacta como na referência */}
+          {/* Páginas: lista grande (42), em Forevs Light, compacta como na referência; se não couber, o painel rola */}
           <ul className="my-auto flex flex-col py-[calc(16*var(--u))]">
             {[...COL1, ...COL2].map(([chave, href], i) => (
               <li key={chave} style={entra(220 + i * 40)}>
@@ -293,7 +293,7 @@ export default function HomeMenu() {
                   className="group block aria-[current=page]:opacity-45"
                 >
                   <span
-                    className="block font-display text-[length:min(calc(36*var(--u)),4.1svh)] leading-[1.12] transition-transform duration-[400ms] ease-[var(--ease-out)] group-active:translate-x-[calc(6*var(--u))]"
+                    className="block font-display text-[length:calc(42*var(--u))] leading-[1.12] transition-transform duration-[400ms] ease-[var(--ease-out)] group-active:translate-x-[calc(6*var(--u))]"
                     style={{ fontWeight: 300 }}
                   >
                     {t(chave)}
