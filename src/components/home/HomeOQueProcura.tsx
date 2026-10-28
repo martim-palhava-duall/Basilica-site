@@ -44,8 +44,10 @@ const LINHAS: Linha[] = [
  * as legendas laterais da referência, em 500ms numa expo-out (--ease-entrada), tal
  * como a miniatura; o zoom do "rezar" em 700. Ao sair, tudo regressa pelo mesmo caminho.
  *
- * Mobile: sem posições fixas — uma coluna com as quatro entradas a 34px, a
- * miniatura a 60 × 40 e a seta sempre visível (não há hover em ecrãs de toque).
+ * Mobile: sem posições fixas, mas com o mesmo desenho em ziguezague do desktop —
+ * as entradas com a miniatura antes do texto (rezar, visitar) levam um recuo de 36
+ * e as outras ficam à margem; texto a 48 (metade do de desktop), miniatura 56 × 37
+ * e a seta sempre visível, logo a seguir à linha (não há hover em ecrãs de toque).
  *
  * O texto tem duas versões sobrepostas (itálico e normal) que se fundem. Como a
  * normal é mais larga, a miniatura que vem depois do texto desliza (`translateX`)
@@ -89,17 +91,17 @@ export default function HomeOQueProcura() {
   }, [])
 
   return (
-    <section ref={secRef} data-barra="var(--vermelho)" data-barra-tom="escuro" className="relative w-full h-[calc(900*var(--u))] max-lg:h-auto max-lg:px-[calc(20*var(--u))] max-lg:py-[calc(96*var(--u))] bg-[var(--vermelho)] text-[var(--bege-claro-2)]">
+    <section ref={secRef} data-barra="var(--vermelho)" data-barra-tom="escuro" className="relative w-full h-[calc(900*var(--u))] max-lg:h-auto max-lg:px-[calc(20*var(--u))] max-lg:py-[calc(120*var(--u))] bg-[var(--vermelho)] text-[var(--bege-claro-2)]">
       <p
-        className="absolute left-0 top-[calc(140*var(--u))] max-lg:static max-lg:mb-[calc(48*var(--u))] w-full text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] text-center"
+        className="absolute left-0 top-[calc(140*var(--u))] max-lg:static max-lg:mb-[calc(56*var(--u))] w-full text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] text-center"
         ref={rotuloRef}
       >
         {t('oqueLabel')}
       </p>
 
-      <div role="list" className="max-lg:flex max-lg:flex-col max-lg:gap-[calc(28*var(--u))]">
+      <div role="list" className="max-lg:flex max-lg:flex-col max-lg:gap-[calc(16*var(--u))]">
         {LINHAS.map((l, i) => (
-          <div key={l.chave} role="listitem" className="absolute max-lg:static" style={{ left: `calc(50% + ${l.x} * var(--u))`, top: u(l.y) }}>
+          <div key={l.chave} role="listitem" className={`absolute max-lg:static ${l.imagem === 'antes' ? 'max-lg:ml-[calc(36*var(--u))]' : ''}`} style={{ left: `calc(50% + ${l.x} * var(--u))`, top: u(l.y) }}>
             <div ref={(el) => { frasesRef.current[i] = el }}>
               <Entrada
                 linha={l}
@@ -118,7 +120,7 @@ export default function HomeOQueProcura() {
 }
 
 const TRIM = { textBox: 'trim-both cap alphabetic' } as React.CSSProperties
-const BASE = 'col-start-1 row-start-1 whitespace-nowrap text-[length:calc(96*var(--u))] leading-[calc(100.8*var(--u))] tracking-[calc(-0.576*var(--u))] max-lg:text-[length:calc(34*var(--u))] max-lg:leading-[calc(38*var(--u))] max-lg:tracking-normal transition-opacity duration-[250ms] ease-[var(--ease-out)]'
+const BASE = 'col-start-1 row-start-1 whitespace-nowrap text-[length:calc(96*var(--u))] leading-[calc(100.8*var(--u))] tracking-[calc(-0.576*var(--u))] max-lg:text-[length:calc(48*var(--u))] max-lg:leading-[calc(52*var(--u))] max-lg:tracking-[calc(-0.288*var(--u))] transition-opacity duration-[250ms] ease-[var(--ease-out)]'
 /** Seta do hover: a do botão (seta.svg), à escala do texto de 96px */
 const SETA_L = 42
 const SETA_A = 28
@@ -159,7 +161,7 @@ function Entrada({
 
   const thumb = (
     <div
-      className="relative h-[calc(74.66*var(--u))] w-[calc(112*var(--u))] max-lg:h-[calc(40*var(--u))] max-lg:w-[calc(60*var(--u))] shrink-0 overflow-hidden rounded-[calc(4*var(--u))] transition-transform duration-[500ms] ease-[var(--ease-entrada)]"
+      className="relative h-[calc(74.66*var(--u))] w-[calc(112*var(--u))] max-lg:h-[calc(37.33*var(--u))] max-lg:w-[calc(56*var(--u))] shrink-0 overflow-hidden rounded-[calc(4*var(--u))] transition-transform duration-[500ms] ease-[var(--ease-entrada)]"
       style={{ transform: `translate3d(${desliza}px, 0, 0)` }}
     >
       {linha.fundo && (
@@ -215,7 +217,7 @@ function Entrada({
   const seta = (
     <span
       aria-hidden="true"
-      className="seta shrink-0 text-[var(--bege-claro)] max-lg:ml-auto max-lg:w-[calc(21*var(--u))]! max-lg:h-[calc(14*var(--u))]! max-lg:opacity-100! max-lg:transform-none!"
+      className="seta shrink-0 text-[var(--bege-claro)] max-lg:ml-0 max-lg:w-[calc(21*var(--u))]! max-lg:h-[calc(14*var(--u))]! max-lg:opacity-100! max-lg:transform-none!"
       style={{
         width: u(SETA_L),
         height: u(SETA_A),
@@ -233,7 +235,7 @@ function Entrada({
       onMouseLeave={onSair}
       onFocus={onEntrar}
       onBlur={onSair}
-      className="flex items-center gap-[calc(32*var(--u))] max-lg:gap-[calc(14*var(--u))] outline-none transition-opacity duration-[200ms] ease-[var(--ease-out)]"
+      className="flex items-center gap-[calc(32*var(--u))] max-lg:gap-[calc(12*var(--u))] outline-none transition-opacity duration-[200ms] ease-[var(--ease-out)]"
       style={{ opacity: recuada ? 0.17 : 1 }}
     >
       {linha.imagem === 'antes' ? <>{thumb}{textoEl}</> : <>{textoEl}{thumb}</>}
