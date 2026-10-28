@@ -310,16 +310,14 @@ export default function HomeMenu() {
               href={BILHETEIRA}
               {...externo(BILHETEIRA)}
               onClick={fechar}
-              className="btn-luz flex flex-col gap-[calc(14*var(--u))] rounded-[calc(10*var(--u))] bg-[rgba(247,242,238,0.09)] p-[calc(12*var(--u))] text-[var(--bege-claro-2)]"
+              className="btn-luz flex flex-col overflow-hidden rounded-[calc(10*var(--u))] bg-[rgba(247,242,238,0.09)] text-[var(--bege-claro-2)]"
             >
-              <span className="flex items-center gap-[calc(14*var(--u))]">
-                <span className="relative block h-[calc(56*var(--u))] w-[calc(56*var(--u))] shrink-0 overflow-hidden rounded-[calc(8*var(--u))]">
-                  <Image src="/home/menu-foto.jpg" alt="" fill sizes="56px" className="object-cover" />
-                </span>
-                <span className="text-[length:calc(13*var(--u))] leading-[1.4] opacity-75">{t('menuBilhete')}</span>
+              <span className="relative block h-[calc(168*var(--u))] w-full overflow-hidden">
+                <Image src="/home/menu-foto.jpg" alt="" fill sizes="390px" className="object-cover" />
               </span>
-              <span className="flex items-center justify-between pl-[calc(4*var(--u))]">
-                <span className="font-display text-[length:calc(30*var(--u))] leading-none">{t('menuPlanear')}</span>
+              <span className="border-t border-solid border-[rgba(247,242,238,0.22)] px-[calc(18*var(--u))] py-[calc(16*var(--u))] text-[length:calc(13*var(--u))] leading-[1.45] opacity-80">{t('menuBilhete')}</span>
+              <span className="flex items-center justify-between border-t border-solid border-[rgba(247,242,238,0.22)] px-[calc(18*var(--u))] py-[calc(18*var(--u))]">
+                <span className="font-display text-[length:calc(32*var(--u))] leading-none">{t('menuPlanear')}</span>
                 <span aria-hidden="true" className="flex h-[calc(44*var(--u))] w-[calc(44*var(--u))] items-center justify-center rounded-full bg-[var(--bege-claro-2)] text-[var(--azul-escuro)]">
                   <span className="seta-externa" />
                 </span>
