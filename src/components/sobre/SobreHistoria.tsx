@@ -37,6 +37,9 @@ const FADE = 'transition-opacity duration-[600ms] ease-[var(--ease-out)]'
  * Clicar num ano ou numa seta muda de década: a linha de anos desliza para a
  * esquerda, o ano anterior sai (cortado na margem) e o novo ocupa o seu lugar;
  * texto e fotografia trocam por fade, empilhados no mesmo sítio.
+ *
+ * Mobile: o ano ativo em grande com as setas à direita, a linha do tempo (seis
+ * traços, um por década) por baixo, depois a fotografia e o texto da década.
  */
 export default function SobreHistoria() {
   const t = useTranslations('sobre')
@@ -106,25 +109,49 @@ export default function SobreHistoria() {
         </div>
       </Revelar>
 
-      {/* ── Anos (mobile): as seis décadas repartidas pela largura, a ativa a cheio ── */}
-      <div role="tablist" className="lg:hidden order-2 flex w-full items-center justify-between font-display text-[length:calc(19*var(--u))] leading-[calc(28*var(--u))] tracking-normal">
-        {DECADAS.map((d, i) => (
-          <button
-            key={d.ano}
-            type="button"
-            role="tab"
-            aria-selected={i === ativa}
-            onClick={() => ir(i)}
-            className={`${FADE} outline-none ${i === ativa ? 'border-b border-solid border-[var(--bege-claro-2)]' : 'border-b border-solid border-transparent'}`}
-            style={{ opacity: i === ativa ? 1 : 0.45 }}
-          >
-            {d.ano}
-          </button>
-        ))}
+      {/* ── Mobile: o ano em grande com as setas, e por baixo a linha do tempo (seis décadas, a ativa a cheio) ── */}
+      <div className="lg:hidden order-2 flex w-full flex-col gap-[calc(20*var(--u))]">
+        <div className="flex items-end justify-between w-full">
+          <p className="font-display text-[length:calc(88*var(--u))] leading-[calc(80*var(--u))] tracking-normal" aria-live="polite">{DECADAS[ativa].ano}</p>
+          <div className="flex items-center gap-[calc(28*var(--u))] pb-[calc(6*var(--u))]">
+            {([
+              { rotulo: 'histAnterior', destino: ativa - 1, desativada: ativa === 0, d: 'M23 6.5H1M6.5 1 1 6.5 6.5 12' },
+              { rotulo: 'histSeguinte', destino: ativa + 1, desativada: ativa === DECADAS.length - 1, d: 'M1 6.5h22M17.5 1 23 6.5 17.5 12' },
+            ] as const).map((b) => (
+              <button
+                key={b.rotulo}
+                type="button"
+                aria-label={t(b.rotulo)}
+                disabled={b.desativada}
+                onClick={() => ir(b.destino)}
+                className={`flex h-[calc(32*var(--u))] w-[calc(32*var(--u))] items-center justify-center transition-opacity duration-[400ms] ease-[var(--ease-out)] ${b.desativada ? 'opacity-30' : 'opacity-90'}`}
+              >
+                <svg aria-hidden="true" width="24" height="13" viewBox="0 0 24 13" fill="none" style={{ width: u(24), height: u(13) }}>
+                  <path d={b.d} stroke="currentColor" strokeWidth="1.2" />
+                </svg>
+              </button>
+            ))}
+          </div>
+        </div>
+        <div role="tablist" className="flex w-full gap-[calc(6*var(--u))]">
+          {DECADAS.map((d, i) => (
+            <button
+              key={d.ano}
+              type="button"
+              role="tab"
+              aria-selected={i === ativa}
+              onClick={() => ir(i)}
+              className="flex flex-1 flex-col gap-[calc(8*var(--u))] text-left outline-none"
+            >
+              <span className={`block h-px w-full bg-current ${FADE}`} style={{ opacity: i === ativa ? 1 : 0.3 }} />
+              <span className={`text-[length:calc(12*var(--u))] leading-[1.2] ${FADE}`} style={{ opacity: i === ativa ? 1 : 0.5 }}>{d.ano}</span>
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* ── Texto da década ── */}
-      <div className="absolute left-[calc(32*var(--u))] top-[calc(701*var(--u))] w-[calc(445*var(--u))] max-lg:static max-lg:order-5 max-lg:w-full grid">
+      <div className="absolute left-[calc(32*var(--u))] top-[calc(701*var(--u))] w-[calc(445*var(--u))] max-lg:static max-lg:order-4 max-lg:w-full grid">
         {DECADAS.map((d, i) => (
           <div
             key={d.ano}
@@ -132,7 +159,7 @@ export default function SobreHistoria() {
             className={`col-start-1 row-start-1 flex flex-col gap-[calc(32*var(--u))] max-lg:gap-[calc(16*var(--u))] ${FADE}`}
             style={{ opacity: i === ativa ? 1 : 0, pointerEvents: i === ativa ? undefined : 'none' }}
           >
-            <p className="font-display text-[length:calc(64*var(--u))] max-lg:text-[length:calc(32*var(--u))] leading-[calc(96*var(--u))] max-lg:leading-[calc(36*var(--u))]" style={TRIM}>{t('histDecada', { ano: d.ano })}</p>
+            <p className="font-display text-[length:calc(64*var(--u))] max-lg:hidden leading-[calc(96*var(--u))]" style={TRIM}>{t('histDecada', { ano: d.ano })}</p>
             <p className="text-[length:calc(16*var(--u))] leading-[1.5]">{t(`hist${d.ano}`)}</p>
           </div>
         ))}
@@ -148,7 +175,7 @@ export default function SobreHistoria() {
       </div>
 
       {/* ── Setas: o SVG do Figma tem as duas; cada botão mostra uma metade (no mobile, juntas, em fila) ── */}
-      <div className="contents max-lg:flex max-lg:order-4 max-lg:justify-between">
+      <div className="contents max-lg:hidden">
       {([
         { rotulo: 'histAnterior', left: 839, img: 3.5, destino: ativa - 1, desativada: ativa === 0 },
         { rotulo: 'histSeguinte', left: 895, img: -52.5, destino: ativa + 1, desativada: ativa === DECADAS.length - 1 },
