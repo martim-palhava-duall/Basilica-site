@@ -219,8 +219,7 @@ export default function HomeMenu() {
     </div>
 
     {/* ═══ Mobile (abaixo de 1024): painel azul, a descer do topo ═══
-        Cartão com 8 de margem e cantos redondos (como a referência do cliente):
-        barra com o logótipo (que desce do hero, ver HomeLogo) e "Fechar"; horário e
+        Ecrã inteiro (pedido do cliente), azul, a descer do topo: barra com o logótipo (que desce do hero, ver HomeLogo) e "Fechar"; horário e
         contacto em duas colunas; a lista das páginas em Forevs grande; e, em baixo,
         o CTA da bilheteira (ligação externa) e as redes. Os textos entram em
         cascata como no desktop. Sem desenho no Figma: valores a 390 de largura. */}
@@ -245,14 +244,14 @@ export default function HomeMenu() {
 
       <div
         data-lenis-prevent
-        className="absolute inset-x-[calc(8*var(--u))] top-[calc(8*var(--u))] bottom-[calc(8*var(--u))] flex flex-col overflow-y-auto overscroll-contain rounded-[calc(12*var(--u))] bg-[var(--azul-escuro)] text-[var(--bege-claro-2)]"
+        className="absolute inset-0 flex flex-col overflow-y-auto overscroll-contain bg-[var(--azul-escuro)] text-[var(--bege-claro-2)]"
         style={{
-          transform: aberto ? 'translateY(0)' : 'translateY(calc(-100% - 16 * var(--u)))',
+          transform: aberto ? 'translateY(0)' : 'translateY(-100%)',
           transition: `transform ${aberto ? 750 : 550}ms var(--ease-inout)`,
         }}
       >
-        {/* Barra: 48 de altura (o logótipo, fixo e claro, fica centrado nela) */}
-        <div className="sticky top-0 z-10 flex h-[calc(48*var(--u))] shrink-0 items-center justify-end border-b border-solid border-[rgba(247,242,238,0.12)] bg-[var(--azul-escuro)] px-[calc(12*var(--u))]">
+        {/* Barra: 64 de altura, como a barra de scroll (o logótipo, fixo e claro, fica centrado nela) */}
+        <div className="sticky top-0 z-10 flex h-[calc(64*var(--u))] shrink-0 items-center justify-end border-b border-solid border-[rgba(247,242,238,0.12)] bg-[var(--azul-escuro)] px-[calc(20*var(--u))]">
           <button
             ref={fecharMobRef}
             type="button"
@@ -263,19 +262,19 @@ export default function HomeMenu() {
           </button>
         </div>
 
-        <div className="flex flex-1 flex-col gap-[calc(20*var(--u))] px-[calc(20*var(--u))] pb-[calc(16*var(--u))] pt-[calc(16*var(--u))]">
+        <div className="flex flex-1 flex-col justify-between gap-[calc(20*var(--u))] px-[calc(20*var(--u))] pb-[calc(24*var(--u))] pt-[calc(24*var(--u))]">
           {/* Horário e contacto */}
           <div className="grid grid-cols-[1fr_auto] gap-[calc(16*var(--u))]" style={entra(200)}>
-            <div className="flex flex-col gap-[calc(10*var(--u))]">
+            <div className="flex flex-col gap-[calc(14*var(--u))]">
               <p className="font-display text-[length:calc(16*var(--u))] leading-[1.2] opacity-60">{t('menuHorarioHead')}</p>
-              <div className="flex flex-col gap-[calc(8*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[1.35]">
+              <div className="flex flex-col gap-[calc(14*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[1.35]">
                 <p><span className="block whitespace-nowrap text-[length:calc(13*var(--u))] font-bold">{th('missasSemHoras')}</span>{th('missasSemDias')}</p>
                 <p><span className="block whitespace-nowrap text-[length:calc(13*var(--u))] font-bold">{th('missasDomHoras')}</span>{th('missasDomDias')}</p>
               </div>
             </div>
-            <div className="flex flex-col gap-[calc(10*var(--u))]">
+            <div className="flex flex-col gap-[calc(14*var(--u))]">
               <p className="font-display text-[length:calc(16*var(--u))] leading-[1.2] opacity-60">{t('menuContacto')}</p>
-              <div className="flex flex-col gap-[calc(8*var(--u))] text-[length:calc(13*var(--u))] leading-[1.35]">
+              <div className="flex flex-col gap-[calc(14*var(--u))] text-[length:calc(13*var(--u))] leading-[1.35]">
                 <a href="tel:+351213960915">213 960 915</a>
                 <a href="mailto:geral@basilicadaestrela.pt" className="whitespace-nowrap">geral@basilicadaestrela.pt</a>
               </div>
@@ -285,14 +284,14 @@ export default function HomeMenu() {
           <div aria-hidden="true" className="h-px w-full bg-[rgba(247,242,238,0.12)]" />
 
           {/* Páginas */}
-          <ul className="flex flex-col gap-[calc(2*var(--u))]">
+          <ul className="flex flex-1 flex-col justify-center" style={{ gap: 'min(calc(6 * var(--u)), 0.8svh)' }}>
             {[...COL1, ...COL2].map(([chave, href], i) => (
               <li key={chave} style={entra(260 + i * 40)}>
                 <Link
                   href={href}
                   onClick={fechar}
                   aria-current={pathname === href ? 'page' : undefined}
-                  className="block font-display text-[length:calc(32*var(--u))] leading-[1.1] transition-opacity duration-[350ms] ease-[var(--ease-out)] aria-[current=page]:opacity-45"
+                  className="block font-display text-[length:min(calc(36*var(--u)),3.9svh)] leading-[1.1] transition-opacity duration-[350ms] ease-[var(--ease-out)] aria-[current=page]:opacity-45"
                 >
                   {t(chave)}
                 </Link>
@@ -303,22 +302,16 @@ export default function HomeMenu() {
           <div aria-hidden="true" className="h-px w-full bg-[rgba(247,242,238,0.12)]" />
 
           {/* CTA da bilheteira (ligação externa) */}
-          <div className="mt-auto flex flex-col gap-[calc(12*var(--u))]" style={entra(620)}>
+          <div className="flex flex-col gap-[calc(14*var(--u))]" style={entra(620)}>
             <Link
               href={BILHETEIRA}
               {...externo(BILHETEIRA)}
               onClick={fechar}
-              className="btn-luz flex items-center justify-between rounded-[calc(6*var(--u))] bg-[var(--bege-claro-2)] px-[calc(20*var(--u))] py-[calc(16*var(--u))] text-[var(--azul-escuro)]"
+              className="btn-luz flex items-center justify-between rounded-[calc(6*var(--u))] bg-[var(--bege-claro-2)] px-[calc(20*var(--u))] py-[calc(18*var(--u))] text-[var(--azul-escuro)]"
             >
               <span className="font-display text-[length:calc(26*var(--u))] leading-none">{t('menuPlanear')}</span>
               <span aria-hidden="true" className="seta-externa-grande" />
             </Link>
-            <div className="flex items-center gap-[calc(14*var(--u))] rounded-[calc(8*var(--u))] bg-[rgba(247,242,238,0.06)] p-[calc(10*var(--u))]">
-              <div className="relative h-[calc(56*var(--u))] w-[calc(56*var(--u))] shrink-0 overflow-hidden rounded-[calc(6*var(--u))]">
-                <Image src="/home/menu-foto.jpg" alt="" fill sizes="56px" className="object-cover" />
-              </div>
-              <p className="text-[length:calc(14*var(--u))] leading-[1.35] opacity-75">{t('menuBilhete')}</p>
-            </div>
             <div className="flex flex-wrap items-center gap-x-[calc(18*var(--u))] gap-y-[calc(6*var(--u))] text-[length:calc(14*var(--u))] leading-[1.2]">
               <span className="opacity-40">Facebook</span>
               <a href="https://instagram.com/basilicadaestrela" target="_blank" rel="noopener noreferrer" className="opacity-60">Instagram</a>
