@@ -303,18 +303,17 @@ export default function HomeMenu() {
             ))}
           </ul>
 
-          <div aria-hidden="true" className="h-px w-full bg-[rgba(247,242,238,0.12)]" />
-
-          {/* CTA da bilheteira (ligação externa), grande, com o ícone em círculo */}
-          <div className="flex flex-col gap-[calc(14*var(--u))] pt-[calc(14*var(--u))]" style={entra(560)}>
+          {/* CTA da bilheteira (ligação externa): o destaque do menu — bloco bege cheio, letra grande
+              e o ícone num círculo azul */}
+          <div className="flex flex-col gap-[calc(14*var(--u))]" style={entra(560)}>
             <Link
               href={BILHETEIRA}
               {...externo(BILHETEIRA)}
               onClick={fechar}
-              className="flex items-center justify-between"
+              className="btn-luz flex h-[calc(72*var(--u))] items-center justify-between rounded-[calc(10*var(--u))] bg-[var(--bege-claro-2)] pl-[calc(22*var(--u))] pr-[calc(14*var(--u))] text-[var(--azul-escuro)]"
             >
-              <span className="font-display text-[length:calc(32*var(--u))] leading-none" style={{ fontWeight: 300 }}>{t('menuPlanear')}</span>
-              <span aria-hidden="true" className="flex h-[calc(40*var(--u))] w-[calc(40*var(--u))] items-center justify-center rounded-full border border-solid border-[rgba(247,242,238,0.5)]">
+              <span className="font-display text-[length:calc(30*var(--u))] leading-none">{t('menuPlanear')}</span>
+              <span aria-hidden="true" className="flex h-[calc(44*var(--u))] w-[calc(44*var(--u))] items-center justify-center rounded-full bg-[var(--azul-escuro)] text-[var(--bege-claro-2)]">
                 <span className="seta-externa" />
               </span>
             </Link>
