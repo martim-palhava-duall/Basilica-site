@@ -264,8 +264,8 @@ export default function HomeMenu() {
         </div>
 
         <div className="flex flex-1 flex-col px-[calc(20*var(--u))] pb-[calc(24*var(--u))] pt-[calc(24*var(--u))]">
-          {/* Páginas: lista grande (40, gap 18, como no Figma), em Forevs Light, compacta como na referência; se não couber, o painel rola */}
-          <ul className="flex flex-col gap-[calc(18*var(--u))] pb-[calc(44*var(--u))]">
+          {/* Páginas: lista grande (40, passo de 45 como no Figma, onde as caixas de texto têm 27 + 18 de espaço), em Forevs Light, compacta como na referência; se não couber, o painel rola */}
+          <ul className="flex flex-col pb-[calc(44*var(--u))]">
             {[...COL1, ...COL2].map(([chave, href], i) => (
               <li key={chave} style={entra(220 + i * 40)}>
                 <Link
@@ -275,7 +275,7 @@ export default function HomeMenu() {
                   className="group block aria-[current=page]:opacity-45"
                 >
                   <span
-                    className="block font-display text-[length:calc(40*var(--u))] leading-[1.1] transition-transform duration-[400ms] ease-[var(--ease-out)] group-active:translate-x-[calc(6*var(--u))]"
+                    className="block font-display text-[length:calc(40*var(--u))] leading-[calc(45*var(--u))] transition-transform duration-[400ms] ease-[var(--ease-out)] group-active:translate-x-[calc(6*var(--u))]"
                     style={{ fontWeight: 300 }}
                   >
                     {t(chave)}
