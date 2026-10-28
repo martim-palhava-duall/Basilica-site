@@ -21,7 +21,7 @@ const ESPACOS = [
  * Fundo azul escuro, com 31 de margem lateral e 180 de respiro. Rótulo e lema
  * nos extremos, três cartões (444/444/445, 22 entre eles) com fotografia de
  * 541 de altura, título e descrição, e por baixo uma régua com o texto final
- * e o botão "Planear visita".
+ * e o botão "Planear visita". A régua ocupa a largura toda do ecrã (desktop e mobile).
  */
 export default function SobreCulto() {
   const t = useTranslations('sobre')
@@ -60,7 +60,7 @@ export default function SobreCulto() {
 
         <Revelar>
           <div className="flex flex-col gap-[calc(40*var(--u))] w-full">
-            <div aria-hidden="true" className="h-px w-full max-lg:-mx-[calc(20*var(--u))] max-lg:w-[calc(100%+40*var(--u))] border-t border-solid border-[var(--bege-claro-2)] opacity-25" />
+            <div aria-hidden="true" className="h-px -mx-[calc(31*var(--u))] w-[calc(100%+62*var(--u))] max-lg:-mx-[calc(20*var(--u))] max-lg:w-[calc(100%+40*var(--u))] border-t border-solid border-[var(--bege-claro-2)] opacity-25" />
             <div className="flex items-center justify-between w-full max-lg:flex-col max-lg:items-start max-lg:gap-[calc(28*var(--u))]">
               <p
                 className="w-[calc(542*var(--u))] max-lg:w-full font-[family-name:var(--font-body-light)] text-[length:calc(20*var(--u))] max-lg:text-[length:calc(16*var(--u))] leading-[calc(32*var(--u))] max-lg:leading-[1.5]"
