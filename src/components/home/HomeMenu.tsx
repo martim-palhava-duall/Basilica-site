@@ -179,7 +179,7 @@ export default function HomeMenu() {
           <div className="flex flex-col gap-[calc(12*var(--u))]">
             <div className="relative h-[calc(287*var(--u))] w-full overflow-hidden rounded-[calc(4*var(--u))]">
               <div className="absolute left-0 w-full" style={{ top: '-39.26%', height: '162.68%' }}>
-                <Image src="/home/menu-foto.jpg" alt="" fill sizes="328px" className="object-cover" />
+                <Image src="/home/menu-foto.jpg" alt="" fill sizes="328px" className="object-cover object-[40%_50%]" />
               </div>
             </div>
             <p className="font-display text-[length:calc(24*var(--u))] leading-[1.2] text-[var(--texto-escuro)]">{t('menuBilhete')}</p>
@@ -313,7 +313,7 @@ export default function HomeMenu() {
               className="btn-luz flex flex-col overflow-hidden rounded-[calc(4*var(--u))] bg-[rgba(247,242,238,0.09)] text-[var(--bege-claro-2)]"
             >
               <span className="relative block h-[calc(168*var(--u))] w-full overflow-hidden">
-                <Image src="/home/menu-foto.jpg" alt="" fill sizes="390px" className="object-cover" />
+                <Image src="/home/menu-foto.jpg" alt="" fill sizes="390px" className="object-cover object-[50%_100%]" />
               </span>
               <span className="flex min-h-[calc(90*var(--u))] items-center px-[calc(18*var(--u))] font-display text-[length:calc(24*var(--u))] leading-[1.2]">{t('menuBilhete')}</span>
               <span className="flex items-center justify-between border-t border-solid border-[rgba(247,242,238,0.22)] px-[calc(18*var(--u))] py-[calc(18*var(--u))]">
