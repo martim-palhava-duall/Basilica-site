@@ -45,8 +45,8 @@ export default function ContactosFormulario({ textos }: { textos: TextosContacto
 
   return (
     <form onSubmit={aoSubmeter} className="flex w-full flex-col gap-[calc(40*var(--u))]">
-      <div className="flex w-full items-center gap-[calc(20*var(--u))]">
-        <div className="flex w-[calc(445*var(--u))] flex-col gap-[calc(24*var(--u))]">
+      <div className="flex w-full items-center gap-[calc(20*var(--u))] max-lg:flex-col max-lg:items-stretch max-lg:gap-[calc(32*var(--u))]">
+        <div className="flex w-[calc(445*var(--u))] max-lg:w-full flex-col gap-[calc(24*var(--u))]">
           <label htmlFor="contacto-nome" className={LABEL}>{textos.nomeLabel}</label>
           <input
             id="contacto-nome"
@@ -59,7 +59,7 @@ export default function ContactosFormulario({ textos }: { textos: TextosContacto
             className={`${CAMPO} h-[calc(27*var(--u))] pb-[calc(7*var(--u))] ${LINHA}`}
           />
         </div>
-        <div className="flex w-[calc(446*var(--u))] flex-col gap-[calc(24*var(--u))]">
+        <div className="flex w-[calc(446*var(--u))] max-lg:w-full flex-col gap-[calc(24*var(--u))]">
           <label htmlFor="contacto-email" className={LABEL}>{textos.emailLabel}</label>
           <input
             id="contacto-email"
@@ -104,7 +104,7 @@ export default function ContactosFormulario({ textos }: { textos: TextosContacto
             placeholder={textos.msgPh}
             value={mensagem}
             onChange={(e) => setMensagem(e.target.value)}
-            className={`${CAMPO} h-[calc(219*var(--u))] resize-none ${LINHA}`}
+            className={`${CAMPO} h-[calc(219*var(--u))] max-lg:h-[calc(160*var(--u))] resize-none ${LINHA}`}
           />
         </div>
         <button

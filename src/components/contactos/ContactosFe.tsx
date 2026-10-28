@@ -31,14 +31,14 @@ export default function ContactosFe() {
     <section
       id="fe"
       data-barra="var(--bege-claro)"
-      className="flex w-full flex-col gap-[calc(80*var(--u))] px-[calc(32*var(--u))] py-[calc(180*var(--u))] bg-[var(--bege-claro)] text-[var(--azul-escuro)]"
+      className="flex w-full flex-col gap-[calc(80*var(--u))] max-lg:gap-[calc(48*var(--u))] px-[calc(32*var(--u))] py-[calc(180*var(--u))] max-lg:px-[calc(20*var(--u))] max-lg:py-[calc(96*var(--u))] bg-[var(--bege-claro)] text-[var(--azul-escuro)]"
     >
       <div className="flex w-full flex-col gap-[calc(24*var(--u))]">
         <div className="flex w-full flex-col gap-[calc(12*var(--u))]">
           <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{t('feLabel')}</p></Revelar>
-          <div className="flex w-full items-center justify-between">
+          <div className="flex w-full items-center justify-between max-lg:flex-col max-lg:items-start max-lg:gap-[calc(24*var(--u))]">
             <Revelar atraso={100}>
-              <h2 className="font-display text-[length:calc(80*var(--u))] leading-[calc(96*var(--u))] tracking-[calc(0.96*var(--u))] font-normal whitespace-nowrap">{t('feTitulo')}</h2>
+              <h2 className="font-display text-[length:calc(80*var(--u))] max-lg:text-[length:calc(40*var(--u))] leading-[calc(96*var(--u))] max-lg:leading-[calc(46*var(--u))] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal font-normal whitespace-nowrap max-lg:whitespace-normal">{t('feTitulo')}</h2>
             </Revelar>
             <Revelar atraso={200}>
               <Link
@@ -52,20 +52,20 @@ export default function ContactosFe() {
           </div>
         </div>
         <Revelar atraso={200}>
-          <p className="w-[calc(560*var(--u))] text-[length:calc(20*var(--u))] leading-[1.4]" style={{ ...TRIM, ...LEVE }}>{t('feTexto')}</p>
+          <p className="w-[calc(560*var(--u))] max-lg:w-full text-[length:calc(20*var(--u))] max-lg:text-[length:calc(16*var(--u))] leading-[1.4] max-lg:leading-[1.5]" style={{ ...TRIM, ...LEVE }}>{t('feTexto')}</p>
         </Revelar>
       </div>
 
-      <div className="flex w-full flex-col gap-[calc(42*var(--u))]">
-        <div aria-hidden="true" className="h-px w-full bg-[rgba(28,43,57,0.25)]" />
+      <div className="flex w-full flex-col gap-[calc(42*var(--u))] max-lg:gap-[calc(32*var(--u))]">
+        <div aria-hidden="true" className="h-px w-full max-lg:-mx-[calc(20*var(--u))] max-lg:w-[calc(100%+40*var(--u))] bg-[rgba(28,43,57,0.25)]" />
         <Revelar>
-          <div className="flex min-h-[calc(196.57*var(--u))] w-full items-start justify-between">
-            <div className="flex items-start gap-[calc(40*var(--u))]">
+          <div className="flex min-h-[calc(196.57*var(--u))] max-lg:min-h-0 w-full items-start justify-between max-lg:flex-col max-lg:gap-[calc(40*var(--u))]">
+            <div className="flex items-start gap-[calc(40*var(--u))] max-lg:grid max-lg:w-full max-lg:grid-cols-2 max-lg:gap-x-[calc(20*var(--u))]">
               {colunas.map((c) => (
-                <div key={c.chave} className="flex w-[calc(213*var(--u))] flex-col gap-[calc(32*var(--u))]">
+                <div key={c.chave} className="flex w-[calc(213*var(--u))] max-lg:w-auto flex-col gap-[calc(32*var(--u))] max-lg:gap-[calc(20*var(--u))]">
                   <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold">{c.titulo}</p>
                   <div className="flex flex-col gap-[calc(3.19*var(--u))]">
-                    <p className="text-[length:calc(16*var(--u))] leading-[1.4] font-bold whitespace-nowrap">
+                    <p className="text-[length:calc(16*var(--u))] max-lg:text-[length:calc(14*var(--u))] leading-[1.4] font-bold whitespace-nowrap">
                       {c.horas.map((l) => (
                         <span key={l} className="block">{l}</span>
                       ))}
@@ -75,9 +75,9 @@ export default function ContactosFe() {
                 </div>
               ))}
             </div>
-            <div className="flex w-[calc(445*var(--u))] flex-col gap-[calc(32*var(--u))]">
+            <div className="flex w-[calc(445*var(--u))] max-lg:w-full flex-col gap-[calc(32*var(--u))] max-lg:gap-[calc(20*var(--u))]">
               <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold">{t('feUrgentes')}</p>
-              <p className="text-[length:calc(20*var(--u))] leading-[1.4]" style={{ ...TRIM, ...LEVE }}>{t('feUrgenciaTexto')}</p>
+              <p className="text-[length:calc(20*var(--u))] max-lg:text-[length:calc(16*var(--u))] leading-[1.4] max-lg:leading-[1.5]" style={{ ...TRIM, ...LEVE }}>{t('feUrgenciaTexto')}</p>
             </div>
           </div>
         </Revelar>

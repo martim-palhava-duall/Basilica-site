@@ -44,25 +44,25 @@ export default function ContactosAbertura() {
     <section
       id="contacto"
       data-barra="var(--bege-claro-2)"
-      className="flex w-full flex-col gap-[calc(64*var(--u))] px-[calc(32*var(--u))] py-[calc(120*var(--u))] bg-[var(--bege-claro-2)] text-[var(--azul-escuro)]"
+      className="flex w-full flex-col gap-[calc(64*var(--u))] max-lg:gap-[calc(40*var(--u))] px-[calc(32*var(--u))] py-[calc(120*var(--u))] max-lg:px-[calc(20*var(--u))] max-lg:py-[calc(56*var(--u))] bg-[var(--bege-claro-2)] text-[var(--azul-escuro)]"
     >
-      <div className="flex w-full flex-col gap-[calc(48*var(--u))]">
-        <div className="flex w-[calc(562*var(--u))] flex-col gap-[calc(40*var(--u))]">
+      <div className="flex w-full flex-col gap-[calc(48*var(--u))] max-lg:gap-[calc(32*var(--u))]">
+        <div className="flex w-[calc(562*var(--u))] max-lg:w-full flex-col gap-[calc(40*var(--u))] max-lg:gap-[calc(24*var(--u))]">
           <div className="flex w-full flex-col gap-[calc(12*var(--u))]">
             <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{t('label')}</p></Revelar>
             <Revelar atraso={100}>
-              <h1 className="font-display text-[length:calc(80*var(--u))] leading-none tracking-[calc(0.96*var(--u))] font-normal" style={TRIM}>{t('titulo')}</h1>
+              <h1 className="font-display text-[length:calc(80*var(--u))] max-lg:text-[length:calc(40*var(--u))] leading-none tracking-[calc(0.96*var(--u))] max-lg:tracking-normal font-normal" style={TRIM}>{t('titulo')}</h1>
             </Revelar>
           </div>
-          <Revelar atraso={200}><p className="w-[calc(561*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{t('sub')}</p></Revelar>
+          <Revelar atraso={200}><p className="w-[calc(561*var(--u))] max-lg:w-full text-[length:max(11px,calc(12*var(--u)))] max-lg:text-[length:calc(14*var(--u))] leading-[1.4] max-lg:leading-[1.5]">{t('sub')}</p></Revelar>
         </div>
-        <div aria-hidden="true" className="h-px w-full bg-[rgba(28,43,57,0.25)]" />
+        <div aria-hidden="true" className="h-px w-full max-lg:-mx-[calc(20*var(--u))] max-lg:w-[calc(100%+40*var(--u))] bg-[rgba(28,43,57,0.25)]" />
       </div>
 
-      <div className="flex w-full items-start gap-[calc(68*var(--u))]">
-        <div className="flex w-[calc(911*var(--u))] shrink-0 flex-col gap-[calc(64*var(--u))]">
+      <div className="flex w-full items-start gap-[calc(68*var(--u))] max-lg:flex-col max-lg:gap-[calc(40*var(--u))]">
+        <div className="flex w-[calc(911*var(--u))] max-lg:w-full shrink-0 flex-col gap-[calc(64*var(--u))] max-lg:gap-[calc(32*var(--u))]">
           <Revelar>
-            <div className="flex w-[calc(561*var(--u))] flex-col gap-[calc(24*var(--u))]">
+            <div className="flex w-[calc(561*var(--u))] max-lg:w-full flex-col gap-[calc(24*var(--u))]">
               <div className="flex w-full flex-col gap-[calc(12*var(--u))]">
                 <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold">{t('formLabel')}</p>
                 <h2 className="font-display text-[length:calc(24*var(--u))] leading-none tracking-[calc(0.96*var(--u))] font-normal" style={TRIM}>{t('formTitulo')}</h2>
@@ -77,9 +77,9 @@ export default function ContactosAbertura() {
           <ContactosFormulario textos={textos} />
         </div>
 
-        <div aria-hidden="true" className="h-[calc(631*var(--u))] w-px shrink-0 bg-[rgba(28,43,57,0.25)]" />
+        <div aria-hidden="true" className="h-[calc(631*var(--u))] w-px shrink-0 max-lg:h-px max-lg:-mx-[calc(20*var(--u))] max-lg:w-[calc(100%+40*var(--u))] bg-[rgba(28,43,57,0.25)]" />
 
-        <dl className="flex w-[calc(329*var(--u))] flex-col gap-[calc(48*var(--u))] py-[calc(40*var(--u))]">
+        <dl className="flex w-[calc(329*var(--u))] max-lg:w-full flex-col gap-[calc(48*var(--u))] max-lg:gap-[calc(28*var(--u))] py-[calc(40*var(--u))] max-lg:py-0">
           {dados.map((d) => (
             <div key={d.chave} className="flex w-full flex-col gap-[calc(12*var(--u))]">
               <dt className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold">{d.label}</dt>

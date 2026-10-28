@@ -27,30 +27,30 @@ export default function ContactosRedes() {
     <section
       id="redes"
       data-barra="var(--bege-claro-2)"
-      className="flex h-[calc(561*var(--u))] w-full items-center gap-[calc(20*var(--u))] bg-[var(--brand-blue)] text-[var(--bege-claro-2)]"
+      className="flex h-[calc(561*var(--u))] max-lg:h-auto max-lg:flex-col max-lg:items-stretch max-lg:gap-[calc(40*var(--u))] w-full items-center gap-[calc(20*var(--u))] max-lg:pb-[calc(72*var(--u))] bg-[var(--brand-blue)] text-[var(--bege-claro-2)]"
     >
-      <div className="relative h-[calc(561*var(--u))] w-[calc(710*var(--u))] shrink-0">
+      <div className="relative h-[calc(561*var(--u))] w-[calc(710*var(--u))] max-lg:h-[calc(300*var(--u))] max-lg:w-full shrink-0">
         <Image src="/contactos/redes.jpg" alt={t('redesAlt')} fill sizes="710px" className="object-cover" />
       </div>
 
-      <div className="flex h-[calc(370*var(--u))] w-[calc(678*var(--u))] flex-col px-[calc(32*var(--u))]">
-        <div className="flex w-[calc(614*var(--u))] flex-col gap-[calc(40*var(--u))]">
+      <div className="flex h-[calc(370*var(--u))] max-lg:h-auto w-[calc(678*var(--u))] max-lg:w-full flex-col px-[calc(32*var(--u))] max-lg:px-[calc(20*var(--u))]">
+        <div className="flex w-[calc(614*var(--u))] max-lg:w-full flex-col gap-[calc(40*var(--u))] max-lg:gap-[calc(24*var(--u))]">
           <div className="flex w-full flex-col gap-[calc(12*var(--u))]">
             <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{t('redesLabel')}</p></Revelar>
             <Revelar atraso={100}>
               <h2
-                className="font-display text-[length:calc(80*var(--u))] leading-none tracking-[calc(0.96*var(--u))] font-normal"
+                className="font-display text-[length:calc(80*var(--u))] max-lg:text-[length:calc(44*var(--u))] leading-none tracking-[calc(0.96*var(--u))] max-lg:tracking-normal font-normal"
                 style={{ textBox: 'trim-both cap alphabetic' } as React.CSSProperties}
               >
                 {t('redesTitulo')}
               </h2>
             </Revelar>
           </div>
-          <Revelar atraso={200}><p className="w-[calc(320*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{t('redesTexto')}</p></Revelar>
+          <Revelar atraso={200}><p className="w-[calc(320*var(--u))] max-lg:w-full text-[length:max(11px,calc(12*var(--u)))] max-lg:text-[length:calc(14*var(--u))] leading-[1.4] max-lg:leading-[1.5]">{t('redesTexto')}</p></Revelar>
         </div>
 
-        <Revelar atraso={250} className="mt-[calc(106.5*var(--u))]">
-          <ul className="grid w-[calc(341*var(--u))] grid-cols-2 gap-x-[calc(12*var(--u))] gap-y-[calc(20*var(--u))]">
+        <Revelar atraso={250} className="mt-[calc(106.5*var(--u))] max-lg:mt-[calc(36*var(--u))]">
+          <ul className="grid w-[calc(341*var(--u))] max-lg:w-full grid-cols-2 max-lg:grid-cols-1 gap-x-[calc(12*var(--u))] gap-y-[calc(20*var(--u))] max-lg:gap-y-[calc(24*var(--u))]">
             {REDES.map((r) => {
               const conteudo = (
                 <>
