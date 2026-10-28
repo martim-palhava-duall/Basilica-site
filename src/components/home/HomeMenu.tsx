@@ -304,13 +304,13 @@ export default function HomeMenu() {
           </ul>
 
           {/* Bilheteira (ligação externa): o destaque do menu. Foto, frase e "Planear visita" são um
-              só bloco bege, que é todo o link */}
+              só bloco, no tom azul claro do cartão da foto, que é todo o link */}
           <div className="flex flex-col gap-[calc(14*var(--u))]" style={entra(560)}>
             <Link
               href={BILHETEIRA}
               {...externo(BILHETEIRA)}
               onClick={fechar}
-              className="btn-luz flex flex-col gap-[calc(14*var(--u))] rounded-[calc(10*var(--u))] bg-[var(--bege-claro-2)] p-[calc(12*var(--u))] text-[var(--azul-escuro)]"
+              className="btn-luz flex flex-col gap-[calc(14*var(--u))] rounded-[calc(10*var(--u))] bg-[rgba(247,242,238,0.09)] p-[calc(12*var(--u))] text-[var(--bege-claro-2)]"
             >
               <span className="flex items-center gap-[calc(14*var(--u))]">
                 <span className="relative block h-[calc(56*var(--u))] w-[calc(56*var(--u))] shrink-0 overflow-hidden rounded-[calc(8*var(--u))]">
@@ -320,7 +320,7 @@ export default function HomeMenu() {
               </span>
               <span className="flex items-center justify-between pl-[calc(4*var(--u))]">
                 <span className="font-display text-[length:calc(30*var(--u))] leading-none">{t('menuPlanear')}</span>
-                <span aria-hidden="true" className="flex h-[calc(44*var(--u))] w-[calc(44*var(--u))] items-center justify-center rounded-full bg-[var(--azul-escuro)] text-[var(--bege-claro-2)]">
+                <span aria-hidden="true" className="flex h-[calc(44*var(--u))] w-[calc(44*var(--u))] items-center justify-center rounded-full bg-[var(--bege-claro-2)] text-[var(--azul-escuro)]">
                   <span className="seta-externa" />
                 </span>
               </span>
