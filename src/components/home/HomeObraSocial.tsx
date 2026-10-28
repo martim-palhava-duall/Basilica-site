@@ -36,6 +36,8 @@ const OBRAS = [
  * chega a 75% do ecrã, o cabeçalho aparece com uma subida curta e depois cada
  * barra, uma a uma, com uma subida lenta (curva expo, 1,6 a 1,7s). Só
  * `transform` e `opacity`; com movimento reduzido tudo aparece já no lugar.
+ *
+ * Mobile: ao tocar numa barra ela enche-se de azul (`active:`), como o hover no desktop.
  */
 
 export default function HomeObraSocial() {
@@ -108,12 +110,12 @@ export default function HomeObraSocial() {
             target="_blank"
             rel="noopener noreferrer"
             style={surge(500 + i * 220, 14, 1700)}
-            className={`group/obra relative z-0 hover:z-10 flex items-center justify-between w-full py-[calc(40*var(--u))] max-lg:flex-col max-lg:items-start max-lg:gap-[calc(16*var(--u))] max-lg:py-[calc(28*var(--u))] border-t border-solid border-[rgba(28,43,57,0.3)] ${i === OBRAS.length - 1 ? 'border-b' : ''} hover:text-[var(--bege-claro-2)] focus-visible:text-[var(--bege-claro-2)] outline-none transition-colors duration-[400ms] ease-[var(--quint)]`}
+            className={`group/obra relative z-0 hover:z-10 flex items-center justify-between w-full py-[calc(40*var(--u))] max-lg:flex-col max-lg:items-start max-lg:gap-[calc(16*var(--u))] max-lg:py-[calc(28*var(--u))] border-t border-solid border-[rgba(28,43,57,0.3)] ${i === OBRAS.length - 1 ? 'border-b' : ''} hover:text-[var(--bege-claro-2)] focus-visible:text-[var(--bege-claro-2)] active:text-[var(--bege-claro-2)] outline-none transition-colors duration-[400ms] ease-[var(--quint)]`}
           >
             {/* Enchimento: sobe de baixo (scaleY, só compositor), por trás do texto */}
             <span
               aria-hidden="true"
-              className="absolute inset-x-0 -inset-y-px -z-10 origin-bottom scale-y-0 bg-[var(--texto-escuro)] transition-transform duration-[600ms] ease-[var(--quint)] group-hover/obra:scale-y-100 group-focus-visible/obra:scale-y-100"
+              className="absolute inset-x-0 -inset-y-px -z-10 origin-bottom scale-y-0 bg-[var(--texto-escuro)] transition-transform duration-[600ms] ease-[var(--quint)] group-hover/obra:scale-y-100 group-focus-visible/obra:scale-y-100 group-active/obra:scale-y-100"
             />
 
             <div className="flex items-center gap-[calc(24*var(--u))] px-[calc(32*var(--u))] max-lg:px-[calc(20*var(--u))] max-lg:gap-[calc(16*var(--u))]">
@@ -131,7 +133,7 @@ export default function HomeObraSocial() {
             <div className="flex flex-col gap-[calc(24*var(--u))] w-[calc(384*var(--u))] max-lg:w-full max-lg:gap-[calc(14*var(--u))] max-lg:pl-[calc(60*var(--u))] max-lg:pr-[calc(20*var(--u))]">
               <p className="max-w-[calc(448*var(--u))] pr-[calc(32*var(--u))] max-lg:pr-0 text-[length:calc(16*var(--u))] leading-[1.4]">{t(`${o.chave}Texto`)}</p>
               <span className="flex items-center gap-[calc(4*var(--u))] text-[length:calc(16*var(--u))] leading-[1.5]">
-                <span className="underline decoration-from-font underline-offset-[from-font]">{t('obraSaibaMais')}</span>
+                <span className="underline decoration-from-font underline-offset-[calc(5*var(--u))]">{t('obraSaibaMais')}</span>
                 <span aria-hidden="true" className="seta-externa transition-transform duration-[400ms] ease-[var(--ease-out)] group-hover/obra:translate-x-[calc(2*var(--u))] group-hover/obra:-translate-y-[calc(2*var(--u))]" />
               </span>
             </div>

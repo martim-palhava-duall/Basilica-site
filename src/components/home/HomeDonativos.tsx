@@ -13,13 +13,13 @@ import Paralax from '@/components/home/Paralax'
  * o texto e o botão "Fazer um donativo". As posições são as do desenho, em px
  * a partir do canto superior esquerdo da secção.
  *
- * Mobile: 640 de altura, título (48px), texto e botão em coluna, encostados ao fundo.
+ * Mobile: 640 de altura, título (48px), texto e botão em coluna, centrados na vertical.
  */
 export default function HomeDonativos() {
   const t = useTranslations('inicio')
 
   return (
-    <section data-barra="var(--bege-claro-2)" className="relative w-full h-[calc(900*var(--u))] max-lg:h-auto max-lg:min-h-[calc(640*var(--u))] max-lg:flex max-lg:flex-col max-lg:justify-end max-lg:gap-[calc(32*var(--u))] max-lg:px-[calc(20*var(--u))] max-lg:py-[calc(72*var(--u))] overflow-hidden bg-[var(--azul-escuro)] text-[var(--bege-claro-2)]">
+    <section data-barra="var(--bege-claro-2)" className="relative w-full h-[calc(900*var(--u))] max-lg:h-auto max-lg:min-h-[calc(640*var(--u))] max-lg:flex max-lg:flex-col max-lg:justify-center max-lg:gap-[calc(40*var(--u))] max-lg:px-[calc(20*var(--u))] max-lg:py-[calc(72*var(--u))] overflow-hidden bg-[var(--azul-escuro)] text-[var(--bege-claro-2)]">
       <Paralax>
         <Image src="/home/donativos.jpg" alt="" fill sizes="100vw" className="object-cover" />
       </Paralax>

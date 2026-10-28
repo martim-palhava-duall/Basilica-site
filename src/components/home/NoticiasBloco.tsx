@@ -51,8 +51,8 @@ export const ENTRADAS_NOTICIAS = [
  * fotografia aproxima-se devagar) fica pronto para quando os cartões forem
  * links reais. Os textos chegam já traduzidos, por quem usa o bloco.
  *
- * Mobile: cabeçalho em coluna (título a 34px) e os cartões numa faixa que corre
- * na horizontal, 300 de largura cada, com o cartão seguinte a espreitar.
+ * Mobile: cabeçalho em coluna (título a 34px) e os três cartões seguidos, um por
+ * baixo do outro, a toda a largura (sem scroll horizontal).
  */
 export default function NoticiasBloco({
   id,
@@ -306,7 +306,7 @@ export default function NoticiasBloco({
           </Link>
         </div>
 
-        <div className="flex items-center gap-[calc(21*var(--u))] w-full max-lg:items-start max-lg:gap-[calc(14*var(--u))] max-lg:overflow-x-auto max-lg:snap-x max-lg:snap-mandatory max-lg:-mx-[calc(20*var(--u))] max-lg:w-[calc(100%+40*var(--u))] max-lg:px-[calc(20*var(--u))] max-lg:scroll-px-[calc(20*var(--u))] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="flex items-center gap-[calc(21*var(--u))] w-full max-lg:flex-col max-lg:items-stretch max-lg:gap-[calc(40*var(--u))]">
           {NOTICIAS.map((n, k) => {
             const cartao = (
               <Link href={`/blog/${n.slug}`} className="group/card flex flex-col gap-[calc(12*var(--u))] w-[calc(445*var(--u))] max-lg:w-full">
@@ -333,11 +333,11 @@ export default function NoticiasBloco({
               </Link>
             )
             return entrada ? (
-              <div key={n.foto} className="w-[calc(445*var(--u))] max-lg:w-[calc(300*var(--u))] max-lg:shrink-0 max-lg:snap-start" style={est('cartao', k)}>
+              <div key={n.foto} className="w-[calc(445*var(--u))] max-lg:w-full" style={est('cartao', k)}>
                 {cartao}
               </div>
             ) : (
-              <Revelar key={n.foto} atraso={100 + k * 120} className="w-[calc(445*var(--u))] max-lg:w-[calc(300*var(--u))] max-lg:shrink-0 max-lg:snap-start">
+              <Revelar key={n.foto} atraso={100 + k * 120} className="w-[calc(445*var(--u))] max-lg:w-full">
                 {cartao}
               </Revelar>
             )
