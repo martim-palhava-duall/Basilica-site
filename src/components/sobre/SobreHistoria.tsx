@@ -112,7 +112,7 @@ export default function SobreHistoria() {
       {/* ── Mobile: o ano em grande com as setas, e por baixo a linha do tempo (seis décadas, a ativa a cheio) ── */}
       <div className="lg:hidden order-2 flex w-full flex-col gap-[calc(20*var(--u))]">
         <div className="flex items-end justify-between w-full">
-          <p className="font-display text-[length:calc(88*var(--u))] leading-[calc(80*var(--u))] tracking-normal" aria-live="polite">{DECADAS[ativa].ano}</p>
+          <p className="font-display text-[length:calc(56*var(--u))] leading-[calc(52*var(--u))] tracking-normal" aria-live="polite">{DECADAS[ativa].ano}</p>
           <div className="flex items-center gap-[calc(28*var(--u))] pb-[calc(6*var(--u))]">
             {([
               { rotulo: 'histAnterior', destino: ativa - 1, desativada: ativa === 0, d: 'M23 6.5H1M6.5 1 1 6.5 6.5 12' },
