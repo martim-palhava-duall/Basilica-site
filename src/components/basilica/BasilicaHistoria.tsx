@@ -38,7 +38,7 @@ export default function BasilicaHistoria() {
             {t.rich('intro', { br: () => <>{' '}<br className="max-lg:hidden" /></> })}
           </p>
         </Revelar>
-        <Revelar atraso={150}>
+        <Revelar atraso={150} className="max-lg:w-full">
           <div className="flex flex-col w-[calc(329*var(--u))] max-lg:w-full">
             <Ficha rotulo={t('construcaoLabel')} valor={t('construcaoValor')} maiusculas />
             <Ficha rotulo={t('sagracaoLabel')} valor={t('sagracaoValor')} folga={0} />

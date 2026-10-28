@@ -73,7 +73,7 @@ export default function CelebracoesSacramentos() {
             </Revelar>
             <p className="w-[calc(256*var(--u))] max-lg:w-full text-[length:calc(16*var(--u))] leading-[1.4] opacity-40">{t('sacLema')}</p>
           </div>
-          <div aria-hidden="true" className="h-px w-full border-t border-solid border-[var(--azul-escuro)] opacity-25" />
+          <div aria-hidden="true" className="h-px w-full max-lg:-mx-[calc(20*var(--u))] max-lg:w-[calc(100%+40*var(--u))] border-t border-solid border-[var(--azul-escuro)] opacity-25" />
         </div>
 
         <SacramentosLista

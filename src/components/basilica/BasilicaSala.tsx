@@ -45,7 +45,7 @@ export default function BasilicaSala() {
           <div className="flex flex-col gap-[calc(32*var(--u))] w-full">
             {LINHAS.map((k) => (
               <div key={k} className="flex flex-col gap-[calc(32*var(--u))] w-full">
-                <div aria-hidden="true" className="h-px w-full border-t border-solid border-[var(--bege-claro-2)] opacity-25" />
+                <div aria-hidden="true" className="h-px w-full max-lg:-mx-[calc(20*var(--u))] max-lg:w-[calc(100%+40*var(--u))] border-t border-solid border-[var(--bege-claro-2)] opacity-25" />
                 <div className="flex items-center justify-between w-full max-lg:flex-col max-lg:items-start max-lg:gap-[calc(12*var(--u))]">
                   <h3
                     className="font-display text-[length:calc(32*var(--u))] max-lg:text-[length:calc(28*var(--u))] leading-[1.2] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal font-normal whitespace-nowrap"
@@ -58,7 +58,7 @@ export default function BasilicaSala() {
               </div>
             ))}
             <div className="flex flex-col gap-[calc(32*var(--u))] w-full">
-              <div aria-hidden="true" className="h-px w-full border-t border-solid border-[var(--bege-claro-2)] opacity-25" />
+              <div aria-hidden="true" className="h-px w-full max-lg:-mx-[calc(20*var(--u))] max-lg:w-[calc(100%+40*var(--u))] border-t border-solid border-[var(--bege-claro-2)] opacity-25" />
               <div className="flex items-center justify-between w-full max-lg:flex-col max-lg:items-start max-lg:gap-[calc(12*var(--u))]">
                 <h3
                   className="font-display text-[length:calc(32*var(--u))] max-lg:text-[length:calc(28*var(--u))] leading-[1.2] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal font-normal whitespace-nowrap"
@@ -72,7 +72,7 @@ export default function BasilicaSala() {
                 </div>
               </div>
             </div>
-            <div aria-hidden="true" className="h-px w-full border-t border-solid border-[var(--bege-claro-2)] opacity-25" />
+            <div aria-hidden="true" className="h-px w-full max-lg:-mx-[calc(20*var(--u))] max-lg:w-[calc(100%+40*var(--u))] border-t border-solid border-[var(--bege-claro-2)] opacity-25" />
           </div>
 
           <Link

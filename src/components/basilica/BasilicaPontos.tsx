@@ -146,7 +146,7 @@ export default function BasilicaPontos() {
             </Revelar>
             <p className="flex h-[calc(74*var(--u))] w-[calc(210*var(--u))] max-lg:h-auto max-lg:w-full items-center text-[length:calc(16*var(--u))] leading-[1.4] opacity-40">{t('conhecerSub')}</p>
           </div>
-          <div aria-hidden="true" className="h-px w-full border-t border-solid border-[var(--azul-escuro)] opacity-25" />
+          <div aria-hidden="true" className="h-px w-full max-lg:-mx-[calc(20*var(--u))] max-lg:w-[calc(100%+40*var(--u))] border-t border-solid border-[var(--azul-escuro)] opacity-25" />
         </div>
 
         {/* Mobile: palco preso (fotografia, número, título e texto trocam com o scroll) */}

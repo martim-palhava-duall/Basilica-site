@@ -79,7 +79,7 @@ export default function BasilicaQuando() {
 
       {/* ── Horário, como chegar, onde ── */}
       <div className="flex flex-col gap-[calc(42*var(--u))] w-full">
-        <div aria-hidden="true" className="h-px w-full border-t border-solid border-[var(--bege-claro-2)] opacity-25" />
+        <div aria-hidden="true" className="h-px w-full max-lg:-mx-[calc(20*var(--u))] max-lg:w-[calc(100%+40*var(--u))] border-t border-solid border-[var(--bege-claro-2)] opacity-25" />
         <Revelar>
           <div className="flex gap-[calc(40*var(--u))] items-start min-h-[calc(197*var(--u))] max-lg:flex-col max-lg:min-h-0 max-lg:gap-[calc(36*var(--u))]">
             {colunas.map((c) => (
@@ -100,7 +100,7 @@ export default function BasilicaQuando() {
       </div>
 
       {/* ── Tipos de visita ── */}
-      <div className="flex flex-col gap-[calc(32*var(--u))] max-lg:gap-[calc(24*var(--u))] w-full pt-[calc(30*var(--u))] border-t border-solid border-[rgba(247,242,238,0.25)]">
+      <div className="flex flex-col gap-[calc(32*var(--u))] max-lg:gap-[calc(24*var(--u))] w-full pt-[calc(30*var(--u))] max-lg:-mx-[calc(20*var(--u))] max-lg:w-[calc(100%+40*var(--u))] max-lg:px-[calc(20*var(--u))] border-t border-solid border-[rgba(247,242,238,0.25)]">
         <Revelar><h2 className="font-display text-[length:calc(80*var(--u))] max-lg:text-[length:calc(36*var(--u))] leading-[calc(96*var(--u))] max-lg:leading-[calc(42*var(--u))] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal font-normal">{t('tiposTitulo')}</h2></Revelar>
         <div className="flex gap-[calc(20*var(--u))] items-stretch w-full max-lg:flex-col">
           {TIPOS.map((k, i) => (

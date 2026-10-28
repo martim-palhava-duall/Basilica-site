@@ -4,7 +4,7 @@ import Revelar from '@/components/home/Revelar'
 import Seta from '@/components/home/Seta'
 
 const TRIM = { textBox: 'trim-both cap alphabetic' } as React.CSSProperties
-const LINHA = 'h-px w-full bg-[rgba(29,35,40,0.25)]'
+const LINHA = 'h-px w-full max-lg:-mx-[calc(20*var(--u))] max-lg:w-[calc(100%+40*var(--u))] bg-[rgba(29,35,40,0.25)]'
 
 /**
  * Vida da Paróquia, Reserva de Salas — design novo (Figma, nó 111:2146), desktop 1440, 796 de altura.

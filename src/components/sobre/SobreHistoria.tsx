@@ -82,7 +82,7 @@ export default function SobreHistoria() {
             </Revelar>
           </div>
         </div>
-        <div className="h-px w-full border-t border-solid border-[var(--bege-claro-2)] opacity-25" />
+        <div className="h-px w-full max-lg:-mx-[calc(20*var(--u))] max-lg:w-[calc(100%+40*var(--u))] border-t border-solid border-[var(--bege-claro-2)] opacity-25" />
       </div>
 
       {/* ── Anos ── */}

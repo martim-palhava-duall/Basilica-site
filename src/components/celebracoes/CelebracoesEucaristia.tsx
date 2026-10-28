@@ -104,7 +104,7 @@ export default function CelebracoesEucaristia() {
 
       {/* ── Horários e intenções ── */}
       <div className="flex flex-col gap-[calc(42*var(--u))] max-lg:gap-[calc(32*var(--u))] w-full">
-        <div aria-hidden="true" className="h-px w-full border-t border-solid border-[var(--azul-escuro)] opacity-25" />
+        <div aria-hidden="true" className="h-px w-full max-lg:-mx-[calc(20*var(--u))] max-lg:w-[calc(100%+40*var(--u))] border-t border-solid border-[var(--azul-escuro)] opacity-25" />
         <Revelar>
           <div className="flex items-start justify-between w-full">
             <div className="flex gap-[calc(40*var(--u))] items-start max-lg:grid max-lg:w-full max-lg:grid-cols-2 max-lg:gap-x-[calc(20*var(--u))] max-lg:gap-y-[calc(40*var(--u))]">
