@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { DISTANCIA_LOGO, useMenu } from '@/components/home/MenuContext'
 import { getLenis } from '@/lib/lenis'
-import { escalaUi, u } from '@/lib/escala'
+import { ehMobile, escalaUi, u } from '@/lib/escala'
 
 /* Medidas do logótipo no Figma (nó 173:3886) */
 const LARGURA = 329
@@ -32,7 +32,7 @@ const suave = (t: number) => t * t * t * (t * (t * 6 - 15) + 10)
    No desktop as variáveis não existem e valem os de ESTADOS.
    - topo: 181 × 93, a 14 do topo
    - barra e menu: 40 de altura, centrado na barra de 64 */
-const MOBILE = 'max-lg:left-[calc(20*var(--u))] max-lg:[--logo-topo-e:0.55] max-lg:[--logo-topo-y:14] max-lg:[--logo-barra-e:0.237] max-lg:[--logo-barra-y:12] max-lg:[--logo-menu-e:0.237] max-lg:[--logo-menu-y:12]'
+const MOBILE = 'max-lg:left-[calc(20*var(--u))] max-lg:[--logo-topo-e:0.55] max-lg:[--logo-topo-y:14] max-lg:[--logo-barra-e:0.237] max-lg:[--logo-barra-y:12] max-lg:[--logo-menu-e:0.237] max-lg:[--logo-menu-y:12] max-lg:[--logo-menu-x:8]'
 
 const v = (nome: string, desktop: number) => `var(--logo-${nome}, ${desktop})`
 
@@ -40,7 +40,10 @@ const v = (nome: string, desktop: number) => `var(--logo-${nome}, ${desktop})`
 function transformPara(p: number, aberto: boolean, sai: boolean) {
   let escala: string
   let top: string
+  let x = '0'
   if (aberto) {
+    // Mobile: o painel azul tem 8 de margem, o logótipo acompanha-a (--logo-menu-x só existe em mobile)
+    x = v('menu-x', 0)
     escala = v('menu-e', ESTADOS.menu.escala)
     top = v('menu-y', ESTADOS.menu.top)
   } else {
@@ -53,7 +56,7 @@ function transformPara(p: number, aberto: boolean, sai: boolean) {
     top = `calc(${y0} + (${y1} - ${y0}) * ${e})`
   }
   // Só `transform`: corre todo na placa gráfica
-  return `translate3d(0, calc(${top} * var(--u)), 0) scale(${escala}) translateY(${sai ? '-160%' : '0'})`
+  return `translate3d(calc(${x} * var(--u)), calc(${top} * var(--u)), 0) scale(${escala}) translateY(${sai ? '-160%' : '0'})`
 }
 
 /**
@@ -92,7 +95,8 @@ export default function HomeLogo() {
   const sai = recolhido && !aberto && barra.oculta
   const noTopo = !aberto && !recolhido
   // Versão clara: no hero e na barra sobre fundo escuro; escura nos restantes
-  const clara = noTopo || (recolhido && !aberto && barra.escuro)
+  // No mobile o painel do menu é azul: logótipo claro também com o menu aberto
+  const clara = noTopo || (recolhido && !aberto && barra.escuro) || (aberto && ehMobile())
 
   // Encolher ligado ao scroll (só na homepage; nas outras o logótipo já nasce
   // pequeno). O valor vive numa ref e escreve-se direto no elemento, sem passar
