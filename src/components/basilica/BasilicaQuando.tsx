@@ -52,15 +52,15 @@ export default function BasilicaQuando() {
     <section id="horarios"
       data-barra="var(--vermelho)"
       data-barra-tom="escuro"
-      className="flex flex-col gap-[calc(80*var(--u))] w-full px-[calc(32*var(--u))] pt-[calc(182*var(--u))] pb-[calc(245*var(--u))] bg-[var(--vermelho)] text-[var(--bege-claro-2)]"
+      className="flex flex-col gap-[calc(80*var(--u))] max-lg:gap-[calc(56*var(--u))] w-full px-[calc(32*var(--u))] pt-[calc(182*var(--u))] pb-[calc(245*var(--u))] max-lg:px-[calc(20*var(--u))] max-lg:pt-[calc(96*var(--u))] max-lg:pb-[calc(96*var(--u))] bg-[var(--vermelho)] text-[var(--bege-claro-2)]"
     >
       {/* ── Cabeçalho ── */}
       <div className="flex flex-col gap-[calc(24*var(--u))] w-full">
         <div className="flex flex-col gap-[calc(12*var(--u))] w-full">
           <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{t('quandoLabel')}</p></Revelar>
-          <div className="flex items-center justify-between w-full">
+          <div className="flex items-center justify-between w-full max-lg:flex-col max-lg:items-start max-lg:gap-[calc(24*var(--u))]">
             <Revelar atraso={100}>
-              <h2 className="font-display text-[length:calc(80*var(--u))] leading-[calc(96*var(--u))] tracking-[calc(0.96*var(--u))] font-normal whitespace-nowrap">{t('quandoTitulo')}</h2>
+              <h2 className="font-display text-[length:calc(80*var(--u))] max-lg:text-[length:calc(40*var(--u))] leading-[calc(96*var(--u))] max-lg:leading-[calc(46*var(--u))] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal font-normal whitespace-nowrap max-lg:whitespace-normal">{t('quandoTitulo')}</h2>
             </Revelar>
             <Link
               href={BILHETEIRA}
@@ -73,7 +73,7 @@ export default function BasilicaQuando() {
           </div>
         </div>
         <Revelar atraso={200}>
-          <p className="w-[calc(444*var(--u))] font-[family-name:var(--font-body-light)] text-[length:calc(16*var(--u))] leading-[1.5]" style={TRIM}>{t('quandoTexto')}</p>
+          <p className="w-[calc(444*var(--u))] max-lg:w-full font-[family-name:var(--font-body-light)] text-[length:calc(16*var(--u))] leading-[1.5]" style={TRIM}>{t('quandoTexto')}</p>
         </Revelar>
       </div>
 
@@ -81,15 +81,15 @@ export default function BasilicaQuando() {
       <div className="flex flex-col gap-[calc(42*var(--u))] w-full">
         <div aria-hidden="true" className="h-px w-full border-t border-solid border-[var(--bege-claro-2)] opacity-25" />
         <Revelar>
-          <div className="flex gap-[calc(40*var(--u))] items-start min-h-[calc(197*var(--u))]">
+          <div className="flex gap-[calc(40*var(--u))] items-start min-h-[calc(197*var(--u))] max-lg:flex-col max-lg:min-h-0 max-lg:gap-[calc(36*var(--u))]">
             {colunas.map((c) => (
-              <div key={c.titulo} className="flex flex-col gap-[calc(32*var(--u))] w-[calc(213*var(--u))]">
+              <div key={c.titulo} className="flex flex-col gap-[calc(32*var(--u))] max-lg:gap-[calc(16*var(--u))] w-[calc(213*var(--u))] max-lg:w-full">
                 <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold">{c.titulo}</p>
                 <div className="flex flex-col gap-[calc(24*var(--u))]">
                   {c.entradas.map((e) => (
                     <div key={e.termo} className="flex flex-col gap-[calc(3.19*var(--u))]">
-                      <p className="text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] font-bold whitespace-nowrap">{e.termo}</p>
-                      <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] whitespace-nowrap">{e.detalhe}</p>
+                      <p className="text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] font-bold whitespace-nowrap max-lg:whitespace-normal">{e.termo}</p>
+                      <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] whitespace-nowrap max-lg:whitespace-normal">{e.detalhe}</p>
                     </div>
                   ))}
                 </div>
@@ -100,15 +100,15 @@ export default function BasilicaQuando() {
       </div>
 
       {/* ── Tipos de visita ── */}
-      <div className="flex flex-col gap-[calc(32*var(--u))] w-full pt-[calc(30*var(--u))] border-t border-solid border-[rgba(247,242,238,0.25)]">
-        <Revelar><h2 className="font-display text-[length:calc(80*var(--u))] leading-[calc(96*var(--u))] tracking-[calc(0.96*var(--u))] font-normal">{t('tiposTitulo')}</h2></Revelar>
-        <div className="flex gap-[calc(20*var(--u))] items-stretch w-full">
+      <div className="flex flex-col gap-[calc(32*var(--u))] max-lg:gap-[calc(24*var(--u))] w-full pt-[calc(30*var(--u))] border-t border-solid border-[rgba(247,242,238,0.25)]">
+        <Revelar><h2 className="font-display text-[length:calc(80*var(--u))] max-lg:text-[length:calc(36*var(--u))] leading-[calc(96*var(--u))] max-lg:leading-[calc(42*var(--u))] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal font-normal">{t('tiposTitulo')}</h2></Revelar>
+        <div className="flex gap-[calc(20*var(--u))] items-stretch w-full max-lg:flex-col">
           {TIPOS.map((k, i) => (
-            <Revelar key={k} atraso={100 + i * 120} className="flex">
+            <Revelar key={k} atraso={100 + i * 120} className="flex max-lg:w-full">
               <Link
                 href={BILHETEIRA}
                 {...externo(BILHETEIRA)}
-                className="btn-luz luz-suave group/tipo flex flex-col justify-between gap-[calc(32*var(--u))] w-[calc(445*var(--u))] p-[calc(20*var(--u))] rounded-[calc(4*var(--u))] border border-solid border-[var(--bege-claro-2)] outline-none transition-[background-color,color] duration-[450ms] ease-[var(--ease-out)] hover:bg-[var(--bege-claro-2)] hover:text-[var(--vermelho)] focus-visible:bg-[var(--bege-claro-2)] focus-visible:text-[var(--vermelho)]"
+                className="btn-luz luz-suave group/tipo flex flex-col justify-between gap-[calc(32*var(--u))] w-[calc(445*var(--u))] max-lg:w-full p-[calc(20*var(--u))] rounded-[calc(4*var(--u))] border border-solid border-[var(--bege-claro-2)] outline-none transition-[background-color,color] duration-[450ms] ease-[var(--ease-out)] hover:bg-[var(--bege-claro-2)] hover:text-[var(--vermelho)] focus-visible:bg-[var(--bege-claro-2)] focus-visible:text-[var(--vermelho)]"
               >
                 <div className="flex flex-col gap-[calc(6*var(--u))] w-full">
                   <div className="flex items-center justify-between w-full">

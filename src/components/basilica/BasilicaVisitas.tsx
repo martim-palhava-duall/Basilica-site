@@ -18,26 +18,26 @@ export default function BasilicaVisitas() {
   return (
     <section id="grupos"
       data-barra="var(--bege-claro-2)"
-      className="flex flex-col w-full px-[calc(32*var(--u))] py-[calc(180*var(--u))] bg-[var(--bege-claro-2)] text-[var(--azul-escuro)]"
+      className="flex flex-col w-full px-[calc(32*var(--u))] py-[calc(180*var(--u))] max-lg:px-[calc(20*var(--u))] max-lg:py-[calc(96*var(--u))] bg-[var(--bege-claro-2)] text-[var(--azul-escuro)]"
     >
       <div className="flex flex-col gap-[calc(40*var(--u))] items-center w-full">
-        <div className="flex flex-col gap-[calc(12*var(--u))] items-center w-[calc(783*var(--u))] text-center">
+        <div className="flex flex-col gap-[calc(12*var(--u))] items-center w-[calc(783*var(--u))] max-lg:w-full text-center">
           <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] tracking-[calc(-0.064*var(--u))]">{t('visitasLabel')}</p></Revelar>
           <Revelar atraso={100}>
-            <h2 className="font-display text-[length:calc(80*var(--u))] leading-[1.2] tracking-[calc(-0.576*var(--u))] font-normal">{t('visitasTitulo')}</h2>
+            <h2 className="font-display text-[length:calc(80*var(--u))] max-lg:text-[length:calc(36*var(--u))] leading-[1.2] tracking-[calc(-0.576*var(--u))] max-lg:tracking-normal font-normal">{t('visitasTitulo')}</h2>
           </Revelar>
         </div>
 
-        <div className="flex items-center justify-between w-full">
-          <Revelar atraso={100}>
-            <div className="relative h-[calc(624*var(--u))] w-[calc(794*var(--u))] rounded-[calc(4*var(--u))] overflow-hidden">
+        <div className="flex items-center justify-between w-full max-lg:flex-col max-lg:gap-[calc(32*var(--u))]">
+          <Revelar atraso={100} className="max-lg:w-full">
+            <div className="relative h-[calc(624*var(--u))] w-[calc(794*var(--u))] max-lg:h-[calc(300*var(--u))] max-lg:w-full rounded-[calc(4*var(--u))] overflow-hidden">
               <Image src="/home/oque-celebrar.jpg" alt={t('visitasAlt1')} fill sizes="794px" className="object-cover" />
             </div>
           </Revelar>
 
-          <div className="flex flex-col gap-[calc(64*var(--u))] w-[calc(518*var(--u))]">
+          <div className="flex flex-col gap-[calc(64*var(--u))] max-lg:gap-[calc(32*var(--u))] w-[calc(518*var(--u))] max-lg:w-full">
             <Revelar atraso={200}>
-              <div className="relative h-[calc(417*var(--u))] w-full rounded-[calc(4*var(--u))] overflow-hidden">
+              <div className="relative h-[calc(417*var(--u))] max-lg:h-[calc(220*var(--u))] w-full rounded-[calc(4*var(--u))] overflow-hidden">
                 <Image src="/home/somos-interior.jpg" alt={t('visitasAlt2')} fill sizes="518px" className="object-cover" />
               </div>
             </Revelar>

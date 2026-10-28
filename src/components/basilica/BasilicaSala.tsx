@@ -26,47 +26,47 @@ export default function BasilicaSala() {
     <section id="reservas"
       data-barra="var(--vermelho)"
       data-barra-tom="escuro"
-      className="flex items-start justify-between w-full px-[calc(32*var(--u))] py-[calc(180*var(--u))] bg-[var(--vermelho)] text-[var(--bege-claro-2)]"
+      className="flex items-start justify-between w-full max-lg:flex-col max-lg:gap-[calc(48*var(--u))] px-[calc(32*var(--u))] py-[calc(180*var(--u))] max-lg:px-[calc(20*var(--u))] max-lg:py-[calc(96*var(--u))] bg-[var(--vermelho)] text-[var(--bege-claro-2)]"
     >
-      <div className="flex flex-col gap-[calc(48*var(--u))] w-[calc(562*var(--u))]">
+      <div className="flex flex-col gap-[calc(48*var(--u))] max-lg:gap-[calc(28*var(--u))] w-[calc(562*var(--u))] max-lg:w-full">
         <div className="flex flex-col gap-[calc(24*var(--u))] w-full">
           <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{t('salaLabel')}</p></Revelar>
           <Revelar atraso={100}>
-            <h2 className="font-display text-[length:calc(64*var(--u))] leading-[1.2] font-normal" style={TRIM}>{t('salaTitulo')}</h2>
+            <h2 className="font-display text-[length:calc(64*var(--u))] max-lg:text-[length:calc(36*var(--u))] leading-[1.2] font-normal" style={TRIM}>{t('salaTitulo')}</h2>
           </Revelar>
         </div>
         <Revelar atraso={200}>
-          <p className="w-[calc(445*var(--u))] text-[length:calc(16*var(--u))] leading-[1.5]">{t('salaTexto')}</p>
+          <p className="w-[calc(445*var(--u))] max-lg:w-full text-[length:calc(16*var(--u))] leading-[1.5]">{t('salaTexto')}</p>
         </Revelar>
       </div>
 
-      <Revelar atraso={150}>
-        <div className="flex flex-col gap-[calc(40*var(--u))] w-[calc(678*var(--u))]">
+      <Revelar atraso={150} className="max-lg:w-full">
+        <div className="flex flex-col gap-[calc(40*var(--u))] w-[calc(678*var(--u))] max-lg:w-full">
           <div className="flex flex-col gap-[calc(32*var(--u))] w-full">
             {LINHAS.map((k) => (
               <div key={k} className="flex flex-col gap-[calc(32*var(--u))] w-full">
                 <div aria-hidden="true" className="h-px w-full border-t border-solid border-[var(--bege-claro-2)] opacity-25" />
-                <div className="flex items-center justify-between w-full">
+                <div className="flex items-center justify-between w-full max-lg:flex-col max-lg:items-start max-lg:gap-[calc(12*var(--u))]">
                   <h3
-                    className="font-display text-[length:calc(32*var(--u))] leading-[1.2] tracking-[calc(0.96*var(--u))] font-normal whitespace-nowrap"
+                    className="font-display text-[length:calc(32*var(--u))] max-lg:text-[length:calc(28*var(--u))] leading-[1.2] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal font-normal whitespace-nowrap"
                     style={TRIM}
                   >
                     {t(`${k}Titulo`)}
                   </h3>
-                  <p className="w-[calc(248*var(--u))] text-[length:calc(16*var(--u))] leading-[1.5]">{t(`${k}Texto`)}</p>
+                  <p className="w-[calc(248*var(--u))] max-lg:w-full text-[length:calc(16*var(--u))] leading-[1.5]">{t(`${k}Texto`)}</p>
                 </div>
               </div>
             ))}
             <div className="flex flex-col gap-[calc(32*var(--u))] w-full">
               <div aria-hidden="true" className="h-px w-full border-t border-solid border-[var(--bege-claro-2)] opacity-25" />
-              <div className="flex items-center justify-between w-full">
+              <div className="flex items-center justify-between w-full max-lg:flex-col max-lg:items-start max-lg:gap-[calc(12*var(--u))]">
                 <h3
-                  className="font-display text-[length:calc(32*var(--u))] leading-[1.2] tracking-[calc(0.96*var(--u))] font-normal whitespace-nowrap"
+                  className="font-display text-[length:calc(32*var(--u))] max-lg:text-[length:calc(28*var(--u))] leading-[1.2] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal font-normal whitespace-nowrap"
                   style={TRIM}
                 >
                   {t('salaHorariosTitulo')}
                 </h3>
-                <div className="flex w-[calc(248*var(--u))] flex-col gap-[calc(3.19*var(--u))]">
+                <div className="flex w-[calc(248*var(--u))] max-lg:w-full flex-col gap-[calc(3.19*var(--u))]">
                   <p className="text-[length:calc(16*var(--u))] leading-[calc(17*var(--u))] font-bold whitespace-nowrap">{v('salaHoras')}</p>
                   <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] whitespace-nowrap">{v('salaDias')}</p>
                 </div>

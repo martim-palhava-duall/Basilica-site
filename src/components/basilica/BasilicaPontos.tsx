@@ -36,6 +36,9 @@ const PONTOS: { n: string; chave: string; foto: string; posicao?: string }[] = [
  * fotografia está fixa — com uma linha parada a meio do ecrã, os últimos só
  * chegavam lá depois de a fotografia se soltar, e as fotos deles nunca se viam.
  *
+ * Mobile: um palco preso por baixo da barra (contador, fotografia e texto) que troca de
+ * ponto ao longo do scroll, uma fatia de 62% do ecrã por ponto, como nos Sacramentos.
+ *
  * Troca da fotografia: a nova entra por cima da anterior (só um fade curto e
  * suave, sem zoom), e só depois de carregada; a anterior fica por baixo até lá, para
  * nunca aparecer o fundo vazio a meio. Todas carregam quando a secção se
@@ -51,6 +54,8 @@ export default function BasilicaPontos() {
   const itens = useRef<(HTMLElement | null)[]>([])
   const fotoRef = useRef<HTMLDivElement>(null)
   const listaRef = useRef<HTMLDivElement>(null)
+  const trilhoRef = useRef<HTMLDivElement>(null)
+  const palcoRef = useRef<HTMLDivElement>(null)
 
   // A fotografia ativa só aparece quando já está carregada
   useEffect(() => {
@@ -65,6 +70,7 @@ export default function BasilicaPontos() {
     let pendente = false
     const atualizar = () => {
       pendente = false
+      if (window.innerWidth < 1024) return
       const foto = fotoRef.current?.getBoundingClientRect()
       const lista = listaRef.current?.getBoundingClientRect()
       if (!foto || !lista) return
@@ -92,28 +98,99 @@ export default function BasilicaPontos() {
     }
   }, [])
 
+  // Mobile: o palco fica preso enquanto a trilha passa; o ponto ativo é a fatia do percurso
+  // em que o scroll está (1/N cada), como nos Sacramentos
+  useEffect(() => {
+    let pendente = false
+    const atualizar = () => {
+      pendente = false
+      if (window.innerWidth >= 1024) return
+      const trilho = trilhoRef.current?.getBoundingClientRect()
+      const palco = palcoRef.current
+      if (!trilho || !palco) return
+      const topo = parseFloat(getComputedStyle(palco).top) || 0
+      const percurso = Math.max(trilho.height - palco.getBoundingClientRect().height, 1)
+      const p = Math.min(Math.max((topo - trilho.top) / percurso, 0), 0.9999)
+      setAtivo(Math.floor(p * PONTOS.length))
+    }
+    const aoRolar = () => {
+      if (!pendente) {
+        pendente = true
+        requestAnimationFrame(atualizar)
+      }
+    }
+    atualizar()
+    window.addEventListener('scroll', aoRolar, { passive: true })
+    window.addEventListener('resize', aoRolar)
+    return () => {
+      window.removeEventListener('scroll', aoRolar)
+      window.removeEventListener('resize', aoRolar)
+    }
+  }, [])
+
   return (
     <section id="conhecer"
       data-barra="var(--bege-claro)"
-      className="flex w-full px-[calc(32*var(--u))] py-[calc(180*var(--u))] bg-[var(--bege-claro)] text-[var(--azul-escuro)]"
+      className="flex w-full px-[calc(32*var(--u))] py-[calc(180*var(--u))] max-lg:px-[calc(20*var(--u))] max-lg:pt-[calc(96*var(--u))] max-lg:pb-[calc(40*var(--u))] bg-[var(--bege-claro)] text-[var(--azul-escuro)]"
     >
-      <div className="flex flex-col gap-[calc(64*var(--u))] w-full">
-        <div className="flex flex-col gap-[calc(35*var(--u))] w-full">
-          <div className="flex items-start justify-between w-full">
+      <div className="flex flex-col gap-[calc(64*var(--u))] max-lg:gap-[calc(32*var(--u))] w-full">
+        <div className="flex flex-col gap-[calc(35*var(--u))] max-lg:gap-[calc(24*var(--u))] w-full">
+          <div className="flex items-start justify-between max-lg:flex-col max-lg:gap-[calc(16*var(--u))] w-full">
             <Revelar>
               <h2
-                className="font-display text-[length:calc(80*var(--u))] leading-[calc(96*var(--u))] tracking-[calc(0.96*var(--u))] font-normal whitespace-nowrap"
+                className="font-display text-[length:calc(80*var(--u))] max-lg:text-[length:calc(40*var(--u))] leading-[calc(96*var(--u))] max-lg:leading-[calc(44*var(--u))] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal font-normal whitespace-nowrap max-lg:whitespace-normal"
                 style={{ textBox: 'trim-both cap alphabetic' } as React.CSSProperties}
               >
                 {t('conhecerTitulo')}
               </h2>
             </Revelar>
-            <p className="flex h-[calc(74*var(--u))] w-[calc(210*var(--u))] items-center text-[length:calc(16*var(--u))] leading-[1.4] opacity-40">{t('conhecerSub')}</p>
+            <p className="flex h-[calc(74*var(--u))] w-[calc(210*var(--u))] max-lg:h-auto max-lg:w-full items-center text-[length:calc(16*var(--u))] leading-[1.4] opacity-40">{t('conhecerSub')}</p>
           </div>
           <div aria-hidden="true" className="h-px w-full border-t border-solid border-[var(--azul-escuro)] opacity-25" />
         </div>
 
-        <div className="flex items-start justify-between w-full">
+        {/* Mobile: palco preso (fotografia, número, título e texto trocam com o scroll) */}
+        <div ref={trilhoRef} className="lg:hidden relative w-full" style={{ height: `calc(${PONTOS.length} * 62svh + 100svh - 112 * var(--u))` }}>
+          <div
+            ref={palcoRef}
+            className="sticky flex flex-col gap-[calc(20*var(--u))] bg-[var(--bege-claro)]"
+            style={{ top: 'calc(112 * var(--u))', height: 'calc(100svh - 112 * var(--u))', paddingBlock: 'calc(20 * var(--u))' }}
+          >
+            <div className="flex items-center gap-[calc(16*var(--u))]">
+              <span className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] tabular-nums">
+                {String(ativo + 1).padStart(2, '0')} / {String(PONTOS.length).padStart(2, '0')}
+              </span>
+              <span className="relative h-px min-w-px flex-1 bg-[rgba(28,43,57,0.2)]">
+                <span className="absolute inset-y-0 left-0 w-full origin-left bg-[var(--azul-escuro)] transition-transform duration-[500ms] ease-[var(--ease-out)]" style={{ transform: `scaleX(${(ativo + 1) / PONTOS.length})` }} />
+              </span>
+            </div>
+
+            <div className="relative min-h-[calc(160*var(--u))] flex-1 overflow-hidden rounded-[calc(4*var(--u))]">
+              {PONTOS.map((p, i) => (
+                <div key={p.n} className="absolute inset-0 transition-opacity duration-[600ms] ease-[var(--ease-out)]" style={{ opacity: i === ativo ? 1 : 0 }}>
+                  <Image src={p.foto} alt={t(`${p.chave}Titulo`)} fill sizes="350px" className="object-cover" style={p.posicao ? { objectPosition: p.posicao } : undefined} />
+                </div>
+              ))}
+            </div>
+
+            <div className="grid">
+              {PONTOS.map((p, i) => (
+                <div
+                  key={p.n}
+                  aria-hidden={i !== ativo}
+                  className="col-start-1 row-start-1 flex flex-col gap-[calc(12*var(--u))] transition-opacity duration-[500ms] ease-[var(--ease-out)]"
+                  style={{ opacity: i === ativo ? 1 : 0 }}
+                >
+                  <span className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] tracking-[calc(-0.064*var(--u))]">{p.n}</span>
+                  <h3 className="font-display text-[length:calc(32*var(--u))] leading-[calc(36*var(--u))] font-normal">{t(`${p.chave}Titulo`)}</h3>
+                  <p className="text-[length:calc(15*var(--u))] leading-[1.45]">{t(`${p.chave}Texto`)}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="flex items-start justify-between w-full max-lg:hidden">
           {/* Fotografia fixa */}
           <div ref={fotoRef} className="sticky top-[calc(120*var(--u))] h-[calc(629*var(--u))] w-[calc(678*var(--u))] shrink-0 rounded-[calc(4*var(--u))] overflow-hidden bg-[var(--bege-claro)]">
             {PONTOS.map((p, i) => {

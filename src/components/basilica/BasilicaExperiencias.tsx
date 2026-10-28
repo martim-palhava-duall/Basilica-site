@@ -30,32 +30,32 @@ export default function BasilicaExperiencias() {
   return (
     <section id="experiencias"
       data-barra="var(--bege-escuro-2)"
-      className="flex flex-col w-full px-[calc(31*var(--u))] py-[calc(180*var(--u))] bg-[var(--bege-escuro-2)] text-[var(--azul-escuro)]"
+      className="flex flex-col w-full px-[calc(31*var(--u))] py-[calc(180*var(--u))] max-lg:px-[calc(20*var(--u))] max-lg:py-[calc(96*var(--u))] bg-[var(--bege-escuro-2)] text-[var(--azul-escuro)]"
     >
-      <div className="flex flex-col gap-[calc(80*var(--u))] w-full">
-        <div className="flex flex-col gap-[calc(33*var(--u))] w-full">
+      <div className="flex flex-col gap-[calc(80*var(--u))] max-lg:gap-[calc(48*var(--u))] w-full">
+        <div className="flex flex-col gap-[calc(33*var(--u))] max-lg:gap-[calc(20*var(--u))] w-full">
           <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] tracking-[calc(-0.064*var(--u))]">{t('expLabel')}</p></Revelar>
-          <div className="flex items-start justify-between w-full min-h-[calc(96*var(--u))]">
+          <div className="flex items-start justify-between w-full min-h-[calc(96*var(--u))] max-lg:min-h-0 max-lg:flex-col max-lg:gap-[calc(20*var(--u))]">
             <Revelar atraso={100}>
-              <h2 className="font-display text-[length:calc(80*var(--u))] leading-[1.2] tracking-[calc(-0.576*var(--u))] font-normal w-[calc(783*var(--u))]" style={TRIM}>
+              <h2 className="font-display text-[length:calc(80*var(--u))] leading-[1.2] tracking-[calc(-0.576*var(--u))] font-normal w-[calc(783*var(--u))] max-lg:w-full max-lg:text-[length:calc(36*var(--u))] max-lg:tracking-normal" style={TRIM}>
                 {t('expTitulo')}
               </h2>
             </Revelar>
             <Revelar atraso={200}>
-              <p className="w-[calc(329*var(--u))] text-[length:calc(16*var(--u))] leading-[1.5]">{t('expSub')}</p>
+              <p className="w-[calc(329*var(--u))] max-lg:w-full text-[length:calc(16*var(--u))] leading-[1.5]">{t('expSub')}</p>
             </Revelar>
           </div>
         </div>
 
-        <div className="flex items-start gap-[calc(22*var(--u))] w-full">
+        <div className="flex items-start gap-[calc(22*var(--u))] w-full max-lg:flex-col max-lg:gap-[calc(40*var(--u))]">
           {EXPERIENCIAS.map((e, i) => (
-            <Revelar key={e.chave} atraso={100 + i * 120}>
-              <div className="flex flex-col gap-[calc(20*var(--u))]" style={{ width: u(e.largura) }}>
-                <div className="relative h-[calc(541*var(--u))] w-full rounded-[calc(4*var(--u))] overflow-hidden">
+            <Revelar key={e.chave} atraso={100 + i * 120} className="max-lg:w-full">
+              <div className="flex flex-col gap-[calc(20*var(--u))] max-lg:w-full!" style={{ width: u(e.largura) }}>
+                <div className="relative h-[calc(541*var(--u))] max-lg:h-[calc(300*var(--u))] w-full rounded-[calc(4*var(--u))] overflow-hidden">
                   <Image src={e.foto} alt="" fill sizes="445px" className="object-cover" />
                 </div>
                 <div className="flex flex-col gap-[calc(20*var(--u))] w-full">
-                  <h3 className="font-display text-[length:calc(40*var(--u))] leading-[calc(35.2*var(--u))] tracking-[calc(-0.192*var(--u))] font-normal whitespace-nowrap">
+                  <h3 className="font-display text-[length:calc(40*var(--u))] max-lg:text-[length:calc(30*var(--u))] leading-[calc(35.2*var(--u))] max-lg:leading-[calc(34*var(--u))] tracking-[calc(-0.192*var(--u))] font-normal whitespace-nowrap max-lg:whitespace-normal">
                     {t(`${e.chave}Titulo`)}
                   </h3>
                   <p className="text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))]">{t(`${e.chave}Texto`)}</p>
@@ -68,10 +68,10 @@ export default function BasilicaExperiencias() {
         <Revelar>
           <div className="flex flex-col gap-[calc(40*var(--u))] w-full">
             <div aria-hidden="true" className="h-px w-full border-t border-solid border-[var(--azul-escuro)] opacity-25" />
-            <div className="flex items-center justify-between w-full">
-              <p className="w-[calc(542*var(--u))] font-[family-name:var(--font-body-light)] text-[length:calc(20*var(--u))] leading-[calc(32*var(--u))]" style={TRIM}>
-                {t('expRodape1')}
-                <br />
+            <div className="flex items-center justify-between w-full max-lg:flex-col max-lg:items-start max-lg:gap-[calc(28*var(--u))]">
+              <p className="w-[calc(542*var(--u))] max-lg:w-full font-[family-name:var(--font-body-light)] text-[length:calc(20*var(--u))] max-lg:text-[length:calc(16*var(--u))] leading-[calc(32*var(--u))] max-lg:leading-[1.5]" style={TRIM}>
+                {t('expRodape1')}{' '}
+                <br className="max-lg:hidden" />
                 {t('expRodape2')}
               </p>
               <Link
