@@ -33,8 +33,8 @@ const LINK = 'transition-colors duration-[400ms] ease-[var(--ease-out)] hover:te
  * ficam como texto, como no menu de ecrã.
  *
  * Mobile: tudo em coluna e direto, com réguas de ponta a ponta do ecrã — marca e
- * lema à esquerda e morada, telefone e email ao lado; as listas (Basílica à
- * esquerda, Contacto e Redes à direita); a fotografia dentro das margens com
+ * lema à esquerda e morada, telefone e email ao lado; as três listas (Basílica,
+ * Contacto e Redes) numa linha, repartidas pela largura; a fotografia dentro das margens com
  * "Planear visita" por baixo; o nome da Basílica (as mesmas quatro peças) e a barra legal.
  */
 export default function HomeRodape() {
@@ -84,7 +84,7 @@ export default function HomeRodape() {
       <div aria-hidden="true" className="lg:hidden h-px w-full bg-[rgba(247,242,238,0.2)]" />
 
       {/* ── Listas de links ── */}
-      <nav className="absolute top-[calc(49.85*var(--u))] max-lg:static max-lg:grid max-lg:grid-cols-2 max-lg:gap-x-[calc(20*var(--u))] max-lg:gap-y-[calc(32*var(--u))] max-lg:px-[calc(20*var(--u))] max-lg:py-[calc(40*var(--u))] max-lg:[&>div:first-child]:row-span-2 max-lg:[&>div]:w-auto flex gap-[calc(91*var(--u))] text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))]" style={{ left: 'calc(25% + 89 * var(--u))' }}>
+      <nav className="absolute top-[calc(49.85*var(--u))] max-lg:static max-lg:w-full max-lg:justify-between max-lg:gap-x-[calc(12*var(--u))] max-lg:px-[calc(20*var(--u))] max-lg:py-[calc(40*var(--u))] max-lg:[&>div]:w-auto flex gap-[calc(91*var(--u))] text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))]" style={{ left: 'calc(25% + 89 * var(--u))' }}>
         <div className="flex flex-col gap-[calc(12*var(--u))] w-[calc(134*var(--u))]">
           <p className="text-[length:max(11px,calc(12*var(--u)))] opacity-60">{t('rodBasilica')}</p>
           <ul className="flex flex-col gap-[calc(10*var(--u))]">{lista(COL_BASILICA)}</ul>
