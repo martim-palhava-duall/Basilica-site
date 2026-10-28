@@ -283,20 +283,13 @@ export default function HomeMenu() {
             ))}
           </ul>
 
-          {/* Horário e contacto, um por cima do outro (Figma 239:4) */}
+          {/* Horário das Missas (telefone e email saíram do menu mobile) */}
           <div className="flex flex-col gap-[calc(28*var(--u))] pb-[calc(44*var(--u))]" style={entra(560)}>
             <div className="flex flex-col gap-[calc(8*var(--u))]">
               <p className="text-[length:calc(15*var(--u))] leading-[calc(18*var(--u))] opacity-60">{t('menuHorarioHead')}</p>
               <div className="flex flex-col gap-[calc(8*var(--u))]">
                 <p className="flex flex-col gap-[calc(2*var(--u))] text-[length:calc(12*var(--u))] leading-[calc(14*var(--u))]"><span className="text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] font-bold">{th('missasSemHoras')}</span>{th('missasSemDias')}</p>
                 <p className="flex flex-col gap-[calc(2*var(--u))] text-[length:calc(12*var(--u))] leading-[calc(14*var(--u))]"><span className="text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] font-bold">{th('missasDomHoras')}</span>{th('missasDomDias')}</p>
-              </div>
-            </div>
-            <div className="flex flex-col gap-[calc(8*var(--u))]">
-              <p className="text-[length:calc(12*var(--u))] leading-[calc(14*var(--u))] opacity-60">{t('menuContacto')}</p>
-              <div className="flex flex-col gap-[calc(8*var(--u))] text-[length:calc(16*var(--u))] leading-[1.2]">
-                <a href="tel:+351213960915">213 960 915</a>
-                <a href="mailto:geral@basilicadaestrela.pt">geral@basilicadaestrela.pt</a>
               </div>
             </div>
           </div>
