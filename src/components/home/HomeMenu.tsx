@@ -219,7 +219,7 @@ export default function HomeMenu() {
     </div>
 
     {/* ═══ Mobile (abaixo de 1024): painel azul, a descer do topo ═══
-        Cartão azul quase a ecrã inteiro (8 de margem, como a referência do cliente), a descer do topo: barra com o logótipo (que desce do hero, ver HomeLogo) e "Fechar"; horário e
+        Ecrã inteiro (pedido do cliente), azul, com a estrutura da referência: a descer do topo: barra com o logótipo (que desce do hero, ver HomeLogo) e "Fechar"; horário e
         contacto em duas colunas; a lista das páginas em Forevs grande; e, em baixo,
         o CTA da bilheteira (ligação externa) e as redes. Os textos entram em
         cascata como no desktop. Sem desenho no Figma: valores a 390 de largura. */}
@@ -244,15 +244,15 @@ export default function HomeMenu() {
 
       <div
         data-lenis-prevent
-        className="absolute inset-x-[calc(8*var(--u))] top-[calc(8*var(--u))] bottom-[calc(8*var(--u))] flex flex-col overflow-y-auto overscroll-contain rounded-[calc(14*var(--u))] bg-[var(--azul-escuro)] text-[var(--bege-claro-2)]"
+        className="absolute inset-0 flex flex-col overflow-y-auto overscroll-contain bg-[var(--azul-escuro)] text-[var(--bege-claro-2)]"
         style={{
-          transform: aberto ? 'translateY(0)' : 'translateY(calc(-100% - 16 * var(--u)))',
+          transform: aberto ? 'translateY(0)' : 'translateY(-100%)',
           transition: `transform ${aberto ? 750 : 550}ms var(--ease-inout)`,
         }}
       >
-        {/* Barra: 48 de altura; o logótipo (fixo, claro) e o "Fechar" ficam centrados nela, no
-            mesmo sítio do logótipo e do "Menu" da barra de scroll */}
-        <div className="sticky top-0 z-10 flex h-[calc(48*var(--u))] shrink-0 items-center justify-end rounded-t-[calc(14*var(--u))] bg-[var(--azul-escuro)] px-[calc(12*var(--u))] shadow-[inset_0_-1px_0_rgba(247,242,238,0.12)]">
+        {/* Barra: 64 de altura, como a barra de scroll; o logótipo (fixo, claro) e o "Fechar" ficam
+            centrados nela, no mesmo sítio do logótipo e do "Menu" da barra de scroll */}
+        <div className="sticky top-0 z-10 flex h-[calc(64*var(--u))] shrink-0 items-center justify-end bg-[var(--azul-escuro)] px-[calc(20*var(--u))] shadow-[inset_0_-1px_0_rgba(247,242,238,0.12)]">
           <button
             ref={fecharMobRef}
             type="button"
@@ -263,7 +263,7 @@ export default function HomeMenu() {
           </button>
         </div>
 
-        <div className="flex flex-1 flex-col px-[calc(20*var(--u))] pb-[calc(16*var(--u))] pt-[calc(20*var(--u))]">
+        <div className="flex flex-1 flex-col px-[calc(20*var(--u))] pb-[calc(24*var(--u))] pt-[calc(24*var(--u))]">
           {/* Horário e contacto, em duas colunas */}
           <div className="grid grid-cols-[1fr_auto] gap-[calc(16*var(--u))]" style={entra(160)}>
             <div className="flex flex-col gap-[calc(8*var(--u))]">
