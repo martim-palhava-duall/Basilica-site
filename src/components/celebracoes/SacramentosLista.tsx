@@ -19,6 +19,8 @@ export type Sacramento = {
   longo2: string
   quando: { horas: string; dias: string }[]
   preciso: string
+  /** fotografia do sacramento: aparece na fotografia fixa quando é o ativo (e em cima do texto no mobile) */
+  foto: string
 }
 
 export type Textos = {
@@ -33,7 +35,6 @@ export type Textos = {
 }
 
 const TRIM = { textBox: 'trim-both cap alphabetic' } as React.CSSProperties
-const FOTO = '/celebracoes/sacramento.jpg'
 /** Fotografias do painel: as das galerias do site (lib/galeria) */
 const GALERIA = GALERIA_PAINEL
 const FOLGA_GALERIA = 12
@@ -52,8 +53,9 @@ const DESLOCAMENTOS = GALERIA.map((_, i) => GALERIA.slice(0, i).reduce((s, g) =>
  * É um diálogo modal: prende o scroll, fecha com Escape e devolve o foco ao
  * botão que o abriu.
  *
- * Mobile: a fotografia fica parada em cima (260 de altura), a lista toda a cheio (sem o
- * esbater) e o painel a toda a largura, com a galeria a 62%.
+ * Cada sacramento tem a sua fotografia: no desktop a fotografia fixa troca (fade de 700ms)
+ * consoante o sacramento ativo; no mobile cada um traz a sua por cima do texto, a lista
+ * toda a cheio (sem o esbater) e o painel a toda a largura, com a galeria a 62%.
  */
 export default function SacramentosLista({ items, textos }: { items: Sacramento[]; textos: Textos }) {
   const [ativo, setAtivo] = useState(0)
@@ -268,8 +270,12 @@ export default function SacramentosLista({ items, textos }: { items: Sacramento[
     <>
       <div className="flex items-start justify-between w-full max-lg:flex-col max-lg:gap-[calc(40*var(--u))]">
         {/* Fotografia fixa (no mobile fica em cima, parada) */}
-        <div ref={fotoRef} className="sticky top-[calc(120*var(--u))] max-lg:relative max-lg:top-auto h-[calc(629*var(--u))] w-[calc(678*var(--u))] max-lg:h-[calc(260*var(--u))] max-lg:w-full shrink-0 rounded-[calc(4*var(--u))] overflow-hidden">
-          <Image src={FOTO} alt="" fill sizes="678px" className="object-cover" />
+        <div ref={fotoRef} className="sticky top-[calc(120*var(--u))] max-lg:hidden h-[calc(629*var(--u))] w-[calc(678*var(--u))] shrink-0 rounded-[calc(4*var(--u))] overflow-hidden">
+          {items.map((it, i) => (
+            <div key={it.n} className="absolute inset-0 transition-opacity duration-[700ms] ease-[var(--ease-out)]" style={{ opacity: i === ativo ? 1 : 0 }}>
+              <Image src={it.foto} alt="" fill sizes="678px" className="object-cover" />
+            </div>
+          ))}
         </div>
 
         {/* Lista */}
@@ -284,6 +290,10 @@ export default function SacramentosLista({ items, textos }: { items: Sacramento[
               className="flex flex-col gap-[calc(24*var(--u))] max-lg:gap-[calc(16*var(--u))] pb-[calc(24*var(--u))] border-b border-solid border-[rgba(28,43,57,0.3)] transition-opacity duration-[500ms] ease-[var(--ease-out)] max-lg:opacity-100!"
               style={{ opacity: i === ativo ? 1 : 0.3 }}
             >
+              {/* Mobile: cada sacramento traz a sua fotografia por cima do texto */}
+              <div className="lg:hidden relative h-[calc(220*var(--u))] w-full overflow-hidden rounded-[calc(4*var(--u))]">
+                <Image src={it.foto} alt="" fill sizes="350px" className="object-cover" />
+              </div>
               <div className="flex flex-col gap-[calc(16*var(--u))] w-full">
                 <span className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] tracking-[calc(-0.064*var(--u))]">{it.n}</span>
                 <h3 className="font-display text-[length:calc(48*var(--u))] max-lg:text-[length:calc(32*var(--u))] leading-[calc(96*var(--u))] max-lg:leading-[calc(36*var(--u))] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal font-normal" style={TRIM}>{it.titulo}</h3>

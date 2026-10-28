@@ -32,6 +32,18 @@ export default function CelebracoesSacramentos() {
     8: [{ horas: c('sac8Quando'), dias: c('sac8QuandoDesc') }],
   }
 
+  // Fotografias provisórias, uma por sacramento, escolhidas entre as do site: trocar por
+  // as da paróquia quando as houver (basta mudar o caminho aqui)
+  const FOTOS = [
+    '/celebracoes/sacramento.jpg', // Batismo
+    '/images/destaque-celebracao.jpg', // Adoração
+    '/images/figma-liturgy.jpg', // Confirmação
+    '/basilica/conhecer-sacristia.jpg', // Confissão
+    '/home/obra-recolhimento.jpg', // Unção dos Doentes
+    '/sobre/partilha-7.jpg', // Matrimónio
+    '/basilica/duvida.jpg', // Ordem
+    '/celebracoes/adoracao.jpg', // Funerais
+  ]
   const items: Sacramento[] = Array.from({ length: 8 }, (_, i) => ({
     n: String(i + 1).padStart(2, '0'),
     titulo: c(`sac${i + 1}Title`),
@@ -40,6 +52,7 @@ export default function CelebracoesSacramentos() {
     longo2: c(`sac${i + 1}Longo2`),
     preciso: c(`sac${i + 1}Preciso`),
     quando: quando[i + 1] ?? noCartorio,
+    foto: FOTOS[i],
   }))
 
   return (
