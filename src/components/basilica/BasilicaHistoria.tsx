@@ -6,7 +6,7 @@ import Revelar from '@/components/home/Revelar'
 function Ficha({ rotulo, valor, maiusculas = false, folga = 40 }: { rotulo: string; valor: string; maiusculas?: boolean; folga?: number }) {
   return (
     <div style={{ columnGap: folga }} className="flex items-start w-full py-[calc(12*var(--u))] border-b border-solid border-[rgba(28,43,57,0.3)] first:border-t text-[rgba(28,43,57,0.3)] font-bold">
-      <span className="w-[calc(95*var(--u))] shrink-0 text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] self-center">{rotulo}</span>
+      <span className="w-[calc(110*var(--u))] shrink-0 text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] self-center">{rotulo}</span>
       <span className={`flex-1 text-right text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] ${maiusculas ? 'uppercase' : ''}`}>{valor}</span>
     </div>
   )
