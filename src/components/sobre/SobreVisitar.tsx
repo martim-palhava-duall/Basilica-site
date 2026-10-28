@@ -6,7 +6,7 @@ import Seta from '@/components/home/Seta'
 import { BILHETEIRA, externo } from '@/lib/links'
 
 const TRIM = { textBox: 'trim-both cap alphabetic' } as React.CSSProperties
-const LINHA = 'whitespace-nowrap max-lg:whitespace-normal font-display text-[length:calc(96*var(--u))] max-lg:text-[length:calc(38*var(--u))] leading-[calc(100.8*var(--u))] max-lg:leading-[calc(40*var(--u))] tracking-[calc(-0.576*var(--u))] max-lg:tracking-normal'
+const LINHA = 'whitespace-nowrap max-lg:whitespace-normal font-display text-[length:calc(96*var(--u))] max-lg:text-[length:calc(40*var(--u))] leading-[calc(100.8*var(--u))] max-lg:leading-[calc(44*var(--u))] tracking-[calc(-0.576*var(--u))] max-lg:tracking-normal'
 const ITALICO = { fontFamily: "var(--font-display)" }
 
 /** Miniatura 112×74,66 com 4px de raio, como no "O que procura?" da homepage */
@@ -21,6 +21,9 @@ function Thumb({ children }: { children: React.ReactNode }) {
  * absolutas como no desenho (x a partir da esquerda). Na primeira palavra(s)
  * de cada frase o itálico leve, na restante o Forevs normal. Em baixo, o local
  * à esquerda e o texto com o botão "Planear visita" à direita.
+ *
+ * Mobile: cada frase em duas linhas (o itálico em cima, o resto por baixo), com a
+ * miniatura ao lado, em ziguezague.
  *
  * É o destino de "Visitar" no menu (#visitar).
  */
@@ -50,7 +53,7 @@ export default function SobreVisitar() {
               </div>
             </Thumb>
             <p className={LINHA} style={TRIM}>
-              <span className="italic font-light" style={ITALICO}>{t('visitarL1a')} </span>
+              <span className="italic font-light max-lg:block" style={ITALICO}>{t('visitarL1a')} </span>
               {t('visitarL1b')}
             </p>
           </div>
@@ -62,7 +65,7 @@ export default function SobreVisitar() {
         <Revelar atraso={270}>
           <div className="flex items-center gap-[calc(32*var(--u))] max-lg:gap-[calc(16*var(--u))]">
             <p className={LINHA} style={TRIM}>
-              <span className="italic font-light" style={ITALICO}>{t('visitarL2a')}</span>
+              <span className="italic font-light max-lg:block" style={ITALICO}>{t('visitarL2a')}</span>
               {' '}{t('visitarL2b')}
             </p>
             <Thumb>
@@ -80,7 +83,7 @@ export default function SobreVisitar() {
               <Image src="/home/oque-rezar.jpg" alt="" fill sizes="112px" className="object-cover" />
             </Thumb>
             <p className={LINHA} style={TRIM}>
-              <span className="italic font-light" style={ITALICO}>{t('visitarL3a')} </span>
+              <span className="italic font-light max-lg:block" style={ITALICO}>{t('visitarL3a')} </span>
               {t('visitarL3b')}
             </p>
           </div>
