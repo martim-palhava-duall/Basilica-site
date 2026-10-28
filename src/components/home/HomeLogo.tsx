@@ -32,7 +32,7 @@ const suave = (t: number) => t * t * t * (t * (t * 6 - 15) + 10)
    No desktop as variáveis não existem e valem os de ESTADOS.
    - topo: 224 × 115, a 14 do topo
    - barra e menu: 49 de altura (0,29), centrado na barra de 64 */
-const MOBILE = 'max-lg:left-[calc(20*var(--u))] max-lg:[--logo-topo-e:0.68] max-lg:[--logo-topo-y:14] max-lg:[--logo-barra-e:0.29] max-lg:[--logo-barra-y:8] max-lg:[--logo-menu-e:0.29] max-lg:[--logo-menu-y:8]'
+const MOBILE = 'max-lg:left-[calc(20*var(--u))] max-lg:[--logo-topo-e:0.68] max-lg:[--logo-topo-y:14] max-lg:[--logo-barra-e:0.29] max-lg:[--logo-barra-y:8] max-lg:[--logo-menu-e:0.36] max-lg:[--logo-menu-y:6]'
 
 const v = (nome: string, desktop: number) => `var(--logo-${nome}, ${desktop})`
 

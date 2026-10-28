@@ -264,26 +264,8 @@ export default function HomeMenu() {
         </div>
 
         <div className="flex flex-1 flex-col px-[calc(20*var(--u))] pb-[calc(24*var(--u))] pt-[calc(24*var(--u))]">
-          {/* Horário e contacto, em duas colunas */}
-          <div className="grid grid-cols-[1fr_auto] gap-[calc(16*var(--u))]" style={entra(160)}>
-            <div className="flex flex-col gap-[calc(8*var(--u))]">
-              <p className="font-display text-[length:calc(15*var(--u))] leading-[1.2] opacity-60">{t('menuHorarioHead')}</p>
-              <div className="flex flex-col gap-[calc(8*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[1.35]">
-                <p><span className="block whitespace-nowrap text-[length:calc(13*var(--u))] font-bold">{th('missasSemHoras')}</span>{th('missasSemDias')}</p>
-                <p><span className="block whitespace-nowrap text-[length:calc(13*var(--u))] font-bold">{th('missasDomHoras')}</span>{th('missasDomDias')}</p>
-              </div>
-            </div>
-            <div className="flex flex-col gap-[calc(8*var(--u))]">
-              <p className="font-display text-[length:calc(15*var(--u))] leading-[1.2] opacity-60">{t('menuContacto')}</p>
-              <div className="flex flex-col gap-[calc(8*var(--u))] text-[length:calc(13*var(--u))] leading-[1.35]">
-                <a href="tel:+351213960915">213 960 915</a>
-                <a href="mailto:geral@basilicadaestrela.pt" className="whitespace-nowrap">geral@basilicadaestrela.pt</a>
-              </div>
-            </div>
-          </div>
-
-          {/* Páginas: lista grande (42), em Forevs Light, compacta como na referência; se não couber, o painel rola */}
-          <ul className="my-auto flex flex-col py-[calc(44*var(--u))]">
+          {/* Páginas: lista grande (40, gap 18, como no Figma), em Forevs Light, compacta como na referência; se não couber, o painel rola */}
+          <ul className="flex flex-col gap-[calc(18*var(--u))] pb-[calc(44*var(--u))]">
             {[...COL1, ...COL2].map(([chave, href], i) => (
               <li key={chave} style={entra(220 + i * 40)}>
                 <Link
@@ -293,7 +275,7 @@ export default function HomeMenu() {
                   className="group block aria-[current=page]:opacity-45"
                 >
                   <span
-                    className="block font-display text-[length:calc(42*var(--u))] leading-[1.12] transition-transform duration-[400ms] ease-[var(--ease-out)] group-active:translate-x-[calc(6*var(--u))]"
+                    className="block font-display text-[length:calc(40*var(--u))] leading-[1.1] transition-transform duration-[400ms] ease-[var(--ease-out)] group-active:translate-x-[calc(6*var(--u))]"
                     style={{ fontWeight: 300 }}
                   >
                     {t(chave)}
@@ -303,33 +285,44 @@ export default function HomeMenu() {
             ))}
           </ul>
 
+          {/* Horário e contacto, um por cima do outro (Figma 239:4) */}
+          <div className="flex flex-col gap-[calc(28*var(--u))] pb-[calc(44*var(--u))]" style={entra(560)}>
+            <div className="flex flex-col gap-[calc(8*var(--u))]">
+              <p className="text-[length:calc(12*var(--u))] leading-[calc(14*var(--u))] opacity-60">{t('menuHorarioHead')}</p>
+              <div className="flex flex-col gap-[calc(8*var(--u))]">
+                <p className="flex flex-col gap-[calc(2*var(--u))] text-[length:calc(12*var(--u))] leading-[calc(14*var(--u))]"><span className="text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] font-bold">{th('missasSemHoras')}</span>{th('missasSemDias')}</p>
+                <p className="flex flex-col gap-[calc(2*var(--u))] text-[length:calc(12*var(--u))] leading-[calc(14*var(--u))]"><span className="text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] font-bold">{th('missasDomHoras')}</span>{th('missasDomDias')}</p>
+              </div>
+            </div>
+            <div className="flex flex-col gap-[calc(8*var(--u))]">
+              <p className="text-[length:calc(12*var(--u))] leading-[calc(14*var(--u))] opacity-60">{t('menuContacto')}</p>
+              <div className="flex flex-col gap-[calc(8*var(--u))] text-[length:calc(16*var(--u))] leading-[1.2]">
+                <a href="tel:+351213960915">213 960 915</a>
+                <a href="mailto:geral@basilicadaestrela.pt">geral@basilicadaestrela.pt</a>
+              </div>
+            </div>
+          </div>
+
           {/* Bilheteira (ligação externa): o destaque do menu. Foto, frase e "Planear visita" são um
               só bloco, no tom azul claro do cartão da foto, que é todo o link */}
-          <div className="flex flex-col gap-[calc(28*var(--u))]" style={entra(560)}>
+          <div style={entra(600)}>
             <Link
               href={BILHETEIRA}
               {...externo(BILHETEIRA)}
               onClick={fechar}
-              className="btn-luz flex flex-col overflow-hidden rounded-[calc(10*var(--u))] bg-[rgba(247,242,238,0.09)] text-[var(--bege-claro-2)]"
+              className="btn-luz flex flex-col overflow-hidden rounded-[calc(4*var(--u))] bg-[rgba(247,242,238,0.09)] text-[var(--bege-claro-2)]"
             >
               <span className="relative block h-[calc(168*var(--u))] w-full overflow-hidden">
                 <Image src="/home/menu-foto.jpg" alt="" fill sizes="390px" className="object-cover" />
               </span>
-              <span className="border-t border-solid border-[rgba(247,242,238,0.22)] px-[calc(18*var(--u))] py-[calc(16*var(--u))] text-[length:calc(13*var(--u))] leading-[1.45] opacity-80">{t('menuBilhete')}</span>
+              <span className="border-t border-solid border-[rgba(247,242,238,0.22)] px-[calc(18*var(--u))] py-[calc(16*var(--u))] font-display text-[length:calc(24*var(--u))] leading-[1.2]">{t('menuBilhete')}</span>
               <span className="flex items-center justify-between border-t border-solid border-[rgba(247,242,238,0.22)] px-[calc(18*var(--u))] py-[calc(18*var(--u))]">
-                <span className="font-display text-[length:calc(32*var(--u))] leading-none">{t('menuPlanear')}</span>
+                <span className="text-[length:calc(16*var(--u))] leading-none">{t('menuPlanear')}</span>
                 <span aria-hidden="true" className="flex h-[calc(44*var(--u))] w-[calc(44*var(--u))] items-center justify-center rounded-full bg-[var(--bege-claro-2)] text-[var(--azul-escuro)]">
                   <span className="seta-externa" />
                 </span>
               </span>
             </Link>
-
-            <div className="flex flex-wrap items-center gap-x-[calc(18*var(--u))] gap-y-[calc(4*var(--u))] text-[length:calc(13*var(--u))] leading-[1.3]">
-              <span className="opacity-40">Facebook</span>
-              <a href="https://instagram.com/basilicadaestrela" target="_blank" rel="noopener noreferrer" className="opacity-70">Instagram</a>
-              <span className="opacity-40">Whatsapp</span>
-              <span className="opacity-40">Youtube</span>
-            </div>
           </div>
         </div>
       </div>
