@@ -53,12 +53,12 @@ export default function DonativosFormulario({ textos, foto, fotoAlt }: { textos:
   }
 
   return (
-    <div className="flex w-full items-center gap-[calc(58*var(--u))]">
-      <div className="relative h-[calc(598*var(--u))] w-[calc(603*var(--u))] shrink-0 overflow-hidden rounded-[calc(4*var(--u))]">
+    <div className="flex w-full items-center gap-[calc(58*var(--u))] max-lg:flex-col max-lg:items-stretch max-lg:gap-[calc(40*var(--u))]">
+      <div className="relative h-[calc(598*var(--u))] w-[calc(603*var(--u))] max-lg:h-[calc(280*var(--u))] max-lg:w-full shrink-0 overflow-hidden rounded-[calc(4*var(--u))]">
         <Image src={foto} alt={fotoAlt} fill sizes="603px" className="object-cover object-[40%_50%]" />
       </div>
 
-      <form onSubmit={aoSubmeter} className="flex w-[calc(678*var(--u))] flex-col gap-[calc(48*var(--u))]">
+      <form onSubmit={aoSubmeter} className="flex w-[calc(678*var(--u))] max-lg:w-full flex-col gap-[calc(48*var(--u))] max-lg:gap-[calc(36*var(--u))]">
         {/* Categoria */}
         <div className="flex w-full flex-col gap-[calc(24*var(--u))]">
           <label htmlFor="donativo-categoria" className={LABEL}>{textos.categoriaLabel}</label>
