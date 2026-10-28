@@ -1,9 +1,9 @@
 /**
  * Bilheteira / compra de visitas — plataforma externa (ver DESIGN.md, "Bilheteira").
  * PROVISÓRIO: aponta para o Google até haver o link do fornecedor; trocar só aqui.
- * Usado por todos os botões de bilhetes — "Planear visita" (hero, menu, rodapé,
+ * Usado por todos os botões de bilhetes — "Planear visita" (menu, rodapé,
  * Sobre nós, Celebrações) e "Comprar bilhete" (Basílica e Convento). Os "Visitar"
- * levam à página Basílica e Convento.
+ * levam à página Basílica e Convento, tal como o "Planear visita" da hero.
  */
 export const BILHETEIRA = 'https://www.google.com'
 

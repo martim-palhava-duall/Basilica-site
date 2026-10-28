@@ -5,7 +5,6 @@ import HomeLogo from '@/components/home/HomeLogo'
 import HomeTopButtons from '@/components/home/HomeTopButtons'
 import Seta from '@/components/home/Seta'
 import HeroArranque from '@/components/home/HeroArranque'
-import { BILHETEIRA, externo } from '@/lib/links'
 
 /**
  * Hero da homepage — design novo (Figma, nó 173:3884), desktop 1440.
@@ -67,8 +66,7 @@ export default function HomeHero() {
       {/* Mobile: a 20 das margens e a 32 do fundo */}
       <div className="hero-cta absolute left-[calc(32*var(--u))] bottom-[calc(61.8*var(--u))] max-lg:left-[calc(20*var(--u))] max-lg:bottom-[calc(32*var(--u))] max-lg:gap-[calc(10*var(--u))] flex gap-[calc(15.91*var(--u))] h-[calc(47.8*var(--u))]">
         <Link
-          href={BILHETEIRA}
-          {...externo(BILHETEIRA)}
+          href="/basilica-e-convento"
           className="group/btn flex items-center gap-[calc(11.91*var(--u))] px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] rounded-[calc(4*var(--u))] bg-[var(--vermelho)] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap text-[#f9f5f0] transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
         >
           {t('heroCtaVisita')}
