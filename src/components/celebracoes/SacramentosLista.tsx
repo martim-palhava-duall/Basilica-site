@@ -54,9 +54,10 @@ const DESLOCAMENTOS = GALERIA.map((_, i) => GALERIA.slice(0, i).reduce((s, g) =>
  * botão que o abriu.
  *
  * Cada sacramento tem a sua fotografia: a fotografia fixa troca (fade de 700ms) consoante o
- * sacramento ativo. No mobile também: a fotografia (230 de altura) fica presa por baixo da
- * barra e da faixa de âncoras, a lista passa por baixo dela com o ativo a cheio e os outros
- * esbatidos, e o painel abre a toda a largura, com a galeria a 62%.
+ * sacramento ativo. No mobile funciona como o "Como trabalhamos" do oralmente-ui: um palco
+ * preso por baixo da barra (contador e barra de progresso, fotografia e texto) que troca de
+ * sacramento ao longo do scroll, uma fatia de 62% do ecrã por sacramento; o painel abre a
+ * toda a largura, com a galeria a 62%.
  */
 export default function SacramentosLista({ items, textos }: { items: Sacramento[]; textos: Textos }) {
   const [ativo, setAtivo] = useState(0)
@@ -68,6 +69,8 @@ export default function SacramentosLista({ items, textos }: { items: Sacramento[
   const itens = useRef<(HTMLElement | null)[]>([])
   const fotoRef = useRef<HTMLDivElement>(null)
   const listaRef = useRef<HTMLDivElement>(null)
+  const trilhoRef = useRef<HTMLDivElement>(null)
+  const palcoRef = useRef<HTMLDivElement>(null)
   const fecharRef = useRef<HTMLButtonElement>(null)
   const origemRef = useRef<HTMLButtonElement | null>(null)
   const painelRef = useRef<HTMLDivElement>(null)
@@ -88,14 +91,13 @@ export default function SacramentosLista({ items, textos }: { items: Sacramento[
     let pendente = false
     const atualizar = () => {
       pendente = false
+      if (window.innerWidth < 1024) return
       const foto = fotoRef.current?.getBoundingClientRect()
       const lista = listaRef.current?.getBoundingClientRect()
       if (!foto || !lista) return
-      // Desktop: linha de leitura que desce sobre a fotografia fixa. Mobile: a fotografia
-      // fica fixa em cima e o ativo é o último cujo topo já passou o fundo dela.
       const percurso = Math.max(lista.height - foto.height, 1)
       const p = Math.min(Math.max((foto.top - lista.top) / percurso, 0), 1)
-      const linha = window.innerWidth < 1024 ? foto.bottom + 48 : foto.top + p * foto.height
+      const linha = foto.top + p * foto.height
       let i = 0
       itens.current.forEach((el, k) => {
         if (el && el.getBoundingClientRect().top <= linha) i = k
@@ -116,6 +118,36 @@ export default function SacramentosLista({ items, textos }: { items: Sacramento[
       window.removeEventListener('resize', aoRolar)
     }
   }, [])
+
+  // Mobile ("como trabalhamos"): o palco fica preso enquanto a trilha passa; o sacramento
+  // ativo é a fatia do percurso em que o scroll está (1/N cada)
+  useEffect(() => {
+    let pendente = false
+    const atualizar = () => {
+      pendente = false
+      if (window.innerWidth >= 1024) return
+      const trilho = trilhoRef.current?.getBoundingClientRect()
+      const palco = palcoRef.current
+      if (!trilho || !palco) return
+      const topo = parseFloat(getComputedStyle(palco).top) || 0
+      const percurso = Math.max(trilho.height - palco.getBoundingClientRect().height, 1)
+      const p = Math.min(Math.max((topo - trilho.top) / percurso, 0), 0.9999)
+      setAtivo(Math.floor(p * items.length))
+    }
+    const aoRolar = () => {
+      if (!pendente) {
+        pendente = true
+        requestAnimationFrame(atualizar)
+      }
+    }
+    atualizar()
+    window.addEventListener('scroll', aoRolar, { passive: true })
+    window.addEventListener('resize', aoRolar)
+    return () => {
+      window.removeEventListener('scroll', aoRolar)
+      window.removeEventListener('resize', aoRolar)
+    }
+  }, [items.length])
 
   // Com o painel aberto a página por trás não pode correr (o Lenis precisa de
   // ser parado à parte). O bloqueio vai no <html>, não no <body>: com o <html>
@@ -271,9 +303,63 @@ export default function SacramentosLista({ items, textos }: { items: Sacramento[
 
   return (
     <>
-      <div className="flex items-start justify-between w-full max-lg:flex-col max-lg:gap-[calc(32*var(--u))]">
-        {/* Fotografia fixa: troca com o sacramento ativo (no mobile fica presa por baixo da barra) */}
-        <div ref={fotoRef} className="sticky top-[calc(120*var(--u))] max-lg:top-[calc(120*var(--u))] max-lg:z-10 h-[calc(629*var(--u))] w-[calc(678*var(--u))] max-lg:h-[calc(230*var(--u))] max-lg:w-full shrink-0 rounded-[calc(4*var(--u))] overflow-hidden">
+      {/* Mobile: palco preso (fotografia, número, título e texto trocam com o scroll) */}
+      <div ref={trilhoRef} className="lg:hidden relative w-full" style={{ height: `calc(${items.length} * 62svh + 100svh - 112 * var(--u))` }}>
+        <div
+          ref={palcoRef}
+          className="sticky flex flex-col gap-[calc(20*var(--u))]"
+          style={{ top: 'calc(112 * var(--u))', height: 'calc(100svh - 112 * var(--u))', paddingBlock: 'calc(20 * var(--u))' }}
+        >
+          <div className="flex items-center gap-[calc(16*var(--u))]">
+            <span className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] tabular-nums">
+              {String(ativo + 1).padStart(2, '0')} / {String(items.length).padStart(2, '0')}
+            </span>
+            <span className="relative h-px min-w-px flex-1 bg-[rgba(28,43,57,0.2)]">
+              <span className="absolute inset-y-0 left-0 w-full origin-left bg-[var(--azul-escuro)] transition-transform duration-[500ms] ease-[var(--ease-out)]" style={{ transform: `scaleX(${(ativo + 1) / items.length})` }} />
+            </span>
+          </div>
+
+          <div className="relative min-h-[calc(160*var(--u))] flex-1 overflow-hidden rounded-[calc(4*var(--u))]">
+            {items.map((it, i) => (
+              <div key={it.n} className="absolute inset-0 transition-opacity duration-[600ms] ease-[var(--ease-out)]" style={{ opacity: i === ativo ? 1 : 0 }}>
+                <Image src={it.foto} alt="" fill sizes="350px" className="object-cover" />
+              </div>
+            ))}
+          </div>
+
+          <div className="grid">
+            {items.map((it, i) => (
+              <div
+                key={it.n}
+                aria-hidden={i !== ativo}
+                inert={i !== ativo}
+                className="col-start-1 row-start-1 flex flex-col gap-[calc(12*var(--u))] transition-opacity duration-[500ms] ease-[var(--ease-out)]"
+                style={{ opacity: i === ativo ? 1 : 0 }}
+              >
+                <span className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] tracking-[calc(-0.064*var(--u))]">{it.n}</span>
+                <h3 className="font-display text-[length:calc(32*var(--u))] leading-[calc(36*var(--u))] font-normal">{it.titulo}</h3>
+                <p className="text-[length:calc(15*var(--u))] leading-[1.45]">{it.desc}</p>
+                <button
+                  type="button"
+                  aria-haspopup="dialog"
+                  onClick={(e) => {
+                    origemRef.current = e.currentTarget
+                    setAberto(i)
+                  }}
+                  className="self-start flex items-center gap-[calc(12*var(--u))] text-[length:calc(16*var(--u))] leading-[1.5]"
+                >
+                  <span className="underline decoration-from-font underline-offset-[calc(5*var(--u))]">{textos.saibaMais}</span>
+                  <Seta />
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="flex items-start justify-between w-full max-lg:hidden">
+        {/* Fotografia fixa: troca com o sacramento ativo */}
+        <div ref={fotoRef} className="sticky top-[calc(120*var(--u))] h-[calc(629*var(--u))] w-[calc(678*var(--u))] shrink-0 rounded-[calc(4*var(--u))] overflow-hidden">
           {items.map((it, i) => (
             <div key={it.n} className="absolute inset-0 transition-opacity duration-[700ms] ease-[var(--ease-out)]" style={{ opacity: i === ativo ? 1 : 0 }}>
               <Image src={it.foto} alt="" fill sizes="(max-width: 1023px) 350px, 678px" className="object-cover" />
