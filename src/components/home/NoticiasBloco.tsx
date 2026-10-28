@@ -259,6 +259,47 @@ export default function NoticiasBloco({
     return partir(no)
   }
 
+  /** Os três cartões: com a entrada atual aparecem todos juntos (um só Revelar), não um a um */
+  const lista = (
+  <div className="flex items-center gap-[calc(21*var(--u))] w-full max-lg:flex-col max-lg:items-stretch max-lg:gap-[calc(40*var(--u))]">
+    {NOTICIAS.map((n, k) => {
+      const cartao = (
+        <Link href={`/blog/${n.slug}`} className="group/card flex flex-col gap-[calc(12*var(--u))] max-lg:gap-[calc(14*var(--u))] w-[calc(445*var(--u))] max-lg:w-full">
+          <div className="relative h-[calc(295.98*var(--u))] max-lg:h-[calc(200*var(--u))] w-full overflow-hidden rounded-[calc(4*var(--u))]" style={est('moldura', k)}>
+            <div className="absolute inset-0" style={est('imagem', k)}>
+              {'recorte' in n ? (
+                <div className="absolute" style={{ left: u(n.recorte.left), top: u(n.recorte.top), width: u(n.recorte.width), height: u(n.recorte.height) }}>
+                  <Image src={n.foto} alt="" fill sizes="522px" className="object-cover" />
+                </div>
+              ) : (
+                <Image src={n.foto} alt="" fill sizes="445px" className="object-cover" />
+              )}
+            </div>
+            {entrada === 2 && <div aria-hidden="true" className="absolute inset-0" style={{ background: fundo, ...est('cortina', k) }} />}
+            {entrada === 7 && <div aria-hidden="true" className="absolute inset-0" style={{ background: fundo, ...est('cortinaH', k) }} />}
+          </div>
+          <div className="flex flex-col gap-[calc(12*var(--u))] max-lg:gap-[calc(6*var(--u))]" style={est('texto', k)}>
+            <p className="pt-[calc(8*var(--u))] max-lg:pt-0 text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] text-[rgba(29,35,40,0.6)]">{meta}</p>
+            <div className="flex w-full items-center justify-between gap-[calc(16*var(--u))]">
+              <p className="font-display text-[length:calc(32*var(--u))] leading-[calc(35.2*var(--u))] max-lg:text-[length:calc(24*var(--u))] max-lg:leading-[calc(28*var(--u))]">{titulos[k]}</p>
+              <Seta className="shrink-0 opacity-0 -translate-x-[calc(8*var(--u))] !transition-[opacity,transform] group-hover/card:opacity-100 group-hover/card:translate-x-0 group-focus-visible/card:opacity-100 group-focus-visible/card:translate-x-0" />
+            </div>
+          </div>
+        </Link>
+      )
+      return entrada ? (
+        <div key={n.foto} className="w-[calc(445*var(--u))] max-lg:w-full" style={est('cartao', k)}>
+          {cartao}
+        </div>
+      ) : (
+        <div key={n.foto} className="w-[calc(445*var(--u))] max-lg:w-full">
+          {cartao}
+        </div>
+      )
+    })}
+  </div>
+  )
+
   return (
     <section id={id} ref={secRef}
       data-barra={fundo}
@@ -306,43 +347,7 @@ export default function NoticiasBloco({
           </Link>
         </div>
 
-        <div className="flex items-center gap-[calc(21*var(--u))] w-full max-lg:flex-col max-lg:items-stretch max-lg:gap-[calc(40*var(--u))]">
-          {NOTICIAS.map((n, k) => {
-            const cartao = (
-              <Link href={`/blog/${n.slug}`} className="group/card flex flex-col gap-[calc(12*var(--u))] w-[calc(445*var(--u))] max-lg:w-full">
-                <div className="relative h-[calc(295.98*var(--u))] max-lg:h-[calc(200*var(--u))] w-full overflow-hidden rounded-[calc(4*var(--u))]" style={est('moldura', k)}>
-                  <div className="absolute inset-0" style={est('imagem', k)}>
-                    {'recorte' in n ? (
-                      <div className="absolute" style={{ left: u(n.recorte.left), top: u(n.recorte.top), width: u(n.recorte.width), height: u(n.recorte.height) }}>
-                        <Image src={n.foto} alt="" fill sizes="522px" className="object-cover" />
-                      </div>
-                    ) : (
-                      <Image src={n.foto} alt="" fill sizes="445px" className="object-cover" />
-                    )}
-                  </div>
-                  {entrada === 2 && <div aria-hidden="true" className="absolute inset-0" style={{ background: fundo, ...est('cortina', k) }} />}
-                  {entrada === 7 && <div aria-hidden="true" className="absolute inset-0" style={{ background: fundo, ...est('cortinaH', k) }} />}
-                </div>
-                <div className="flex flex-col gap-[calc(12*var(--u))]" style={est('texto', k)}>
-                  <p className="pt-[calc(8*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] text-[rgba(29,35,40,0.6)]">{meta}</p>
-                  <div className="flex w-full items-center justify-between gap-[calc(16*var(--u))]">
-                    <p className="font-display text-[length:calc(32*var(--u))] leading-[calc(35.2*var(--u))] max-lg:text-[length:calc(24*var(--u))] max-lg:leading-[calc(28*var(--u))]">{titulos[k]}</p>
-                    <Seta className="shrink-0 opacity-0 -translate-x-[calc(8*var(--u))] !transition-[opacity,transform] group-hover/card:opacity-100 group-hover/card:translate-x-0 group-focus-visible/card:opacity-100 group-focus-visible/card:translate-x-0" />
-                  </div>
-                </div>
-              </Link>
-            )
-            return entrada ? (
-              <div key={n.foto} className="w-[calc(445*var(--u))] max-lg:w-full" style={est('cartao', k)}>
-                {cartao}
-              </div>
-            ) : (
-              <Revelar key={n.foto} atraso={100 + k * 120} className="w-[calc(445*var(--u))] max-lg:w-full">
-                {cartao}
-              </Revelar>
-            )
-          })}
-        </div>
+        {entrada ? lista : <Revelar atraso={100} className="w-full">{lista}</Revelar>}
       </div>
     </section>
   )
