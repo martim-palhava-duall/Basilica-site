@@ -283,7 +283,7 @@ export default function HomeMenu() {
           </div>
 
           {/* Páginas: lista grande (42), em Forevs Light, compacta como na referência; se não couber, o painel rola */}
-          <ul className="my-auto flex flex-col py-[calc(16*var(--u))]">
+          <ul className="my-auto flex flex-col py-[calc(44*var(--u))]">
             {[...COL1, ...COL2].map(([chave, href], i) => (
               <li key={chave} style={entra(220 + i * 40)}>
                 <Link
@@ -305,7 +305,7 @@ export default function HomeMenu() {
 
           {/* Bilheteira (ligação externa): o destaque do menu. Foto, frase e "Planear visita" são um
               só bloco, no tom azul claro do cartão da foto, que é todo o link */}
-          <div className="flex flex-col gap-[calc(14*var(--u))]" style={entra(560)}>
+          <div className="flex flex-col gap-[calc(28*var(--u))]" style={entra(560)}>
             <Link
               href={BILHETEIRA}
               {...externo(BILHETEIRA)}
