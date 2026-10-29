@@ -262,8 +262,8 @@ export default function HomeMenu() {
         </div>
 
         <div className="flex flex-1 flex-col px-[calc(20*var(--u))] pb-[calc(24*var(--u))] pt-[calc(24*var(--u))]">
-          {/* Páginas: lista grande (40, passo de 45 como no Figma, onde as caixas de texto têm 27 + 18 de espaço), em Forevs Regular, como no Figma; se não couber, o painel rola */}
-          <ul className="flex flex-col pb-[calc(26*var(--u))]">
+          {/* Páginas: lista grande (40, passo de 45 como no Figma, onde as caixas de texto têm 27 + 18 de espaço), em Forevs Regular, como no Figma, com 4 de folga entre as páginas; se não couber, o painel rola */}
+          <ul className="flex flex-col gap-[calc(4*var(--u))] pb-[calc(26*var(--u))]">
             {[...COL1, ...COL2].map(([chave, href], i) => (
               <li key={chave} style={entra(220 + i * 40)}>
                 <Link
@@ -287,7 +287,7 @@ export default function HomeMenu() {
           <div className="flex flex-col gap-[calc(28*var(--u))] pb-[calc(44*var(--u))]" style={entra(560)}>
             <div className="flex flex-col gap-[calc(8*var(--u))]">
               <p className="text-[length:calc(15*var(--u))] leading-[calc(18*var(--u))] opacity-60">{t('menuHorarioHead')}</p>
-              <div className="flex flex-col gap-[calc(8*var(--u))]">
+              <div className="flex flex-col gap-[calc(20*var(--u))]">
                 <p className="flex flex-col gap-[calc(2*var(--u))] text-[length:calc(12*var(--u))] leading-[calc(14*var(--u))]"><span className="text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] font-bold">{th('missasSemHoras')}</span>{th('missasSemDias')}</p>
                 <p className="flex flex-col gap-[calc(2*var(--u))] text-[length:calc(12*var(--u))] leading-[calc(14*var(--u))]"><span className="text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] font-bold">{th('missasDomHoras')}</span>{th('missasDomDias')}</p>
               </div>
