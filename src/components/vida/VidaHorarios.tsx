@@ -69,7 +69,7 @@ export default function VidaHorarios() {
           </div>
         </div>
         <Revelar atraso={200}>
-          <p className={`${LEVE} w-[calc(444*var(--u))] max-lg:w-full text-[length:calc(20*var(--u))] max-lg:text-[length:calc(16*var(--u))] leading-[calc(32*var(--u))] max-lg:leading-[1.5]`} style={TRIM}>{t('horTexto')}</p>
+          <p className={`${LEVE} w-[calc(444*var(--u))] max-lg:w-full text-[length:calc(16*var(--u))] leading-[1.5]`} style={TRIM}>{t('horTexto')}</p>
         </Revelar>
       </div>
 
@@ -101,7 +101,7 @@ export default function VidaHorarios() {
               <h3 className="font-display text-[length:calc(40*var(--u))] max-lg:text-[length:calc(30*var(--u))] leading-[calc(35.2*var(--u))] max-lg:leading-[calc(34*var(--u))] tracking-[calc(-0.192*var(--u))] font-normal">{t('acolhTitulo')}</h3>
             </Revelar>
             <Revelar atraso={200}>
-              <p className={`${LEVE} text-[length:calc(20*var(--u))] max-lg:text-[length:calc(16*var(--u))] leading-[1.4] max-lg:leading-[1.5]`} style={TRIM}>{t('acolhTexto')}</p>
+              <p className={`${LEVE} text-[length:calc(16*var(--u))] leading-[1.5]`} style={TRIM}>{t('acolhTexto')}</p>
             </Revelar>
           </div>
         </div>

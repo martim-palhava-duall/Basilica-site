@@ -52,7 +52,7 @@ export default function ContactosFe() {
           </div>
         </div>
         <Revelar atraso={200}>
-          <p className="w-[calc(560*var(--u))] max-lg:w-full text-[length:calc(20*var(--u))] max-lg:text-[length:calc(16*var(--u))] leading-[1.4] max-lg:leading-[1.5]" style={{ ...TRIM, ...LEVE }}>{t('feTexto')}</p>
+          <p className="w-[calc(560*var(--u))] max-lg:w-full text-[length:calc(16*var(--u))] leading-[1.5]" style={{ ...TRIM, ...LEVE }}>{t('feTexto')}</p>
         </Revelar>
       </div>
 
@@ -77,7 +77,7 @@ export default function ContactosFe() {
             </div>
             <div className="flex w-[calc(445*var(--u))] max-lg:w-full flex-col gap-[calc(32*var(--u))] max-lg:gap-[calc(20*var(--u))]">
               <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold">{t('feUrgentes')}</p>
-              <p className="text-[length:calc(20*var(--u))] max-lg:text-[length:calc(16*var(--u))] leading-[1.4] max-lg:leading-[1.5]" style={{ ...TRIM, ...LEVE }}>{t('feUrgenciaTexto')}</p>
+              <p className="text-[length:calc(16*var(--u))] leading-[1.5]" style={{ ...TRIM, ...LEVE }}>{t('feUrgenciaTexto')}</p>
             </div>
           </div>
         </Revelar>
