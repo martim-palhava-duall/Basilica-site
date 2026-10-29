@@ -155,7 +155,7 @@ export default function HomeRodape() {
         {/* Páginas: oito, em duas colunas iguais */}
         <nav aria-label={t('rodBasilica')} className="flex flex-col gap-[calc(20*var(--u))] px-[calc(20*var(--u))] py-[calc(36*var(--u))]">
           <p className={rotulo}>{t('rodBasilica')}</p>
-          <ul className="grid grid-cols-2 gap-x-[calc(20*var(--u))] gap-y-[calc(14*var(--u))] text-[length:var(--t-corpo)] leading-[1.25]">
+          <ul className="grid grid-cols-2 gap-x-[calc(20*var(--u))] gap-y-[calc(14*var(--u))] text-[16px] leading-[1.25]">
             {lista([...COL_BASILICA, ...COL_CONTACTO])}
           </ul>
         </nav>
@@ -166,7 +166,7 @@ export default function HomeRodape() {
         <div className="flex flex-col gap-[calc(32*var(--u))] px-[calc(20*var(--u))] py-[calc(36*var(--u))]">
           <div className="flex flex-col gap-[calc(14*var(--u))]">
             <p className={rotulo}>{t('rodContacto')}</p>
-            <address className="flex flex-col gap-[calc(6*var(--u))] not-italic text-[length:var(--t-corpo)] leading-[1.45]">
+            <address className="flex flex-col gap-[calc(6*var(--u))] not-italic text-[16px] leading-[1.45]">
               <span>{t('rodMorada1')}, {t('rodMorada2')}</span>
               <a href="tel:+351213960915" className={LINK}>213 960 915</a>
               <a href="mailto:geral@basilicadaestrela.pt" className={LINK}>geral@basilicadaestrela.pt</a>
@@ -174,7 +174,7 @@ export default function HomeRodape() {
           </div>
           <div className="flex flex-col gap-[calc(14*var(--u))]">
             <p className={rotulo}>{t('rodRedes')}</p>
-            <ul className="grid grid-cols-2 gap-x-[calc(20*var(--u))] gap-y-[calc(14*var(--u))] text-[length:var(--t-corpo)] leading-[1.25]">
+            <ul className="grid grid-cols-2 gap-x-[calc(20*var(--u))] gap-y-[calc(14*var(--u))] text-[16px] leading-[1.25]">
               <li>Facebook</li>
               <li><a href="https://instagram.com/basilicadaestrela" target="_blank" rel="noopener noreferrer" className={LINK}>Instagram</a></li>
               <li>Whatsapp</li>
@@ -190,7 +190,7 @@ export default function HomeRodape() {
           <div className="relative h-[calc(190*var(--u))] w-full overflow-hidden rounded-[calc(4*var(--u))]">
             <Image src="/home/menu-foto.jpg" alt="" fill sizes="100vw" className="object-cover object-[40%_50%]" />
           </div>
-          <Link href={BILHETEIRA} {...externo(BILHETEIRA)} className={`alvo-toque group/btn sem-luz self-start flex items-center gap-[calc(9.6*var(--u))] text-[length:var(--t-corpo)] leading-[1.25] ${LINK}`}>
+          <Link href={BILHETEIRA} {...externo(BILHETEIRA)} className={`alvo-toque group/btn sem-luz self-start flex items-center gap-[calc(9.6*var(--u))] text-[16px] leading-[1.25] ${LINK}`}>
             {t('rodPlanear')}
             <Seta className="group-hover/btn:translate-x-[calc(4*var(--u))]" />
           </Link>
