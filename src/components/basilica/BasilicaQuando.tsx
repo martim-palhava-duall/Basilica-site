@@ -81,7 +81,7 @@ export default function BasilicaQuando() {
       </div>
 
       {/* ── Horário, como chegar, onde ── */}
-      <div className="flex flex-col gap-[calc(42*var(--u))] w-full">
+      <div className="flex flex-col gap-[calc(80*var(--u))] max-lg:gap-[calc(56*var(--u))] w-full">
         <div aria-hidden="true" className="h-px w-full max-lg:-mx-[calc(20*var(--u))] max-lg:w-[calc(100%+40*var(--u))] border-t border-solid border-[var(--bege-claro-2)] opacity-25" />
         <Revelar>
           <div className="flex items-start justify-between gap-[calc(40*var(--u))] min-h-[calc(197*var(--u))] max-lg:flex-col max-lg:min-h-0 max-lg:gap-[calc(40*var(--u))]">
