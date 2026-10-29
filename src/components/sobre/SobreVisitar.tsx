@@ -6,12 +6,12 @@ import Seta from '@/components/home/Seta'
 import { BILHETEIRA, externo } from '@/lib/links'
 
 const TRIM = { textBox: 'trim-both cap alphabetic' } as React.CSSProperties
-const LINHA = 'whitespace-nowrap max-lg:whitespace-normal font-display text-[length:calc(96*var(--u))] max-lg:text-[length:calc(30*var(--u))] leading-[calc(100.8*var(--u))] max-lg:leading-[calc(34*var(--u))] tracking-[calc(-0.576*var(--u))] max-lg:tracking-normal'
+const LINHA = 'whitespace-nowrap max-lg:whitespace-normal font-display text-[length:calc(96*var(--u))] max-lg:text-[length:calc(30*var(--u))] md:max-lg:text-[length:calc(32*var(--u))] leading-[calc(100.8*var(--u))] max-lg:leading-[calc(34*var(--u))] tracking-[calc(-0.576*var(--u))] max-lg:tracking-normal'
 const ITALICO = { fontFamily: "var(--font-display)" }
 
 /** Miniatura 112×74,66 com 4px de raio, como no "O que procura?" da homepage */
 function Thumb({ children }: { children: React.ReactNode }) {
-  return <div className="relative h-[calc(74.66*var(--u))] w-[calc(112*var(--u))] max-lg:h-[calc(64*var(--u))] max-lg:w-[calc(96*var(--u))] shrink-0 overflow-hidden rounded-[calc(4*var(--u))]">{children}</div>
+  return <div className="relative h-[calc(74.66*var(--u))] w-[calc(112*var(--u))] max-lg:h-[calc(64*var(--u))] max-lg:w-[calc(96*var(--u))] md:max-lg:h-[calc(72*var(--u))] md:max-lg:w-[calc(108*var(--u))] shrink-0 overflow-hidden rounded-[calc(4*var(--u))]">{children}</div>
 }
 
 /**
@@ -22,8 +22,10 @@ function Thumb({ children }: { children: React.ReactNode }) {
  * de cada frase o Forevs normal, na restante o itálico leve (trocado a pedido do Martim). Em baixo, o local
  * à esquerda e o texto com o botão "Planear visita" à direita.
  *
- * Mobile: uma lista de três linhas separadas por réguas, cada uma com a miniatura à
- * esquerda e a frase em duas linhas (o Forevs normal em cima, o itálico leve por baixo).
+ * Mobile: uma lista de três linhas separadas por réguas de ponta a ponta, cada uma com
+ * a miniatura à esquerda e a frase em duas linhas (o Forevs normal em cima, o itálico
+ * leve por baixo); no tablet a frase cabe numa linha. No fim, o local (apagado), o
+ * texto a 19 e o botão.
  *
  * É o destino de "Visitar" no menu (#visitar).
  */
@@ -36,24 +38,24 @@ export default function SobreVisitar() {
       data-barra="var(--bege-escuro-2)"
       className="relative w-full h-[calc(900*var(--u))] max-lg:h-auto max-lg:flex max-lg:flex-col max-lg:px-[calc(20*var(--u))] max-lg:py-[calc(80*var(--u))] scroll-mt-[calc(64*var(--u))] bg-[var(--bege-escuro-2)] text-[var(--azul-escuro)]"
     >
-      <Revelar className="absolute left-[calc(32*var(--u))] top-[calc(140*var(--u))] max-lg:static max-lg:pb-[calc(24*var(--u))]">
+      <Revelar className="absolute left-[calc(32*var(--u))] top-[calc(140*var(--u))] max-lg:static max-lg:pb-[calc(28*var(--u))]">
         <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{t('visitarLabel')}</p>
       </Revelar>
 
       {/* 1 — miniatura à esquerda, texto à direita */}
-      <div className="absolute left-[calc(279*var(--u))] top-[calc(282*var(--u))] max-lg:static max-lg:border-t max-lg:border-solid max-lg:border-[rgba(28,43,57,0.2)] max-lg:py-[calc(18*var(--u))]">
+      <div className="absolute left-[calc(279*var(--u))] top-[calc(282*var(--u))] max-lg:static max-lg:-mx-[calc(20*var(--u))] max-lg:border-t max-lg:border-solid max-lg:border-[rgba(28,43,57,0.2)] max-lg:px-[calc(20*var(--u))] max-lg:py-[calc(20*var(--u))]">
         <Revelar atraso={150}>
           <div className="flex items-center gap-[calc(32*var(--u))] max-lg:gap-[calc(18*var(--u))]">
             <Thumb>
               <div className="absolute left-0 w-full" style={{ top: '-50.32%', height: '200.64%' }}>
                 <Image src="/home/oque-rezar-fundo.jpg" alt="" fill sizes="112px" className="object-cover" />
               </div>
-              <div className="absolute left-1/2 top-1/2 h-[calc(78*var(--u))] w-[calc(117*var(--u))] max-lg:h-[calc(67*var(--u))] max-lg:w-[calc(100*var(--u))] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[calc(4*var(--u))]">
+              <div className="absolute left-1/2 top-1/2 h-[calc(78*var(--u))] w-[calc(117*var(--u))] max-lg:h-[calc(67*var(--u))] max-lg:w-[calc(100*var(--u))] md:max-lg:h-[calc(75*var(--u))] md:max-lg:w-[calc(112*var(--u))] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[calc(4*var(--u))]">
                 <Image src="/sobre/visitar-cupula.jpg" alt="" fill sizes="117px" className="object-cover" />
               </div>
             </Thumb>
             <p className={LINHA} style={TRIM}>
-              <span className="max-lg:block">{t('visitarL1a')} </span>
+              <span className="max-lg:block md:max-lg:inline">{t('visitarL1a')} </span>
               <span className="italic font-light" style={ITALICO}>{t('visitarL1b')}</span>
             </p>
           </div>
@@ -61,11 +63,11 @@ export default function SobreVisitar() {
       </div>
 
       {/* 2 — texto à esquerda, miniatura à direita */}
-      <div className="absolute left-[calc(144*var(--u))] top-[calc(388.66*var(--u))] max-lg:static max-lg:border-t max-lg:border-solid max-lg:border-[rgba(28,43,57,0.2)] max-lg:py-[calc(18*var(--u))]">
+      <div className="absolute left-[calc(144*var(--u))] top-[calc(388.66*var(--u))] max-lg:static max-lg:-mx-[calc(20*var(--u))] max-lg:border-t max-lg:border-solid max-lg:border-[rgba(28,43,57,0.2)] max-lg:px-[calc(20*var(--u))] max-lg:py-[calc(20*var(--u))]">
         <Revelar atraso={270}>
           <div className="flex items-center gap-[calc(32*var(--u))] max-lg:flex-row-reverse max-lg:justify-end max-lg:gap-[calc(18*var(--u))]">
             <p className={LINHA} style={TRIM}>
-              <span className="max-lg:block">{t('visitarL2a')}</span>
+              <span className="max-lg:block md:max-lg:inline">{t('visitarL2a')}</span>
               {' '}<span className="italic font-light" style={ITALICO}>{t('visitarL2b')}</span>
             </p>
             <Thumb>
@@ -76,28 +78,28 @@ export default function SobreVisitar() {
       </div>
 
       {/* 3 — miniatura à esquerda, texto à direita */}
-      <div className="absolute left-[calc(279*var(--u))] top-[calc(495.32*var(--u))] max-lg:static max-lg:border-y max-lg:border-solid max-lg:border-[rgba(28,43,57,0.2)] max-lg:py-[calc(18*var(--u))]">
+      <div className="absolute left-[calc(279*var(--u))] top-[calc(495.32*var(--u))] max-lg:static max-lg:-mx-[calc(20*var(--u))] max-lg:border-y max-lg:border-solid max-lg:border-[rgba(28,43,57,0.2)] max-lg:px-[calc(20*var(--u))] max-lg:py-[calc(20*var(--u))]">
         <Revelar atraso={390}>
           <div className="flex items-center gap-[calc(32*var(--u))] max-lg:gap-[calc(18*var(--u))]">
             <Thumb>
               <Image src="/home/oque-rezar.jpg" alt="" fill sizes="112px" className="object-cover" />
             </Thumb>
             <p className={LINHA} style={TRIM}>
-              <span className="max-lg:block">{t('visitarL3a')} </span>
+              <span className="max-lg:block md:max-lg:inline">{t('visitarL3a')} </span>
               <span className="italic font-light" style={ITALICO}>{t('visitarL3b')}</span>
             </p>
           </div>
         </Revelar>
       </div>
 
-      <Revelar className="absolute left-[calc(32*var(--u))] top-[calc(745*var(--u))] max-lg:static max-lg:mt-[calc(40*var(--u))] max-lg:mb-[calc(16*var(--u))]">
-        <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap">{t('visitarLocal')}</p>
+      <Revelar className="absolute left-[calc(32*var(--u))] top-[calc(745*var(--u))] max-lg:static max-lg:mt-[calc(48*var(--u))] max-lg:mb-[calc(14*var(--u))]">
+        <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap max-lg:opacity-60">{t('visitarLocal')}</p>
       </Revelar>
 
       <div className="absolute left-[calc(900*var(--u))] top-[calc(712*var(--u))] max-lg:static">
         <Revelar atraso={300}>
-          <div className="flex items-start gap-[calc(32*var(--u))] max-lg:flex-col max-lg:gap-[calc(24*var(--u))]">
-            <p className="font-[family-name:var(--font-body-light)] text-[length:calc(20*var(--u))] max-lg:text-[length:calc(16*var(--u))] leading-[calc(32*var(--u))] max-lg:leading-[1.5] whitespace-nowrap max-lg:whitespace-normal" style={TRIM}>
+          <div className="flex items-start gap-[calc(32*var(--u))] max-lg:flex-col max-lg:gap-[calc(28*var(--u))]">
+            <p className="font-[family-name:var(--font-body-light)] text-[length:calc(20*var(--u))] max-lg:text-[length:calc(19*var(--u))] leading-[calc(32*var(--u))] max-lg:leading-[1.45] whitespace-nowrap max-lg:whitespace-normal max-lg:max-w-[calc(330*var(--u))]" style={TRIM}>
               {t('visitarTexto1')}{' '}
               <br className="max-lg:hidden" />
               {t('visitarTexto2')}
