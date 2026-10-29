@@ -647,9 +647,10 @@
     text-box: trim-both cap alphabetic;
     transition: opacity 0.35s var(--ease-out);
   }
-  /* Ao passar numa ligação, as outras recuam. */
-  .menu-lista:hover .menu-link { opacity: 0.4; }
-  .menu-lista .menu-link:hover { opacity: 1; }
+  /* Ao passar numa ligação, todas as outras recuam, das duas colunas (o painel inteiro
+     deteta o rato numa das listas). */
+  .menu-painel:has(.menu-lista:hover) .menu-link { opacity: 0.4; }
+  .menu-painel .menu-lista .menu-link:hover { opacity: 1; }
 
   /* Small rounded image sitting inline within a headline */
   .inline-media {

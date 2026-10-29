@@ -98,7 +98,7 @@ export default function HomeMenu() {
 
       {/* Painel */}
       <div
-        className="absolute left-0 top-0 w-full h-[calc(566*var(--u))] bg-white overflow-hidden"
+        className="menu-painel absolute left-0 top-0 w-full h-[calc(566*var(--u))] bg-white overflow-hidden"
         style={{
           transform: aberto ? 'translateY(0)' : 'translateY(-100%)',
           transition: `transform ${aberto ? 750 : 550}ms var(--ease-inout)`,
