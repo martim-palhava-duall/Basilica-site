@@ -852,7 +852,9 @@
     "duvidaLabel": "Experiências",
     "duvidaL1": "<i>Alguma</i> dúvida<br></br>sobre <i>a visita?</i>",
     "duvidaTexto": "O secretariado paroquial responde a questões sobre horários, acessibilidade e marcações.",
-    "duvidaCta": "Entrar em contacto"
+    "duvidaCta": "Entrar em contacto",
+    "mapaTitulo": "Mapa: como chegar à Basílica da Estrela",
+    "mapaDica": "Tocar para explorar o mapa"
   },
   "celebrar": {
     "label": "Celebrações da Fé",

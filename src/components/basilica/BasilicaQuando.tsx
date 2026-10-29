@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import Revelar from '@/components/home/Revelar'
 import Seta from '@/components/home/Seta'
+import MapaBasilica from '@/components/basilica/MapaBasilica'
 import { BILHETEIRA, externo } from '@/lib/links'
 
 const TRIM = { textBox: 'trim-both cap alphabetic' } as React.CSSProperties
@@ -20,6 +21,8 @@ const horas = (s: string) => s.replace(' ÀS ', ' às ')
  * externa à bilheteira (BILHETEIRA, num separador novo): ao passar, enche-se de
  * bege, mostra a seta e leva o brilho na borda dos botões (btn-luz, na variante
  * suave, como o cartão da hero). Fica focável por teclado como qualquer ligação.
+ *
+ * Mapa interativo à direita das três colunas (pedido do cliente): ver MapaBasilica.
  *
  * A altura (1417) é a do desenho: 182 em cima e 245 em baixo.
  * O horário de visita lê-se do namespace `horarios` (fonte única), que tem as
@@ -81,7 +84,8 @@ export default function BasilicaQuando() {
       <div className="flex flex-col gap-[calc(42*var(--u))] w-full">
         <div aria-hidden="true" className="h-px w-full max-lg:-mx-[calc(20*var(--u))] max-lg:w-[calc(100%+40*var(--u))] border-t border-solid border-[var(--bege-claro-2)] opacity-25" />
         <Revelar>
-          <div className="flex gap-[calc(40*var(--u))] items-start min-h-[calc(197*var(--u))] max-lg:flex-col max-lg:min-h-0 max-lg:gap-[calc(36*var(--u))]">
+          <div className="flex items-start justify-between gap-[calc(40*var(--u))] min-h-[calc(197*var(--u))] max-lg:flex-col max-lg:min-h-0 max-lg:gap-[calc(40*var(--u))]">
+            <div className="flex gap-[calc(40*var(--u))] items-start max-lg:w-full max-lg:flex-col max-lg:gap-[calc(36*var(--u))]">
             {colunas.map((c) => (
               <div key={c.titulo} className="flex flex-col gap-[calc(32*var(--u))] max-lg:gap-[calc(16*var(--u))] w-[calc(213*var(--u))] max-lg:w-full">
                 <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold">{c.titulo}</p>
@@ -95,6 +99,14 @@ export default function BasilicaQuando() {
                 </div>
               </div>
             ))}
+            </div>
+
+            {/* Mapa interativo, no espaço à direita (o cliente pediu um mapa aqui) */}
+            <MapaBasilica
+              titulo={t('mapaTitulo')}
+              dica={t('mapaDica')}
+              className="h-[calc(280*var(--u))] w-[calc(445*var(--u))] shrink-0 max-lg:h-[calc(260*var(--u))] max-lg:w-full md:max-lg:h-[calc(300*var(--u))]"
+            />
           </div>
         </Revelar>
       </div>
