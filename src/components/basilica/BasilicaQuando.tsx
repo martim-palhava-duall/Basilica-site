@@ -105,6 +105,8 @@ export default function BasilicaQuando() {
             <MapaBasilica
               titulo={t('mapaTitulo')}
               dica={t('mapaDica')}
+              nome={t('mapaNome')}
+              comoChegar={t('mapaComoChegar')}
               className="h-[calc(280*var(--u))] w-[calc(445*var(--u))] shrink-0 max-lg:h-[calc(260*var(--u))] max-lg:w-full md:max-lg:h-[calc(300*var(--u))]"
             />
           </div>
