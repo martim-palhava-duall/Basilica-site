@@ -69,7 +69,7 @@ export default function NoticiasFiltroGrelha({
         })}
       </div>
 
-      <div className="grid w-full grid-cols-3 max-lg:grid-cols-2 gap-x-[calc(21*var(--u))] max-lg:gap-x-[calc(16*var(--u))] gap-y-[calc(48*var(--u))] max-lg:gap-y-[calc(32*var(--u))]">
+      <div className="grid w-full grid-cols-3 max-lg:grid-cols-2 md:max-lg:grid-cols-3 gap-x-[calc(21*var(--u))] max-lg:gap-x-[calc(16*var(--u))] gap-y-[calc(48*var(--u))] max-lg:gap-y-[calc(32*var(--u))]">
         {visiveis.map((c) => (
           <Link key={`${ativo}-${c.slug}`} href={`/blog/${c.slug}`} className="cartao-entra group/card flex w-full flex-col gap-[calc(12*var(--u))]">
             <div className="relative h-[calc(295.98*var(--u))] max-lg:h-[calc(160*var(--u))] w-full overflow-hidden rounded-[calc(4*var(--u))]">

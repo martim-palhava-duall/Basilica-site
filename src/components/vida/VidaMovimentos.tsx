@@ -37,15 +37,15 @@ export default function VidaMovimentos() {
         </div>
       </Revelar>
 
-      <div className="flex w-full items-start gap-[calc(22*var(--u))] max-lg:flex-col max-lg:gap-[calc(40*var(--u))]">
+      <div className="flex w-full items-start gap-[calc(22*var(--u))] max-lg:flex-col max-lg:gap-[calc(40*var(--u))] md:max-lg:flex-row md:max-lg:gap-[calc(16*var(--u))]">
         {MOVIMENTOS.map((m, k) => (
-          <Revelar key={m.chave} atraso={100 + k * 120} className="shrink-0 max-lg:w-full">
+          <Revelar key={m.chave} atraso={100 + k * 120} className="shrink-0 max-lg:w-full md:max-lg:w-auto md:max-lg:min-w-0 md:max-lg:flex-1">
             <article className="flex flex-col gap-[calc(20*var(--u))] max-lg:w-full!" style={{ width: u(m.largura) }}>
-              <div className="relative h-[calc(541*var(--u))] max-lg:h-[calc(300*var(--u))] w-full overflow-hidden rounded-[calc(4*var(--u))]">
+              <div className="relative h-[calc(541*var(--u))] max-lg:h-[calc(300*var(--u))] md:max-lg:h-[calc(240*var(--u))] w-full overflow-hidden rounded-[calc(4*var(--u))]">
                 <Image src={m.foto} alt={t(`${m.chave}Alt`)} fill sizes="445px" className="object-cover" />
               </div>
               <div className="flex w-full flex-col gap-[calc(20*var(--u))]">
-                <h3 className="font-display text-[length:calc(40*var(--u))] max-lg:text-[length:calc(32*var(--u))] leading-[calc(35.2*var(--u))] max-lg:leading-[calc(36*var(--u))] tracking-[calc(-0.192*var(--u))] font-normal whitespace-nowrap max-lg:whitespace-normal">{t(`${m.chave}Titulo`)}</h3>
+                <h3 className="font-display text-[length:calc(40*var(--u))] max-lg:text-[length:calc(32*var(--u))] md:max-lg:text-[length:calc(26*var(--u))] leading-[calc(35.2*var(--u))] max-lg:leading-[calc(36*var(--u))] md:max-lg:leading-[calc(30*var(--u))] tracking-[calc(-0.192*var(--u))] font-normal whitespace-nowrap max-lg:whitespace-normal">{t(`${m.chave}Titulo`)}</h3>
                 <p className="text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))]">{t(`${m.chave}Texto`)}</p>
               </div>
             </article>

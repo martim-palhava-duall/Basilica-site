@@ -261,7 +261,7 @@ export default function NoticiasBloco({
 
   /** Os três cartões: com a entrada atual aparecem todos juntos (um só Revelar), não um a um */
   const lista = (
-  <div className="flex items-center gap-[calc(21*var(--u))] w-full max-lg:flex-col max-lg:items-stretch max-lg:gap-[calc(40*var(--u))]">
+  <div className="flex items-center gap-[calc(21*var(--u))] w-full max-lg:flex-col max-lg:items-stretch max-lg:gap-[calc(40*var(--u))] md:max-lg:flex-row md:max-lg:items-start md:max-lg:gap-[calc(16*var(--u))]">
     {NOTICIAS.map((n, k) => {
       const cartao = (
         <Link href={`/blog/${n.slug}`} className="group/card flex flex-col gap-[calc(12*var(--u))] max-lg:gap-[calc(14*var(--u))] w-[calc(445*var(--u))] max-lg:w-full">
@@ -288,11 +288,11 @@ export default function NoticiasBloco({
         </Link>
       )
       return entrada ? (
-        <div key={n.foto} className="w-[calc(445*var(--u))] max-lg:w-full" style={est('cartao', k)}>
+        <div key={n.foto} className="w-[calc(445*var(--u))] max-lg:w-full md:max-lg:w-auto md:max-lg:min-w-0 md:max-lg:flex-1" style={est('cartao', k)}>
           {cartao}
         </div>
       ) : (
-        <div key={n.foto} className="w-[calc(445*var(--u))] max-lg:w-full">
+        <div key={n.foto} className="w-[calc(445*var(--u))] max-lg:w-full md:max-lg:w-auto md:max-lg:min-w-0 md:max-lg:flex-1">
           {cartao}
         </div>
       )

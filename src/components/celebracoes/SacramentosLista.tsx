@@ -322,7 +322,7 @@ export default function SacramentosLista({ items, textos }: { items: Sacramento[
           <div className="relative min-h-[calc(160*var(--u))] flex-1 overflow-hidden rounded-[calc(4*var(--u))]">
             {items.map((it, i) => (
               <div key={it.n} className="absolute inset-0 transition-opacity duration-[600ms] ease-[var(--ease-out)]" style={{ opacity: i === ativo ? 1 : 0 }}>
-                <Image src={it.foto} alt="" fill sizes="350px" className="object-cover" />
+                <Image src={it.foto} alt="" fill sizes="100vw" className="object-cover" />
               </div>
             ))}
           </div>
@@ -362,7 +362,7 @@ export default function SacramentosLista({ items, textos }: { items: Sacramento[
         <div ref={fotoRef} className="sticky top-[calc(120*var(--u))] h-[calc(629*var(--u))] w-[calc(678*var(--u))] shrink-0 rounded-[calc(4*var(--u))] overflow-hidden">
           {items.map((it, i) => (
             <div key={it.n} className="absolute inset-0 transition-opacity duration-[700ms] ease-[var(--ease-out)]" style={{ opacity: i === ativo ? 1 : 0 }}>
-              <Image src={it.foto} alt="" fill sizes="(max-width: 1023px) 350px, 678px" className="object-cover" />
+              <Image src={it.foto} alt="" fill sizes="(max-width: 1023px) 100vw, 678px" className="object-cover" />
             </div>
           ))}
         </div>

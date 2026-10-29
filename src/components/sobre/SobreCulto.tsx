@@ -40,15 +40,15 @@ export default function SobreCulto() {
           </div>
         </Revelar>
 
-        <div className="flex items-start gap-[calc(22*var(--u))] max-lg:flex-col max-lg:gap-[calc(40*var(--u))] w-full">
+        <div className="flex items-start gap-[calc(22*var(--u))] max-lg:flex-col max-lg:gap-[calc(40*var(--u))] md:max-lg:flex-row md:max-lg:gap-[calc(16*var(--u))] w-full">
           {ESPACOS.map((e, i) => (
-            <Revelar key={e.chave} atraso={100 + i * 120} className="max-lg:w-full">
+            <Revelar key={e.chave} atraso={100 + i * 120} className="max-lg:w-full md:max-lg:w-auto md:max-lg:min-w-0 md:max-lg:flex-1">
               <div className="flex flex-col gap-[calc(20*var(--u))] max-lg:w-full!" style={{ width: u(e.largura) }}>
-                <div className="relative h-[calc(541*var(--u))] max-lg:h-[calc(300*var(--u))] w-full rounded-[calc(4*var(--u))] overflow-hidden">
+                <div className="relative h-[calc(541*var(--u))] max-lg:h-[calc(300*var(--u))] md:max-lg:h-[calc(240*var(--u))] w-full rounded-[calc(4*var(--u))] overflow-hidden">
                   <Image src={FOTO} alt="" fill sizes="445px" className="object-cover" />
                 </div>
                 <div className="flex flex-col gap-[calc(20*var(--u))] w-full">
-                  <h3 className="font-display text-[length:calc(40*var(--u))] leading-[calc(35.2*var(--u))] tracking-[calc(-0.192*var(--u))] font-normal whitespace-nowrap text-[var(--bege-escuro-2)]">
+                  <h3 className="font-display text-[length:calc(40*var(--u))] leading-[calc(35.2*var(--u))] tracking-[calc(-0.192*var(--u))] font-normal whitespace-nowrap max-lg:whitespace-normal md:max-lg:text-[length:calc(26*var(--u))] md:max-lg:leading-[calc(30*var(--u))] text-[var(--bege-escuro-2)]">
                     {t(`${e.chave}Titulo`)}
                   </h3>
                   <p className="text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] opacity-60">{t(`${e.chave}Texto`)}</p>

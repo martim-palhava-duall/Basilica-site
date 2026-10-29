@@ -77,7 +77,7 @@ export default function ObraAcao() {
         <ul
           ref={faixa}
           onScroll={aoCorrer}
-          className="flex gap-[calc(16*var(--u))] overflow-x-auto px-[calc(31*var(--u))] max-lg:flex-col max-lg:gap-[calc(40*var(--u))] max-lg:overflow-visible max-lg:px-[calc(20*var(--u))] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="flex gap-[calc(16*var(--u))] overflow-x-auto px-[calc(31*var(--u))] max-lg:flex-col max-lg:gap-[calc(40*var(--u))] md:max-lg:grid md:max-lg:grid-cols-2 md:max-lg:gap-x-[calc(16*var(--u))] md:max-lg:gap-y-[calc(40*var(--u))] max-lg:overflow-visible max-lg:px-[calc(20*var(--u))] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {CARTOES.map((c) => (
             <li key={c.chave} className="shrink-0 self-start max-lg:w-full!" style={{ width: u(c.largura) }}>

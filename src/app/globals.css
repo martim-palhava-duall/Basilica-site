@@ -795,8 +795,8 @@ html { scrollbar-gutter: stable; }
 
 /* Largura de 1024 a 2560: o desenho cresce e encolhe em proporção.
    Abaixo de 1024 é o mobile (não há desenho no Figma; ver DESIGN.md): o --u passa
-   a valer 1px num ecrã de 390 e acompanha a largura até 1,6px (624 de desenho num
-   tablet), para os valores mobile se escreverem nas mesmas unidades
+   a valer 1px num ecrã de 390 e acompanha a largura até 1,6px (624 de desenho);
+   de 768 a 1023 (tablet) vale 1,2px a 1,35px, para os valores mobile se escreverem nas mesmas unidades
    (`max-lg:` + calc(N * var(--u)), com N medido a 390). */
 :root {
   --u: clamp(0.7111px, calc(100vw / 1440), 1.78px);
@@ -807,6 +807,14 @@ html { scrollbar-gutter: stable; }
   :root {
     --u: min(calc(100vw / 390), 1.6px);
     --ui: var(--u);
+  }
+}
+/* Tablet (768 a 1023): a escala do mobile esticaria a letra a 1,6x; aqui vale 1,2px a
+   768 e sobe até 1,35px (acima de 864), e os blocos de cartões passam a 2 ou 3
+   colunas (`md:max-lg:`) */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  :root {
+    --u: min(calc(100vw / 640), 1.35px);
   }
 }
 

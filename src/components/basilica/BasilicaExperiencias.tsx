@@ -47,15 +47,15 @@ export default function BasilicaExperiencias() {
           </div>
         </div>
 
-        <div className="flex items-start gap-[calc(22*var(--u))] w-full max-lg:flex-col max-lg:gap-[calc(40*var(--u))]">
+        <div className="flex items-start gap-[calc(22*var(--u))] w-full max-lg:flex-col max-lg:gap-[calc(40*var(--u))] md:max-lg:flex-row md:max-lg:gap-[calc(16*var(--u))]">
           {EXPERIENCIAS.map((e, i) => (
-            <Revelar key={e.chave} atraso={100 + i * 120} className="max-lg:w-full">
+            <Revelar key={e.chave} atraso={100 + i * 120} className="max-lg:w-full md:max-lg:w-auto md:max-lg:min-w-0 md:max-lg:flex-1">
               <div className="flex flex-col gap-[calc(20*var(--u))] max-lg:w-full!" style={{ width: u(e.largura) }}>
-                <div className="relative h-[calc(541*var(--u))] max-lg:h-[calc(300*var(--u))] w-full rounded-[calc(4*var(--u))] overflow-hidden">
+                <div className="relative h-[calc(541*var(--u))] max-lg:h-[calc(300*var(--u))] md:max-lg:h-[calc(240*var(--u))] w-full rounded-[calc(4*var(--u))] overflow-hidden">
                   <Image src={e.foto} alt="" fill sizes="445px" className="object-cover" />
                 </div>
                 <div className="flex flex-col gap-[calc(20*var(--u))] w-full">
-                  <h3 className="font-display text-[length:calc(40*var(--u))] max-lg:text-[length:calc(30*var(--u))] leading-[calc(35.2*var(--u))] max-lg:leading-[calc(34*var(--u))] tracking-[calc(-0.192*var(--u))] font-normal whitespace-nowrap max-lg:whitespace-normal">
+                  <h3 className="font-display text-[length:calc(40*var(--u))] max-lg:text-[length:calc(30*var(--u))] md:max-lg:text-[length:calc(24*var(--u))] leading-[calc(35.2*var(--u))] max-lg:leading-[calc(34*var(--u))] md:max-lg:leading-[calc(28*var(--u))] tracking-[calc(-0.192*var(--u))] font-normal whitespace-nowrap max-lg:whitespace-normal">
                     {t(`${e.chave}Titulo`)}
                   </h3>
                   <p className="text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))]">{t(`${e.chave}Texto`)}</p>

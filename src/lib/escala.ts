@@ -22,6 +22,10 @@ export const LIMITE_MOBILE = 1024
 /** Largura de referência do mobile: aí `--u` vale 1px */
 export const LARGURA_MOBILE = 390
 export const ESCALA_MAX_MOBILE = 1.6
+/** Tablet (768 a 1023): `--u` vale 1,2px a 768 e sobe até 1,35px (largura de referência 640) */
+export const LIMITE_TABLET = 768
+export const LARGURA_TABLET = 640
+export const ESCALA_MAX_TABLET = 1.35
 
 export function ehMobile(): boolean {
   return typeof window !== 'undefined' && window.innerWidth < LIMITE_MOBILE
@@ -29,7 +33,10 @@ export function ehMobile(): boolean {
 
 export function escalaUi(): number {
   if (typeof window === 'undefined') return 1
-  if (ehMobile()) return Math.min(window.innerWidth / LARGURA_MOBILE, ESCALA_MAX_MOBILE)
+  if (ehMobile()) {
+    if (window.innerWidth >= LIMITE_TABLET) return Math.min(window.innerWidth / LARGURA_TABLET, ESCALA_MAX_TABLET)
+    return Math.min(window.innerWidth / LARGURA_MOBILE, ESCALA_MAX_MOBILE)
+  }
   return Math.min(Math.max(window.innerWidth / LARGURA_BASE, ESCALA_MIN), ESCALA_MAX)
 }
 

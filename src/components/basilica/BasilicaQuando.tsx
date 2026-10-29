@@ -102,9 +102,9 @@ export default function BasilicaQuando() {
       {/* ── Tipos de visita ── */}
       <div className="flex flex-col gap-[calc(32*var(--u))] max-lg:gap-[calc(24*var(--u))] w-full pt-[calc(30*var(--u))] max-lg:-mx-[calc(20*var(--u))] max-lg:w-[calc(100%+40*var(--u))] max-lg:px-[calc(20*var(--u))] border-t border-solid border-[rgba(247,242,238,0.25)]">
         <Revelar><h2 className="font-display text-[length:calc(80*var(--u))] max-lg:text-[length:calc(36*var(--u))] leading-[calc(96*var(--u))] max-lg:leading-[calc(42*var(--u))] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal font-normal">{t('tiposTitulo')}</h2></Revelar>
-        <div className="flex gap-[calc(20*var(--u))] items-stretch w-full max-lg:flex-col">
+        <div className="flex gap-[calc(20*var(--u))] items-stretch w-full max-lg:flex-col md:max-lg:flex-row md:max-lg:gap-[calc(12*var(--u))]">
           {TIPOS.map((k, i) => (
-            <Revelar key={k} atraso={100 + i * 120} className="flex max-lg:w-full">
+            <Revelar key={k} atraso={100 + i * 120} className="flex max-lg:w-full md:max-lg:w-auto md:max-lg:min-w-0 md:max-lg:flex-1">
               <Link
                 href={BILHETEIRA}
                 {...externo(BILHETEIRA)}

@@ -74,7 +74,7 @@ export default function VidaEquipa() {
           <div aria-hidden="true" className="h-px w-full max-lg:-mx-[calc(20*var(--u))] max-lg:w-[calc(100%+40*var(--u))] bg-[rgba(27,43,57,0.07)]" />
           <div className="flex flex-col gap-[calc(20*var(--u))] w-full">
             <Revelar><h3 className="font-display text-[length:calc(24*var(--u))] leading-[calc(35.2*var(--u))] tracking-[calc(-0.192*var(--u))] font-normal">{t('eqVigarios')}</h3></Revelar>
-            <div className="grid grid-cols-3 max-lg:grid-cols-2 gap-x-[calc(20*var(--u))] max-lg:gap-x-[calc(16*var(--u))] gap-y-[calc(64*var(--u))] max-lg:gap-y-[calc(32*var(--u))] w-full">
+            <div className="grid grid-cols-3 max-lg:grid-cols-2 md:max-lg:grid-cols-3 gap-x-[calc(20*var(--u))] max-lg:gap-x-[calc(16*var(--u))] gap-y-[calc(64*var(--u))] max-lg:gap-y-[calc(32*var(--u))] w-full">
               {VIGARIOS.map((v, i) => (
                 <Revelar key={v.chave} atraso={(i % 3) * 120}>
                   <div className="flex flex-col gap-[calc(20*var(--u))] w-full">

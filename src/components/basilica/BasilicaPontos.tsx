@@ -168,7 +168,7 @@ export default function BasilicaPontos() {
             <div className="relative min-h-[calc(160*var(--u))] flex-1 overflow-hidden rounded-[calc(4*var(--u))]">
               {PONTOS.map((p, i) => (
                 <div key={p.n} className="absolute inset-0 transition-opacity duration-[600ms] ease-[var(--ease-out)]" style={{ opacity: i === ativo ? 1 : 0 }}>
-                  <Image src={p.foto} alt={t(`${p.chave}Titulo`)} fill sizes="350px" className="object-cover" style={p.posicao ? { objectPosition: p.posicao } : undefined} />
+                  <Image src={p.foto} alt={t(`${p.chave}Titulo`)} fill sizes="100vw" className="object-cover" style={p.posicao ? { objectPosition: p.posicao } : undefined} />
                 </div>
               ))}
             </div>

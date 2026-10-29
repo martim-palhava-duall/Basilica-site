@@ -304,7 +304,7 @@ export default function HomeMenu() {
               className="btn-luz flex flex-col overflow-hidden rounded-[calc(4*var(--u))] bg-[rgba(247,242,238,0.09)] text-[var(--bege-claro-2)]"
             >
               <span className="relative block h-[calc(168*var(--u))] w-full overflow-hidden">
-                <Image src="/home/menu-foto.jpg" alt="" fill sizes="390px" className="object-cover object-[50%_100%]" />
+                <Image src="/home/menu-foto.jpg" alt="" fill sizes="100vw" className="object-cover object-[50%_100%]" />
               </span>
               <span className="flex min-h-[calc(90*var(--u))] items-center px-[calc(18*var(--u))] font-display text-[length:calc(24*var(--u))] leading-[1.2]">{t('menuBilhete')}</span>
               <span className="flex items-center justify-between border-t border-solid border-[rgba(247,242,238,0.22)] px-[calc(18*var(--u))] py-[calc(18*var(--u))]">

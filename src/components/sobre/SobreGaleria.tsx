@@ -90,7 +90,7 @@ export default function SobreGaleria({ fundo = 'var(--bege-claro-2)' }: { fundo?
                   transitionDuration: arrastando ? '0ms' : undefined,
                 }}
               >
-                <Image src={foto.src} alt={d === 0 ? t(foto.alt) : ''} fill sizes="(max-width: 1023px) 300px, 794px" className="object-cover" />
+                <Image src={foto.src} alt={d === 0 ? t(foto.alt) : ''} fill sizes="(max-width: 767px) 300px, (max-width: 1023px) 420px, 794px" className="object-cover" />
               </div>
             )
           })}
