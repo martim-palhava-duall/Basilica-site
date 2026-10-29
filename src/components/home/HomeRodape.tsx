@@ -38,7 +38,7 @@ const LINK = 'alvo-toque transition-colors duration-[400ms] ease-[var(--ease-out
  * Mobile (marcação própria, em blocos separados por réguas de ponta a ponta): o símbolo
  * da Basílica, pequeno e centrado, e o lema centrado por baixo, numa linha; as oito páginas em duas colunas iguais; contacto (morada,
  * telefone, email) e redes; a fotografia com "Planear visita" por baixo (fora da imagem); o nome da Basílica (as quatro peças) e a barra legal (ligações em cima, direitos
- * e autoria por baixo). Páginas e redes na mesma grelha de duas colunas, alinhadas. Os rótulos de cada bloco em maiúsculas pequenas.
+ * e autoria por baixo). Páginas e redes na mesma grelha de duas colunas, alinhadas. Os rótulos de cada bloco como no desktop (minúsculas normais, a 60% de opacidade).
  */
 export default function HomeRodape() {
   const t = useTranslations('inicio')
@@ -48,7 +48,7 @@ export default function HomeRodape() {
     ))
 
   const linha = <div aria-hidden="true" className="h-px w-full bg-[rgba(247,242,238,0.16)]" />
-  const rotulo = 'text-[length:var(--t-etiqueta)] leading-[1.17] tracking-[calc(0.24*var(--u))] uppercase opacity-55'
+  const rotulo = 'text-[length:var(--t-etiqueta)] leading-[1.17] opacity-60'
 
   return (
     <footer
