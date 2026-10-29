@@ -14,12 +14,12 @@ const ALTURA = 168.718
 /* Os três estados, cada um com a sua escala e posição de topo. O logótipo é o
    mesmo desenho nos três, por isso muda por escala.
    - topo: 25% maior que no hero do Figma (411 × 211), a pedido do Martim
-   - barra: só o símbolo, 40px de altura, centrado na barra de scroll de 64px
-   - menu: só o símbolo, 48px de altura, centrado nos 88px do cabeçalho do painel */
+   - barra: só o símbolo, 46px de altura, centrado na barra de scroll de 64px
+   - menu: só o símbolo, 54px de altura, centrado nos 88px do cabeçalho do painel */
 const ESTADOS = {
   topo:      { escala: 1.25,               top: 10.5 },
-  barra:     { escala: 0.3517,             top: 9.85 },
-  menu:      { escala: 0.422,              top: 17.4 },
+  barra:     { escala: 0.4044,             top: 6.5 },
+  menu:      { escala: 0.4748,             top: 14.1 },
 }
 
 /* Na barra e no menu só fica o símbolo (a frase "Basílica da Estrela" desaparece).
@@ -39,8 +39,8 @@ const suave = (t: number) => t * t * t * (t * (t * 6 - 15) + 10)
    próprios, entram pelas variáveis CSS que a classe do logótipo define em `max-lg:`.
    No desktop as variáveis não existem e valem os de ESTADOS.
    - topo: 224 × 115, a 14 do topo
-   - barra: 49 de altura (0,29); menu: 51 de altura (0,3023, 99 de largura), a 6,5 do topo (Figma 239:4) */
-const MOBILE = 'max-lg:left-[calc(20*var(--u))] max-lg:[--logo-topo-e:0.68] max-lg:[--logo-topo-y:14] max-lg:[--logo-barra-e:0.3517] max-lg:[--logo-barra-y:9.85] max-lg:[--logo-menu-e:0.3517] max-lg:[--logo-menu-y:9.85]'
+   - barra e menu: só o símbolo, 46 de altura (0,4044), a 6,5 do topo, centrado na barra de 64 */
+const MOBILE = 'max-lg:left-[calc(20*var(--u))] max-lg:[--logo-topo-e:0.68] max-lg:[--logo-topo-y:14] max-lg:[--logo-barra-e:0.4044] max-lg:[--logo-barra-y:6.5] max-lg:[--logo-menu-e:0.4044] max-lg:[--logo-menu-y:6.5]'
 
 const v = (nome: string, desktop: number) => `var(--logo-${nome}, ${desktop})`
 
