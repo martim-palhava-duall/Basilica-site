@@ -5,6 +5,7 @@ import { useLayoutEffect, useRef, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import Revelar from '@/components/home/Revelar'
 import { u } from '@/lib/escala'
+import { ESTILO_GESTOS, useGaleriaGestos } from '@/lib/useGaleriaGestos'
 
 const TRIM = { textBox: 'trim-both cap alphabetic' } as React.CSSProperties
 
@@ -38,8 +39,9 @@ const FADE = 'transition-opacity duration-[600ms] ease-[var(--ease-out)]'
  * esquerda, o ano anterior sai (cortado na margem) e o novo ocupa o seu lugar;
  * texto e fotografia trocam por fade, empilhados no mesmo sítio.
  *
- * Mobile: o ano ativo em grande com as setas à direita, a linha do tempo (seis
- * traços, um por década) por baixo, depois a fotografia e o texto da década.
+ * Mobile e tablet: o índice das seis décadas (o traço ativo desliza por baixo do ano),
+ * a fotografia da década (desliza-se com o dedo para mudar), o título e o texto da
+ * década e, no fim, o contador e as setas, por baixo de uma régua de ponta a ponta.
  */
 export default function SobreHistoria() {
   const t = useTranslations('sobre')
@@ -60,6 +62,12 @@ export default function SobreHistoria() {
   }, [])
 
   const ir = (i: number) => setAtiva(Math.min(Math.max(i, 0), DECADAS.length - 1))
+  // Mobile e tablet: deslizar a fotografia (dedo, rato ou trackpad) muda de década
+  const { ref: palco, arrasto, arrastando } = useGaleriaGestos<HTMLDivElement>({
+    ir: (d) => setAtiva((a) => Math.min(Math.max(a + d, 0), DECADAS.length - 1)),
+    limiar: 50,
+  })
+  const n2 = (n: number) => String(n).padStart(2, '0')
 
   return (
     <section id="historia"
@@ -109,31 +117,9 @@ export default function SobreHistoria() {
         </div>
       </Revelar>
 
-      {/* ── Mobile: o ano em grande com as setas, e por baixo a linha do tempo (seis décadas, a ativa a cheio) ── */}
-      <div className="lg:hidden order-2 flex w-full flex-col gap-[calc(20*var(--u))]">
-        <div className="flex items-end justify-between w-full">
-          <p className="font-display text-[length:calc(56*var(--u))] leading-[calc(52*var(--u))] tracking-normal" aria-live="polite">{DECADAS[ativa].ano}</p>
-          <div className="flex items-center gap-[calc(28*var(--u))] pb-[calc(6*var(--u))]">
-            {([
-              { rotulo: 'histAnterior', destino: ativa - 1, desativada: ativa === 0, d: 'M23 6.5H1M6.5 1 1 6.5 6.5 12' },
-              { rotulo: 'histSeguinte', destino: ativa + 1, desativada: ativa === DECADAS.length - 1, d: 'M1 6.5h22M17.5 1 23 6.5 17.5 12' },
-            ] as const).map((b) => (
-              <button
-                key={b.rotulo}
-                type="button"
-                aria-label={t(b.rotulo)}
-                disabled={b.desativada}
-                onClick={() => ir(b.destino)}
-                className={`flex h-[calc(32*var(--u))] w-[calc(32*var(--u))] items-center justify-center transition-opacity duration-[400ms] ease-[var(--ease-out)] ${b.desativada ? 'opacity-30' : 'opacity-90'}`}
-              >
-                <svg aria-hidden="true" width="24" height="13" viewBox="0 0 24 13" fill="none" style={{ width: u(24), height: u(13) }}>
-                  <path d={b.d} stroke="currentColor" strokeWidth="1.2" />
-                </svg>
-              </button>
-            ))}
-          </div>
-        </div>
-        <div role="tablist" className="flex w-full gap-[calc(6*var(--u))]">
+      {/* ── Mobile e tablet: índice das décadas (o traço ativo desliza por baixo do ano) ── */}
+      <div role="tablist" aria-label={t('histLabel')} className="lg:hidden order-2 relative w-full pb-[calc(12*var(--u))]">
+        <div className="flex w-full">
           {DECADAS.map((d, i) => (
             <button
               key={d.ano}
@@ -141,11 +127,35 @@ export default function SobreHistoria() {
               role="tab"
               aria-selected={i === ativa}
               onClick={() => ir(i)}
-              className="flex flex-1 flex-col gap-[calc(8*var(--u))] text-left outline-none"
+              className={`flex-1 py-[calc(6*var(--u))] text-left font-display text-[length:calc(17*var(--u))] leading-none outline-none ${FADE}`}
+              style={{ opacity: i === ativa ? 1 : 0.45 }}
             >
-              <span className={`block h-px w-full bg-current ${FADE}`} style={{ opacity: i === ativa ? 1 : 0.3 }} />
-              <span className={`text-[length:calc(12*var(--u))] leading-[1.2] ${FADE}`} style={{ opacity: i === ativa ? 1 : 0.5 }}>{d.ano}</span>
+              {d.ano}
             </button>
+          ))}
+        </div>
+        <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-px bg-current opacity-25" />
+        <span
+          aria-hidden="true"
+          className="absolute bottom-0 left-0 h-[calc(2*var(--u))] w-[calc(100%/6)] -translate-y-[calc(0.5*var(--u))] bg-current transition-transform duration-[600ms] ease-[var(--ease-out)]"
+          style={{ transform: `translateX(${ativa * 100}%)` }}
+        />
+      </div>
+
+      {/* ── Mobile e tablet: a fotografia da década; desliza-se para mudar ── */}
+      <div
+        ref={palco}
+        className="lg:hidden order-3 relative h-[calc(300*var(--u))] md:h-[calc(340*var(--u))] w-full overflow-hidden rounded-[calc(4*var(--u))]"
+        style={{ ...ESTILO_GESTOS }}
+      >
+        <div
+          className="absolute inset-0 transition-transform duration-[500ms] ease-[var(--ease-out)]"
+          style={{ transform: `translateX(${arrasto * 0.25}px)`, transitionDuration: arrastando ? '0ms' : undefined }}
+        >
+          {DECADAS.map((d, i) => (
+            <div key={d.ano} className={`absolute inset-0 ${FADE}`} style={{ opacity: i === ativa ? 1 : 0 }}>
+              <Image src={d.foto} alt={i === ativa ? t('histFotoAlt') : ''} fill sizes="100vw" className="object-cover object-bottom" />
+            </div>
           ))}
         </div>
       </div>
@@ -156,22 +166,48 @@ export default function SobreHistoria() {
           <div
             key={d.ano}
             aria-hidden={i !== ativa}
-            className={`col-start-1 row-start-1 flex flex-col gap-[calc(32*var(--u))] max-lg:gap-[calc(16*var(--u))] ${FADE}`}
+            className={`col-start-1 row-start-1 flex flex-col gap-[calc(32*var(--u))] max-lg:gap-[calc(14*var(--u))] ${FADE}`}
             style={{ opacity: i === ativa ? 1 : 0, pointerEvents: i === ativa ? undefined : 'none' }}
           >
-            <p className="font-display text-[length:calc(64*var(--u))] max-lg:hidden leading-[calc(96*var(--u))]" style={TRIM}>{t('histDecada', { ano: d.ano })}</p>
+            <p className="font-display text-[length:calc(64*var(--u))] max-lg:text-[length:calc(28*var(--u))] leading-[calc(96*var(--u))] max-lg:leading-[calc(32*var(--u))]" style={TRIM}>{t('histDecada', { ano: d.ano })}</p>
             <p className="text-[length:calc(16*var(--u))] leading-[1.5]">{t(`hist${d.ano}`)}</p>
           </div>
         ))}
       </div>
 
       {/* ── Fotografia ── */}
-      <div className="absolute left-[calc(963*var(--u))] top-[calc(342*var(--u))] h-[calc(541*var(--u))] w-[calc(445*var(--u))] max-lg:relative max-lg:left-auto max-lg:top-auto max-lg:order-3 max-lg:h-[calc(300*var(--u))] max-lg:w-full rounded-[calc(4*var(--u))] overflow-hidden">
+      <div className="absolute left-[calc(963*var(--u))] top-[calc(342*var(--u))] h-[calc(541*var(--u))] w-[calc(445*var(--u))] max-lg:hidden rounded-[calc(4*var(--u))] overflow-hidden">
         {DECADAS.map((d, i) => (
           <div key={d.ano} className={`absolute inset-0 ${FADE}`} style={{ opacity: i === ativa ? 1 : 0 }}>
             <Image src={d.foto} alt={i === ativa ? t('histFotoAlt') : ''} fill sizes="445px" className="object-cover object-bottom" />
           </div>
         ))}
+      </div>
+
+      {/* ── Mobile e tablet: contador e setas, depois de ler ── */}
+      <div className="lg:hidden order-5 -mx-[calc(20*var(--u))] flex w-[calc(100%+40*var(--u))] items-center justify-between border-t border-solid border-[rgba(247,242,238,0.25)] px-[calc(20*var(--u))] pt-[calc(16*var(--u))]">
+        <span className="text-[length:calc(12*var(--u))] leading-none tabular-nums opacity-70">
+          {n2(ativa + 1)} / {n2(DECADAS.length)}
+        </span>
+        <div className="flex items-center gap-[calc(8*var(--u))]">
+          {([
+            { rotulo: 'histAnterior', destino: ativa - 1, desativada: ativa === 0, d: 'M23 6.5H1M6.5 1 1 6.5 6.5 12' },
+            { rotulo: 'histSeguinte', destino: ativa + 1, desativada: ativa === DECADAS.length - 1, d: 'M1 6.5h22M17.5 1 23 6.5 17.5 12' },
+          ] as const).map((b) => (
+            <button
+              key={b.rotulo}
+              type="button"
+              aria-label={t(b.rotulo)}
+              disabled={b.desativada}
+              onClick={() => ir(b.destino)}
+              className="flex size-[calc(40*var(--u))] items-center justify-center rounded-full border border-solid border-[rgba(247,242,238,0.45)] transition-opacity duration-[400ms] ease-[var(--ease-out)] disabled:opacity-30"
+            >
+              <svg aria-hidden="true" width="24" height="13" viewBox="0 0 24 13" fill="none" style={{ width: u(16), height: u(9) }}>
+                <path d={b.d} stroke="currentColor" strokeWidth="1.4" />
+              </svg>
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* ── Setas: o SVG do Figma tem as duas; cada botão mostra uma metade (no mobile, juntas, em fila) ── */}
