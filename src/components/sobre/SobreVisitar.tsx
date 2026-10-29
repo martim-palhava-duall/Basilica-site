@@ -24,8 +24,8 @@ function Thumb({ children }: { children: React.ReactNode }) {
  *
  * Mobile e tablet: o mesmo tratamento do "O que procura?" da homepage (que tem o mesmo
  * desenho no desktop): cada frase numa linha (26), com a miniatura de 56×37 ao lado, em
- * ziguezague — antes da frase e com um recuo de 36 na primeira e na terceira, depois da
- * frase na segunda. No fim, o local (apagado), o texto e o botão.
+ * mesma margem: as três juntas e alinhadas, cada uma com a miniatura antes da frase
+ * (no desktop continuam desencontradas). No fim, o local (apagado), o texto e o botão.
  *
  * É o destino de "Visitar" no menu (#visitar).
  */
@@ -43,7 +43,7 @@ export default function SobreVisitar() {
       </Revelar>
 
       {/* 1 — miniatura à esquerda, texto à direita */}
-      <div className="absolute left-[calc(279*var(--u))] top-[calc(282*var(--u))] max-lg:static max-lg:ml-[calc(36*var(--u))] md:max-lg:ml-[calc(72*var(--u))] max-lg:py-[calc(18*var(--u))]">
+      <div className="absolute left-[calc(279*var(--u))] top-[calc(282*var(--u))] max-lg:static max-lg:py-[calc(6*var(--u))]">
         <Revelar atraso={150}>
           <div className="flex items-center gap-[calc(32*var(--u))] max-lg:gap-[calc(12*var(--u))] md:max-lg:gap-[calc(18*var(--u))]">
             <Thumb>
@@ -63,9 +63,9 @@ export default function SobreVisitar() {
       </div>
 
       {/* 2 — texto à esquerda, miniatura à direita */}
-      <div className="absolute left-[calc(144*var(--u))] top-[calc(388.66*var(--u))] max-lg:static max-lg:py-[calc(18*var(--u))]">
+      <div className="absolute left-[calc(144*var(--u))] top-[calc(388.66*var(--u))] max-lg:static max-lg:py-[calc(6*var(--u))]">
         <Revelar atraso={270}>
-          <div className="flex items-center gap-[calc(32*var(--u))] max-lg:gap-[calc(12*var(--u))] md:max-lg:gap-[calc(18*var(--u))]">
+          <div className="flex items-center gap-[calc(32*var(--u))] max-lg:flex-row-reverse max-lg:justify-end max-lg:gap-[calc(12*var(--u))] md:max-lg:gap-[calc(18*var(--u))]">
             <p className={LINHA} style={TRIM}>
               <span>{t('visitarL2a')}</span>
               {' '}<span className="italic font-light" style={ITALICO}>{t('visitarL2b')}</span>
@@ -78,7 +78,7 @@ export default function SobreVisitar() {
       </div>
 
       {/* 3 — miniatura à esquerda, texto à direita */}
-      <div className="absolute left-[calc(279*var(--u))] top-[calc(495.32*var(--u))] max-lg:static max-lg:ml-[calc(36*var(--u))] md:max-lg:ml-[calc(72*var(--u))] max-lg:py-[calc(18*var(--u))]">
+      <div className="absolute left-[calc(279*var(--u))] top-[calc(495.32*var(--u))] max-lg:static max-lg:py-[calc(6*var(--u))]">
         <Revelar atraso={390}>
           <div className="flex items-center gap-[calc(32*var(--u))] max-lg:gap-[calc(12*var(--u))] md:max-lg:gap-[calc(18*var(--u))]">
             <Thumb>
@@ -92,7 +92,7 @@ export default function SobreVisitar() {
         </Revelar>
       </div>
 
-      <Revelar className="absolute left-[calc(32*var(--u))] top-[calc(745*var(--u))] max-lg:static max-lg:mt-[calc(80*var(--u))] max-lg:mb-[calc(16*var(--u))]">
+      <Revelar className="absolute left-[calc(32*var(--u))] top-[calc(745*var(--u))] max-lg:static max-lg:mt-[calc(72*var(--u))] max-lg:mb-[calc(16*var(--u))]">
         <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap max-lg:opacity-60">{t('visitarLocal')}</p>
       </Revelar>
 
