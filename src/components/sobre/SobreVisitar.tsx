@@ -36,14 +36,14 @@ export default function SobreVisitar() {
     <section
       id="visitar"
       data-barra="var(--bege-escuro-2)"
-      className="relative w-full h-[calc(900*var(--u))] max-lg:h-auto max-lg:flex max-lg:flex-col max-lg:px-[calc(20*var(--u))] max-lg:py-[calc(80*var(--u))] scroll-mt-[calc(64*var(--u))] bg-[var(--bege-escuro-2)] text-[var(--azul-escuro)]"
+      className="relative w-full h-[calc(900*var(--u))] max-lg:h-auto max-lg:flex max-lg:flex-col max-lg:px-[calc(20*var(--u))] max-lg:py-[calc(120*var(--u))] scroll-mt-[calc(64*var(--u))] bg-[var(--bege-escuro-2)] text-[var(--azul-escuro)]"
     >
-      <Revelar className="absolute left-[calc(32*var(--u))] top-[calc(140*var(--u))] max-lg:static max-lg:pb-[calc(28*var(--u))]">
+      <Revelar className="absolute left-[calc(32*var(--u))] top-[calc(140*var(--u))] max-lg:static max-lg:pb-[calc(56*var(--u))]">
         <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{t('visitarLabel')}</p>
       </Revelar>
 
       {/* 1 — miniatura à esquerda, texto à direita */}
-      <div className="absolute left-[calc(279*var(--u))] top-[calc(282*var(--u))] max-lg:static max-lg:ml-[calc(36*var(--u))] md:max-lg:ml-[calc(72*var(--u))] max-lg:py-[calc(8*var(--u))]">
+      <div className="absolute left-[calc(279*var(--u))] top-[calc(282*var(--u))] max-lg:static max-lg:ml-[calc(36*var(--u))] md:max-lg:ml-[calc(72*var(--u))] max-lg:py-[calc(18*var(--u))]">
         <Revelar atraso={150}>
           <div className="flex items-center gap-[calc(32*var(--u))] max-lg:gap-[calc(12*var(--u))] md:max-lg:gap-[calc(18*var(--u))]">
             <Thumb>
@@ -63,7 +63,7 @@ export default function SobreVisitar() {
       </div>
 
       {/* 2 — texto à esquerda, miniatura à direita */}
-      <div className="absolute left-[calc(144*var(--u))] top-[calc(388.66*var(--u))] max-lg:static max-lg:py-[calc(8*var(--u))]">
+      <div className="absolute left-[calc(144*var(--u))] top-[calc(388.66*var(--u))] max-lg:static max-lg:py-[calc(18*var(--u))]">
         <Revelar atraso={270}>
           <div className="flex items-center gap-[calc(32*var(--u))] max-lg:gap-[calc(12*var(--u))] md:max-lg:gap-[calc(18*var(--u))]">
             <p className={LINHA} style={TRIM}>
@@ -78,7 +78,7 @@ export default function SobreVisitar() {
       </div>
 
       {/* 3 — miniatura à esquerda, texto à direita */}
-      <div className="absolute left-[calc(279*var(--u))] top-[calc(495.32*var(--u))] max-lg:static max-lg:ml-[calc(36*var(--u))] md:max-lg:ml-[calc(72*var(--u))] max-lg:py-[calc(8*var(--u))]">
+      <div className="absolute left-[calc(279*var(--u))] top-[calc(495.32*var(--u))] max-lg:static max-lg:ml-[calc(36*var(--u))] md:max-lg:ml-[calc(72*var(--u))] max-lg:py-[calc(18*var(--u))]">
         <Revelar atraso={390}>
           <div className="flex items-center gap-[calc(32*var(--u))] max-lg:gap-[calc(12*var(--u))] md:max-lg:gap-[calc(18*var(--u))]">
             <Thumb>
@@ -92,14 +92,14 @@ export default function SobreVisitar() {
         </Revelar>
       </div>
 
-      <Revelar className="absolute left-[calc(32*var(--u))] top-[calc(745*var(--u))] max-lg:static max-lg:mt-[calc(48*var(--u))] max-lg:mb-[calc(14*var(--u))]">
+      <Revelar className="absolute left-[calc(32*var(--u))] top-[calc(745*var(--u))] max-lg:static max-lg:mt-[calc(80*var(--u))] max-lg:mb-[calc(16*var(--u))]">
         <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap max-lg:opacity-60">{t('visitarLocal')}</p>
       </Revelar>
 
       <div className="absolute left-[calc(900*var(--u))] top-[calc(712*var(--u))] max-lg:static">
         <Revelar atraso={300}>
-          <div className="flex items-start gap-[calc(32*var(--u))] max-lg:flex-col max-lg:gap-[calc(28*var(--u))]">
-            <p className="font-[family-name:var(--font-body-light)] text-[length:calc(20*var(--u))] max-lg:text-[length:calc(16*var(--u))] leading-[calc(32*var(--u))] max-lg:leading-[1.5] whitespace-nowrap max-lg:whitespace-normal max-lg:max-w-[calc(330*var(--u))]" style={TRIM}>
+          <div className="flex items-start gap-[calc(32*var(--u))] max-lg:flex-col max-lg:gap-[calc(32*var(--u))]">
+            <p className="font-[family-name:var(--font-body-light)] text-[length:calc(20*var(--u))] max-lg:text-[length:max(11px,calc(12*var(--u)))] leading-[calc(32*var(--u))] max-lg:leading-[1.4] whitespace-nowrap max-lg:whitespace-normal max-lg:max-w-[calc(330*var(--u))]" style={TRIM}>
               {t('visitarTexto1')}{' '}
               <br className="max-lg:hidden" />
               {t('visitarTexto2')}
