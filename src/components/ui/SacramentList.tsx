@@ -112,7 +112,7 @@ export default function SacramentList({ items, labels }: { items: Sacramento[]; 
                 origemRef.current = e.currentTarget
                 setAberto(i)
               }}
-              className="group/mais inline-flex items-center gap-3 text-[0.9rem]"
+              className="alvo-toque group/mais inline-flex items-center gap-3 text-[0.9rem]"
             >
               <span className="underline underline-offset-[5px] decoration-[0.5px]">{labels.saibaMais}</span>
               <span className="transition-transform duration-300 ease-[var(--ease-out)] group-hover/mais:translate-x-[3px]">
@@ -220,7 +220,7 @@ export default function SacramentList({ items, labels }: { items: Sacramento[]; 
             <Link
               href="/contactos"
               className="group/btn inline-flex items-stretch overflow-hidden text-[0.85rem] bg-[var(--color-text-primary)] text-[var(--color-text-inverse)] hover:bg-[var(--brand-blue)] transition-colors duration-[350ms] ease-[var(--ease-out)]"
-              style={{ borderRadius: 'var(--radius)' }}
+              style={{ borderRadius: 'calc(4 * var(--u))' }}
             >
               <span className="flex items-center px-7 py-3.5 leading-none">{labels.cta}</span>
               <span className="flex items-center px-4 border-l border-current/25">

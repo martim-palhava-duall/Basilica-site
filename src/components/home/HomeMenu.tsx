@@ -116,7 +116,7 @@ export default function HomeMenu() {
                 ref={fecharRef}
                 type="button"
                 onClick={fechar}
-                className="btn-luz h-[calc(32*var(--u))] px-[calc(20*var(--u))] flex items-center rounded-[calc(6*var(--u))] border border-solid border-[var(--texto-escuro)] text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] text-[var(--texto-escuro)] transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
+                className="btn-luz h-[calc(32*var(--u))] px-[calc(20*var(--u))] flex items-center rounded-[calc(4*var(--u))] border border-solid border-[var(--texto-escuro)] text-[length:var(--t-etiqueta)] leading-[1.17] text-[var(--texto-escuro)] transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
               >
                 {t('menuFechar')}
               </button>
@@ -124,7 +124,7 @@ export default function HomeMenu() {
             <Link
               href="/basilica-e-convento"
               onClick={fechar}
-              className="btn-luz h-[calc(32*var(--u))] px-[calc(20*var(--u))] flex items-center rounded-[calc(4*var(--u))] bg-[var(--texto-escuro)] text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] text-[rgba(247,242,238,0.85)] transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
+              className="btn-luz h-[calc(32*var(--u))] px-[calc(20*var(--u))] flex items-center rounded-[calc(4*var(--u))] bg-[var(--texto-escuro)] text-[length:var(--t-etiqueta)] leading-[1.17] text-[rgba(247,242,238,0.85)] transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
             >
               {t('menuVisitar')}
             </Link>
@@ -161,15 +161,15 @@ export default function HomeMenu() {
           className="absolute top-[calc(120*var(--u))] w-[calc(213*var(--u))] flex flex-col gap-[calc(32*var(--u))] text-[var(--texto-escuro)]"
           style={{ left: 'calc(50% + 10 * var(--u))', ...entra(560) }}
         >
-          <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold">{t('menuHorarioHead')}</p>
+          <p className="text-[length:var(--t-etiqueta)] leading-[1.17] font-bold">{t('menuHorarioHead')}</p>
           <div className="flex flex-col gap-[calc(24*var(--u))]">
             <div className="flex flex-col gap-[calc(3.19*var(--u))]">
-              <p className="text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] font-bold uppercase whitespace-nowrap">{th('missasSemHoras')}</p>
-              <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] whitespace-nowrap">{th('missasSemDias')}</p>
+              <p className="text-[length:var(--t-corpo)] leading-[1.19] font-bold uppercase whitespace-nowrap">{th('missasSemHoras')}</p>
+              <p className="text-[length:var(--t-etiqueta)] leading-[1.17] whitespace-nowrap">{th('missasSemDias')}</p>
             </div>
             <div className="flex flex-col gap-[calc(3.19*var(--u))]">
-              <p className="text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] font-bold uppercase whitespace-nowrap">{th('missasDomHoras')}</p>
-              <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] whitespace-nowrap">{th('missasDomDias')}</p>
+              <p className="text-[length:var(--t-corpo)] leading-[1.19] font-bold uppercase whitespace-nowrap">{th('missasDomHoras')}</p>
+              <p className="text-[length:var(--t-etiqueta)] leading-[1.17] whitespace-nowrap">{th('missasDomDias')}</p>
             </div>
           </div>
         </div>
@@ -187,7 +187,7 @@ export default function HomeMenu() {
             href={BILHETEIRA}
             {...externo(BILHETEIRA)}
             onClick={fechar}
-            className="group/btn sem-luz self-start inline-flex items-center gap-[calc(9.6*var(--u))] text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] text-[var(--texto-escuro)]"
+            className="alvo-toque group/btn sem-luz self-start inline-flex items-center gap-[calc(9.6*var(--u))] text-[length:var(--t-corpo)] leading-[1.19] text-[var(--texto-escuro)]"
           >
             {t('menuPlanear')}
             <Seta className="group-hover/btn:translate-x-[calc(4*var(--u))]" />
@@ -198,7 +198,7 @@ export default function HomeMenu() {
             Só o Instagram tem endereço conhecido; os restantes ficam como
             texto até haver os links. */}
         <div
-          className="absolute top-[calc(523*var(--u))] left-[calc(32*var(--u))] flex items-center gap-[calc(24*var(--u))] text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] text-[var(--texto-escuro)]"
+          className="absolute top-[calc(523*var(--u))] left-[calc(32*var(--u))] flex items-center gap-[calc(24*var(--u))] text-[length:var(--t-corpo)] leading-[1.19] text-[var(--texto-escuro)]"
           style={entra(700)}
         >
           <span className="opacity-40">Facebook</span>
@@ -255,7 +255,7 @@ export default function HomeMenu() {
             ref={fecharMobRef}
             type="button"
             onClick={fechar}
-            className="btn-luz min-w-[calc(76*var(--u))] justify-center h-[calc(36*var(--u))] px-[calc(16*var(--u))] flex items-center rounded-[calc(4*var(--u))] border border-solid border-[rgba(247,242,238,0.4)] text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] text-[var(--bege-claro-2)]"
+            className="btn-luz min-w-[calc(76*var(--u))] justify-center h-[calc(36*var(--u))] px-[calc(16*var(--u))] flex items-center rounded-[calc(4*var(--u))] border border-solid border-[rgba(247,242,238,0.4)] text-[length:var(--t-etiqueta)] leading-[1.17] text-[var(--bege-claro-2)]"
           >
             {t('menuFechar')}
           </button>
@@ -288,8 +288,8 @@ export default function HomeMenu() {
             <div className="flex flex-col gap-[calc(8*var(--u))]">
               <p className="text-[length:calc(15*var(--u))] leading-[calc(18*var(--u))] opacity-60">{t('menuHorarioHead')}</p>
               <div className="flex flex-col gap-[calc(20*var(--u))]">
-                <p className="flex flex-col gap-[calc(2*var(--u))] text-[length:calc(12*var(--u))] leading-[calc(14*var(--u))]"><span className="text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] font-bold">{th('missasSemHoras')}</span>{th('missasSemDias')}</p>
-                <p className="flex flex-col gap-[calc(2*var(--u))] text-[length:calc(12*var(--u))] leading-[calc(14*var(--u))]"><span className="text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] font-bold">{th('missasDomHoras')}</span>{th('missasDomDias')}</p>
+                <p className="flex flex-col gap-[calc(2*var(--u))] text-[length:var(--t-etiqueta)] leading-[1.17]"><span className="text-[length:var(--t-corpo)] leading-[1.19] font-bold">{th('missasSemHoras')}</span>{th('missasSemDias')}</p>
+                <p className="flex flex-col gap-[calc(2*var(--u))] text-[length:var(--t-etiqueta)] leading-[1.17]"><span className="text-[length:var(--t-corpo)] leading-[1.19] font-bold">{th('missasDomHoras')}</span>{th('missasDomDias')}</p>
               </div>
             </div>
           </div>
@@ -308,7 +308,7 @@ export default function HomeMenu() {
               </span>
               <span className="flex min-h-[calc(90*var(--u))] items-center px-[calc(18*var(--u))] font-display text-[length:calc(24*var(--u))] leading-[1.2]">{t('menuBilhete')}</span>
               <span className="flex items-center justify-between border-t border-solid border-[rgba(247,242,238,0.22)] px-[calc(18*var(--u))] py-[calc(18*var(--u))]">
-                <span className="text-[length:calc(16*var(--u))] leading-none">{t('menuPlanear')}</span>
+                <span className="text-[length:var(--t-corpo)] leading-none">{t('menuPlanear')}</span>
                 <span aria-hidden="true" className="flex h-[calc(44*var(--u))] w-[calc(44*var(--u))] items-center justify-center rounded-full bg-[var(--bege-claro-2)] text-[var(--azul-escuro)]">
                   <span className="seta-externa" />
                 </span>

@@ -16,7 +16,7 @@ export default function ObraCapa() {
     <section data-barra="var(--bege-claro-2)" className="w-full px-[calc(32*var(--u))] pt-[calc(120*var(--u))] max-lg:px-[calc(20*var(--u))] max-lg:pt-[calc(40*var(--u))] bg-[var(--bege-claro-2)] text-[var(--azul-escuro)]">
       <div className="flex w-full flex-col gap-[calc(64*var(--u))] max-lg:gap-[calc(32*var(--u))]">
         <div className="flex w-full flex-col gap-[calc(24*var(--u))]">
-          <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))]">{t('label')}</p></Revelar>
+          <Revelar><p className="text-[length:var(--t-etiqueta)] leading-[1.17]">{t('label')}</p></Revelar>
           <Revelar atraso={100}>
             <h1
               className="font-display text-[length:calc(80*var(--u))] max-lg:text-[length:calc(40*var(--u))] leading-[1.2] font-normal whitespace-nowrap max-lg:whitespace-normal"

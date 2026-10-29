@@ -45,7 +45,7 @@ export default function Button({
   }
 
   const classes = `${base} ${variants[variant]} ${className}`
-  const radius = isGhost ? undefined : { borderRadius: 'var(--radius)' }
+  const radius = isGhost ? undefined : { borderRadius: 'calc(4 * var(--u))' }
 
   const arrowSvg = (
     <svg

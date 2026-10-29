@@ -43,7 +43,7 @@ export default function SobreConvento() {
       />
 
       <div className="absolute left-[calc(336*var(--u))] top-[calc(180*var(--u))] max-lg:relative max-lg:left-auto max-lg:top-auto max-lg:w-full flex flex-col gap-[calc(8.895*var(--u))] w-[calc(768*var(--u))]">
-        <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{t('convLabel')}</p></Revelar>
+        <Revelar><p className="text-[length:var(--t-etiqueta)] leading-[1.4]">{t('convLabel')}</p></Revelar>
         <Revelar atraso={100}>
           <h2 className="font-display text-[length:calc(96*var(--u))] leading-[calc(105.6*var(--u))] max-lg:text-[length:calc(44*var(--u))] max-lg:leading-[calc(48*var(--u))] max-lg:tracking-normal tracking-[calc(-0.576*var(--u))] font-normal">
             <span className="block">{t.rich('convL1', { i })}</span>
@@ -57,7 +57,7 @@ export default function SobreConvento() {
           <Link
             href={BILHETEIRA}
             {...externo(BILHETEIRA)}
-            className="group/btn flex max-lg:w-fit items-center gap-[calc(11.91*var(--u))] h-[calc(46.8*var(--u))] px-[calc(29.6*var(--u))] rounded-[calc(4*var(--u))] bg-[var(--vermelho)] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap text-[var(--bege-claro-2)] transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
+            className="group/btn flex max-lg:w-fit items-center gap-[calc(11.91*var(--u))] h-[calc(46.8*var(--u))] px-[calc(29.6*var(--u))] rounded-[calc(4*var(--u))] bg-[var(--vermelho)] text-[length:var(--t-etiqueta)] leading-[1.4] whitespace-nowrap text-[var(--bege-claro-2)] transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
           >
             {t('convCta')}
             <Seta className="group-hover/btn:translate-x-[calc(4*var(--u))]" />

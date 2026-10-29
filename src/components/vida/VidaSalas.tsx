@@ -29,12 +29,12 @@ export default function VidaSalas() {
     >
       <div className="flex w-[calc(562*var(--u))] max-lg:w-full flex-col gap-[calc(48*var(--u))] max-lg:gap-[calc(28*var(--u))]">
         <div className="flex w-full flex-col gap-[calc(24*var(--u))]">
-          <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] text-[#1d2328]">{t('salaLabel')}</p></Revelar>
+          <Revelar><p className="text-[length:var(--t-etiqueta)] leading-[1.4] text-[#1d2328]">{t('salaLabel')}</p></Revelar>
           <Revelar atraso={100}>
             <h2 className="font-display text-[length:calc(64*var(--u))] max-lg:text-[length:calc(36*var(--u))] leading-[1.2] font-normal" style={TRIM}>{t('salaTitulo')}</h2>
           </Revelar>
         </div>
-        <Revelar atraso={200}><p className="w-[calc(445*var(--u))] max-lg:w-full text-[length:calc(16*var(--u))] leading-[1.5] text-[#1d2328]">{t('salaTexto')}</p></Revelar>
+        <Revelar atraso={200}><p className="w-[calc(445*var(--u))] max-lg:w-full text-[length:var(--t-corpo)] leading-[1.5] text-[#1d2328]">{t('salaTexto')}</p></Revelar>
       </div>
 
       <Revelar atraso={150} className="w-[calc(678*var(--u))] max-lg:w-full">
@@ -45,7 +45,7 @@ export default function VidaSalas() {
                 <div aria-hidden="true" className={LINHA} />
                 <div className="flex w-full items-center justify-between max-lg:flex-col max-lg:items-start max-lg:gap-[calc(12*var(--u))]">
                   <h3 className="font-display text-[length:calc(32*var(--u))] max-lg:text-[length:calc(28*var(--u))] leading-[1.2] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal font-normal whitespace-nowrap" style={TRIM}>{t(`${k}Titulo`)}</h3>
-                  <p className="w-[calc(248*var(--u))] max-lg:w-full text-[length:calc(16*var(--u))] leading-[1.5]">{t(`${k}Texto`)}</p>
+                  <p className="w-[calc(248*var(--u))] max-lg:w-full text-[length:var(--t-corpo)] leading-[1.5]">{t(`${k}Texto`)}</p>
                 </div>
               </div>
             ))}
@@ -55,8 +55,8 @@ export default function VidaSalas() {
               <div className="flex w-full items-center gap-[calc(330*var(--u))] max-lg:flex-col max-lg:items-start max-lg:gap-[calc(12*var(--u))]">
                 <h3 className="font-display text-[length:calc(32*var(--u))] max-lg:text-[length:calc(28*var(--u))] leading-[1.2] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal font-normal whitespace-nowrap" style={TRIM}>{t('salaHorariosTitulo')}</h3>
                 <div className="flex flex-col gap-[calc(3.19*var(--u))] text-[var(--azul-escuro)]">
-                  <p className="text-[length:calc(16*var(--u))] leading-[calc(17*var(--u))] font-bold whitespace-nowrap">{t('salaHoras')}</p>
-                  <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] whitespace-nowrap">{t('salaDias')}</p>
+                  <p className="text-[length:var(--t-corpo)] leading-[1.06] font-bold whitespace-nowrap">{t('salaHoras')}</p>
+                  <p className="text-[length:var(--t-etiqueta)] leading-[1.17] whitespace-nowrap">{t('salaDias')}</p>
                 </div>
               </div>
               <div aria-hidden="true" className={LINHA} />
@@ -65,7 +65,7 @@ export default function VidaSalas() {
 
           <Link
             href="/contactos"
-            className="group/btn flex h-[calc(45.8*var(--u))] items-center gap-[calc(12*var(--u))] self-start rounded-[calc(6*var(--u))] border border-solid border-[rgba(28,43,57,0.45)] px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap text-[var(--azul-escuro)] transition-[background-color,color,border-color] duration-[400ms] ease-[var(--ease-out)]"
+            className="group/btn flex h-[calc(45.8*var(--u))] items-center gap-[calc(12*var(--u))] self-start rounded-[calc(4*var(--u))] border border-solid border-[rgba(28,43,57,0.45)] px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] text-[length:var(--t-etiqueta)] leading-[1.4] whitespace-nowrap text-[var(--azul-escuro)] transition-[background-color,color,border-color] duration-[400ms] ease-[var(--ease-out)]"
           >
             {t('salaCta')}
             <Seta className="group-hover/btn:translate-x-[calc(4*var(--u))]" />

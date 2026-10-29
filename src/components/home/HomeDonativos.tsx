@@ -35,7 +35,7 @@ export default function HomeDonativos() {
       />
 
       <div className="absolute left-[calc(265*var(--u))] top-[calc(222*var(--u))] max-lg:relative max-lg:left-auto max-lg:top-auto max-lg:w-full flex flex-col gap-[calc(8.895*var(--u))] w-[calc(768*var(--u))]">
-        <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{t('donLabel')}</p></Revelar>
+        <Revelar><p className="text-[length:var(--t-etiqueta)] leading-[1.4]">{t('donLabel')}</p></Revelar>
         <Revelar atraso={100}>
           <h2 className="font-display text-[length:calc(96*var(--u))] leading-[calc(105.6*var(--u))] tracking-[calc(-0.576*var(--u))] max-lg:text-[length:calc(48*var(--u))] max-lg:leading-[calc(52*var(--u))] max-lg:tracking-normal font-normal">
             <span className="block">{t('donT1')}</span>
@@ -49,14 +49,14 @@ export default function HomeDonativos() {
       <div className="absolute left-[calc(850*var(--u))] top-[calc(497.9*var(--u))] max-lg:relative max-lg:left-auto max-lg:top-auto w-[calc(325*var(--u))] max-lg:w-full">
         <Revelar atraso={250}>
           <div className="flex flex-col gap-[calc(40*var(--u))] items-start w-full">
-            <p className="font-[family-name:var(--font-body-light)] text-[length:calc(20*var(--u))] leading-[1.4] max-lg:text-[length:calc(18*var(--u))]">
+            <p className="font-[family-name:var(--font-body-light)] text-[length:var(--t-lead)] leading-[1.4] max-lg:text-[length:calc(18*var(--u))]">
               {t('donTexto1')}
               <br />
               {t('donTexto2')}
             </p>
             <Link
               href="/donativos"
-              className="group/btn flex items-center gap-[calc(12*var(--u))] px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] rounded-[calc(6*var(--u))] bg-[var(--azul-claro)] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap text-[var(--azul-escuro)] transition-[background-color] duration-[400ms] ease-[var(--ease-out)]"
+              className="group/btn flex items-center gap-[calc(12*var(--u))] px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] rounded-[calc(4*var(--u))] bg-[var(--azul-claro)] text-[length:var(--t-etiqueta)] leading-[1.4] whitespace-nowrap text-[var(--azul-escuro)] transition-[background-color] duration-[400ms] ease-[var(--ease-out)]"
             >
               {t('donCta')}
               <Seta className="group-hover/btn:translate-x-[calc(4*var(--u))]" />

@@ -38,14 +38,14 @@ export default function HomeBarra() {
             aria-expanded={aberto}
             aria-controls="home-menu"
             onClick={abrir}
-            className={`btn-luz max-lg:min-w-[calc(76*var(--u))] max-lg:h-[calc(36*var(--u))] max-lg:px-[calc(16*var(--u))] max-lg:rounded-[calc(4*var(--u))] max-lg:justify-center h-[calc(32*var(--u))] px-[calc(20*var(--u))] flex items-center rounded-[calc(6*var(--u))] border border-solid text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] transition-[background-color,color,border-color] duration-[400ms] ease-[var(--ease-out)] ${clara ? 'border-[var(--bege-claro-2)] text-[var(--bege-claro-2)]' : 'border-[var(--texto-escuro)] text-[var(--texto-escuro)]'}`}
+            className={`btn-luz max-lg:before:absolute max-lg:before:-inset-[5px] max-lg:before:content-[''] max-lg:min-w-[calc(76*var(--u))] max-lg:h-[calc(36*var(--u))] max-lg:px-[calc(16*var(--u))] max-lg:rounded-[calc(4*var(--u))] max-lg:justify-center h-[calc(32*var(--u))] px-[calc(20*var(--u))] flex items-center rounded-[calc(4*var(--u))] border border-solid text-[length:var(--t-etiqueta)] leading-[1.17] transition-[background-color,color,border-color] duration-[400ms] ease-[var(--ease-out)] ${clara ? 'border-[var(--bege-claro-2)] text-[var(--bege-claro-2)]' : 'border-[var(--texto-escuro)] text-[var(--texto-escuro)]'}`}
           >
             {t('heroMenu')}
           </button>
         </span>
         <Link
           href="/basilica-e-convento"
-          className={`btn-luz max-lg:hidden h-[calc(32*var(--u))] px-[calc(20*var(--u))] flex items-center rounded-[calc(4*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)] ${clara ? 'bg-[var(--bege-claro-2)] text-[rgba(18,28,36,0.85)]' : 'bg-[var(--azul-escuro)] text-[rgba(247,242,238,0.85)]'}`}
+          className={`btn-luz max-lg:hidden h-[calc(32*var(--u))] px-[calc(20*var(--u))] flex items-center rounded-[calc(4*var(--u))] text-[length:var(--t-etiqueta)] leading-[1.17] transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)] ${clara ? 'bg-[var(--bege-claro-2)] text-[rgba(18,28,36,0.85)]' : 'bg-[var(--azul-escuro)] text-[rgba(247,242,238,0.85)]'}`}
         >
           {t('heroVisitar')}
         </Link>

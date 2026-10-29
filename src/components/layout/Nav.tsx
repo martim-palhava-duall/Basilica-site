@@ -137,7 +137,7 @@ export default function Nav() {
                 ? 'border-[var(--color-text-primary)] !text-[var(--color-text-primary)] hover:bg-[var(--color-text-primary)] hover:!text-[var(--color-text-inverse)]'
                 : 'border-[var(--color-text-inverse)] !text-[var(--color-text-inverse)] hover:bg-[var(--color-text-inverse)] hover:!text-[var(--color-text-primary)]'
             }`}
-            style={{ borderRadius: 'var(--radius)' }}
+            style={{ borderRadius: 'calc(4 * var(--u))' }}
           >
             {t('bilheteira')}
           </Link>
@@ -230,7 +230,7 @@ export default function Nav() {
                 href="/basilica-e-convento"
                 onClick={() => setMenuOpen(false)}
                 className="mt-12 sm:hidden self-start inline-flex items-center bg-[var(--color-text-primary)] !text-[var(--color-text-inverse)] px-6 py-3 text-[0.8rem] font-medium"
-                style={{ borderRadius: 'var(--radius)' }}
+                style={{ borderRadius: 'calc(4 * var(--u))' }}
               >
                 {t('bilheteira')}
               </Link>

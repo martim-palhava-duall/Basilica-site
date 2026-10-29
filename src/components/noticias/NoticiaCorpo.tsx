@@ -12,7 +12,7 @@ import Revelar from '@/components/home/Revelar'
  */
 export default function NoticiaCorpo() {
   const t = useTranslations('noticia')
-  const corpo = 'text-[length:calc(16*var(--u))] leading-[1.5]'
+  const corpo = 'text-[length:var(--t-corpo)] leading-[1.5]'
 
   return (
     <section data-barra="var(--bege-claro-2)" className="w-full px-[calc(381*var(--u))] py-[calc(120*var(--u))] max-lg:px-[calc(20*var(--u))] max-lg:py-[calc(56*var(--u))] bg-[var(--bege-claro-2)] text-[var(--azul-escuro)]">

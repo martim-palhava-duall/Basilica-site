@@ -109,7 +109,7 @@ export default function HomeHorarios() {
       {/* ── Cabeçalho ── */}
       <div className="flex flex-col gap-[calc(24*var(--u))] w-full">
         <div className="flex flex-col gap-[calc(12*var(--u))] w-full">
-          <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]" style={surge(0)}>{t('horLabel')}</p>
+          <p className="text-[length:var(--t-etiqueta)] leading-[1.4]" style={surge(0)}>{t('horLabel')}</p>
           <div className="flex items-center justify-between w-full">
             <h2 className="font-display text-[length:calc(80*var(--u))] leading-[calc(96*var(--u))] tracking-[calc(0.96*var(--u))] max-lg:text-[length:calc(40*var(--u))] max-lg:leading-[calc(46*var(--u))] max-lg:tracking-normal font-normal whitespace-nowrap" style={surge(100)}>
               {t('horTitulo')}
@@ -117,7 +117,7 @@ export default function HomeHorarios() {
           </div>
         </div>
         <div style={surge(250)}>
-          <p className={`${LEVE} w-[calc(444*var(--u))] max-lg:w-full text-[length:calc(16*var(--u))] leading-[1.5]`} style={TRIM}>{t('horTexto')}</p>
+          <p className={`${LEVE} w-[calc(444*var(--u))] max-lg:w-full text-[length:var(--t-corpo)] leading-[1.5]`} style={TRIM}>{t('horTexto')}</p>
         </div>
       </div>
 
@@ -125,12 +125,12 @@ export default function HomeHorarios() {
       <div className="flex gap-[calc(40*var(--u))] items-start max-lg:grid max-lg:grid-cols-2 max-lg:gap-x-[calc(20*var(--u))] max-lg:gap-y-[calc(48*var(--u))]">
         {colunas.map((c, k) => (
           <div key={c.titulo} className="flex flex-col gap-[calc(32*var(--u))] w-[calc(213*var(--u))] max-lg:w-auto max-lg:gap-[calc(20*var(--u))]">
-            <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold" style={surge(450 + k * 80, 0)}>{c.titulo}</p>
+            <p className="text-[length:var(--t-etiqueta)] leading-[1.17] font-bold" style={surge(450 + k * 80, 0)}>{c.titulo}</p>
             <div className="flex flex-col gap-[calc(24*var(--u))]">
               {c.entradas.map((e, j) => (
                 <div key={e.horas} className="flex flex-col gap-[calc(3.19*var(--u))]" style={surge(800 + j * 260 + k * 60, 8, 1400)}>
                   <HorasEntrada horas={e.horas} />
-                  <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] whitespace-nowrap max-lg:whitespace-normal">{e.dias}</p>
+                  <p className="text-[length:var(--t-etiqueta)] leading-[1.17] whitespace-nowrap max-lg:whitespace-normal">{e.dias}</p>
                 </div>
               ))}
             </div>
@@ -141,13 +141,13 @@ export default function HomeHorarios() {
       {/* ── Acolhimento: o CTA leva aos horários de abertura e ao acesso, na página Visitar ── */}
       <div className="flex flex-col gap-[calc(40*var(--u))] w-[calc(563*var(--u))] max-lg:w-full max-lg:gap-[calc(32*var(--u))]" style={surge(1500)}>
         <div className="flex flex-col gap-[calc(16*var(--u))] w-full">
-          <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold">{t('horAcolhLabel')}</p>
+          <p className="text-[length:var(--t-etiqueta)] leading-[1.17] font-bold">{t('horAcolhLabel')}</p>
           <div className="flex flex-col gap-[calc(24*var(--u))] w-[calc(562*var(--u))] max-lg:w-full">
             <p className="font-display text-[length:calc(40*var(--u))] leading-[calc(35.2*var(--u))] tracking-[calc(-0.192*var(--u))] max-lg:text-[length:calc(30*var(--u))] max-lg:leading-[calc(32*var(--u))]">{t('horAcolhTitulo')}</p>
-            <p className={`${LEVE} text-[length:calc(16*var(--u))] leading-[1.5]`} style={TRIM}>{t('horAcolhTexto')}</p>
+            <p className={`${LEVE} text-[length:var(--t-corpo)] leading-[1.5]`} style={TRIM}>{t('horAcolhTexto')}</p>
           </div>
         </div>
-        <Link href="/basilica-e-convento#horarios" className="group/cta self-start flex items-center gap-[calc(12*var(--u))] text-[length:calc(16*var(--u))] leading-[1.5] whitespace-nowrap">
+        <Link href="/basilica-e-convento#horarios" className="alvo-toque group/cta self-start flex items-center gap-[calc(12*var(--u))] text-[length:var(--t-corpo)] leading-[1.5] whitespace-nowrap">
           {t('horAcolhCta')}
           <span className="relative block w-[calc(13*var(--u))] h-[calc(7*var(--u))] overflow-visible">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -168,7 +168,7 @@ function HorasEntrada({ horas }: { horas: string }) {
   const intervalos = horas.includes('ÀS') && horas.includes(' · ')
   if (intervalos) {
     return (
-      <div className="text-[length:calc(16*var(--u))] max-lg:text-[length:calc(14*var(--u))] leading-[1.4] font-bold whitespace-nowrap">
+      <div className="text-[length:var(--t-corpo)] max-lg:text-[length:var(--t-pequeno)] leading-[1.4] font-bold whitespace-nowrap">
         {horas.split(' · ').map((l) => (
           <p key={l}>{l.replace(' ÀS ', ' às ')}</p>
         ))}
@@ -177,7 +177,7 @@ function HorasEntrada({ horas }: { horas: string }) {
   }
   const unico = horas.includes('ÀS')
   return (
-    <p className={`text-[length:calc(16*var(--u))] max-lg:text-[length:calc(14*var(--u))] leading-[calc(19*var(--u))] max-lg:leading-[calc(17*var(--u))] font-bold whitespace-nowrap ${unico ? '' : 'uppercase'}`}>
+    <p className={`text-[length:var(--t-corpo)] max-lg:text-[length:var(--t-pequeno)] leading-[1.19] max-lg:leading-[1.21] font-bold whitespace-nowrap ${unico ? '' : 'uppercase'}`}>
       {horas.replace(' ÀS ', ' às ')}
     </p>
   )

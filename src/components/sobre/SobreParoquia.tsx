@@ -26,7 +26,7 @@ export default function SobreParoquia() {
       </Revelar>
 
       <Revelar atraso={150}>
-        <div className="flex items-start justify-between w-full max-lg:flex-col max-lg:gap-[calc(24*var(--u))] text-[length:calc(16*var(--u))] leading-[1.5] text-[rgba(29,35,40,0.6)]">
+        <div className="flex items-start justify-between w-full max-lg:flex-col max-lg:gap-[calc(24*var(--u))] text-[length:var(--t-corpo)] leading-[1.5] text-[rgba(29,35,40,0.6)]">
           <p className="w-[calc(329*var(--u))] max-lg:w-full">{t('paroquiaLabel')}</p>
           <div className="flex gap-[calc(20*var(--u))] items-center max-lg:flex-col max-lg:items-start">
             <div className="flex flex-col gap-[calc(20*var(--u))] w-[calc(329*var(--u))] max-lg:w-full">

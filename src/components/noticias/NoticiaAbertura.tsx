@@ -18,13 +18,13 @@ export default function NoticiaAbertura({ etiqueta, titulo, foto, fotoPosicao }:
       <div className="flex w-full flex-col items-center gap-[calc(64*var(--u))] max-lg:gap-[calc(32*var(--u))]">
         <div className="flex w-full flex-col items-center gap-[calc(24*var(--u))] text-center">
           <div className="flex w-full flex-col items-center gap-[calc(4*var(--u))]">
-            <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))]">{etiqueta}</p></Revelar>
+            <Revelar><p className="text-[length:var(--t-etiqueta)] leading-[1.17]">{etiqueta}</p></Revelar>
             <Revelar atraso={100}>
               <h1 className="w-full font-display text-[length:calc(80*var(--u))] max-lg:text-[length:calc(36*var(--u))] leading-[1.2] max-lg:leading-[1.1] font-normal">{titulo}</h1>
             </Revelar>
           </div>
           <Revelar atraso={200}>
-            <p className="w-[calc(676*var(--u))] max-lg:w-full text-[length:calc(20*var(--u))] max-lg:text-[length:calc(16*var(--u))] leading-[1.4] max-lg:leading-[1.5]" style={{ fontFamily: 'var(--font-body-light)' }}>{t('resumo')}</p>
+            <p className="w-[calc(676*var(--u))] max-lg:w-full text-[length:var(--t-lead)] max-lg:text-[length:var(--t-corpo)] leading-[1.4] max-lg:leading-[1.5]" style={{ fontFamily: 'var(--font-body-light)' }}>{t('resumo')}</p>
           </Revelar>
         </div>
         <Revelar atraso={250} className="w-full">

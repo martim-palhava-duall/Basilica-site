@@ -42,7 +42,7 @@ export default function BasilicaDuvida() {
       />
 
       <div className="absolute left-[calc(265*var(--u))] top-[calc(222*var(--u))] max-lg:relative max-lg:left-auto max-lg:top-auto max-lg:w-full flex flex-col gap-[calc(8.895*var(--u))] w-[calc(768*var(--u))]">
-        <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{t('duvidaLabel')}</p></Revelar>
+        <Revelar><p className="text-[length:var(--t-etiqueta)] leading-[1.4]">{t('duvidaLabel')}</p></Revelar>
         <Revelar atraso={100}>
           <h2 className="font-display text-[length:calc(96*var(--u))] max-lg:text-[length:calc(44*var(--u))] leading-[calc(105.6*var(--u))] max-lg:leading-[calc(48*var(--u))] tracking-[calc(-0.576*var(--u))] max-lg:tracking-normal font-normal">
             {t.rich('duvidaL1', { i, br: () => <br /> })}
@@ -53,10 +53,10 @@ export default function BasilicaDuvida() {
       <div className="absolute left-[calc(850*var(--u))] top-[calc(391.9*var(--u))] max-lg:relative max-lg:left-auto max-lg:top-auto max-lg:w-full w-[calc(325*var(--u))]">
         <Revelar atraso={250}>
           <div className="flex flex-col gap-[calc(40*var(--u))] items-start w-full">
-            <p className="font-[family-name:var(--font-body-light)] text-[length:calc(20*var(--u))] max-lg:text-[length:calc(16*var(--u))] leading-[1.4]">{t('duvidaTexto')}</p>
+            <p className="font-[family-name:var(--font-body-light)] text-[length:var(--t-lead)] max-lg:text-[length:var(--t-corpo)] leading-[1.4]">{t('duvidaTexto')}</p>
             <Link
               href="/contactos"
-              className="group/btn flex items-center gap-[calc(12*var(--u))] px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] rounded-[calc(6*var(--u))] bg-[var(--bege-escuro-2)] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap text-[var(--azul-escuro)] transition-[background-color] duration-[400ms] ease-[var(--ease-out)]"
+              className="group/btn flex items-center gap-[calc(12*var(--u))] px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] rounded-[calc(4*var(--u))] bg-[var(--bege-escuro-2)] text-[length:var(--t-etiqueta)] leading-[1.4] whitespace-nowrap text-[var(--azul-escuro)] transition-[background-color] duration-[400ms] ease-[var(--ease-out)]"
             >
               {t('duvidaCta')}
               <Seta className="group-hover/btn:translate-x-[calc(4*var(--u))]" />

@@ -794,6 +794,43 @@ html { scrollbar-gutter: stable; }
 .group\/obra:hover .obra-foto, .group\/obra:focus-visible .obra-foto,
 .group\/grupo:hover .obra-foto, .group\/grupo:focus-visible .obra-foto { transition: opacity 800ms cubic-bezier(0.33, 0, 0.2, 1) 60ms; }
 
+/* ── Área de toque (mobile e tablet) ──
+   Ligações e botões de texto pequenos ganham 12px de área clicável acima e abaixo,
+   sem mexer no desenho: o padding e a margem negativa são iguais, por isso o
+   layout fica igual. Com `.alvo-toque` na ligação. */
+@media (max-width: 1023.98px) {
+  .alvo-toque { padding-block: 12px; margin-block: -12px; }
+}
+
+/* ── TEXTO CORRIDO: não acompanha a escala (--u) ──
+   Títulos, imagens e espaços escalam em proporção; o texto de leitura não. Quatro
+   tamanhos, sempre legíveis: etiqueta (12 no desenho), pequeno (14), corpo (16) e
+   subtítulo (20). Mobile e tablet: fixos. De 1024 a 1440 sobem pouco (o corpo de 15
+   a 16); aos 1440 valem o do desenho; de 1440 a 1920 crescem um pouco (corpo 18) e
+   ficam por aí, para as linhas não alongarem nos ecrãs grandes. */
+:root {
+  --t-etiqueta: 12px;
+  --t-pequeno: 14px;
+  --t-corpo: 15px;
+  --t-lead: 18px;
+}
+@media (min-width: 1024px) {
+  :root {
+    --t-etiqueta: 12px;
+    --t-pequeno: clamp(13px, calc(13px + (100vw - 1024px) * 0.0024), 14px);
+    --t-corpo: clamp(15px, calc(15px + (100vw - 1024px) * 0.0024), 16px);
+    --t-lead: clamp(18px, calc(18px + (100vw - 1024px) * 0.0048), 20px);
+  }
+}
+@media (min-width: 1440px) {
+  :root {
+    --t-etiqueta: clamp(12px, calc(12px + (100vw - 1440px) * 0.0021), 13px);
+    --t-pequeno: clamp(14px, calc(14px + (100vw - 1440px) * 0.0021), 15px);
+    --t-corpo: clamp(16px, calc(16px + (100vw - 1440px) * 0.0042), 18px);
+    --t-lead: clamp(20px, calc(20px + (100vw - 1440px) * 0.0042), 22px);
+  }
+}
+
 /* Largura de 1024 a 2560: o desenho cresce e encolhe em proporção.
    Abaixo de 1024 é o mobile (não há desenho no Figma; ver DESIGN.md): o --u passa
    a valer 1px num ecrã de 390 e acompanha a largura até 1,6px (624 de desenho);

@@ -83,7 +83,7 @@ export default function HomeMissao() {
       {/* ── Texto ── */}
       <div className="flex flex-1 flex-col justify-between h-[calc(900*var(--u))] min-w-px pl-[calc(32*var(--u))] pr-[calc(72*var(--u))] py-[calc(140*var(--u))] max-lg:h-auto max-lg:w-full max-lg:px-[calc(20*var(--u))] max-lg:pt-[calc(96*var(--u))] max-lg:pb-[calc(56*var(--u))] bg-[var(--bege-claro)] text-[var(--texto-escuro)]">
         <div className="flex flex-col gap-[calc(23*var(--u))] w-full">
-          <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] opacity-75" style={aparece(0)}>
+          <p className="text-[length:var(--t-etiqueta)] leading-[1.17] opacity-75" style={aparece(0)}>
             {t('missaoLabel')}
           </p>
 
@@ -109,7 +109,7 @@ export default function HomeMissao() {
               <Image src="/home/missao-thumb.jpg" alt="" fill sizes="152px" className="object-cover" />
             </div>
           </div>
-          <p className="max-w-[calc(224*var(--u))] pr-[calc(32.25*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[calc(19.2*var(--u))] opacity-85 whitespace-nowrap">
+          <p className="max-w-[calc(224*var(--u))] pr-[calc(32.25*var(--u))] text-[length:var(--t-etiqueta)] leading-[1.6] opacity-85 whitespace-nowrap">
             {t('missaoLegenda1')}
             <br />
             {t('missaoLegenda2')}

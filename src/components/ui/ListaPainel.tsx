@@ -177,24 +177,24 @@ export default function ListaPainel({
           <div className="flex w-full flex-col gap-[calc(80*var(--u))] max-lg:gap-[calc(40*var(--u))]">
             <div className="flex w-[calc(872*var(--u))] max-w-full flex-col gap-[calc(32*var(--u))] max-lg:gap-[calc(20*var(--u))]">
               <p className="font-display text-[length:calc(32*var(--u))] max-lg:text-[length:calc(24*var(--u))] leading-[1.2] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal" style={TRIM}>{g.intro}</p>
-              {g.intro2 && <p className="text-[length:calc(16*var(--u))] leading-[1.5]">{g.intro2}</p>}
+              {g.intro2 && <p className="text-[length:var(--t-corpo)] leading-[1.5]">{g.intro2}</p>}
             </div>
 
             {g.quando && (
               <div className="flex w-[calc(872*var(--u))] max-w-full items-start gap-[calc(20*var(--u))] max-lg:flex-col max-lg:gap-[calc(32*var(--u))]">
                 <div className="flex w-[calc(426*var(--u))] max-lg:w-full flex-col gap-[calc(20*var(--u))]">
-                  <p className="text-[length:calc(16*var(--u))] leading-[1.5] opacity-40">{rotulos.quando}</p>
+                  <p className="text-[length:var(--t-corpo)] leading-[1.5] opacity-40">{rotulos.quando}</p>
                   <div className="flex w-full flex-col gap-[calc(12*var(--u))]">
                     {g.quando.map((q) => (
                       <div key={q.destaque} className="flex flex-col gap-[calc(12*var(--u))]">
                         <p className="font-display text-[length:calc(32*var(--u))] max-lg:text-[length:calc(24*var(--u))] leading-[1.2] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal">{q.destaque}</p>
-                        <p className="text-[length:calc(16*var(--u))] leading-[1.5]">{q.texto}</p>
+                        <p className="text-[length:var(--t-corpo)] leading-[1.5]">{q.texto}</p>
                       </div>
                     ))}
                   </div>
                 </div>
                 {g.preciso && (
-                  <div className="flex w-[calc(426*var(--u))] max-lg:w-full flex-col gap-[calc(20*var(--u))] text-[length:calc(16*var(--u))] leading-[1.5]">
+                  <div className="flex w-[calc(426*var(--u))] max-lg:w-full flex-col gap-[calc(20*var(--u))] text-[length:var(--t-corpo)] leading-[1.5]">
                     <p className="opacity-40">{rotulos.preciso}</p>
                     <p>{g.preciso}</p>
                   </div>
@@ -205,7 +205,7 @@ export default function ListaPainel({
             {g.blocos?.map((b) => (
               <div key={b.titulo} className="flex w-[calc(872*var(--u))] max-w-full flex-col gap-[calc(12*var(--u))]">
                 <p className="font-display text-[length:calc(32*var(--u))] max-lg:text-[length:calc(24*var(--u))] leading-[1.2] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal" style={TRIM}>{b.titulo}</p>
-                <p className="text-[length:calc(16*var(--u))] leading-[1.5]">{b.texto}</p>
+                <p className="text-[length:var(--t-corpo)] leading-[1.5]">{b.texto}</p>
               </div>
             ))}
 
@@ -213,7 +213,7 @@ export default function ListaPainel({
             <div className="flex w-full flex-col gap-[calc(24*var(--u))]">
               <div className="flex w-[calc(872*var(--u))] max-w-full flex-col">
                 <div className="relative h-[calc(24*var(--u))] w-full">
-                  <p className="absolute left-0 top-0 text-[length:calc(16*var(--u))] leading-[calc(24*var(--u))]">{rotulos.galeria}</p>
+                  <p className="absolute left-0 top-0 text-[length:var(--t-corpo)] leading-[1.5]">{rotulos.galeria}</p>
                   {([
                     { rotulo: rotulos.anterior, left: 788, img: 3.5, d: -1 },
                     { rotulo: rotulos.seguinte, left: 844, img: -52.5, d: 1 },
@@ -248,7 +248,7 @@ export default function ListaPainel({
 
               <Link
                 href={painelCta.href}
-                className="group/btn flex h-[calc(46.8*var(--u))] items-center gap-[calc(11.91*var(--u))] self-start rounded-[calc(4*var(--u))] bg-[var(--azul-escuro)] px-[calc(29.6*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap text-[var(--bege-claro-2)] transition-[background-color] duration-[400ms] ease-[var(--ease-out)]"
+                className="group/btn flex h-[calc(46.8*var(--u))] items-center gap-[calc(11.91*var(--u))] self-start rounded-[calc(4*var(--u))] bg-[var(--azul-escuro)] px-[calc(29.6*var(--u))] text-[length:var(--t-etiqueta)] leading-[1.4] whitespace-nowrap text-[var(--bege-claro-2)] transition-[background-color] duration-[400ms] ease-[var(--ease-out)]"
               >
                 {painelCta.texto}
                 <Seta className="group-hover/btn:translate-x-[calc(4*var(--u))]" />
@@ -269,7 +269,7 @@ export default function ListaPainel({
     >
       {/* ── Cabeçalho ── */}
       <div className="flex h-[calc(123*var(--u))] max-lg:h-auto w-full flex-col gap-[calc(24*var(--u))] px-[calc(32*var(--u))] max-lg:px-[calc(20*var(--u))]">
-        <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{label}</p></Revelar>
+        <Revelar><p className="text-[length:var(--t-etiqueta)] leading-[1.4]">{label}</p></Revelar>
         <div className="flex h-[calc(72*var(--u))] max-lg:h-auto w-full items-start justify-between max-lg:flex-col max-lg:gap-[calc(28*var(--u))]">
           <Revelar atraso={100} className="h-[calc(72*var(--u))] w-[calc(672*var(--u))] max-lg:h-auto max-lg:w-full">
             <div className="relative h-[calc(72*var(--u))] max-lg:h-auto w-full">
@@ -283,7 +283,7 @@ export default function ListaPainel({
           </Revelar>
           <Link
             href={cta.href}
-            className="group/btn flex items-center gap-[calc(12*var(--u))] rounded-[calc(6*var(--u))] border border-solid border-[rgba(27,43,57,0.45)] px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap transition-[background-color,color,border-color] duration-[400ms] ease-[var(--ease-out)]"
+            className="group/btn flex items-center gap-[calc(12*var(--u))] rounded-[calc(4*var(--u))] border border-solid border-[rgba(27,43,57,0.45)] px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] text-[length:var(--t-etiqueta)] leading-[1.4] whitespace-nowrap transition-[background-color,color,border-color] duration-[400ms] ease-[var(--ease-out)]"
           >
             {cta.texto}
             <Seta className="group-hover/btn:translate-x-[calc(4*var(--u))]" />
@@ -312,15 +312,15 @@ export default function ListaPainel({
               />
 
               <span className="flex items-center gap-[calc(24*var(--u))] max-lg:gap-[calc(16*var(--u))] px-[calc(32*var(--u))] max-lg:px-[calc(20*var(--u))]">
-                <span className="w-[calc(80*var(--u))] max-lg:w-[calc(24*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] tracking-[calc(-0.064*var(--u))]">{gr.n}</span>
+                <span className="w-[calc(80*var(--u))] max-lg:w-[calc(24*var(--u))] text-[length:var(--t-etiqueta)] leading-[1.17] tracking-[calc(-0.064*var(--u))]">{gr.n}</span>
                 <span className="w-[calc(352*var(--u))] max-lg:w-auto font-display text-[length:calc(40*var(--u))] max-lg:text-[length:calc(30*var(--u))] leading-[calc(35.2*var(--u))] max-lg:leading-[calc(32*var(--u))] tracking-[calc(-0.192*var(--u))] whitespace-nowrap">
                   {gr.titulo}
                 </span>
               </span>
 
               <span className="flex w-[calc(384*var(--u))] max-lg:w-full max-lg:gap-[calc(14*var(--u))] max-lg:pl-[calc(60*var(--u))] max-lg:pr-[calc(20*var(--u))] flex-col gap-[calc(24*var(--u))]">
-                <span className="block max-w-[calc(448*var(--u))] pr-[calc(32*var(--u))] max-lg:pr-0 text-[length:calc(16*var(--u))] leading-[calc(22*var(--u))]">{gr.texto}</span>
-                <span className="flex items-center gap-[calc(12*var(--u))] text-[length:calc(16*var(--u))] leading-[1.5]">
+                <span className="block max-w-[calc(448*var(--u))] pr-[calc(32*var(--u))] max-lg:pr-0 text-[length:var(--t-corpo)] leading-[1.38]">{gr.texto}</span>
+                <span className="flex items-center gap-[calc(12*var(--u))] text-[length:var(--t-corpo)] leading-[1.5]">
                   <span className="underline decoration-from-font underline-offset-[from-font]">{saibaMais}</span>
                   <Seta className="group-hover/grupo:translate-x-[calc(4*var(--u))]" />
                 </span>

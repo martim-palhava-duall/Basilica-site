@@ -19,7 +19,7 @@ export type TextosFormulario = {
   pendente: string
 }
 
-const LABEL = 'text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold'
+const LABEL = 'text-[length:var(--t-etiqueta)] leading-[1.17] font-bold'
 const LINHA = 'border-b border-solid border-[rgba(28,43,57,0.25)]'
 
 /**
@@ -68,7 +68,7 @@ export default function DonativosFormulario({ textos, foto, fotoAlt }: { textos:
               value={categoria}
               onChange={(e) => setCategoria(e.target.value)}
               required
-              className="w-full appearance-none bg-transparent pr-[calc(32*var(--u))] text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] outline-none cursor-pointer"
+              className="w-full appearance-none bg-transparent pr-[calc(32*var(--u))] text-[length:var(--t-corpo)] leading-[1.19] outline-none cursor-pointer"
               style={{ color: categoria === '' ? 'rgba(28,43,57,0.45)' : 'var(--azul-escuro)' }}
             >
               <option value="" disabled>{textos.categoriaPlaceholder}</option>
@@ -110,24 +110,24 @@ export default function DonativosFormulario({ textos, foto, fotoAlt }: { textos:
               placeholder={textos.notasPlaceholder}
               value={notas}
               onChange={(e) => setNotas(e.target.value)}
-              className={`min-h-[calc(99*var(--u))] w-full resize-none bg-transparent text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] outline-none placeholder:text-[rgba(28,43,57,0.45)] ${LINHA}`}
+              className={`min-h-[calc(99*var(--u))] w-full resize-none bg-transparent text-[length:var(--t-corpo)] leading-[1.19] outline-none placeholder:text-[rgba(28,43,57,0.45)] ${LINHA}`}
             />
           </div>
 
           <div className="flex w-full flex-col gap-[calc(32*var(--u))]">
             <div className="flex w-full flex-col gap-[calc(12*var(--u))]">
-              <p className="text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] text-[rgba(28,43,57,0.45)]">{textos.notasAjuda}</p>
+              <p className="text-[length:var(--t-corpo)] leading-[1.19] text-[rgba(28,43,57,0.45)]">{textos.notasAjuda}</p>
               <button
                 type="submit"
                 disabled={!valido}
-                className="group/btn flex h-[calc(47.3*var(--u))] items-center gap-[calc(11.91*var(--u))] self-start rounded-[calc(4*var(--u))] bg-[var(--vermelho)] px-[calc(29.6*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap text-[var(--bege-claro-2)] transition-[background-color,opacity] duration-[400ms] ease-[var(--ease-out)] disabled:cursor-not-allowed disabled:opacity-60"
+                className="group/btn flex h-[calc(47.3*var(--u))] items-center gap-[calc(11.91*var(--u))] self-start rounded-[calc(4*var(--u))] bg-[var(--vermelho)] px-[calc(29.6*var(--u))] text-[length:var(--t-etiqueta)] leading-[1.4] whitespace-nowrap text-[var(--bege-claro-2)] transition-[background-color,opacity] duration-[400ms] ease-[var(--ease-out)] disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {textos.enviar}
                 <Seta className="group-enabled/btn:group-hover/btn:translate-x-[calc(4*var(--u))]" />
               </button>
             </div>
-            <p className="text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] text-[rgba(28,43,57,0.45)]">{textos.seguranca}</p>
-            <p role="status" aria-live="polite" className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))]">{submetido ? textos.pendente : ''}</p>
+            <p className="text-[length:var(--t-corpo)] leading-[1.19] text-[rgba(28,43,57,0.45)]">{textos.seguranca}</p>
+            <p role="status" aria-live="polite" className="text-[length:var(--t-etiqueta)] leading-[1.17]">{submetido ? textos.pendente : ''}</p>
           </div>
         </div>
       </form>

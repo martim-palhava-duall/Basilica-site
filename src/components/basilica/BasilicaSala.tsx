@@ -30,13 +30,13 @@ export default function BasilicaSala() {
     >
       <div className="flex flex-col gap-[calc(48*var(--u))] max-lg:gap-[calc(28*var(--u))] w-[calc(562*var(--u))] max-lg:w-full">
         <div className="flex flex-col gap-[calc(24*var(--u))] w-full">
-          <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{t('salaLabel')}</p></Revelar>
+          <Revelar><p className="text-[length:var(--t-etiqueta)] leading-[1.4]">{t('salaLabel')}</p></Revelar>
           <Revelar atraso={100}>
             <h2 className="font-display text-[length:calc(64*var(--u))] max-lg:text-[length:calc(36*var(--u))] leading-[1.2] font-normal" style={TRIM}>{t('salaTitulo')}</h2>
           </Revelar>
         </div>
         <Revelar atraso={200}>
-          <p className="w-[calc(445*var(--u))] max-lg:w-full text-[length:calc(16*var(--u))] leading-[1.5]">{t('salaTexto')}</p>
+          <p className="w-[calc(445*var(--u))] max-lg:w-full text-[length:var(--t-corpo)] leading-[1.5]">{t('salaTexto')}</p>
         </Revelar>
       </div>
 
@@ -53,7 +53,7 @@ export default function BasilicaSala() {
                   >
                     {t(`${k}Titulo`)}
                   </h3>
-                  <p className="w-[calc(248*var(--u))] max-lg:w-full text-[length:calc(16*var(--u))] leading-[1.5]">{t(`${k}Texto`)}</p>
+                  <p className="w-[calc(248*var(--u))] max-lg:w-full text-[length:var(--t-corpo)] leading-[1.5]">{t(`${k}Texto`)}</p>
                 </div>
               </div>
             ))}
@@ -67,8 +67,8 @@ export default function BasilicaSala() {
                   {t('salaHorariosTitulo')}
                 </h3>
                 <div className="flex w-[calc(248*var(--u))] max-lg:w-full flex-col gap-[calc(3.19*var(--u))]">
-                  <p className="text-[length:calc(16*var(--u))] leading-[calc(17*var(--u))] font-bold whitespace-nowrap">{v('salaHoras')}</p>
-                  <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] whitespace-nowrap">{v('salaDias')}</p>
+                  <p className="text-[length:var(--t-corpo)] leading-[1.06] font-bold whitespace-nowrap">{v('salaHoras')}</p>
+                  <p className="text-[length:var(--t-etiqueta)] leading-[1.17] whitespace-nowrap">{v('salaDias')}</p>
                 </div>
               </div>
             </div>
@@ -77,7 +77,7 @@ export default function BasilicaSala() {
 
           <Link
             href="/contactos"
-            className="group/btn self-start flex items-center gap-[calc(12*var(--u))] px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] rounded-[calc(6*var(--u))] border border-solid border-[rgba(247,242,238,0.97)] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
+            className="group/btn self-start flex items-center gap-[calc(12*var(--u))] px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] rounded-[calc(4*var(--u))] border border-solid border-[rgba(247,242,238,0.97)] text-[length:var(--t-etiqueta)] leading-[1.4] whitespace-nowrap transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
           >
             {t('salaCta')}
             <Seta className="group-hover/btn:translate-x-[calc(4*var(--u))]" />

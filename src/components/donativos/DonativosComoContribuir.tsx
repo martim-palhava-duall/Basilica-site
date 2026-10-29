@@ -29,7 +29,7 @@ export default function DonativosComoContribuir() {
     >
       <div className="flex w-[calc(445*var(--u))] max-lg:w-full flex-col gap-[calc(64*var(--u))] max-lg:gap-[calc(28*var(--u))]">
         <div className="flex w-full flex-col gap-[calc(12*var(--u))]">
-          <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] tracking-[calc(-0.064*var(--u))]">{t('comoLabel')}</p></Revelar>
+          <Revelar><p className="text-[length:var(--t-etiqueta)] leading-[1.17] tracking-[calc(-0.064*var(--u))]">{t('comoLabel')}</p></Revelar>
           <Revelar atraso={100}>
             <h2
               className="font-display text-[length:calc(80*var(--u))] max-lg:text-[length:calc(40*var(--u))] leading-none font-normal"
@@ -40,7 +40,7 @@ export default function DonativosComoContribuir() {
           </Revelar>
         </div>
         <Revelar atraso={200}>
-          <p className="text-[length:calc(16*var(--u))] leading-[1.5] opacity-80">{t('comoTexto')}</p>
+          <p className="text-[length:var(--t-corpo)] leading-[1.5] opacity-80">{t('comoTexto')}</p>
         </Revelar>
       </div>
 

@@ -78,7 +78,7 @@ export default function SobreHistoria() {
       {/* ── Cabeçalho ── */}
       <div className="absolute left-[calc(32*var(--u))] top-[calc(123*var(--u))] max-lg:static flex flex-col gap-[calc(35*var(--u))] max-lg:gap-[calc(28*var(--u))] w-[calc(1376*var(--u))] max-lg:w-full">
         <div className="flex flex-col gap-[calc(24*var(--u))] w-full">
-          <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{t('histLabel')}</p></Revelar>
+          <Revelar><p className="text-[length:var(--t-etiqueta)] leading-[1.4]">{t('histLabel')}</p></Revelar>
           <div className="flex items-start justify-between w-full max-lg:flex-col max-lg:gap-[calc(20*var(--u))]">
             <Revelar atraso={100}>
               <h2 className="font-display text-[length:calc(80*var(--u))] leading-[calc(96*var(--u))] max-lg:text-[length:calc(44*var(--u))] max-lg:leading-[calc(48*var(--u))] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal font-normal whitespace-nowrap" style={TRIM}>
@@ -86,7 +86,7 @@ export default function SobreHistoria() {
               </h2>
             </Revelar>
             <Revelar atraso={200}>
-              <p className="w-[calc(445*var(--u))] max-lg:w-full text-[length:calc(16*var(--u))] leading-[1.5]">{t('histTexto')}</p>
+              <p className="w-[calc(445*var(--u))] max-lg:w-full text-[length:var(--t-corpo)] leading-[1.5]">{t('histTexto')}</p>
             </Revelar>
           </div>
         </div>
@@ -127,7 +127,7 @@ export default function SobreHistoria() {
               role="tab"
               aria-selected={i === ativa}
               onClick={() => ir(i)}
-              className={`flex-1 py-[calc(6*var(--u))] text-left font-display text-[length:calc(17*var(--u))] leading-none outline-none ${FADE}`}
+              className={`relative before:absolute before:-inset-y-[8px] before:inset-x-0 before:content-[''] flex-1 py-[calc(6*var(--u))] text-left font-display text-[length:calc(17*var(--u))] leading-none outline-none ${FADE}`}
               style={{ opacity: i === ativa ? 1 : 0.45 }}
             >
               {d.ano}
@@ -170,7 +170,7 @@ export default function SobreHistoria() {
             style={{ opacity: i === ativa ? 1 : 0, pointerEvents: i === ativa ? undefined : 'none' }}
           >
             <p className="font-display text-[length:calc(64*var(--u))] max-lg:text-[length:calc(28*var(--u))] leading-[calc(96*var(--u))] max-lg:leading-[calc(32*var(--u))]" style={TRIM}>{t('histDecada', { ano: d.ano })}</p>
-            <p className="text-[length:calc(16*var(--u))] leading-[1.5]">{t(`hist${d.ano}`)}</p>
+            <p className="text-[length:var(--t-corpo)] leading-[1.5]">{t(`hist${d.ano}`)}</p>
           </div>
         ))}
       </div>
@@ -186,7 +186,7 @@ export default function SobreHistoria() {
 
       {/* ── Mobile e tablet: contador e setas, depois de ler ── */}
       <div className="lg:hidden order-5 -mx-[calc(20*var(--u))] flex w-[calc(100%+40*var(--u))] items-center justify-between border-t border-solid border-[rgba(247,242,238,0.25)] px-[calc(20*var(--u))] pt-[calc(16*var(--u))]">
-        <span className="text-[length:calc(12*var(--u))] leading-none tabular-nums opacity-70">
+        <span className="text-[length:var(--t-etiqueta)] leading-none tabular-nums opacity-70">
           {n2(ativa + 1)} / {n2(DECADAS.length)}
         </span>
         <div className="flex items-center gap-[calc(8*var(--u))]">

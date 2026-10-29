@@ -30,7 +30,7 @@ export default function CelebracoesConfissoes() {
     >
       <div className="flex w-full items-center gap-[calc(81*var(--u))] max-lg:flex-col max-lg:items-stretch max-lg:gap-[calc(40*var(--u))] px-[calc(32*var(--u))] max-lg:px-0">
         <div className="flex min-w-px flex-1 flex-col gap-[calc(24*var(--u))]">
-          <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{t('confLabel')}</p></Revelar>
+          <Revelar><p className="text-[length:var(--t-etiqueta)] leading-[1.4]">{t('confLabel')}</p></Revelar>
           <Revelar atraso={100}>
             <h2
               className="font-display text-[length:calc(80*var(--u))] max-lg:text-[length:calc(44*var(--u))] leading-none font-normal"
@@ -40,7 +40,7 @@ export default function CelebracoesConfissoes() {
             </h2>
           </Revelar>
           <Revelar atraso={200}>
-            <p className="w-[calc(451*var(--u))] max-lg:w-full text-[length:max(11px,calc(12*var(--u)))] max-lg:text-[length:calc(14*var(--u))] leading-[1.4] max-lg:leading-[1.5]">{t('confTexto')}</p>
+            <p className="w-[calc(451*var(--u))] max-lg:w-full text-[length:var(--t-etiqueta)] max-lg:text-[length:var(--t-pequeno)] leading-[1.4] max-lg:leading-[1.5]">{t('confTexto')}</p>
           </Revelar>
         </div>
 
@@ -51,8 +51,8 @@ export default function CelebracoesConfissoes() {
                 key={l.dias}
                 className={`flex items-start gap-[calc(40*var(--u))] max-lg:gap-[calc(20*var(--u))] w-full py-[calc(20*var(--u))] border-b border-solid border-[rgba(249,246,243,0.2)] ${i === 0 ? 'border-t' : ''}`}
               >
-                <p className="w-[calc(224*var(--u))] max-lg:w-[calc(130*var(--u))] shrink-0 self-center text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold max-lg:whitespace-normal">{l.dias}</p>
-                <p className="min-w-px flex-1 text-right text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] font-bold">{l.horas}</p>
+                <p className="w-[calc(224*var(--u))] max-lg:w-[calc(130*var(--u))] shrink-0 self-center text-[length:var(--t-etiqueta)] leading-[1.17] font-bold max-lg:whitespace-normal">{l.dias}</p>
+                <p className="min-w-px flex-1 text-right text-[length:var(--t-corpo)] leading-[1.19] font-bold">{l.horas}</p>
               </div>
             ))}
           </div>

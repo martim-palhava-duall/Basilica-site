@@ -29,13 +29,13 @@ export default function NoticiasDestaque() {
             </div>
           </div>
           <div className="flex w-[calc(453*var(--u))] max-lg:w-full max-lg:px-[calc(8*var(--u))] max-lg:pb-[calc(8*var(--u))] flex-col gap-[calc(178*var(--u))] max-lg:gap-[calc(24*var(--u))]">
-            <p className="text-[length:calc(16*var(--u))] leading-[1.5] text-black">{t('destaqueLabel')}</p>
+            <p className="text-[length:var(--t-corpo)] leading-[1.5] text-black">{t('destaqueLabel')}</p>
             <div className="flex w-full flex-col gap-[calc(12*var(--u))]">
               <div className="flex w-full flex-col gap-[calc(4*var(--u))]">
-                <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] text-[rgba(29,35,40,0.6)]">{t('destaqueMeta')}</p>
+                <p className="text-[length:var(--t-etiqueta)] leading-[1.4] text-[rgba(29,35,40,0.6)]">{t('destaqueMeta')}</p>
                 <h2 className="font-display text-[length:calc(32*var(--u))] max-lg:text-[length:calc(26*var(--u))] leading-[calc(35.2*var(--u))] max-lg:leading-[calc(30*var(--u))] font-normal">{t('destaqueTitulo')}</h2>
               </div>
-              <p className="text-[length:calc(16*var(--u))] leading-[1.5] text-[rgba(29,35,40,0.6)]">{t('destaqueTexto')}</p>
+              <p className="text-[length:var(--t-corpo)] leading-[1.5] text-[rgba(29,35,40,0.6)]">{t('destaqueTexto')}</p>
             </div>
           </div>
           <Seta className="max-lg:hidden absolute right-[calc(32*var(--u))] top-[calc(55*var(--u))] opacity-0 -translate-x-[calc(8*var(--u))] !transition-[opacity,transform] group-hover/dest:opacity-100 group-hover/dest:translate-x-0 group-focus-visible/dest:opacity-100 group-focus-visible/dest:translate-x-0" />

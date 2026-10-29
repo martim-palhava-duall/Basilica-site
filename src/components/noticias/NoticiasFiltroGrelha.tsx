@@ -59,7 +59,7 @@ export default function NoticiasFiltroGrelha({
               type="button"
               aria-pressed={on}
               onClick={() => setAtivo(f.chave)}
-              className={`flex h-[calc(32*var(--u))] items-center whitespace-nowrap rounded-[calc(6*var(--u))] px-[calc(12*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] outline-none transition-[background-color,color,opacity] duration-[400ms] ease-[var(--ease-out)] focus-visible:ring-1 focus-visible:ring-[var(--azul-escuro)] ${
+              className={`flex h-[calc(32*var(--u))] max-lg:h-[calc(40*var(--u))] items-center whitespace-nowrap rounded-[calc(4*var(--u))] px-[calc(12*var(--u))] text-[length:var(--t-etiqueta)] leading-[1.17] outline-none transition-[background-color,color,opacity] duration-[400ms] ease-[var(--ease-out)] focus-visible:ring-1 focus-visible:ring-[var(--azul-escuro)] ${
                 on ? 'bg-[var(--azul-escuro)] text-[var(--bege-claro-2)]' : 'text-[var(--azul-escuro)] opacity-50 hover:opacity-100'
               }`}
             >
@@ -81,7 +81,7 @@ export default function NoticiasFiltroGrelha({
                 <Image src={c.foto} alt="" fill sizes="445px" className="object-cover" />
               )}
             </div>
-            <p className="pt-[calc(8*var(--u))] max-lg:pt-0 text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] text-[rgba(29,35,40,0.6)]">
+            <p className="pt-[calc(8*var(--u))] max-lg:pt-0 text-[length:var(--t-etiqueta)] leading-[1.4] text-[rgba(29,35,40,0.6)]">
               {meta.replace('{categoria}', categorias[c.categoria] ?? '').replace('{data}', data)}
             </p>
             <div className="flex w-full items-center justify-between gap-[calc(16*var(--u))] max-lg:gap-[calc(8*var(--u))]">
@@ -94,7 +94,7 @@ export default function NoticiasFiltroGrelha({
 
       <Link
         href="/blog"
-        className="btn-luz flex h-[calc(32*var(--u))] items-center justify-center rounded-[calc(6*var(--u))] border border-solid border-[var(--azul-escuro)] px-[calc(20*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] opacity-85 transition-[background-color,color,opacity] duration-[400ms] ease-[var(--ease-out)] hover:opacity-100"
+        className="btn-luz flex h-[calc(32*var(--u))] max-lg:h-[calc(40*var(--u))] items-center justify-center rounded-[calc(4*var(--u))] border border-solid border-[var(--azul-escuro)] px-[calc(20*var(--u))] text-[length:var(--t-etiqueta)] leading-[1.17] opacity-85 transition-[background-color,color,opacity] duration-[400ms] ease-[var(--ease-out)] hover:opacity-100"
       >
         {verMais}
       </Link>

@@ -19,7 +19,7 @@ export default function CelebracoesCapa() {
     >
       <div className="flex flex-col gap-[calc(64*var(--u))] max-lg:gap-[calc(32*var(--u))] w-full">
         <div className="flex flex-col gap-[calc(24*var(--u))] w-full">
-          <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))]">{t('label')}</p></Revelar>
+          <Revelar><p className="text-[length:var(--t-etiqueta)] leading-[1.17]">{t('label')}</p></Revelar>
           <Revelar atraso={100}>
             <h1
               className="font-display text-[length:calc(80*var(--u))] max-lg:text-[length:calc(40*var(--u))] leading-[1.2] font-normal whitespace-nowrap"

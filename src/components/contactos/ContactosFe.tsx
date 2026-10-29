@@ -35,7 +35,7 @@ export default function ContactosFe() {
     >
       <div className="flex w-full flex-col gap-[calc(24*var(--u))]">
         <div className="flex w-full flex-col gap-[calc(12*var(--u))]">
-          <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{t('feLabel')}</p></Revelar>
+          <Revelar><p className="text-[length:var(--t-etiqueta)] leading-[1.4]">{t('feLabel')}</p></Revelar>
           <div className="flex w-full items-center justify-between max-lg:flex-col max-lg:items-start max-lg:gap-[calc(24*var(--u))]">
             <Revelar atraso={100}>
               <h2 className="font-display text-[length:calc(80*var(--u))] max-lg:text-[length:calc(40*var(--u))] leading-[calc(96*var(--u))] max-lg:leading-[calc(46*var(--u))] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal font-normal whitespace-nowrap max-lg:whitespace-normal">{t('feTitulo')}</h2>
@@ -43,7 +43,7 @@ export default function ContactosFe() {
             <Revelar atraso={200}>
               <Link
                 href="/celebracoes"
-                className="group/btn flex h-[calc(46.8*var(--u))] items-center gap-[calc(11.91*var(--u))] rounded-[calc(4*var(--u))] bg-[var(--azul-escuro)] px-[calc(29.6*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap text-[var(--bege-claro-2)] transition-colors duration-[400ms] ease-[var(--ease-out)]"
+                className="group/btn flex h-[calc(46.8*var(--u))] items-center gap-[calc(11.91*var(--u))] rounded-[calc(4*var(--u))] bg-[var(--azul-escuro)] px-[calc(29.6*var(--u))] text-[length:var(--t-etiqueta)] leading-[1.4] whitespace-nowrap text-[var(--bege-claro-2)] transition-colors duration-[400ms] ease-[var(--ease-out)]"
               >
                 {t('feCta')}
                 <Seta className="group-hover/btn:translate-x-[calc(4*var(--u))]" />
@@ -52,7 +52,7 @@ export default function ContactosFe() {
           </div>
         </div>
         <Revelar atraso={200}>
-          <p className="w-[calc(560*var(--u))] max-lg:w-full text-[length:calc(16*var(--u))] leading-[1.5]" style={{ ...TRIM, ...LEVE }}>{t('feTexto')}</p>
+          <p className="w-[calc(560*var(--u))] max-lg:w-full text-[length:var(--t-corpo)] leading-[1.5]" style={{ ...TRIM, ...LEVE }}>{t('feTexto')}</p>
         </Revelar>
       </div>
 
@@ -63,21 +63,21 @@ export default function ContactosFe() {
             <div className="flex items-start gap-[calc(40*var(--u))] max-lg:grid max-lg:w-full max-lg:grid-cols-2 max-lg:gap-x-[calc(20*var(--u))]">
               {colunas.map((c) => (
                 <div key={c.chave} className="flex w-[calc(213*var(--u))] max-lg:w-auto flex-col gap-[calc(32*var(--u))] max-lg:gap-[calc(20*var(--u))]">
-                  <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold">{c.titulo}</p>
+                  <p className="text-[length:var(--t-etiqueta)] leading-[1.17] font-bold">{c.titulo}</p>
                   <div className="flex flex-col gap-[calc(3.19*var(--u))]">
-                    <p className="text-[length:calc(16*var(--u))] max-lg:text-[length:calc(14*var(--u))] leading-[1.4] font-bold whitespace-nowrap">
+                    <p className="text-[length:var(--t-corpo)] max-lg:text-[length:var(--t-pequeno)] leading-[1.4] font-bold whitespace-nowrap">
                       {c.horas.map((l) => (
                         <span key={l} className="block">{l}</span>
                       ))}
                     </p>
-                    <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] whitespace-nowrap">{c.dias}</p>
+                    <p className="text-[length:var(--t-etiqueta)] leading-[1.17] whitespace-nowrap">{c.dias}</p>
                   </div>
                 </div>
               ))}
             </div>
             <div className="flex w-[calc(445*var(--u))] max-lg:w-full flex-col gap-[calc(32*var(--u))] max-lg:gap-[calc(20*var(--u))]">
-              <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold">{t('feUrgentes')}</p>
-              <p className="text-[length:calc(16*var(--u))] leading-[1.5]" style={{ ...TRIM, ...LEVE }}>{t('feUrgenciaTexto')}</p>
+              <p className="text-[length:var(--t-etiqueta)] leading-[1.17] font-bold">{t('feUrgentes')}</p>
+              <p className="text-[length:var(--t-corpo)] leading-[1.5]" style={{ ...TRIM, ...LEVE }}>{t('feUrgenciaTexto')}</p>
             </div>
           </div>
         </Revelar>

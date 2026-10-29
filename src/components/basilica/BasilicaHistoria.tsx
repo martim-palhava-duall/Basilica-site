@@ -6,8 +6,8 @@ import Revelar from '@/components/home/Revelar'
 function Ficha({ rotulo, valor, maiusculas = false, folga = 40 }: { rotulo: string; valor: string; maiusculas?: boolean; folga?: number }) {
   return (
     <div style={{ columnGap: folga }} className="flex items-start w-full py-[calc(12*var(--u))] border-b border-solid border-[rgba(28,43,57,0.3)] first:border-t text-[rgba(28,43,57,0.3)] font-bold">
-      <span className="w-[calc(110*var(--u))] shrink-0 text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] self-center">{rotulo}</span>
-      <span className={`flex-1 text-right text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] ${maiusculas ? 'uppercase' : ''}`}>{valor}</span>
+      <span className="w-[calc(110*var(--u))] shrink-0 text-[length:var(--t-corpo)] leading-[1.19] self-center">{rotulo}</span>
+      <span className={`flex-1 text-right text-[length:var(--t-corpo)] leading-[1.19] ${maiusculas ? 'uppercase' : ''}`}>{valor}</span>
     </div>
   )
 }
@@ -47,7 +47,7 @@ export default function BasilicaHistoria() {
       </div>
 
       <Revelar atraso={100}>
-        <div className="flex items-start justify-between w-full max-lg:flex-col max-lg:gap-[calc(24*var(--u))] text-[length:calc(16*var(--u))] leading-[1.5] text-[rgba(29,35,40,0.6)]">
+        <div className="flex items-start justify-between w-full max-lg:flex-col max-lg:gap-[calc(24*var(--u))] text-[length:var(--t-corpo)] leading-[1.5] text-[rgba(29,35,40,0.6)]">
           <p className="w-[calc(445*var(--u))] max-lg:w-full">{t('historiaLabel')}</p>
           <div className="flex gap-[calc(20*var(--u))] items-start max-lg:flex-col max-lg:w-full">
             <p className="w-[calc(329*var(--u))] max-lg:w-full">{t('historia1')}</p>

@@ -49,12 +49,12 @@ export default function ContactosAbertura() {
       <div className="flex w-full flex-col gap-[calc(48*var(--u))] max-lg:gap-[calc(32*var(--u))]">
         <div className="flex w-[calc(562*var(--u))] max-lg:w-full flex-col gap-[calc(40*var(--u))] max-lg:gap-[calc(24*var(--u))]">
           <div className="flex w-full flex-col gap-[calc(12*var(--u))]">
-            <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{t('label')}</p></Revelar>
+            <Revelar><p className="text-[length:var(--t-etiqueta)] leading-[1.4]">{t('label')}</p></Revelar>
             <Revelar atraso={100}>
               <h1 className="font-display text-[length:calc(80*var(--u))] max-lg:text-[length:calc(40*var(--u))] leading-none tracking-[calc(0.96*var(--u))] max-lg:tracking-normal font-normal" style={TRIM}>{t('titulo')}</h1>
             </Revelar>
           </div>
-          <Revelar atraso={200}><p className="w-[calc(561*var(--u))] max-lg:w-full text-[length:max(11px,calc(12*var(--u)))] max-lg:text-[length:calc(14*var(--u))] leading-[1.4] max-lg:leading-[1.5]">{t('sub')}</p></Revelar>
+          <Revelar atraso={200}><p className="w-[calc(561*var(--u))] max-lg:w-full text-[length:var(--t-etiqueta)] max-lg:text-[length:var(--t-pequeno)] leading-[1.4] max-lg:leading-[1.5]">{t('sub')}</p></Revelar>
         </div>
         <div aria-hidden="true" className="h-px w-full max-lg:-mx-[calc(20*var(--u))] max-lg:w-[calc(100%+40*var(--u))] bg-[rgba(28,43,57,0.25)]" />
       </div>
@@ -64,10 +64,10 @@ export default function ContactosAbertura() {
           <Revelar>
             <div className="flex w-[calc(561*var(--u))] max-lg:w-full flex-col gap-[calc(24*var(--u))]">
               <div className="flex w-full flex-col gap-[calc(12*var(--u))]">
-                <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold">{t('formLabel')}</p>
+                <p className="text-[length:var(--t-etiqueta)] leading-[1.17] font-bold">{t('formLabel')}</p>
                 <h2 className="font-display text-[length:calc(24*var(--u))] leading-none tracking-[calc(0.96*var(--u))] font-normal" style={TRIM}>{t('formTitulo')}</h2>
               </div>
-              <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] opacity-60">
+              <p className="text-[length:var(--t-etiqueta)] leading-[1.4] opacity-60">
                 {t('formTexto1')}
                 <br />
                 {t('formTexto2')}
@@ -82,10 +82,10 @@ export default function ContactosAbertura() {
         <dl className="flex w-[calc(329*var(--u))] max-lg:w-full flex-col gap-[calc(48*var(--u))] max-lg:gap-[calc(28*var(--u))] py-[calc(40*var(--u))] max-lg:py-0">
           {dados.map((d) => (
             <div key={d.chave} className="flex w-full flex-col gap-[calc(12*var(--u))]">
-              <dt className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold">{d.label}</dt>
+              <dt className="text-[length:var(--t-etiqueta)] leading-[1.17] font-bold">{d.label}</dt>
               <dd className="font-display text-[length:calc(24*var(--u))] leading-none tracking-[calc(0.96*var(--u))]" style={TRIM}>
                 {d.href ? (
-                  <a href={d.href} className="transition-opacity duration-[400ms] ease-[var(--ease-out)] hover:opacity-60">{d.linhas[0]}</a>
+                  <a href={d.href} className="alvo-toque transition-opacity duration-[400ms] ease-[var(--ease-out)] hover:opacity-60">{d.linhas[0]}</a>
                 ) : (
                   d.linhas.map((l) => <span key={l} className="block">{l}</span>)
                 )}

@@ -279,7 +279,7 @@ export default function NoticiasBloco({
             {entrada === 7 && <div aria-hidden="true" className="absolute inset-0" style={{ background: fundo, ...est('cortinaH', k) }} />}
           </div>
           <div className="flex flex-col gap-[calc(12*var(--u))] max-lg:gap-[calc(6*var(--u))]" style={est('texto', k)}>
-            <p className="pt-[calc(8*var(--u))] max-lg:pt-0 text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] text-[rgba(29,35,40,0.6)]">{meta}</p>
+            <p className="pt-[calc(8*var(--u))] max-lg:pt-0 text-[length:var(--t-etiqueta)] leading-[1.4] text-[rgba(29,35,40,0.6)]">{meta}</p>
             <div className="flex w-full items-center justify-between gap-[calc(16*var(--u))]">
               <p className="font-display text-[length:calc(32*var(--u))] leading-[calc(35.2*var(--u))] max-lg:text-[length:calc(24*var(--u))] max-lg:leading-[calc(28*var(--u))]">{titulos[k]}</p>
               <Seta className="shrink-0 opacity-0 -translate-x-[calc(8*var(--u))] !transition-[opacity,transform] group-hover/card:opacity-100 group-hover/card:translate-x-0 group-focus-visible/card:opacity-100 group-focus-visible/card:translate-x-0" />
@@ -311,7 +311,7 @@ export default function NoticiasBloco({
           <div className="flex flex-col gap-[calc(8*var(--u))] w-[calc(480.5*var(--u))] max-lg:w-full">
             {entrada ? (
               <>
-                <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] text-[rgba(29,35,40,0.6)]" style={est('label')}>{label}</p>
+                <p className="text-[length:var(--t-etiqueta)] leading-[1.4] text-[rgba(29,35,40,0.6)]" style={est('label')}>{label}</p>
                 {entrada === 12 ? (
                   <h2 className="font-display text-[length:calc(56*var(--u))] leading-[normal] tracking-[calc(-0.336*var(--u))] max-lg:text-[length:calc(34*var(--u))] max-lg:leading-[1.1] max-lg:tracking-normal max-lg:whitespace-normal font-normal whitespace-nowrap">{palavras(titulo)}</h2>
                 ) : entrada === 2 ? (
@@ -328,7 +328,7 @@ export default function NoticiasBloco({
               </>
             ) : (
               <>
-                <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] text-[rgba(29,35,40,0.6)]">{label}</p></Revelar>
+                <Revelar><p className="text-[length:var(--t-etiqueta)] leading-[1.4] text-[rgba(29,35,40,0.6)]">{label}</p></Revelar>
                 <Revelar atraso={100}>
                   <h2 className="font-display text-[length:calc(56*var(--u))] leading-[normal] tracking-[calc(-0.336*var(--u))] max-lg:text-[length:calc(34*var(--u))] max-lg:leading-[1.1] max-lg:tracking-normal max-lg:whitespace-normal font-normal whitespace-nowrap">
                     {titulo}
@@ -340,7 +340,7 @@ export default function NoticiasBloco({
           <Link
             href="/blog"
             style={est('cta')}
-            className="group/cta flex items-center gap-[calc(9.59*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap"
+            className="alvo-toque group/cta flex items-center gap-[calc(9.59*var(--u))] text-[length:var(--t-etiqueta)] leading-[1.4] whitespace-nowrap"
           >
             {cta}
             <Seta className="group-hover/cta:translate-x-[calc(4*var(--u))]" />

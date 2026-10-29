@@ -39,7 +39,7 @@ export default function SobreVisitar() {
       className="relative w-full h-[calc(900*var(--u))] max-lg:h-auto max-lg:flex max-lg:flex-col max-lg:px-[calc(20*var(--u))] max-lg:py-[calc(120*var(--u))] scroll-mt-[calc(64*var(--u))] bg-[var(--bege-escuro-2)] text-[var(--azul-escuro)]"
     >
       <Revelar className="absolute left-[calc(32*var(--u))] top-[calc(140*var(--u))] max-lg:static max-lg:pb-[calc(56*var(--u))]">
-        <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{t('visitarLabel')}</p>
+        <p className="text-[length:var(--t-etiqueta)] leading-[1.4]">{t('visitarLabel')}</p>
       </Revelar>
 
       {/* 1 — miniatura à esquerda, texto à direita */}
@@ -93,13 +93,13 @@ export default function SobreVisitar() {
       </div>
 
       <Revelar className="absolute left-[calc(32*var(--u))] top-[calc(745*var(--u))] max-lg:static max-lg:mt-[calc(72*var(--u))] max-lg:mb-[calc(16*var(--u))]">
-        <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap max-lg:opacity-60">{t('visitarLocal')}</p>
+        <p className="text-[length:var(--t-etiqueta)] leading-[1.4] whitespace-nowrap max-lg:opacity-60">{t('visitarLocal')}</p>
       </Revelar>
 
-      <div className="absolute left-[calc(900*var(--u))] top-[calc(712*var(--u))] max-lg:static">
+      <div className="absolute left-[calc(900*var(--u))] right-[calc(32*var(--u))] top-[calc(712*var(--u))] max-lg:static">
         <Revelar atraso={300}>
-          <div className="flex items-start gap-[calc(32*var(--u))] max-lg:flex-col max-lg:gap-[calc(32*var(--u))]">
-            <p className="font-[family-name:var(--font-body-light)] text-[length:calc(20*var(--u))] max-lg:text-[length:max(11px,calc(12*var(--u)))] leading-[calc(32*var(--u))] max-lg:leading-[1.4] whitespace-nowrap max-lg:whitespace-normal max-lg:max-w-[calc(330*var(--u))]" style={TRIM}>
+          <div className="flex flex-wrap items-start gap-x-[calc(32*var(--u))] gap-y-[calc(24*var(--u))] max-lg:flex-col max-lg:gap-[calc(32*var(--u))]">
+            <p className="font-[family-name:var(--font-body-light)] text-[length:var(--t-lead)] max-lg:text-[length:var(--t-etiqueta)] leading-[1.6] max-lg:leading-[1.4] whitespace-nowrap max-lg:whitespace-normal max-lg:max-w-[calc(330*var(--u))]" style={TRIM}>
               {t('visitarTexto1')}{' '}
               <br className="max-lg:hidden" />
               {t('visitarTexto2')}
@@ -107,7 +107,7 @@ export default function SobreVisitar() {
             <Link
               href={BILHETEIRA}
               {...externo(BILHETEIRA)}
-              className="group/btn flex items-center gap-[calc(12.01*var(--u))] px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] rounded-[calc(4*var(--u))] border border-solid border-[var(--azul-escuro)] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
+              className="group/btn flex items-center gap-[calc(12.01*var(--u))] px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] rounded-[calc(4*var(--u))] border border-solid border-[var(--azul-escuro)] text-[length:var(--t-etiqueta)] leading-[1.4] whitespace-nowrap transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
             >
               {t('visitarCta')}
               <Seta className="group-hover/btn:translate-x-[calc(4*var(--u))]" />

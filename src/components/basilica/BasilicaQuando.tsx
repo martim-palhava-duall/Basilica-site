@@ -60,7 +60,7 @@ export default function BasilicaQuando() {
       {/* ── Cabeçalho ── */}
       <div className="flex flex-col gap-[calc(24*var(--u))] w-full">
         <div className="flex flex-col gap-[calc(12*var(--u))] w-full">
-          <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{t('quandoLabel')}</p></Revelar>
+          <Revelar><p className="text-[length:var(--t-etiqueta)] leading-[1.4]">{t('quandoLabel')}</p></Revelar>
           <div className="flex items-center justify-between w-full max-lg:flex-col max-lg:items-start max-lg:gap-[calc(24*var(--u))]">
             <Revelar atraso={100}>
               <h2 className="font-display text-[length:calc(80*var(--u))] max-lg:text-[length:calc(40*var(--u))] leading-[calc(96*var(--u))] max-lg:leading-[calc(46*var(--u))] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal font-normal whitespace-nowrap max-lg:whitespace-normal">{t('quandoTitulo')}</h2>
@@ -68,7 +68,7 @@ export default function BasilicaQuando() {
             <Link
               href={BILHETEIRA}
               {...externo(BILHETEIRA)}
-              className="group/btn flex items-center gap-[calc(11.91*var(--u))] h-[calc(46.8*var(--u))] px-[calc(29.6*var(--u))] rounded-[calc(4*var(--u))] border border-solid border-[var(--bege-claro-2)] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap text-[var(--bege-claro-2)] transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)] hover:bg-[var(--bege-claro-2)] hover:text-[var(--vermelho)]"
+              className="group/btn flex items-center gap-[calc(11.91*var(--u))] h-[calc(46.8*var(--u))] px-[calc(29.6*var(--u))] rounded-[calc(4*var(--u))] border border-solid border-[var(--bege-claro-2)] text-[length:var(--t-etiqueta)] leading-[1.4] whitespace-nowrap text-[var(--bege-claro-2)] transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)] hover:bg-[var(--bege-claro-2)] hover:text-[var(--vermelho)]"
             >
               {t('quandoCta')}
               <Seta className="group-hover/btn:translate-x-[calc(4*var(--u))]" />
@@ -76,7 +76,7 @@ export default function BasilicaQuando() {
           </div>
         </div>
         <Revelar atraso={200}>
-          <p className="w-[calc(444*var(--u))] max-lg:w-full font-[family-name:var(--font-body-light)] text-[length:calc(16*var(--u))] leading-[1.5]" style={TRIM}>{t('quandoTexto')}</p>
+          <p className="w-[calc(444*var(--u))] max-lg:w-full font-[family-name:var(--font-body-light)] text-[length:var(--t-corpo)] leading-[1.5]" style={TRIM}>{t('quandoTexto')}</p>
         </Revelar>
       </div>
 
@@ -88,12 +88,12 @@ export default function BasilicaQuando() {
             <div className="flex gap-[calc(40*var(--u))] items-start max-lg:w-full max-lg:flex-col max-lg:gap-[calc(36*var(--u))]">
             {colunas.map((c) => (
               <div key={c.titulo} className="flex flex-col gap-[calc(32*var(--u))] max-lg:gap-[calc(16*var(--u))] w-[calc(213*var(--u))] max-lg:w-full">
-                <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold">{c.titulo}</p>
+                <p className="text-[length:var(--t-etiqueta)] leading-[1.17] font-bold">{c.titulo}</p>
                 <div className="flex flex-col gap-[calc(24*var(--u))]">
                   {c.entradas.map((e) => (
                     <div key={e.termo} className="flex flex-col gap-[calc(3.19*var(--u))]">
-                      <p className="text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] font-bold whitespace-nowrap max-lg:whitespace-normal">{e.termo}</p>
-                      <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] whitespace-nowrap max-lg:whitespace-normal">{e.detalhe}</p>
+                      <p className="text-[length:var(--t-corpo)] leading-[1.19] font-bold whitespace-nowrap max-lg:whitespace-normal">{e.termo}</p>
+                      <p className="text-[length:var(--t-etiqueta)] leading-[1.17] whitespace-nowrap max-lg:whitespace-normal">{e.detalhe}</p>
                     </div>
                   ))}
                 </div>
@@ -124,14 +124,14 @@ export default function BasilicaQuando() {
               >
                 <div className="flex flex-col gap-[calc(6*var(--u))] w-full">
                   <div className="flex items-center justify-between w-full">
-                    <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{t(`${k}Opcao`)}</p>
+                    <p className="text-[length:var(--t-etiqueta)] leading-[1.4]">{t(`${k}Opcao`)}</p>
                     <Seta className="opacity-0 -translate-x-[calc(8*var(--u))] group-hover/tipo:opacity-100 group-hover/tipo:translate-x-0 group-focus-visible/tipo:opacity-100 group-focus-visible/tipo:translate-x-0 !duration-[450ms]" />
                   </div>
                   <p className="font-display text-[length:calc(32*var(--u))] leading-[calc(35.2*var(--u))]">{t(`${k}Nome`)}</p>
                 </div>
                 <div className="flex flex-col gap-[calc(12*var(--u))] w-full">
-                  <p className="text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] font-bold">{t(`${k}Duracao`)}</p>
-                  <p className="text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))]">{t(`${k}Texto`)}</p>
+                  <p className="text-[length:var(--t-corpo)] leading-[1.19] font-bold">{t(`${k}Duracao`)}</p>
+                  <p className="text-[length:var(--t-corpo)] leading-[1.19]">{t(`${k}Texto`)}</p>
                 </div>
               </Link>
             </Revelar>

@@ -153,7 +153,7 @@ export default function HomeAncoras({ itens }: { itens: Ancora[] }) {
         aria-expanded={aberta}
         aria-controls="ancoras-drop"
         onClick={() => setDrop((d) => !d)}
-        className="lg:hidden flex h-full w-full items-center justify-between px-[calc(20*var(--u))] text-[length:calc(16*var(--ui))] leading-[1.5]"
+        className="lg:hidden flex h-full w-full items-center justify-between px-[calc(20*var(--u))] text-[length:var(--t-corpo)] leading-[1.5]"
       >
         <span>{atual}</span>
         <svg aria-hidden="true" width="12" height="8" viewBox="0 0 12 8" fill="none" className="transition-transform duration-[300ms] ease-[var(--ease-out)]" style={{ transform: aberta ? 'rotate(180deg)' : 'none' }}>
@@ -182,7 +182,7 @@ export default function HomeAncoras({ itens }: { itens: Ancora[] }) {
                   setDrop(false)
                 }}
                 aria-current={ativo ? 'location' : undefined}
-                className="flex items-center justify-between border-t border-solid border-[rgba(128,128,128,0.18)] py-[calc(14*var(--ui))] text-[length:calc(16*var(--ui))] leading-[1.5]"
+                className="flex items-center justify-between border-t border-solid border-[rgba(128,128,128,0.18)] py-[calc(14*var(--ui))] text-[length:var(--t-corpo)] leading-[1.5]"
                 style={{ opacity: ativo ? 1 : 0.5 }}
               >
                 {it.label}
@@ -202,7 +202,7 @@ export default function HomeAncoras({ itens }: { itens: Ancora[] }) {
                 href={`#${it.id}`}
                 onClick={ir(it.id)}
                 aria-current={ativo ? 'location' : undefined}
-                className="flex h-full items-center whitespace-nowrap border-b border-solid text-[length:calc(16*var(--ui))] leading-[1.5] transition-[opacity,border-color] duration-[250ms] ease-[var(--ease-out)] hover:opacity-60"
+                className="flex h-full items-center whitespace-nowrap border-b border-solid text-[length:var(--t-corpo)] leading-[1.5] transition-[opacity,border-color] duration-[250ms] ease-[var(--ease-out)] hover:opacity-60"
                 style={{ opacity: ativo ? 1 : 0.2, borderColor: ativo ? 'currentColor' : 'transparent' }}
               >
                 {it.label}

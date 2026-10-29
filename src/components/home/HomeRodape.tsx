@@ -22,7 +22,7 @@ const COL_CONTACTO: [string, string][] = [
 /** Site do estúdio que fez o desenho e o site ("Design by duall") */
 const DUALL = 'https://duallstudio.com'
 
-const LINK = 'transition-colors duration-[400ms] ease-[var(--ease-out)] hover:text-[var(--bege-claro-2)]'
+const LINK = 'alvo-toque transition-colors duration-[400ms] ease-[var(--ease-out)] hover:text-[var(--bege-claro-2)]'
 
 /**
  * Rodapé — design novo (Figma, nó 115:414), desktop 1440, 900 de altura.
@@ -48,7 +48,7 @@ export default function HomeRodape() {
     ))
 
   const linha = <div aria-hidden="true" className="h-px w-full bg-[rgba(247,242,238,0.16)]" />
-  const rotulo = 'text-[length:calc(12*var(--u))] leading-[calc(14*var(--u))] tracking-[calc(0.24*var(--u))] uppercase opacity-55'
+  const rotulo = 'text-[length:var(--t-etiqueta)] leading-[1.17] tracking-[calc(0.24*var(--u))] uppercase opacity-55'
 
   return (
     <footer
@@ -77,7 +77,7 @@ export default function HomeRodape() {
               {t('rodLema2')}
             </p>
           </div>
-          <address className="flex flex-col gap-[calc(16*var(--u))] pt-[calc(18.85*var(--u))] not-italic text-[length:calc(16*var(--u))]">
+          <address className="flex flex-col gap-[calc(16*var(--u))] pt-[calc(18.85*var(--u))] not-italic text-[length:var(--t-corpo)]">
             <p className="leading-[1.4]">
               {t('rodMorada1')}
               <br />
@@ -89,17 +89,17 @@ export default function HomeRodape() {
         </div>
 
         {/* ── Listas de links ── */}
-        <nav className="absolute top-[calc(49.85*var(--u))] flex gap-[calc(91*var(--u))] text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))]" style={{ left: 'calc(25% + 89 * var(--u))' }}>
+        <nav className="absolute top-[calc(49.85*var(--u))] flex gap-[calc(91*var(--u))] text-[length:var(--t-corpo)] leading-[1.19]" style={{ left: 'calc(25% + 89 * var(--u))' }}>
           <div className="flex flex-col gap-[calc(12*var(--u))] w-[calc(134*var(--u))]">
-            <p className="text-[length:max(11px,calc(12*var(--u)))] opacity-60">{t('rodBasilica')}</p>
+            <p className="text-[length:var(--t-etiqueta)] opacity-60">{t('rodBasilica')}</p>
             <ul className="flex flex-col gap-[calc(10*var(--u))]">{lista(COL_BASILICA)}</ul>
           </div>
           <div className="flex flex-col gap-[calc(12*var(--u))] w-[calc(128*var(--u))]">
-            <p className="text-[length:max(11px,calc(12*var(--u)))] opacity-60">{t('rodContacto')}</p>
+            <p className="text-[length:var(--t-etiqueta)] opacity-60">{t('rodContacto')}</p>
             <ul className="flex flex-col gap-[calc(10*var(--u))]">{lista(COL_CONTACTO)}</ul>
           </div>
           <div className="flex flex-col gap-[calc(12*var(--u))] w-[calc(128*var(--u))]">
-            <p className="text-[length:max(11px,calc(12*var(--u)))] opacity-60">{t('rodRedes')}</p>
+            <p className="text-[length:var(--t-etiqueta)] opacity-60">{t('rodRedes')}</p>
             <ul className="flex flex-col gap-[calc(10*var(--u))]">
               <li>Facebook</li>
               <li>
@@ -116,7 +116,7 @@ export default function HomeRodape() {
           <div className="relative h-[calc(287*var(--u))] w-full overflow-hidden rounded-[calc(4*var(--u))]">
             <Image src="/home/menu-foto.jpg" alt="" fill sizes="328px" className="object-cover object-[40%_50%]" />
           </div>
-          <Link href={BILHETEIRA} {...externo(BILHETEIRA)} className={`group/btn sem-luz self-start flex items-center gap-[calc(9.6*var(--u))] text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] ${LINK}`}>
+          <Link href={BILHETEIRA} {...externo(BILHETEIRA)} className={`alvo-toque group/btn sem-luz self-start flex items-center gap-[calc(9.6*var(--u))] text-[length:var(--t-corpo)] leading-[1.19] ${LINK}`}>
             {t('rodPlanear')}
             <Seta className="group-hover/btn:translate-x-[calc(4*var(--u))]" />
           </Link>
@@ -127,7 +127,7 @@ export default function HomeRodape() {
         <NomeRodape label={t('rodMarcaAlt')} className="absolute left-0 top-[calc(517.02*var(--u))]" />
 
         {/* ── Barra legal ── */}
-        <div className="absolute left-0 top-[calc(826.82*var(--u))] flex items-center justify-between w-full h-[calc(40*var(--u))] pt-[calc(24*var(--u))] px-[calc(32*var(--u))] border-t border-solid border-[rgba(247,242,238,0.2)] text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))]">
+        <div className="absolute left-0 top-[calc(826.82*var(--u))] flex items-center justify-between w-full h-[calc(40*var(--u))] pt-[calc(24*var(--u))] px-[calc(32*var(--u))] border-t border-solid border-[rgba(247,242,238,0.2)] text-[length:var(--t-etiqueta)] leading-[1.17]">
           <p className="text-[rgba(186,201,213,0.6)]">{t('rodDireitos')}</p>
           <div className="flex items-center gap-[calc(16*var(--u))] w-[calc(404*var(--u))]">
             <span>{t('rodPrivacidade')}</span>
@@ -157,7 +157,7 @@ export default function HomeRodape() {
         {/* Páginas: oito, em duas colunas iguais */}
         <nav aria-label={t('rodBasilica')} className="flex flex-col gap-[calc(20*var(--u))] px-[calc(20*var(--u))] py-[calc(36*var(--u))]">
           <p className={rotulo}>{t('rodBasilica')}</p>
-          <ul className="grid grid-cols-2 gap-x-[calc(20*var(--u))] gap-y-[calc(14*var(--u))] text-[length:calc(16*var(--u))] leading-[calc(20*var(--u))]">
+          <ul className="grid grid-cols-2 gap-x-[calc(20*var(--u))] gap-y-[calc(14*var(--u))] text-[length:var(--t-corpo)] leading-[1.25]">
             {lista([...COL_BASILICA, ...COL_CONTACTO])}
           </ul>
         </nav>
@@ -168,7 +168,7 @@ export default function HomeRodape() {
         <div className="flex flex-col gap-[calc(32*var(--u))] px-[calc(20*var(--u))] py-[calc(36*var(--u))]">
           <div className="flex flex-col gap-[calc(14*var(--u))]">
             <p className={rotulo}>{t('rodContacto')}</p>
-            <address className="flex flex-col gap-[calc(6*var(--u))] not-italic text-[length:calc(16*var(--u))] leading-[1.45]">
+            <address className="flex flex-col gap-[calc(6*var(--u))] not-italic text-[length:var(--t-corpo)] leading-[1.45]">
               <span>{t('rodMorada1')}, {t('rodMorada2')}</span>
               <a href="tel:+351213960915" className={LINK}>213 960 915</a>
               <a href="mailto:geral@basilicadaestrela.pt" className={LINK}>geral@basilicadaestrela.pt</a>
@@ -176,7 +176,7 @@ export default function HomeRodape() {
           </div>
           <div className="flex flex-col gap-[calc(14*var(--u))]">
             <p className={rotulo}>{t('rodRedes')}</p>
-            <ul className="grid grid-cols-2 gap-x-[calc(20*var(--u))] gap-y-[calc(14*var(--u))] text-[length:calc(16*var(--u))] leading-[calc(20*var(--u))]">
+            <ul className="grid grid-cols-2 gap-x-[calc(20*var(--u))] gap-y-[calc(14*var(--u))] text-[length:var(--t-corpo)] leading-[1.25]">
               <li>Facebook</li>
               <li><a href="https://instagram.com/basilicadaestrela" target="_blank" rel="noopener noreferrer" className={LINK}>Instagram</a></li>
               <li>Whatsapp</li>
@@ -192,7 +192,7 @@ export default function HomeRodape() {
           <div className="relative h-[calc(190*var(--u))] w-full overflow-hidden rounded-[calc(4*var(--u))]">
             <Image src="/home/menu-foto.jpg" alt="" fill sizes="100vw" className="object-cover object-[40%_50%]" />
           </div>
-          <Link href={BILHETEIRA} {...externo(BILHETEIRA)} className={`group/btn sem-luz self-start flex items-center gap-[calc(9.6*var(--u))] text-[length:calc(16*var(--u))] leading-[calc(20*var(--u))] ${LINK}`}>
+          <Link href={BILHETEIRA} {...externo(BILHETEIRA)} className={`alvo-toque group/btn sem-luz self-start flex items-center gap-[calc(9.6*var(--u))] text-[length:var(--t-corpo)] leading-[1.25] ${LINK}`}>
             {t('rodPlanear')}
             <Seta className="group-hover/btn:translate-x-[calc(4*var(--u))]" />
           </Link>
@@ -202,7 +202,7 @@ export default function HomeRodape() {
         <NomeRodape label={t('rodMarcaAlt')} className="px-[calc(20*var(--u))] pt-[calc(40*var(--u))] pb-[calc(40*var(--u))]" />
 
         {/* Barra legal */}
-        <div className="flex flex-col gap-[calc(14*var(--u))] border-t border-solid border-[rgba(247,242,238,0.16)] px-[calc(20*var(--u))] pt-[calc(20*var(--u))] pb-[calc(28*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[calc(16*var(--u))]">
+        <div className="flex flex-col gap-[calc(14*var(--u))] border-t border-solid border-[rgba(247,242,238,0.16)] px-[calc(20*var(--u))] pt-[calc(20*var(--u))] pb-[calc(28*var(--u))] text-[length:var(--t-etiqueta)] leading-[1.33]">
           <div className="flex flex-wrap gap-x-[calc(20*var(--u))] gap-y-[calc(4*var(--u))]">
             <span>{t('rodPrivacidade')}</span>
             <span>{t('rodTermos')}</span>

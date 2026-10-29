@@ -102,7 +102,7 @@ export default function DonationForm() {
           type="submit"
           disabled={!podeSubmeter}
           className="inline-flex items-center bg-[var(--color-text-primary)] !text-[var(--color-text-inverse)] px-7 py-3.5 text-[0.8rem] font-medium transition-opacity duration-300 hover:opacity-85 disabled:opacity-40 disabled:cursor-not-allowed"
-          style={{ borderRadius: 'var(--radius)' }}
+          style={{ borderRadius: 'calc(4 * var(--u))' }}
         >
           {t('formSubmit')}
         </button>

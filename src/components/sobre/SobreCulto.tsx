@@ -34,7 +34,7 @@ export default function SobreCulto() {
     >
       <div className="flex flex-col gap-[calc(80*var(--u))] max-lg:gap-[calc(48*var(--u))] w-full">
         <Revelar>
-          <div className="flex items-center justify-between w-full max-lg:flex-col max-lg:items-start max-lg:gap-[calc(8*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap">
+          <div className="flex items-center justify-between w-full max-lg:flex-col max-lg:items-start max-lg:gap-[calc(8*var(--u))] text-[length:var(--t-etiqueta)] leading-[1.4] whitespace-nowrap">
             <p>{t('cultoLabel')}</p>
             <p className="text-right">{t('cultoLema')}</p>
           </div>
@@ -51,7 +51,7 @@ export default function SobreCulto() {
                   <h3 className="font-display text-[length:calc(40*var(--u))] leading-[calc(35.2*var(--u))] tracking-[calc(-0.192*var(--u))] font-normal whitespace-nowrap max-lg:whitespace-normal md:max-lg:text-[length:calc(26*var(--u))] md:max-lg:leading-[calc(30*var(--u))] text-[var(--bege-escuro-2)]">
                     {t(`${e.chave}Titulo`)}
                   </h3>
-                  <p className="text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] opacity-60">{t(`${e.chave}Texto`)}</p>
+                  <p className="text-[length:var(--t-corpo)] leading-[1.19] opacity-60">{t(`${e.chave}Texto`)}</p>
                 </div>
               </div>
             </Revelar>
@@ -63,7 +63,7 @@ export default function SobreCulto() {
             <div aria-hidden="true" className="h-px -mx-[calc(31*var(--u))] w-[calc(100%+62*var(--u))] max-lg:-mx-[calc(20*var(--u))] max-lg:w-[calc(100%+40*var(--u))] border-t border-solid border-[var(--bege-claro-2)] opacity-25" />
             <div className="flex items-center justify-between w-full max-lg:flex-col max-lg:items-start max-lg:gap-[calc(28*var(--u))]">
               <p
-                className="w-[calc(542*var(--u))] max-lg:w-full font-[family-name:var(--font-body-light)] text-[length:calc(20*var(--u))] max-lg:text-[length:calc(16*var(--u))] leading-[calc(32*var(--u))] max-lg:leading-[1.5]"
+                className="w-[calc(542*var(--u))] max-lg:w-full font-[family-name:var(--font-body-light)] text-[length:var(--t-lead)] max-lg:text-[length:var(--t-corpo)] leading-[1.6] max-lg:leading-[1.5]"
                 style={{ textBox: 'trim-both cap alphabetic' } as React.CSSProperties}
               >
                 {t('cultoRodape')}
@@ -71,7 +71,7 @@ export default function SobreCulto() {
               <Link
                 href={BILHETEIRA}
                 {...externo(BILHETEIRA)}
-                className="group/btn flex items-center gap-[calc(12.01*var(--u))] px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] rounded-[calc(4*var(--u))] border border-solid border-[var(--bege-claro-2)] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
+                className="group/btn flex items-center gap-[calc(12.01*var(--u))] px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] rounded-[calc(4*var(--u))] border border-solid border-[var(--bege-claro-2)] text-[length:var(--t-etiqueta)] leading-[1.4] whitespace-nowrap transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
               >
                 {t('cultoCta')}
                 <Seta className="group-hover/btn:translate-x-[calc(4*var(--u))]" />

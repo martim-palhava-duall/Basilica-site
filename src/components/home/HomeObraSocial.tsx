@@ -81,7 +81,7 @@ export default function HomeObraSocial() {
     >
       {/* ── Cabeçalho ── */}
       <div className="flex flex-col gap-[calc(24*var(--u))] items-start w-full px-[calc(32*var(--u))] max-lg:px-[calc(20*var(--u))]">
-        <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.1]" style={surge(0)}>{t('obraLabel')}</p>
+        <p className="text-[length:var(--t-etiqueta)] leading-[1.1]" style={surge(0)}>{t('obraLabel')}</p>
         <div className="flex items-start justify-between w-full max-lg:flex-col max-lg:gap-[calc(32*var(--u))]">
           <h2 className="font-display text-[length:calc(80*var(--u))] leading-none font-normal w-[calc(418*var(--u))] max-lg:w-auto max-lg:text-[length:calc(44*var(--u))]" style={TRIM}>
             <span className="block" style={surge(100)}>{t('obraT1')}</span>
@@ -92,7 +92,7 @@ export default function HomeObraSocial() {
           <div style={surge(250)}>
             <Link
               href="/obra-social"
-              className="group/btn flex items-center gap-[calc(12*var(--u))] px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] rounded-[calc(6*var(--u))] border border-solid border-[rgba(27,43,57,0.45)] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap transition-[background-color,color,border-color] duration-[400ms] ease-[var(--ease-out)]"
+              className="group/btn flex items-center gap-[calc(12*var(--u))] px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] rounded-[calc(4*var(--u))] border border-solid border-[rgba(27,43,57,0.45)] text-[length:var(--t-etiqueta)] leading-[1.4] whitespace-nowrap transition-[background-color,color,border-color] duration-[400ms] ease-[var(--ease-out)]"
             >
               {t('obraCta')}
               <Seta className="group-hover/btn:translate-x-[calc(4*var(--u))]" />
@@ -119,7 +119,7 @@ export default function HomeObraSocial() {
             />
 
             <div className="flex items-center gap-[calc(24*var(--u))] px-[calc(32*var(--u))] max-lg:px-[calc(20*var(--u))] max-lg:gap-[calc(16*var(--u))]">
-              <span className="w-[calc(80*var(--u))] max-lg:w-[calc(24*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] tracking-[calc(-0.064*var(--u))]">{o.n}</span>
+              <span className="w-[calc(80*var(--u))] max-lg:w-[calc(24*var(--u))] text-[length:var(--t-etiqueta)] leading-[1.17] tracking-[calc(-0.064*var(--u))]">{o.n}</span>
               <span className="flex w-[calc(352*var(--u))] max-lg:w-auto items-center gap-[calc(14*var(--u))] font-display text-[length:calc(40*var(--u))] leading-[calc(35.2*var(--u))] max-lg:text-[length:calc(30*var(--u))] max-lg:leading-[calc(32*var(--u))] tracking-[calc(-0.192*var(--u))] whitespace-nowrap">
                 {t(`${o.chave}Titulo`)}
                 {/* ↗ de ligação exterior: aparece ao passar (Figma 201:4508) */}
@@ -131,8 +131,8 @@ export default function HomeObraSocial() {
             </div>
 
             <div className="flex flex-col gap-[calc(24*var(--u))] w-[calc(384*var(--u))] max-lg:w-full max-lg:gap-[calc(14*var(--u))] max-lg:pl-[calc(60*var(--u))] max-lg:pr-[calc(20*var(--u))]">
-              <p className="max-w-[calc(448*var(--u))] pr-[calc(32*var(--u))] max-lg:pr-0 text-[length:calc(16*var(--u))] leading-[1.4]">{t(`${o.chave}Texto`)}</p>
-              <span className="flex items-center gap-[calc(4*var(--u))] text-[length:calc(16*var(--u))] leading-[1.5]">
+              <p className="max-w-[calc(448*var(--u))] pr-[calc(32*var(--u))] max-lg:pr-0 text-[length:var(--t-corpo)] leading-[1.4]">{t(`${o.chave}Texto`)}</p>
+              <span className="flex items-center gap-[calc(4*var(--u))] text-[length:var(--t-corpo)] leading-[1.5]">
                 <span className="underline decoration-from-font underline-offset-[calc(5*var(--u))]">{t('obraSaibaMais')}</span>
                 <span aria-hidden="true" className="seta-externa transition-transform duration-[400ms] ease-[var(--ease-out)] group-hover/obra:translate-x-[calc(2*var(--u))] group-hover/obra:-translate-y-[calc(2*var(--u))]" />
               </span>

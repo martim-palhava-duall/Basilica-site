@@ -60,7 +60,7 @@ export default function SobreGaleria({ fundo = 'var(--bege-claro-2)' }: { fundo?
       }}
     >
       <div className="flex flex-col gap-[calc(12*var(--u))] items-center w-[calc(783*var(--u))] max-lg:w-full max-lg:px-[calc(20*var(--u))] text-center">
-        <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] tracking-[calc(-0.064*var(--u))]">{t('galLabel')}</p></Revelar>
+        <Revelar><p className="text-[length:var(--t-etiqueta)] leading-[1.17] tracking-[calc(-0.064*var(--u))]">{t('galLabel')}</p></Revelar>
         <Revelar atraso={100}>
           <h2 className="flex h-[calc(71*var(--u))] max-lg:h-auto items-center justify-center font-display text-[length:calc(80*var(--u))] max-lg:text-[length:calc(36*var(--u))] leading-[1.2] tracking-[calc(-0.576*var(--u))] max-lg:tracking-normal font-normal whitespace-nowrap max-lg:whitespace-normal">
             {t.rich('galTitulo', { i })}
@@ -98,7 +98,7 @@ export default function SobreGaleria({ fundo = 'var(--bege-claro-2)' }: { fundo?
       </Revelar>
 
       {/* ── Progresso e setas ── */}
-      <div className="relative h-[calc(32*var(--u))] w-[calc(1376*var(--u))] max-lg:w-full max-lg:px-[calc(20*var(--u))] overflow-hidden">
+      <div className="relative h-[calc(32*var(--u))] max-lg:h-[calc(44*var(--u))] w-[calc(1376*var(--u))] max-lg:w-full max-lg:px-[calc(20*var(--u))] overflow-hidden">
         <div className="absolute left-0 max-lg:left-[calc(20*var(--u))] top-1/2 h-[calc(2*var(--u))] w-[calc(166*var(--u))] max-lg:w-[calc(120*var(--u))] -translate-y-1/2 bg-[rgba(28,43,57,0.1)]">
           {/* Enche-se da esquerda até à fotografia atual (1/N, 2/N… N/N); só `transform` */}
           <div
@@ -117,11 +117,13 @@ export default function SobreGaleria({ fundo = 'var(--bege-claro-2)' }: { fundo?
             type="button"
             aria-label={t(b.rotulo)}
             onClick={() => ir(b.d)}
-            className="absolute left-[var(--seta-x)] max-lg:left-auto max-lg:right-[var(--seta-d)] top-[calc(6*var(--u))] h-[calc(20*var(--u))] w-[calc(32*var(--u))] overflow-hidden opacity-70 hover:opacity-100 transition-opacity duration-[400ms] ease-[var(--ease-out)]"
+            className="absolute left-[var(--seta-x)] max-lg:left-auto max-lg:right-[var(--seta-d)] top-[calc(6*var(--u))] h-[calc(20*var(--u))] w-[calc(32*var(--u))] max-lg:top-0 max-lg:h-full max-lg:w-[calc(44*var(--u))] flex items-center justify-end opacity-70 hover:opacity-100 transition-opacity duration-[400ms] ease-[var(--ease-out)]"
             style={{ ['--seta-x' as string]: u(b.left), ['--seta-d' as string]: u(b.d < 0 ? 72 : 20) }}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/sobre/galeria-setas.svg" alt="" width={81} height={13} className="absolute max-w-none" style={{ width: u(81), height: u(13), left: u(b.img), top: u(3.5) }} />
+            <span className="relative block h-[calc(20*var(--u))] w-[calc(32*var(--u))] shrink-0 overflow-hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/sobre/galeria-setas.svg" alt="" width={81} height={13} className="absolute max-w-none" style={{ width: u(81), height: u(13), left: u(b.img), top: u(3.5) }} />
+            </span>
           </button>
         ))}
       </div>

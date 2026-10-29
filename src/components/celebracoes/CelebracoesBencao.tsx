@@ -27,7 +27,7 @@ export default function CelebracoesBencao() {
     >
       <div className="flex w-full items-center gap-[calc(81*var(--u))] px-[calc(32*var(--u))]">
         <div className="flex min-w-px flex-1 flex-col gap-[calc(24*var(--u))]">
-          <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{t('benLabel')}</p></Revelar>
+          <Revelar><p className="text-[length:var(--t-etiqueta)] leading-[1.4]">{t('benLabel')}</p></Revelar>
           <Revelar atraso={100}>
             <h2
               className="font-display text-[length:calc(80*var(--u))] leading-none font-normal"
@@ -37,12 +37,12 @@ export default function CelebracoesBencao() {
             </h2>
           </Revelar>
           <Revelar atraso={200}>
-            <p className="w-[calc(451*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{t('benTexto')}</p>
+            <p className="w-[calc(451*var(--u))] text-[length:var(--t-etiqueta)] leading-[1.4]">{t('benTexto')}</p>
           </Revelar>
           <Revelar atraso={250}>
             <Link
               href="/contactos"
-              className="group/btn mt-[calc(16*var(--u))] flex h-[calc(46.8*var(--u))] w-max items-center gap-[calc(11.91*var(--u))] px-[calc(29.6*var(--u))] rounded-[calc(4*var(--u))] bg-[var(--azul-escuro)] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap text-[var(--bege-claro-2)] transition-[background-color] duration-[400ms] ease-[var(--ease-out)]"
+              className="group/btn mt-[calc(16*var(--u))] flex h-[calc(46.8*var(--u))] w-max items-center gap-[calc(11.91*var(--u))] px-[calc(29.6*var(--u))] rounded-[calc(4*var(--u))] bg-[var(--azul-escuro)] text-[length:var(--t-etiqueta)] leading-[1.4] whitespace-nowrap text-[var(--bege-claro-2)] transition-[background-color] duration-[400ms] ease-[var(--ease-out)]"
             >
               {t('benCta')}
               <Seta className="group-hover/btn:translate-x-[calc(4*var(--u))]" />
@@ -57,8 +57,8 @@ export default function CelebracoesBencao() {
                 key={l.rotulo}
                 className={`flex items-start gap-[calc(40*var(--u))] w-full py-[calc(20*var(--u))] border-b border-solid border-[rgba(28,43,57,0.25)] ${i === 0 ? 'border-t' : ''}`}
               >
-                <p className="w-[calc(224*var(--u))] shrink-0 self-center text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold whitespace-nowrap">{l.rotulo}</p>
-                <p className="min-w-px flex-1 text-right text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] font-bold">{l.texto}</p>
+                <p className="w-[calc(224*var(--u))] shrink-0 self-center text-[length:var(--t-etiqueta)] leading-[1.17] font-bold whitespace-nowrap">{l.rotulo}</p>
+                <p className="min-w-px flex-1 text-right text-[length:var(--t-corpo)] leading-[1.19] font-bold">{l.texto}</p>
               </div>
             ))}
           </div>

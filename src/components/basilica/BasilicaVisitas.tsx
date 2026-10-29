@@ -22,7 +22,7 @@ export default function BasilicaVisitas() {
     >
       <div className="flex flex-col gap-[calc(40*var(--u))] items-center w-full">
         <div className="flex flex-col gap-[calc(12*var(--u))] items-center w-[calc(783*var(--u))] max-lg:w-full text-center">
-          <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] tracking-[calc(-0.064*var(--u))]">{t('visitasLabel')}</p></Revelar>
+          <Revelar><p className="text-[length:var(--t-etiqueta)] leading-[1.17] tracking-[calc(-0.064*var(--u))]">{t('visitasLabel')}</p></Revelar>
           <Revelar atraso={100}>
             <h2 className="font-display text-[length:calc(80*var(--u))] max-lg:text-[length:calc(36*var(--u))] leading-[1.2] tracking-[calc(-0.576*var(--u))] max-lg:tracking-normal font-normal">{t('visitasTitulo')}</h2>
           </Revelar>
@@ -43,10 +43,10 @@ export default function BasilicaVisitas() {
             </Revelar>
             <Revelar atraso={300}>
               <div className="flex flex-col gap-[calc(24*var(--u))] items-start w-full">
-                <p className="text-[length:calc(16*var(--u))] leading-[1.5]">{t('visitasTexto')}</p>
+                <p className="text-[length:var(--t-corpo)] leading-[1.5]">{t('visitasTexto')}</p>
                 <Link
                   href="/contactos"
-                  className="group/btn flex items-center gap-[calc(12.01*var(--u))] px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] rounded-[calc(6*var(--u))] border border-solid border-[rgba(27,43,57,0.45)] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap transition-[background-color,color,border-color] duration-[400ms] ease-[var(--ease-out)]"
+                  className="group/btn flex items-center gap-[calc(12.01*var(--u))] px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] rounded-[calc(4*var(--u))] border border-solid border-[rgba(27,43,57,0.45)] text-[length:var(--t-etiqueta)] leading-[1.4] whitespace-nowrap transition-[background-color,color,border-color] duration-[400ms] ease-[var(--ease-out)]"
                 >
                   {t('visitasCta')}
                   <Seta className="group-hover/btn:translate-x-[calc(4*var(--u))]" />

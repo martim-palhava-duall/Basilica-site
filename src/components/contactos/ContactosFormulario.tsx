@@ -19,9 +19,9 @@ export type TextosContacto = {
   destino: string
 }
 
-const LABEL = 'text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold'
+const LABEL = 'text-[length:var(--t-etiqueta)] leading-[1.17] font-bold'
 const LINHA = 'border-b border-solid border-[rgba(28,43,57,0.25)]'
-const CAMPO = 'w-full bg-transparent text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] outline-none placeholder:text-[rgba(28,43,57,0.25)]'
+const CAMPO = 'w-full bg-transparent text-[length:var(--t-corpo)] leading-[1.19] outline-none placeholder:text-[rgba(28,43,57,0.25)]'
 
 /**
  * Formulário de contacto — design novo (Figma, nó 111:3545): nome e email lado
@@ -82,7 +82,7 @@ export default function ContactosFormulario({ textos }: { textos: TextosContacto
             value={assunto}
             onChange={(e) => setAssunto(e.target.value)}
             required
-            className="block h-[calc(19*var(--u))] w-full cursor-pointer appearance-none bg-transparent pr-[calc(32*var(--u))] text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] outline-none"
+            className="block h-[1.19em] w-full cursor-pointer appearance-none bg-transparent pr-[calc(32*var(--u))] text-[length:var(--t-corpo)] leading-[1.19] outline-none"
             style={{ color: assunto === '' ? 'rgba(28,43,57,0.25)' : 'var(--azul-escuro)' }}
           >
             <option value="" disabled>{textos.assuntoPh}</option>
@@ -109,7 +109,7 @@ export default function ContactosFormulario({ textos }: { textos: TextosContacto
         </div>
         <button
           type="submit"
-          className="group/btn flex h-[calc(46.8*var(--u))] items-center gap-[calc(11.91*var(--u))] self-start rounded-[calc(4*var(--u))] bg-[var(--vermelho)] px-[calc(29.6*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap text-[var(--bege-claro-2)] transition-colors duration-[400ms] ease-[var(--ease-out)]"
+          className="group/btn flex h-[calc(46.8*var(--u))] items-center gap-[calc(11.91*var(--u))] self-start rounded-[calc(4*var(--u))] bg-[var(--vermelho)] px-[calc(29.6*var(--u))] text-[length:var(--t-etiqueta)] leading-[1.4] whitespace-nowrap text-[var(--bege-claro-2)] transition-colors duration-[400ms] ease-[var(--ease-out)]"
         >
           {textos.enviar}
           <Seta className="group-hover/btn:translate-x-[calc(4*var(--u))]" />

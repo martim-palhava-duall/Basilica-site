@@ -34,7 +34,7 @@ export default function BasilicaExperiencias() {
     >
       <div className="flex flex-col gap-[calc(80*var(--u))] max-lg:gap-[calc(48*var(--u))] w-full">
         <div className="flex flex-col gap-[calc(33*var(--u))] max-lg:gap-[calc(20*var(--u))] w-full">
-          <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] tracking-[calc(-0.064*var(--u))]">{t('expLabel')}</p></Revelar>
+          <Revelar><p className="text-[length:var(--t-etiqueta)] leading-[1.17] tracking-[calc(-0.064*var(--u))]">{t('expLabel')}</p></Revelar>
           <div className="flex items-start justify-between w-full min-h-[calc(96*var(--u))] max-lg:min-h-0 max-lg:flex-col max-lg:gap-[calc(20*var(--u))]">
             <Revelar atraso={100}>
               <h2 className="font-display text-[length:calc(80*var(--u))] leading-[1.2] tracking-[calc(-0.576*var(--u))] font-normal w-[calc(783*var(--u))] max-lg:w-full max-lg:text-[length:calc(36*var(--u))] max-lg:tracking-normal" style={TRIM}>
@@ -42,7 +42,7 @@ export default function BasilicaExperiencias() {
               </h2>
             </Revelar>
             <Revelar atraso={200}>
-              <p className="w-[calc(329*var(--u))] max-lg:w-full text-[length:calc(16*var(--u))] leading-[1.5]">{t('expSub')}</p>
+              <p className="w-[calc(329*var(--u))] max-lg:w-full text-[length:var(--t-corpo)] leading-[1.5]">{t('expSub')}</p>
             </Revelar>
           </div>
         </div>
@@ -58,7 +58,7 @@ export default function BasilicaExperiencias() {
                   <h3 className="font-display text-[length:calc(40*var(--u))] max-lg:text-[length:calc(30*var(--u))] md:max-lg:text-[length:calc(24*var(--u))] leading-[calc(35.2*var(--u))] max-lg:leading-[calc(34*var(--u))] md:max-lg:leading-[calc(28*var(--u))] tracking-[calc(-0.192*var(--u))] font-normal whitespace-nowrap max-lg:whitespace-normal">
                     {t(`${e.chave}Titulo`)}
                   </h3>
-                  <p className="text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))]">{t(`${e.chave}Texto`)}</p>
+                  <p className="text-[length:var(--t-corpo)] leading-[1.19]">{t(`${e.chave}Texto`)}</p>
                 </div>
               </div>
             </Revelar>
@@ -69,14 +69,14 @@ export default function BasilicaExperiencias() {
           <div className="flex flex-col gap-[calc(40*var(--u))] w-full">
             <div aria-hidden="true" className="h-px w-full max-lg:-mx-[calc(20*var(--u))] max-lg:w-[calc(100%+40*var(--u))] border-t border-solid border-[var(--azul-escuro)] opacity-25" />
             <div className="flex items-center justify-between w-full max-lg:flex-col max-lg:items-start max-lg:gap-[calc(28*var(--u))]">
-              <p className="w-[calc(542*var(--u))] max-lg:w-full font-[family-name:var(--font-body-light)] text-[length:calc(20*var(--u))] max-lg:text-[length:calc(16*var(--u))] leading-[calc(32*var(--u))] max-lg:leading-[1.5]" style={TRIM}>
+              <p className="w-[calc(542*var(--u))] max-lg:w-full font-[family-name:var(--font-body-light)] text-[length:var(--t-lead)] max-lg:text-[length:var(--t-corpo)] leading-[1.6] max-lg:leading-[1.5]" style={TRIM}>
                 {t('expRodape1')}{' '}
                 <br className="max-lg:hidden" />
                 {t('expRodape2')}
               </p>
               <Link
                 href="#"
-                className="group/btn flex items-center gap-[calc(12.01*var(--u))] px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] rounded-[calc(4*var(--u))] bg-[var(--azul-escuro)] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap text-[var(--bege-claro-2)] transition-[background-color] duration-[400ms] ease-[var(--ease-out)]"
+                className="group/btn flex items-center gap-[calc(12.01*var(--u))] px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] rounded-[calc(4*var(--u))] bg-[var(--azul-escuro)] text-[length:var(--t-etiqueta)] leading-[1.4] whitespace-nowrap text-[var(--bege-claro-2)] transition-[background-color] duration-[400ms] ease-[var(--ease-out)]"
               >
                 {t('expCta')}
                 <Seta className="group-hover/btn:translate-x-[calc(4*var(--u))]" />

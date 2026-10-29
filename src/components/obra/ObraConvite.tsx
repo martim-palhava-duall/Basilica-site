@@ -41,7 +41,7 @@ export default function ObraConvite() {
       />
 
       <div className="absolute left-[calc(265*var(--u))] top-[calc(222*var(--u))] max-lg:relative max-lg:left-auto max-lg:top-auto max-lg:w-full flex w-[calc(768*var(--u))] flex-col gap-[calc(8.895*var(--u))]">
-        <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{t('convLabel')}</p></Revelar>
+        <Revelar><p className="text-[length:var(--t-etiqueta)] leading-[1.4]">{t('convLabel')}</p></Revelar>
         <Revelar atraso={100}>
           <h2 className="font-display text-[length:calc(96*var(--u))] max-lg:text-[length:calc(44*var(--u))] leading-[calc(105.6*var(--u))] max-lg:leading-[calc(48*var(--u))] tracking-[calc(-0.576*var(--u))] max-lg:tracking-normal font-normal">
             {t.rich('convL1', { i })}
@@ -51,12 +51,12 @@ export default function ObraConvite() {
 
       <div className="absolute left-[calc(850*var(--u))] top-[calc(391.9*var(--u))] max-lg:relative max-lg:left-auto max-lg:top-auto max-lg:w-full flex w-[calc(325*var(--u))] flex-col gap-[calc(40*var(--u))] max-lg:gap-[calc(28*var(--u))]">
         <Revelar atraso={200}>
-          <p className="text-[length:calc(20*var(--u))] max-lg:text-[length:calc(16*var(--u))] leading-[1.4]" style={{ fontFamily: 'var(--font-body-light)' }}>{t('convTexto')}</p>
+          <p className="text-[length:var(--t-lead)] max-lg:text-[length:var(--t-corpo)] leading-[1.4]" style={{ fontFamily: 'var(--font-body-light)' }}>{t('convTexto')}</p>
         </Revelar>
         <Revelar atraso={300}>
           <Link
             href="/contactos"
-            className="group/btn flex w-fit items-center gap-[calc(12*var(--u))] self-start rounded-[calc(6*var(--u))] bg-[var(--bege-escuro-2)] px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap text-[var(--azul-escuro)] transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
+            className="group/btn flex w-fit items-center gap-[calc(12*var(--u))] self-start rounded-[calc(4*var(--u))] bg-[var(--bege-escuro-2)] px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] text-[length:var(--t-etiqueta)] leading-[1.4] whitespace-nowrap text-[var(--azul-escuro)] transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
           >
             {t('convCta')}
             <Seta className="group-hover/btn:translate-x-[calc(4*var(--u))]" />

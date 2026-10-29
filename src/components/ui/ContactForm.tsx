@@ -112,7 +112,7 @@ export default function ContactForm({ destino }: { destino: string }) {
           type="submit"
           disabled={!podeSubmeter}
           className="group/btn inline-flex items-stretch overflow-hidden text-[0.85rem] bg-[var(--color-text-primary)] text-[var(--color-text-inverse)] transition-[background-color,opacity] duration-[350ms] ease-[var(--ease-out)] hover:bg-[var(--brand-blue)] disabled:opacity-40 disabled:pointer-events-none self-start"
-          style={{ borderRadius: 'var(--radius)' }}
+          style={{ borderRadius: 'calc(4 * var(--u))' }}
         >
           <span className="flex items-center px-7 py-3.5 leading-none">{t('formEnviar')}</span>
           <span className="flex items-center px-4 border-l border-current/25">

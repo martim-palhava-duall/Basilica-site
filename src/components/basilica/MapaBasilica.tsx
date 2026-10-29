@@ -52,7 +52,7 @@ export default function MapaBasilica({ titulo, dica, className = '' }: { titulo:
           aria-label={dica}
           className="absolute inset-0 flex cursor-pointer items-start justify-end p-[calc(12*var(--u))] outline-none focus-visible:ring-2 focus-visible:ring-[var(--azul-escuro)]"
         >
-          <span className="rounded-full bg-[rgba(247,242,238,0.92)] px-[calc(12*var(--u))] py-[calc(7*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-none text-[var(--azul-escuro)] shadow-[0_2px_10px_rgba(28,43,57,0.12)]">
+          <span className="rounded-full bg-[rgba(247,242,238,0.92)] px-[calc(12*var(--u))] py-[calc(7*var(--u))] text-[length:var(--t-etiqueta)] leading-none text-[var(--azul-escuro)] shadow-[0_2px_10px_rgba(28,43,57,0.12)]">
             {dica}
           </span>
         </button>

@@ -26,7 +26,7 @@ export default function DonativosSustentar() {
       {/* ── Painel ── */}
       <div className="relative h-[calc(900*var(--u))] min-w-px flex-1 max-lg:flex max-lg:h-auto max-lg:flex-col max-lg:gap-[calc(28*var(--u))] max-lg:px-[calc(20*var(--u))] max-lg:py-[calc(56*var(--u))] bg-[var(--vermelho)] text-[var(--bege-claro-2)]">
         <div className="absolute left-[calc(32*var(--u))] top-[calc(140*var(--u))] max-lg:static max-lg:w-full max-lg:px-0 flex w-[calc(626*var(--u))] flex-col gap-[calc(12*var(--u))] px-[calc(32*var(--u))]">
-          <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] opacity-75">{t('susLabel')}</p></Revelar>
+          <Revelar><p className="text-[length:var(--t-etiqueta)] leading-[1.17] opacity-75">{t('susLabel')}</p></Revelar>
           <Revelar atraso={100}>
             <p className="w-[calc(517*var(--u))] max-lg:w-full pb-[calc(0.8*var(--u))] font-display text-[length:calc(40*var(--u))] max-lg:text-[length:calc(26*var(--u))] leading-[1.2]">{t('susTexto')}</p>
           </Revelar>
@@ -54,7 +54,7 @@ export default function DonativosSustentar() {
                   <Image src="/home/missao-thumb.jpg" alt="" fill sizes="152px" className="object-cover" />
                 </div>
               </div>
-              <p className="max-w-[calc(224*var(--u))] whitespace-nowrap pr-[calc(32.25*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[calc(19.2*var(--u))] opacity-85">
+              <p className="max-w-[calc(224*var(--u))] whitespace-nowrap pr-[calc(32.25*var(--u))] text-[length:var(--t-etiqueta)] leading-[1.6] opacity-85">
                 {t('susLegenda1')}
                 <br />
                 {t('susLegenda2')}

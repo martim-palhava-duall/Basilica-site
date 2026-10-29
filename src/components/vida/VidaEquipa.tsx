@@ -35,7 +35,7 @@ export default function VidaEquipa() {
           <h2 className="font-display text-[length:calc(80*var(--u))] max-lg:text-[length:calc(40*var(--u))] leading-[calc(96*var(--u))] max-lg:leading-[calc(44*var(--u))] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal font-normal">{t('eqTitulo')}</h2>
         </Revelar>
         <Revelar atraso={100}>
-          <p className="w-[calc(510*var(--u))] max-lg:w-full font-[family-name:var(--font-body-light)] text-[length:calc(20*var(--u))] max-lg:text-[length:calc(16*var(--u))] leading-[1.4]">{t('eqSub')}</p>
+          <p className="w-[calc(510*var(--u))] max-lg:w-full font-[family-name:var(--font-body-light)] text-[length:var(--t-lead)] max-lg:text-[length:var(--t-corpo)] leading-[1.4]">{t('eqSub')}</p>
         </Revelar>
       </div>
 
@@ -50,12 +50,12 @@ export default function VidaEquipa() {
           <Revelar atraso={150}>
             <div className="flex flex-col gap-[calc(40*var(--u))] max-lg:gap-[calc(24*var(--u))] w-[calc(678*var(--u))] max-lg:w-full">
               <div className="flex flex-col gap-[calc(20*var(--u))] w-full">
-                <p className="text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))]">{t('eqParocoPapel')}</p>
+                <p className="text-[length:var(--t-corpo)] leading-[1.19]">{t('eqParocoPapel')}</p>
                 <h3 className="font-display text-[length:calc(40*var(--u))] max-lg:text-[length:calc(32*var(--u))] leading-[calc(35.2*var(--u))] max-lg:leading-[calc(36*var(--u))] tracking-[calc(-0.192*var(--u))] font-normal whitespace-nowrap max-lg:whitespace-normal">
                   Monsenhor Duarte da Cunha
                 </h3>
               </div>
-              <div className="flex gap-[calc(20*var(--u))] max-lg:flex-col w-full text-[length:calc(16*var(--u))] leading-[1.5] text-[rgba(29,35,40,0.6)]">
+              <div className="flex gap-[calc(20*var(--u))] max-lg:flex-col w-full text-[length:var(--t-corpo)] leading-[1.5] text-[rgba(29,35,40,0.6)]">
                 <div className="flex flex-col gap-[calc(20*var(--u))] w-[calc(329*var(--u))] max-lg:w-full">
                   <p>{t('eqBio1')}</p>
                   <p>{t('eqBio2')}</p>
@@ -82,7 +82,7 @@ export default function VidaEquipa() {
                       <Image src={FOTO} alt={v.nome} fill sizes="445px" className="object-cover" />
                     </div>
                     <div className="flex flex-col gap-[calc(12*var(--u))] max-lg:gap-[calc(6*var(--u))] w-full">
-                      <p className="text-[length:calc(16*var(--u))] max-lg:text-[length:calc(13*var(--u))] leading-[calc(19*var(--u))] max-lg:leading-[calc(16*var(--u))] max-lg:opacity-60">{t(v.chave)}</p>
+                      <p className="text-[length:var(--t-corpo)] max-lg:text-[length:calc(13*var(--u))] leading-[1.19] max-lg:leading-[calc(16*var(--u))] max-lg:opacity-60">{t(v.chave)}</p>
                       <h4 className="font-display text-[length:calc(40*var(--u))] max-lg:text-[length:calc(22*var(--u))] leading-[calc(35.2*var(--u))] max-lg:leading-[calc(26*var(--u))] tracking-[calc(-0.192*var(--u))] font-normal whitespace-nowrap max-lg:whitespace-normal">{v.nome}</h4>
                     </div>
                   </div>

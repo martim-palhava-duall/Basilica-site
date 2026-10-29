@@ -93,7 +93,7 @@ export default function HomeOQueProcura() {
   return (
     <section ref={secRef} data-barra="var(--vermelho)" data-barra-tom="escuro" className="relative w-full h-[calc(900*var(--u))] max-lg:h-auto max-lg:px-[calc(20*var(--u))] max-lg:py-[calc(120*var(--u))] bg-[var(--vermelho)] text-[var(--bege-claro-2)]">
       <p
-        className="absolute left-0 top-[calc(140*var(--u))] max-lg:static max-lg:mb-[calc(56*var(--u))] w-full text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] text-center"
+        className="absolute left-0 top-[calc(140*var(--u))] max-lg:static max-lg:mb-[calc(56*var(--u))] w-full text-[length:var(--t-etiqueta)] leading-[1.4] text-center"
         ref={rotuloRef}
       >
         {t('oqueLabel')}

@@ -9,7 +9,7 @@ import Revelar from '@/components/home/Revelar'
  */
 export default function VidaIntro() {
   const t = useTranslations('vida')
-  const corpo = 'w-[calc(329*var(--u))] max-lg:w-full text-[length:calc(16*var(--u))] leading-[1.5] text-[rgba(29,35,40,0.6)]'
+  const corpo = 'w-[calc(329*var(--u))] max-lg:w-full text-[length:var(--t-corpo)] leading-[1.5] text-[rgba(29,35,40,0.6)]'
 
   return (
     <section data-barra="var(--bege-claro-2)" className="flex w-full flex-col gap-[calc(64*var(--u))] max-lg:gap-[calc(40*var(--u))] px-[calc(32*var(--u))] py-[calc(120*var(--u))] max-lg:px-[calc(20*var(--u))] max-lg:py-[calc(72*var(--u))] bg-[var(--bege-claro-2)] text-[var(--azul-escuro)]">

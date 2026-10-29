@@ -67,14 +67,14 @@ export default function HomeHero() {
       <div className="hero-cta absolute left-[calc(32*var(--u))] bottom-[calc(61.8*var(--u))] max-lg:left-[calc(20*var(--u))] max-lg:bottom-[calc(32*var(--u))] max-lg:gap-[calc(10*var(--u))] flex gap-[calc(15.91*var(--u))] h-[calc(47.8*var(--u))]">
         <Link
           href="/basilica-e-convento"
-          className="group/btn flex items-center gap-[calc(11.91*var(--u))] px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] rounded-[calc(4*var(--u))] bg-[var(--vermelho)] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap text-[#f9f5f0] transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
+          className="group/btn flex items-center gap-[calc(11.91*var(--u))] px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] rounded-[calc(4*var(--u))] bg-[var(--vermelho)] text-[length:var(--t-etiqueta)] leading-[1.4] whitespace-nowrap text-[#f9f5f0] transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
         >
           {t('heroCtaVisita')}
           <Seta className="group-hover/btn:translate-x-[calc(4*var(--u))]" />
         </Link>
         <Link
           href="/sobre-a-basilica"
-          className="btn-luz flex items-center px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] rounded-[calc(4*var(--u))] border border-solid border-[rgba(249,246,243,0.45)] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap text-[var(--bege-claro-2)] transition-[background-color,color,border-color] duration-[400ms] ease-[var(--ease-out)]"
+          className="btn-luz flex items-center px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] rounded-[calc(4*var(--u))] border border-solid border-[rgba(249,246,243,0.45)] text-[length:var(--t-etiqueta)] leading-[1.4] whitespace-nowrap text-[var(--bege-claro-2)] transition-[background-color,color,border-color] duration-[400ms] ease-[var(--ease-out)]"
         >
           {t('heroCtaSaber')}
         </Link>
@@ -97,8 +97,8 @@ export default function HomeHero() {
           </div>
           <div className="flex items-end justify-between pb-[calc(4*var(--u))] px-[calc(4*var(--u))] w-full">
             <div className="flex flex-col gap-[calc(4*var(--u))] w-[calc(179*var(--u))]">
-              <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] text-[rgba(255,255,255,0.6)]">{t('heroEventoMeta')}</p>
-              <p className="font-display text-[length:calc(20*var(--u))] leading-none text-white" style={{ textBox: 'trim-both cap alphabetic' } as React.CSSProperties}>
+              <p className="text-[length:var(--t-etiqueta)] leading-[1.4] text-[rgba(255,255,255,0.6)]">{t('heroEventoMeta')}</p>
+              <p className="font-display text-[length:var(--t-lead)] leading-none text-white" style={{ textBox: 'trim-both cap alphabetic' } as React.CSSProperties}>
                 {t('heroEventoTitulo')}
               </p>
             </div>

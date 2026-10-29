@@ -54,14 +54,14 @@ export default function VidaHorarios() {
       {/* ── Cabeçalho ── */}
       <div className="flex w-full flex-col gap-[calc(24*var(--u))]">
         <div className="flex w-full flex-col gap-[calc(12*var(--u))]">
-          <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{t('horLabel')}</p></Revelar>
+          <Revelar><p className="text-[length:var(--t-etiqueta)] leading-[1.4]">{t('horLabel')}</p></Revelar>
           <div className="flex w-full items-center justify-between max-lg:flex-col max-lg:items-start max-lg:gap-[calc(24*var(--u))]">
             <Revelar atraso={100}>
               <h2 className="font-display text-[length:calc(80*var(--u))] max-lg:text-[length:calc(40*var(--u))] leading-[calc(96*var(--u))] max-lg:leading-[calc(46*var(--u))] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal font-normal whitespace-nowrap max-lg:whitespace-normal">{t('horTitulo')}</h2>
             </Revelar>
             <Link
               href="/celebracoes"
-              className="group/btn flex h-[calc(46.8*var(--u))] items-center gap-[calc(11.91*var(--u))] rounded-[calc(4*var(--u))] bg-[var(--azul-escuro)] px-[calc(29.6*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap text-[var(--bege-claro-2)] transition-[background-color] duration-[400ms] ease-[var(--ease-out)]"
+              className="group/btn flex h-[calc(46.8*var(--u))] items-center gap-[calc(11.91*var(--u))] rounded-[calc(4*var(--u))] bg-[var(--azul-escuro)] px-[calc(29.6*var(--u))] text-[length:var(--t-etiqueta)] leading-[1.4] whitespace-nowrap text-[var(--bege-claro-2)] transition-[background-color] duration-[400ms] ease-[var(--ease-out)]"
             >
               {t('horCta')}
               <Seta className="group-hover/btn:translate-x-[calc(4*var(--u))]" />
@@ -69,7 +69,7 @@ export default function VidaHorarios() {
           </div>
         </div>
         <Revelar atraso={200}>
-          <p className={`${LEVE} w-[calc(444*var(--u))] max-lg:w-full text-[length:calc(16*var(--u))] leading-[1.5]`} style={TRIM}>{t('horTexto')}</p>
+          <p className={`${LEVE} w-[calc(444*var(--u))] max-lg:w-full text-[length:var(--t-corpo)] leading-[1.5]`} style={TRIM}>{t('horTexto')}</p>
         </Revelar>
       </div>
 
@@ -78,12 +78,12 @@ export default function VidaHorarios() {
         <div className="flex min-h-[calc(196.57*var(--u))] items-start gap-[calc(40*var(--u))] max-lg:grid max-lg:min-h-0 max-lg:grid-cols-2 max-lg:gap-x-[calc(20*var(--u))] max-lg:gap-y-[calc(48*var(--u))]">
           {colunas.map((c) => (
             <div key={c.titulo} className="flex w-[calc(213*var(--u))] max-lg:w-auto flex-col gap-[calc(32*var(--u))] max-lg:gap-[calc(20*var(--u))]">
-              <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold">{c.titulo}</p>
+              <p className="text-[length:var(--t-etiqueta)] leading-[1.17] font-bold">{c.titulo}</p>
               <div className="flex flex-col gap-[calc(24*var(--u))]">
                 {c.entradas.map((e) => (
                   <div key={e.horas + e.dias} className="flex flex-col gap-[calc(3.19*var(--u))]">
                     <Horas horas={e.horas} />
-                    <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))]">{e.dias}</p>
+                    <p className="text-[length:var(--t-etiqueta)] leading-[1.17]">{e.dias}</p>
                   </div>
                 ))}
               </div>
@@ -95,20 +95,20 @@ export default function VidaHorarios() {
       {/* ── Acolhimento ── */}
       <div className="flex w-[calc(563*var(--u))] max-lg:w-full flex-col gap-[calc(40*var(--u))] max-lg:gap-[calc(32*var(--u))]">
         <div className="flex w-full flex-col gap-[calc(16*var(--u))]">
-          <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold">{t('acolhLabel')}</p></Revelar>
+          <Revelar><p className="text-[length:var(--t-etiqueta)] leading-[1.17] font-bold">{t('acolhLabel')}</p></Revelar>
           <div className="flex w-full flex-col gap-[calc(24*var(--u))]">
             <Revelar atraso={100}>
               <h3 className="font-display text-[length:calc(40*var(--u))] max-lg:text-[length:calc(30*var(--u))] leading-[calc(35.2*var(--u))] max-lg:leading-[calc(34*var(--u))] tracking-[calc(-0.192*var(--u))] font-normal">{t('acolhTitulo')}</h3>
             </Revelar>
             <Revelar atraso={200}>
-              <p className={`${LEVE} text-[length:calc(16*var(--u))] leading-[1.5]`} style={TRIM}>{t('acolhTexto')}</p>
+              <p className={`${LEVE} text-[length:var(--t-corpo)] leading-[1.5]`} style={TRIM}>{t('acolhTexto')}</p>
             </Revelar>
           </div>
         </div>
         <Revelar atraso={250}>
           <Link
             href="/basilica-e-convento"
-            className="group/btn sem-luz flex items-center gap-[calc(12*var(--u))] self-start text-[length:calc(16*var(--u))] leading-[1.5] whitespace-nowrap"
+            className="alvo-toque group/btn sem-luz flex items-center gap-[calc(12*var(--u))] self-start text-[length:var(--t-corpo)] leading-[1.5] whitespace-nowrap"
           >
             {t('acolhCta')}
             <Seta className="group-hover/btn:translate-x-[calc(4*var(--u))]" />

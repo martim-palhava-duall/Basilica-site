@@ -91,7 +91,7 @@ export default function HomeQuemSomos() {
     >
       <div className="flex flex-col gap-[calc(40*var(--u))] items-center w-full">
         <div className="flex flex-col gap-[calc(12*var(--u))] items-center w-[calc(783*var(--u))] max-lg:w-full text-center">
-          <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]" style={surge(0)}>{t('somosLabel')}</p>
+          <p className="text-[length:var(--t-etiqueta)] leading-[1.4]" style={surge(0)}>{t('somosLabel')}</p>
           {/* Janela do título: corta com folga para acentos e descendentes */}
           <div style={{ clipPath: 'inset(calc(-20 * var(--u)) calc(-40 * var(--u)) calc(-30 * var(--u)) calc(-40 * var(--u)))' }}>
             <div
@@ -110,10 +110,10 @@ export default function HomeQuemSomos() {
           <div className="flex flex-col gap-[calc(64*var(--u))] items-start w-[calc(518*var(--u))] max-lg:w-full max-lg:gap-[calc(32*var(--u))]">
             {foto(1, '/basilica/conhecer-interior.jpg', t('somosAlt2'), 'h-[calc(417*var(--u))] w-full max-lg:h-[calc(220*var(--u))]', '(max-width: 1023px) 100vw, 518px')}
             <div className="flex flex-col gap-[calc(24*var(--u))] items-start w-full" style={surge(420)}>
-              <p className="text-[length:calc(16*var(--u))] leading-[1.5]">{t('somosTexto')}</p>
+              <p className="text-[length:var(--t-corpo)] leading-[1.5]">{t('somosTexto')}</p>
               <Link
                 href="/vida-paroquia"
-                className="group/btn flex items-center gap-[calc(12*var(--u))] px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] rounded-[calc(6*var(--u))] border border-solid border-[rgba(27,43,57,0.45)] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap transition-[background-color,color,border-color] duration-[400ms] ease-[var(--ease-out)]"
+                className="group/btn flex items-center gap-[calc(12*var(--u))] px-[calc(29.6*var(--u))] py-[calc(14.4*var(--u))] rounded-[calc(4*var(--u))] border border-solid border-[rgba(27,43,57,0.45)] text-[length:var(--t-etiqueta)] leading-[1.4] whitespace-nowrap transition-[background-color,color,border-color] duration-[400ms] ease-[var(--ease-out)]"
               >
                 {t('somosCta')}
                 <Seta className="group-hover/btn:translate-x-[calc(4*var(--u))]" />

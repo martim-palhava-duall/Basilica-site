@@ -69,7 +69,7 @@ export default function ObraAcao() {
             <span className="block">{t('acaoT1')}</span>
             <span className="block">{t('acaoT2')}</span>
           </h2>
-          <p className="text-right max-lg:text-left text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap max-lg:whitespace-normal">{t('acaoLema')}</p>
+          <p className="text-right max-lg:text-left text-[length:var(--t-etiqueta)] leading-[1.4] whitespace-nowrap max-lg:whitespace-normal">{t('acaoLema')}</p>
         </div>
       </Revelar>
 
@@ -87,7 +87,7 @@ export default function ObraAcao() {
                 </div>
                 <div className="flex w-full flex-col gap-[calc(20*var(--u))]">
                   <h3 className="font-display text-[length:calc(40*var(--u))] max-lg:text-[length:calc(30*var(--u))] leading-[calc(35.2*var(--u))] max-lg:leading-[calc(34*var(--u))] tracking-[calc(-0.192*var(--u))] font-normal whitespace-nowrap max-lg:whitespace-normal">{t(`${c.chave}Titulo`)}</h3>
-                  <p className="text-[length:calc(16*var(--u))] leading-[1.2] max-lg:leading-[1.5]">{t(`${c.chave}Texto`)}</p>
+                  <p className="text-[length:var(--t-corpo)] leading-[1.2] max-lg:leading-[1.5]">{t(`${c.chave}Texto`)}</p>
                 </div>
               </article>
             </li>
@@ -100,7 +100,7 @@ export default function ObraAcao() {
         <Revelar>
           <div className="flex w-full items-center justify-between max-lg:flex-col max-lg:items-start">
             <p
-              className="w-[calc(542*var(--u))] max-lg:w-full text-[length:calc(20*var(--u))] max-lg:text-[length:calc(16*var(--u))] leading-[calc(32*var(--u))] max-lg:leading-[1.5]"
+              className="w-[calc(542*var(--u))] max-lg:w-full text-[length:var(--t-lead)] max-lg:text-[length:var(--t-corpo)] leading-[1.6] max-lg:leading-[1.5]"
               style={{ fontFamily: 'var(--font-body-light)', textBox: 'trim-both cap alphabetic' } as React.CSSProperties}
             >
               {t('acaoFrase')}

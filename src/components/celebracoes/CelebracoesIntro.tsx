@@ -26,7 +26,7 @@ export default function CelebracoesIntro() {
       </Revelar>
 
       <Revelar atraso={150}>
-        <div className="flex items-start justify-between max-lg:flex-col max-lg:gap-[calc(24*var(--u))] w-full text-[length:calc(16*var(--u))] leading-[1.5] text-[rgba(29,35,40,0.6)]">
+        <div className="flex items-start justify-between max-lg:flex-col max-lg:gap-[calc(24*var(--u))] w-full text-[length:var(--t-corpo)] leading-[1.5] text-[rgba(29,35,40,0.6)]">
           <p className="w-[calc(329*var(--u))] max-lg:w-full">{t('anoLabel')}</p>
           <div className="flex gap-[calc(20*var(--u))] items-start max-lg:flex-col max-lg:w-full">
             <p className="w-[calc(329*var(--u))] max-lg:w-full">{t('ano1')}</p>

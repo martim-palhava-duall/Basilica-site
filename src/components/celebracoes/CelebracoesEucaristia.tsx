@@ -16,7 +16,7 @@ type Entrada = { horas: string; dias: string }
 export function Horas({ horas }: { horas: string }) {
   if (horas.includes('ÀS') && horas.includes(' · ')) {
     return (
-      <div className="text-[length:calc(16*var(--u))] max-lg:text-[length:calc(14*var(--u))] leading-[1.4] font-bold whitespace-nowrap">
+      <div className="text-[length:var(--t-corpo)] max-lg:text-[length:var(--t-pequeno)] leading-[1.4] font-bold whitespace-nowrap">
         {horas.split(' · ').map((l) => (
           <p key={l}>{l.replace(' ÀS ', ' às ')}</p>
         ))}
@@ -24,7 +24,7 @@ export function Horas({ horas }: { horas: string }) {
     )
   }
   return (
-    <p className={`text-[length:calc(16*var(--u))] max-lg:text-[length:calc(14*var(--u))] leading-[calc(19*var(--u))] max-lg:leading-[calc(17*var(--u))] font-bold whitespace-nowrap ${horas.includes('ÀS') ? '' : 'uppercase'}`}>
+    <p className={`text-[length:var(--t-corpo)] max-lg:text-[length:var(--t-pequeno)] leading-[1.19] max-lg:leading-[1.21] font-bold whitespace-nowrap ${horas.includes('ÀS') ? '' : 'uppercase'}`}>
       {horas.replace(' ÀS ', ' às ')}
     </p>
   )
@@ -83,14 +83,14 @@ export default function CelebracoesEucaristia() {
       {/* ── Cabeçalho ── */}
       <div className="flex flex-col gap-[calc(24*var(--u))] w-full">
         <div className="flex flex-col gap-[calc(12*var(--u))] w-full">
-          <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{t('eucLabel')}</p></Revelar>
+          <Revelar><p className="text-[length:var(--t-etiqueta)] leading-[1.4]">{t('eucLabel')}</p></Revelar>
           <div className="flex items-center justify-between w-full max-lg:flex-col max-lg:items-start max-lg:gap-[calc(24*var(--u))]">
             <Revelar atraso={100}>
               <h2 className="font-display text-[length:calc(80*var(--u))] max-lg:text-[length:calc(40*var(--u))] leading-[calc(96*var(--u))] max-lg:leading-[calc(46*var(--u))] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal font-normal whitespace-nowrap max-lg:whitespace-normal">{t('eucTitulo')}</h2>
             </Revelar>
             <Link
               href="/horarios"
-              className="group/btn flex items-center gap-[calc(11.91*var(--u))] h-[calc(46.8*var(--u))] px-[calc(29.6*var(--u))] rounded-[calc(4*var(--u))] bg-[var(--azul-escuro)] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap text-[var(--bege-claro-2)] transition-[background-color] duration-[400ms] ease-[var(--ease-out)]"
+              className="group/btn flex items-center gap-[calc(11.91*var(--u))] h-[calc(46.8*var(--u))] px-[calc(29.6*var(--u))] rounded-[calc(4*var(--u))] bg-[var(--azul-escuro)] text-[length:var(--t-etiqueta)] leading-[1.4] whitespace-nowrap text-[var(--bege-claro-2)] transition-[background-color] duration-[400ms] ease-[var(--ease-out)]"
             >
               {t('eucCta')}
               <Seta className="group-hover/btn:translate-x-[calc(4*var(--u))]" />
@@ -98,7 +98,7 @@ export default function CelebracoesEucaristia() {
           </div>
         </div>
         <Revelar atraso={200}>
-          <p className={`${LEVE} w-[calc(444*var(--u))] max-lg:w-full text-[length:calc(16*var(--u))] leading-[1.5]`} style={TRIM}>{t('eucTexto')}</p>
+          <p className={`${LEVE} w-[calc(444*var(--u))] max-lg:w-full text-[length:var(--t-corpo)] leading-[1.5]`} style={TRIM}>{t('eucTexto')}</p>
         </Revelar>
       </div>
 
@@ -110,12 +110,12 @@ export default function CelebracoesEucaristia() {
             <div className="flex gap-[calc(40*var(--u))] items-start max-lg:grid max-lg:w-full max-lg:grid-cols-2 max-lg:gap-x-[calc(20*var(--u))] max-lg:gap-y-[calc(40*var(--u))]">
               {colunas.map((c) => (
                 <div key={c.titulo} className="flex flex-col gap-[calc(32*var(--u))] max-lg:gap-[calc(20*var(--u))] w-[calc(213*var(--u))] max-lg:w-auto">
-                  <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold">{c.titulo}</p>
+                  <p className="text-[length:var(--t-etiqueta)] leading-[1.17] font-bold">{c.titulo}</p>
                   <div className="flex flex-col gap-[calc(24*var(--u))]">
                     {c.entradas.map((e) => (
                       <div key={e.horas + e.dias} className="flex flex-col gap-[calc(3.19*var(--u))]">
                         <Horas horas={e.horas} />
-                        <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))]">{e.dias}</p>
+                        <p className="text-[length:var(--t-etiqueta)] leading-[1.17]">{e.dias}</p>
                       </div>
                     ))}
                   </div>

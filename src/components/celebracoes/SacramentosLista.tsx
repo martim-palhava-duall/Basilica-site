@@ -228,22 +228,22 @@ export default function SacramentosLista({ items, textos }: { items: Sacramento[
             <div className="flex flex-col gap-[calc(80*var(--u))] max-lg:gap-[calc(32*var(--u))] w-[calc(872*var(--u))] max-w-full">
               <div className="flex flex-col gap-[calc(32*var(--u))] max-lg:gap-[calc(20*var(--u))] w-full">
                 <p className="font-display text-[length:calc(32*var(--u))] max-lg:text-[length:calc(24*var(--u))] leading-[1.2] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal" style={TRIM}>{s.longo}</p>
-                <p className="text-[length:calc(16*var(--u))] leading-[1.5]">{s.longo2}</p>
+                <p className="text-[length:var(--t-corpo)] leading-[1.5]">{s.longo2}</p>
               </div>
 
               <div className="flex gap-[calc(20*var(--u))] items-start max-lg:flex-col max-lg:gap-[calc(32*var(--u))] w-full">
                 <div className="flex flex-col gap-[calc(20*var(--u))] w-[calc(426*var(--u))] max-lg:w-full">
-                  <p className="text-[length:calc(16*var(--u))] leading-[1.5] opacity-40">{textos.quando}</p>
+                  <p className="text-[length:var(--t-corpo)] leading-[1.5] opacity-40">{textos.quando}</p>
                   <div className="flex flex-col gap-[calc(12*var(--u))] w-full">
                     {s.quando.map((q) => (
                       <div key={q.horas} className="flex flex-col gap-[calc(12*var(--u))]">
                         <p className="font-display text-[length:calc(32*var(--u))] max-lg:text-[length:calc(24*var(--u))] leading-[1.2] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal">{q.horas}</p>
-                        <p className="text-[length:calc(16*var(--u))] leading-[1.5]">{q.dias}</p>
+                        <p className="text-[length:var(--t-corpo)] leading-[1.5]">{q.dias}</p>
                       </div>
                     ))}
                   </div>
                 </div>
-                <div className="flex flex-col gap-[calc(20*var(--u))] w-[calc(426*var(--u))] max-lg:w-full text-[length:calc(16*var(--u))] leading-[1.5]">
+                <div className="flex flex-col gap-[calc(20*var(--u))] w-[calc(426*var(--u))] max-lg:w-full text-[length:var(--t-corpo)] leading-[1.5]">
                   <p className="opacity-40">{textos.preciso}</p>
                   <p>{s.preciso}</p>
                 </div>
@@ -254,7 +254,7 @@ export default function SacramentosLista({ items, textos }: { items: Sacramento[
             <div className="flex flex-col gap-[calc(24*var(--u))] w-full">
               <div className="flex flex-col gap-[calc(0*var(--u))] w-[calc(872*var(--u))] max-w-full">
                 <div className="relative h-[calc(24*var(--u))] w-full">
-                  <p className="absolute left-0 top-0 text-[length:calc(16*var(--u))] leading-[calc(24*var(--u))]">{textos.galeria}</p>
+                  <p className="absolute left-0 top-0 text-[length:var(--t-corpo)] leading-[1.5]">{textos.galeria}</p>
                   {([
                     { rotulo: textos.anterior, left: 788, img: 3.5, d: -1 },
                     { rotulo: textos.seguinte, left: 844, img: -52.5, d: 1 },
@@ -289,7 +289,7 @@ export default function SacramentosLista({ items, textos }: { items: Sacramento[
 
               <Link
                 href="/contactos"
-                className="group/btn self-start flex items-center gap-[calc(11.91*var(--u))] h-[calc(46.8*var(--u))] px-[calc(29.6*var(--u))] rounded-[calc(4*var(--u))] bg-[var(--azul-escuro)] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap text-[var(--bege-claro-2)] transition-[background-color] duration-[400ms] ease-[var(--ease-out)]"
+                className="group/btn self-start flex items-center gap-[calc(11.91*var(--u))] h-[calc(46.8*var(--u))] px-[calc(29.6*var(--u))] rounded-[calc(4*var(--u))] bg-[var(--azul-escuro)] text-[length:var(--t-etiqueta)] leading-[1.4] whitespace-nowrap text-[var(--bege-claro-2)] transition-[background-color] duration-[400ms] ease-[var(--ease-out)]"
               >
                 {textos.cta}
                 <Seta className="group-hover/btn:translate-x-[calc(4*var(--u))]" />
@@ -311,7 +311,7 @@ export default function SacramentosLista({ items, textos }: { items: Sacramento[
           style={{ top: 'calc(112 * var(--u))', height: 'calc(100svh - 112 * var(--u))', paddingBlock: 'calc(20 * var(--u))' }}
         >
           <div className="flex items-center gap-[calc(16*var(--u))]">
-            <span className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] tabular-nums">
+            <span className="text-[length:var(--t-etiqueta)] leading-[1.17] tabular-nums">
               {String(ativo + 1).padStart(2, '0')} / {String(items.length).padStart(2, '0')}
             </span>
             <span className="relative h-px min-w-px flex-1 bg-[rgba(28,43,57,0.2)]">
@@ -336,7 +336,7 @@ export default function SacramentosLista({ items, textos }: { items: Sacramento[
                 className="col-start-1 row-start-1 flex flex-col gap-[calc(12*var(--u))] transition-opacity duration-[500ms] ease-[var(--ease-out)]"
                 style={{ opacity: i === ativo ? 1 : 0 }}
               >
-                <span className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] tracking-[calc(-0.064*var(--u))]">{it.n}</span>
+                <span className="text-[length:var(--t-etiqueta)] leading-[1.17] tracking-[calc(-0.064*var(--u))]">{it.n}</span>
                 <h3 className="font-display text-[length:calc(32*var(--u))] leading-[calc(36*var(--u))] font-normal">{it.titulo}</h3>
                 <p className="text-[length:calc(15*var(--u))] leading-[1.45]">{it.desc}</p>
                 <button
@@ -346,7 +346,7 @@ export default function SacramentosLista({ items, textos }: { items: Sacramento[
                     origemRef.current = e.currentTarget
                     setAberto(i)
                   }}
-                  className="self-start flex items-center gap-[calc(12*var(--u))] text-[length:calc(16*var(--u))] leading-[1.5]"
+                  className="alvo-toque self-start flex items-center gap-[calc(12*var(--u))] text-[length:var(--t-corpo)] leading-[1.5]"
                 >
                   <span className="underline decoration-from-font underline-offset-[calc(5*var(--u))]">{textos.saibaMais}</span>
                   <Seta />
@@ -380,10 +380,10 @@ export default function SacramentosLista({ items, textos }: { items: Sacramento[
               style={{ opacity: i === ativo ? 1 : 0.3 }}
             >
               <div className="flex flex-col gap-[calc(16*var(--u))] w-full">
-                <span className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] tracking-[calc(-0.064*var(--u))]">{it.n}</span>
+                <span className="text-[length:var(--t-etiqueta)] leading-[1.17] tracking-[calc(-0.064*var(--u))]">{it.n}</span>
                 <h3 className="font-display text-[length:calc(48*var(--u))] max-lg:text-[length:calc(32*var(--u))] leading-[calc(96*var(--u))] max-lg:leading-[calc(36*var(--u))] tracking-[calc(0.96*var(--u))] max-lg:tracking-normal font-normal" style={TRIM}>{it.titulo}</h3>
               </div>
-              <p className="text-[length:calc(16*var(--u))] leading-[1.5]">{it.desc}</p>
+              <p className="text-[length:var(--t-corpo)] leading-[1.5]">{it.desc}</p>
               <button
                 type="button"
                 aria-haspopup="dialog"
@@ -391,7 +391,7 @@ export default function SacramentosLista({ items, textos }: { items: Sacramento[
                   origemRef.current = e.currentTarget
                   setAberto(i)
                 }}
-                className="group/mais self-start flex items-center gap-[calc(12*var(--u))] text-[length:calc(16*var(--u))] leading-[1.5]"
+                className="alvo-toque group/mais self-start flex items-center gap-[calc(12*var(--u))] text-[length:var(--t-corpo)] leading-[1.5]"
               >
                 <span className="underline decoration-from-font underline-offset-[from-font]">{textos.saibaMais}</span>
                 <Seta className="group-hover/mais:translate-x-[calc(4*var(--u))]" />

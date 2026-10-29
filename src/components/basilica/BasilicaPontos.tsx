@@ -144,7 +144,7 @@ export default function BasilicaPontos() {
                 {t('conhecerTitulo')}
               </h2>
             </Revelar>
-            <p className="flex h-[calc(74*var(--u))] w-[calc(210*var(--u))] max-lg:h-auto max-lg:w-full items-center text-[length:calc(16*var(--u))] leading-[1.4] opacity-40">{t('conhecerSub')}</p>
+            <p className="flex h-[calc(74*var(--u))] w-[calc(210*var(--u))] max-lg:h-auto max-lg:w-full items-center text-[length:var(--t-corpo)] leading-[1.4] opacity-40">{t('conhecerSub')}</p>
           </div>
           <div aria-hidden="true" className="h-px w-full max-lg:-mx-[calc(20*var(--u))] max-lg:w-[calc(100%+40*var(--u))] border-t border-solid border-[var(--azul-escuro)] opacity-25" />
         </div>
@@ -157,7 +157,7 @@ export default function BasilicaPontos() {
             style={{ top: 'calc(112 * var(--u))', height: 'calc(100svh - 112 * var(--u))', paddingBlock: 'calc(20 * var(--u))' }}
           >
             <div className="flex items-center gap-[calc(16*var(--u))]">
-              <span className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] tabular-nums">
+              <span className="text-[length:var(--t-etiqueta)] leading-[1.17] tabular-nums">
                 {String(ativo + 1).padStart(2, '0')} / {String(PONTOS.length).padStart(2, '0')}
               </span>
               <span className="relative h-px min-w-px flex-1 bg-[rgba(28,43,57,0.2)]">
@@ -181,7 +181,7 @@ export default function BasilicaPontos() {
                   className="col-start-1 row-start-1 flex flex-col gap-[calc(12*var(--u))] transition-opacity duration-[500ms] ease-[var(--ease-out)]"
                   style={{ opacity: i === ativo ? 1 : 0 }}
                 >
-                  <span className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] tracking-[calc(-0.064*var(--u))]">{p.n}</span>
+                  <span className="text-[length:var(--t-etiqueta)] leading-[1.17] tracking-[calc(-0.064*var(--u))]">{p.n}</span>
                   <h3 className="font-display text-[length:calc(32*var(--u))] leading-[calc(36*var(--u))] font-normal">{t(`${p.chave}Titulo`)}</h3>
                   <p className="text-[length:calc(15*var(--u))] leading-[1.45]">{t(`${p.chave}Texto`)}</p>
                 </div>
@@ -237,7 +237,7 @@ export default function BasilicaPontos() {
                 style={{ opacity: i === ativo ? 1 : 0.3 }}
               >
                 <div className="flex flex-col gap-[calc(16*var(--u))] w-full">
-                  <span className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] tracking-[calc(-0.064*var(--u))]">{p.n}</span>
+                  <span className="text-[length:var(--t-etiqueta)] leading-[1.17] tracking-[calc(-0.064*var(--u))]">{p.n}</span>
                   <h3
                     className="font-display text-[length:calc(48*var(--u))] leading-[calc(96*var(--u))] tracking-[calc(0.96*var(--u))] font-normal"
                     style={{ textBox: 'trim-both cap alphabetic' } as React.CSSProperties}
@@ -245,7 +245,7 @@ export default function BasilicaPontos() {
                     {t(`${p.chave}Titulo`)}
                   </h3>
                 </div>
-                <p className="text-[length:calc(16*var(--u))] leading-[1.5]">{t(`${p.chave}Texto`)}</p>
+                <p className="text-[length:var(--t-corpo)] leading-[1.5]">{t(`${p.chave}Texto`)}</p>
               </article>
             ))}
           </div>

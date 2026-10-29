@@ -14,7 +14,7 @@ export default function AberturaTexto({ label, titulo, texto }: { label: string;
       className="flex w-full flex-col items-end gap-[calc(32*var(--u))] max-lg:items-start max-lg:gap-[calc(24*var(--u))] px-[calc(32*var(--u))] py-[calc(80*var(--u))] max-lg:px-[calc(20*var(--u))] max-lg:py-[calc(48*var(--u))] bg-[var(--bege-claro-2)] text-[var(--azul-escuro)]"
     >
       <div className="flex w-full flex-col gap-[calc(12*var(--u))]">
-        <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))]">{label}</p></Revelar>
+        <Revelar><p className="text-[length:var(--t-etiqueta)] leading-[1.17]">{label}</p></Revelar>
         <Revelar atraso={100}>
           <h1
             className="w-[calc(879*var(--u))] max-lg:w-full font-display text-[length:calc(80*var(--u))] max-lg:text-[length:calc(40*var(--u))] leading-[1.2] font-normal"
@@ -25,7 +25,7 @@ export default function AberturaTexto({ label, titulo, texto }: { label: string;
         </Revelar>
       </div>
       <Revelar atraso={200} className="max-lg:w-full">
-        <p className="w-[calc(445*var(--u))] max-lg:w-full text-[length:calc(16*var(--u))] leading-[1.5] text-[rgba(29,35,40,0.6)]">{texto}</p>
+        <p className="w-[calc(445*var(--u))] max-lg:w-full text-[length:var(--t-corpo)] leading-[1.5] text-[rgba(29,35,40,0.6)]">{texto}</p>
       </Revelar>
     </section>
   )

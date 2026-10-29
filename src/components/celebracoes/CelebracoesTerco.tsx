@@ -29,7 +29,7 @@ export default function CelebracoesTerco() {
       className="relative h-[calc(1235*var(--u))] w-full max-lg:flex max-lg:h-auto max-lg:flex-col max-lg:gap-[calc(40*var(--u))] max-lg:px-[calc(20*var(--u))] max-lg:py-[calc(96*var(--u))] bg-[var(--bege-escuro)] text-[var(--azul-escuro)]"
     >
       <div className="absolute left-[calc(32*var(--u))] top-[calc(180*var(--u))] max-lg:static max-lg:order-1 flex w-[calc(1027*var(--u))] max-lg:w-full flex-col gap-[calc(12*var(--u))]">
-        <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] tracking-[calc(-0.064*var(--u))]">{t('tercoLabel')}</p></Revelar>
+        <Revelar><p className="text-[length:var(--t-etiqueta)] leading-[1.17] tracking-[calc(-0.064*var(--u))]">{t('tercoLabel')}</p></Revelar>
         <Revelar atraso={100}>
           <h2 className="font-display text-[length:calc(64*var(--u))] max-lg:text-[length:calc(28*var(--u))] leading-[1.2] font-normal" style={TRIM}>{t.rich('tercoCitacao', { br: () => <>{' '}<br className="max-lg:hidden" /></> })}</h2>
         </Revelar>
@@ -51,18 +51,18 @@ export default function CelebracoesTerco() {
       <div className="absolute left-[calc(32*var(--u))] top-[calc(811*var(--u))] max-lg:static max-lg:order-3 flex w-[calc(329*var(--u))] max-lg:w-full flex-col gap-[calc(40*var(--u))]">
         <Revelar atraso={200}>
           <div className="flex w-full flex-col gap-[calc(40*var(--u))]">
-            <p className="text-[length:calc(16*var(--u))] leading-[1.5]">{t('tercoTexto')}</p>
+            <p className="text-[length:var(--t-corpo)] leading-[1.5]">{t('tercoTexto')}</p>
             <div className="flex w-full flex-col">
               <div className="flex w-full items-start gap-[calc(40*var(--u))] max-lg:gap-[calc(20*var(--u))] border-y border-solid border-[rgba(28,43,57,0.25)] py-[calc(20*var(--u))]">
-                <p className="w-[calc(117*var(--u))] shrink-0 self-center text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold">{t('tercoQuandoLabel')}</p>
-                <div className="flex w-[calc(172*var(--u))] max-lg:w-auto max-lg:min-w-px max-lg:flex-1 flex-col items-end gap-[calc(4*var(--u))] text-right text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] font-bold">
+                <p className="w-[calc(117*var(--u))] shrink-0 self-center text-[length:var(--t-etiqueta)] leading-[1.17] font-bold">{t('tercoQuandoLabel')}</p>
+                <div className="flex w-[calc(172*var(--u))] max-lg:w-auto max-lg:min-w-px max-lg:flex-1 flex-col items-end gap-[calc(4*var(--u))] text-right text-[length:var(--t-corpo)] leading-[1.19] font-bold">
                   <p className="w-full">{t('tercoDia')}</p>
                   <p className="opacity-60">{hora}</p>
                 </div>
               </div>
               <div className="flex w-full items-start gap-[calc(40*var(--u))] max-lg:gap-[calc(20*var(--u))] border-b border-solid border-[rgba(28,43,57,0.25)] py-[calc(20*var(--u))]">
-                <p className="w-[calc(117*var(--u))] shrink-0 self-center text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold">{t('tercoOndeLabel')}</p>
-                <p className="w-[calc(172*var(--u))] max-lg:w-auto max-lg:min-w-px max-lg:flex-1 text-right text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] font-bold">{h('lapaTitle')}</p>
+                <p className="w-[calc(117*var(--u))] shrink-0 self-center text-[length:var(--t-etiqueta)] leading-[1.17] font-bold">{t('tercoOndeLabel')}</p>
+                <p className="w-[calc(172*var(--u))] max-lg:w-auto max-lg:min-w-px max-lg:flex-1 text-right text-[length:var(--t-corpo)] leading-[1.19] font-bold">{h('lapaTitle')}</p>
               </div>
             </div>
           </div>

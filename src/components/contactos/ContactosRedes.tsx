@@ -36,7 +36,7 @@ export default function ContactosRedes() {
       <div className="flex h-[calc(370*var(--u))] max-lg:h-auto w-[calc(678*var(--u))] max-lg:w-full flex-col px-[calc(32*var(--u))] max-lg:px-[calc(20*var(--u))]">
         <div className="flex w-[calc(614*var(--u))] max-lg:w-full flex-col gap-[calc(40*var(--u))] max-lg:gap-[calc(24*var(--u))]">
           <div className="flex w-full flex-col gap-[calc(12*var(--u))]">
-            <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{t('redesLabel')}</p></Revelar>
+            <Revelar><p className="text-[length:var(--t-etiqueta)] leading-[1.4]">{t('redesLabel')}</p></Revelar>
             <Revelar atraso={100}>
               <h2
                 className="font-display text-[length:calc(80*var(--u))] max-lg:text-[length:calc(44*var(--u))] leading-none tracking-[calc(0.96*var(--u))] max-lg:tracking-normal font-normal"
@@ -46,7 +46,7 @@ export default function ContactosRedes() {
               </h2>
             </Revelar>
           </div>
-          <Revelar atraso={200}><p className="w-[calc(320*var(--u))] max-lg:w-full text-[length:max(11px,calc(12*var(--u)))] max-lg:text-[length:calc(14*var(--u))] leading-[1.4] max-lg:leading-[1.5]">{t('redesTexto')}</p></Revelar>
+          <Revelar atraso={200}><p className="w-[calc(320*var(--u))] max-lg:w-full text-[length:var(--t-etiqueta)] max-lg:text-[length:var(--t-pequeno)] leading-[1.4] max-lg:leading-[1.5]">{t('redesTexto')}</p></Revelar>
         </div>
 
         <Revelar atraso={250} className="mt-[calc(106.5*var(--u))] max-lg:mt-[calc(36*var(--u))]">
@@ -66,7 +66,7 @@ export default function ContactosRedes() {
               return (
                 <li key={r.chave}>
                   {r.href ? (
-                    <a href={r.href} target="_blank" rel="noopener noreferrer" className="group/rede flex items-center gap-[calc(12*var(--u))]">
+                    <a href={r.href} target="_blank" rel="noopener noreferrer" className="alvo-toque group/rede flex items-center gap-[calc(12*var(--u))]">
                       {conteudo}
                     </a>
                   ) : (

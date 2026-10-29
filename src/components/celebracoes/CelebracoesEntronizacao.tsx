@@ -29,7 +29,7 @@ export default function CelebracoesEntronizacao() {
       <div className="flex w-[calc(678*var(--u))] flex-col gap-[calc(80*var(--u))] px-[calc(32*var(--u))]">
         <div className="flex w-[calc(614*var(--u))] flex-col gap-[calc(40*var(--u))]">
           <div className="flex w-full flex-col gap-[calc(12*var(--u))]">
-            <Revelar><p className="text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">{t('entLabel')}</p></Revelar>
+            <Revelar><p className="text-[length:var(--t-etiqueta)] leading-[1.4]">{t('entLabel')}</p></Revelar>
             <Revelar atraso={100}>
               <h2
                 className="font-display text-[length:calc(80*var(--u))] leading-none tracking-[calc(0.96*var(--u))] font-normal"
@@ -40,7 +40,7 @@ export default function CelebracoesEntronizacao() {
             </Revelar>
           </div>
           <Revelar atraso={200}>
-            <div className="flex w-full items-start gap-[calc(24*var(--u))] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4]">
+            <div className="flex w-full items-start gap-[calc(24*var(--u))] text-[length:var(--t-etiqueta)] leading-[1.4]">
               <p className="w-[calc(296*var(--u))] shrink-0">{t('entTexto1')}</p>
               <p className="w-[calc(294*var(--u))] shrink-0">{t('entTexto2')}</p>
             </div>
@@ -50,15 +50,15 @@ export default function CelebracoesEntronizacao() {
         <Revelar atraso={200}>
           <div className="flex w-full flex-col gap-[calc(24*var(--u))]">
             <div className="flex w-full items-start gap-[calc(40*var(--u))] border-y border-solid border-[rgba(249,246,243,0.2)] py-[calc(20*var(--u))]">
-              <p className="w-[calc(224*var(--u))] shrink-0 self-center text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold whitespace-nowrap">{t('entQuandoLabel')}</p>
+              <p className="w-[calc(224*var(--u))] shrink-0 self-center text-[length:var(--t-etiqueta)] leading-[1.17] font-bold whitespace-nowrap">{t('entQuandoLabel')}</p>
               <div className="flex w-[calc(350*var(--u))] flex-col items-end gap-[calc(4*var(--u))]">
-                <p className="w-full text-right text-[length:calc(16*var(--u))] leading-[calc(19*var(--u))] font-bold">{t('entQuando')}</p>
-                <p className="text-[length:max(11px,calc(12*var(--u)))] leading-[calc(14*var(--u))] font-bold opacity-60">{t('entQuandoNota')}</p>
+                <p className="w-full text-right text-[length:var(--t-corpo)] leading-[1.19] font-bold">{t('entQuando')}</p>
+                <p className="text-[length:var(--t-etiqueta)] leading-[1.17] font-bold opacity-60">{t('entQuandoNota')}</p>
               </div>
             </div>
             <Link
               href="/contactos"
-              className="group/btn flex h-[calc(46.8*var(--u))] items-center gap-[calc(11.91*var(--u))] self-start px-[calc(29.6*var(--u))] rounded-[calc(4*var(--u))] border border-solid border-[var(--bege-claro-2)] text-[length:max(11px,calc(12*var(--u)))] leading-[1.4] whitespace-nowrap transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
+              className="group/btn flex h-[calc(46.8*var(--u))] items-center gap-[calc(11.91*var(--u))] self-start px-[calc(29.6*var(--u))] rounded-[calc(4*var(--u))] border border-solid border-[var(--bege-claro-2)] text-[length:var(--t-etiqueta)] leading-[1.4] whitespace-nowrap transition-[background-color,color] duration-[400ms] ease-[var(--ease-out)]"
             >
               {t('entCta')}
               <Seta className="group-hover/btn:translate-x-[calc(4*var(--u))]" />
