@@ -19,6 +19,9 @@ const COL_CONTACTO: [string, string][] = [
   ['menuContactos', '/contactos'],
 ]
 
+/** Site do estúdio que fez o desenho e o site ("Design by duall") */
+const DUALL = 'https://duallstudio.com'
+
 const LINK = 'transition-colors duration-[400ms] ease-[var(--ease-out)] hover:text-[var(--bege-claro-2)]'
 
 /**
@@ -32,10 +35,9 @@ const LINK = 'transition-colors duration-[400ms] ease-[var(--ease-out)] hover:te
  * Links ainda sem página (política, termos) e redes sem endereço conhecido
  * ficam como texto, como no menu de ecrã.
  *
- * Mobile (marcação própria, em blocos separados por réguas de ponta a ponta): lema e
- * marca na mesma linha; as oito páginas em duas colunas iguais; contacto (morada,
- * telefone, email) e redes; "Planear visita" num cartão com a fotografia e o texto por
- * cima; o nome da Basílica (as quatro peças) e a barra legal (ligações em cima, direitos
+ * Mobile (marcação própria, em blocos separados por réguas de ponta a ponta): o símbolo
+ * da Basílica à esquerda e o lema ao lado; as oito páginas em duas colunas iguais; contacto (morada,
+ * telefone, email) e redes; a fotografia com "Planear visita" por baixo (fora da imagem); o nome da Basílica (as quatro peças) e a barra legal (ligações em cima, direitos
  * e autoria por baixo). Páginas e redes na mesma grelha de duas colunas, alinhadas. Os rótulos de cada bloco em maiúsculas pequenas.
  */
 export default function HomeRodape() {
@@ -130,7 +132,7 @@ export default function HomeRodape() {
           <div className="flex items-center gap-[calc(16*var(--u))] w-[calc(404*var(--u))]">
             <span>{t('rodPrivacidade')}</span>
             <span>{t('rodTermos')}</span>
-            <span className="pl-[calc(24*var(--u))] w-[calc(91*var(--u))] whitespace-nowrap">{t('rodDesign')}</span>
+            <a href={DUALL} target="_blank" rel="noopener noreferrer" className={`pl-[calc(24*var(--u))] w-[calc(91*var(--u))] whitespace-nowrap ${LINK}`}>{t('rodDesign')}</a>
           </div>
         </div>
       </div>
@@ -138,16 +140,16 @@ export default function HomeRodape() {
       {/* ── Mobile: marcação própria, em blocos separados por réguas de ponta a ponta ── */}
       <div className="lg:hidden flex flex-col">
         {/* Marca e lema */}
-        <div className="flex items-end justify-between gap-[calc(16*var(--u))] px-[calc(20*var(--u))] pt-[calc(56*var(--u))] pb-[calc(40*var(--u))]">
+        <div className="flex items-end gap-[calc(24*var(--u))] px-[calc(20*var(--u))] pt-[calc(56*var(--u))] pb-[calc(40*var(--u))]">
+          <div className="relative h-[calc(70*var(--u))] w-[calc(90*var(--u))] shrink-0 overflow-hidden">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/home/footer-marca.svg" alt="" className="absolute" style={{ left: '-1.32%', top: '5.93%', width: '93.77%', height: '91.41%' }} />
+          </div>
           <p className="font-display text-[length:calc(30*var(--u))] leading-[1.05] text-[var(--bege-claro-2)]">
             {t('rodLema1')}
             <br />
             {t('rodLema2')}
           </p>
-          <div className="relative h-[calc(70*var(--u))] w-[calc(90*var(--u))] shrink-0 overflow-hidden">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/home/footer-marca.svg" alt="" className="absolute" style={{ left: '-1.32%', top: '5.93%', width: '93.77%', height: '91.41%' }} />
-          </div>
         </div>
 
         {linha}
@@ -185,17 +187,14 @@ export default function HomeRodape() {
 
         {linha}
 
-        {/* Planear visita: cartão com a fotografia e o texto por cima */}
-        <div className="px-[calc(20*var(--u))] pt-[calc(36*var(--u))]">
-          <Link href={BILHETEIRA} {...externo(BILHETEIRA)} className="group/cta relative flex h-[calc(190*var(--u))] w-full items-end overflow-hidden rounded-[calc(4*var(--u))]">
-            <Image src="/home/menu-foto.jpg" alt="" fill sizes="100vw" className="object-cover object-[40%_50%] transition-transform duration-[900ms] ease-[var(--ease-suave)] group-active/cta:scale-[1.03]" />
-            <span aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,8,10,0)_30%,rgba(8,8,10,0.65)_100%)]" />
-            <span className="relative flex w-full items-end justify-between gap-[calc(16*var(--u))] p-[calc(16*var(--u))] text-[var(--bege-claro-2)]">
-              <span className="font-display text-[length:calc(26*var(--u))] leading-none">{t('rodPlanear')}</span>
-              <span aria-hidden="true" className="flex size-[calc(40*var(--u))] shrink-0 items-center justify-center rounded-full bg-[var(--bege-claro-2)] text-[var(--azul-escuro)]">
-                <span className="seta-externa" />
-              </span>
-            </span>
+        {/* Fotografia e "Planear visita" por baixo (fora da imagem) */}
+        <div className="flex flex-col gap-[calc(18*var(--u))] px-[calc(20*var(--u))] pt-[calc(36*var(--u))]">
+          <div className="relative h-[calc(190*var(--u))] w-full overflow-hidden rounded-[calc(4*var(--u))]">
+            <Image src="/home/menu-foto.jpg" alt="" fill sizes="100vw" className="object-cover object-[40%_50%]" />
+          </div>
+          <Link href={BILHETEIRA} {...externo(BILHETEIRA)} className={`group/btn sem-luz self-start flex items-center gap-[calc(9.6*var(--u))] text-[length:calc(16*var(--u))] leading-[calc(20*var(--u))] ${LINK}`}>
+            {t('rodPlanear')}
+            <Seta className="group-hover/btn:translate-x-[calc(4*var(--u))]" />
           </Link>
         </div>
 
@@ -210,7 +209,7 @@ export default function HomeRodape() {
           </div>
           <div className="flex flex-col gap-[calc(4*var(--u))] text-[rgba(186,201,213,0.6)]">
             <p>{t('rodDireitos')}</p>
-            <p>{t('rodDesign')}</p>
+            <p><a href={DUALL} target="_blank" rel="noopener noreferrer" className={LINK}>{t('rodDesign')}</a></p>
           </div>
         </div>
       </div>
