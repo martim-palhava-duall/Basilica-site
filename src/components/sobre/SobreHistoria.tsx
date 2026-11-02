@@ -39,9 +39,10 @@ const FADE = 'transition-opacity duration-[600ms] ease-[var(--ease-out)]'
  * esquerda, o ano anterior sai (cortado na margem) e o novo ocupa o seu lugar;
  * texto e fotografia trocam por fade, empilhados no mesmo sítio.
  *
- * Mobile e tablet: o índice das seis décadas (o traço ativo desliza por baixo do ano),
- * a fotografia da década (desliza-se com o dedo para mudar), o título e o texto da
- * década e, no fim, o contador e as setas, por baixo de uma régua de ponta a ponta.
+ * Mobile e tablet: o índice das seis décadas (o traço ativo desliza por baixo do ano) e,
+ * por baixo, uma galeria: fotografia, título e texto de cada década andam juntos numa pista
+ * que acompanha o dedo (ou o trackpad) e assenta na década seguinte ou anterior. No fim,
+ * o contador e as setas, por baixo de uma régua de ponta a ponta.
  */
 export default function SobreHistoria() {
   const t = useTranslations('sobre')
@@ -67,6 +68,8 @@ export default function SobreHistoria() {
     ir: (d) => setAtiva((a) => Math.min(Math.max(a + d, 0), DECADAS.length - 1)),
     limiar: 50,
   })
+  // Nas pontas a pista resiste (um terço do arrasto) em vez de mostrar vazio
+  const arrastoMola = (ativa === 0 && arrasto > 0) || (ativa === DECADAS.length - 1 && arrasto < 0) ? arrasto * 0.3 : arrasto
   const n2 = (n: number) => String(n).padStart(2, '0')
 
   return (
@@ -142,34 +145,49 @@ export default function SobreHistoria() {
         />
       </div>
 
-      {/* ── Mobile e tablet: a fotografia da década; desliza-se para mudar ── */}
+      {/* ── Mobile e tablet: galeria das décadas. Fotografia e texto andam juntos numa pista
+          que acompanha o dedo; ao largar, assenta na década seguinte ou anterior ── */}
       <div
         ref={palco}
-        className="lg:hidden order-3 relative h-[calc(300*var(--u))] md:h-[calc(340*var(--u))] w-full overflow-hidden rounded-[calc(4*var(--u))]"
+        className="lg:hidden order-3 relative w-full overflow-hidden"
         style={{ ...ESTILO_GESTOS }}
       >
         <div
-          className="absolute inset-0 transition-transform duration-[500ms] ease-[var(--ease-out)]"
-          style={{ transform: `translateX(${arrasto * 0.25}px)`, transitionDuration: arrastando ? '0ms' : undefined }}
+          className="flex w-full items-stretch gap-[calc(12*var(--u))] transition-transform duration-[600ms] ease-[var(--ease-out)]"
+          style={{
+            transform: `translateX(calc(${-ativa} * (100% + 12 * var(--u)) + ${arrastoMola}px))`,
+            transitionDuration: arrastando ? '0ms' : undefined,
+          }}
         >
           {DECADAS.map((d, i) => (
-            <div key={d.ano} className={`absolute inset-0 ${FADE}`} style={{ opacity: i === ativa ? 1 : 0 }}>
-              <Image src={d.foto} alt={i === ativa ? t('histFotoAlt') : ''} fill sizes="100vw" className="object-cover object-bottom" />
+            <div
+              key={d.ano}
+              aria-hidden={i !== ativa}
+              className="flex w-full shrink-0 flex-col gap-[calc(32*var(--u))] transition-opacity duration-[600ms] ease-[var(--ease-out)]"
+              style={{ opacity: i === ativa ? 1 : 0.35 }}
+            >
+              <div className="relative h-[calc(300*var(--u))] md:h-[calc(340*var(--u))] w-full overflow-hidden rounded-[calc(4*var(--u))]">
+                <Image src={d.foto} alt={i === ativa ? t('histFotoAlt') : ''} fill sizes="100vw" loading="eager" draggable={false} className="object-cover object-bottom" />
+              </div>
+              <div className="flex flex-col gap-[calc(14*var(--u))]">
+                <p className="font-display text-[length:calc(28*var(--u))] leading-[calc(32*var(--u))]" style={TRIM}>{t('histDecada', { ano: d.ano })}</p>
+                <p className="text-[length:var(--t-corpo)] leading-[1.5]">{t(`hist${d.ano}`)}</p>
+              </div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* ── Texto da década ── */}
-      <div className="absolute left-[calc(32*var(--u))] top-[calc(701*var(--u))] w-[calc(445*var(--u))] max-lg:static max-lg:order-4 max-lg:w-full grid">
+      {/* ── Texto da década (desktop) ── */}
+      <div className="absolute left-[calc(32*var(--u))] top-[calc(701*var(--u))] w-[calc(445*var(--u))] max-lg:hidden grid">
         {DECADAS.map((d, i) => (
           <div
             key={d.ano}
             aria-hidden={i !== ativa}
-            className={`col-start-1 row-start-1 flex flex-col gap-[calc(32*var(--u))] max-lg:gap-[calc(14*var(--u))] ${FADE}`}
+            className={`col-start-1 row-start-1 flex flex-col gap-[calc(32*var(--u))] ${FADE}`}
             style={{ opacity: i === ativa ? 1 : 0, pointerEvents: i === ativa ? undefined : 'none' }}
           >
-            <p className="font-display text-[length:calc(64*var(--u))] max-lg:text-[length:calc(28*var(--u))] leading-[calc(96*var(--u))] max-lg:leading-[calc(32*var(--u))]" style={TRIM}>{t('histDecada', { ano: d.ano })}</p>
+            <p className="font-display text-[length:calc(64*var(--u))] leading-[calc(96*var(--u))]" style={TRIM}>{t('histDecada', { ano: d.ano })}</p>
             <p className="text-[length:var(--t-corpo)] leading-[1.5]">{t(`hist${d.ano}`)}</p>
           </div>
         ))}
