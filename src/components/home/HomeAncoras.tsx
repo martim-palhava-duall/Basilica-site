@@ -156,42 +156,68 @@ export default function HomeAncoras({ itens }: { itens: Ancora[] }) {
         className="lg:hidden flex h-full w-full items-center justify-between px-[calc(20*var(--u))] text-[length:var(--t-corpo)] leading-[1.5]"
       >
         <span>{atual}</span>
-        <svg aria-hidden="true" width="12" height="8" viewBox="0 0 12 8" fill="none" className="transition-transform duration-[300ms] ease-[var(--ease-out)]" style={{ transform: aberta ? 'rotate(180deg)' : 'none' }}>
+        <svg aria-hidden="true" width="12" height="8" viewBox="0 0 12 8" fill="none" className="transition-transform duration-[500ms] ease-[var(--ease-inout)]" style={{ transform: aberta ? 'rotate(180deg)' : 'none' }}>
           <path d="M1 1.5 6 6.5 11 1.5" stroke="currentColor" strokeWidth="1.2" />
         </svg>
       </button>
-      <ul
+      {/* Cortina: a lista desce do topo como o painel do menu (ease in-out), sobre uma
+          sombra que escurece a página; as secções entram em cascata e saem de uma vez */}
+      <div
+        aria-hidden="true"
+        onClick={() => setDrop(false)}
+        className="lg:hidden absolute left-0 top-full h-[100svh] w-full"
+        style={{
+          background: 'rgba(18,28,36,0.4)',
+          opacity: aberta ? 1 : 0,
+          pointerEvents: aberta ? 'auto' : 'none',
+          transition: 'opacity 450ms var(--ease-out)',
+        }}
+      />
+      <div
         id="ancoras-drop"
         inert={!aberta}
-        className="lg:hidden absolute left-0 top-full w-full border-b border-solid border-[rgba(27,43,57,0.07)] px-[calc(20*var(--u))] pb-[calc(8*var(--ui))] transition-[opacity,transform,visibility] duration-[250ms] ease-[var(--ease-out)]"
+        className="lg:hidden absolute left-0 top-full grid w-full"
         style={{
-          backgroundColor: barra.cor,
-          opacity: aberta ? 1 : 0,
+          gridTemplateRows: aberta ? '1fr' : '0fr',
           visibility: aberta ? 'visible' : 'hidden',
-          transform: aberta ? 'translateY(0)' : 'translateY(-8px)',
+          transition: `grid-template-rows ${aberta ? 550 : 380}ms var(--ease-inout), visibility 0s linear ${aberta ? '0s' : '380ms'}`,
         }}
       >
-        {itens.map((it) => {
-          const ativo = it.id === ativa
-          return (
-            <li key={it.id}>
-              <a
-                href={`#${it.id}`}
-                onClick={(e) => {
-                  ir(it.id)(e)
-                  setDrop(false)
+        <ul
+          className="min-h-0 overflow-hidden border-b border-solid border-[rgba(27,43,57,0.07)] px-[calc(20*var(--u))]"
+          style={{ backgroundColor: barra.cor }}
+        >
+          {itens.map((it, i) => {
+            const ativo = it.id === ativa
+            return (
+              <li
+                key={it.id}
+                style={{
+                  opacity: aberta ? 1 : 0,
+                  transform: aberta ? 'none' : 'translateY(calc(-10 * var(--u)))',
+                  transition: aberta
+                    ? `opacity 500ms var(--ease-out) ${120 + i * 45}ms, transform 600ms var(--ease-out) ${120 + i * 45}ms`
+                    : 'opacity 200ms var(--ease-out), transform 200ms var(--ease-out)',
                 }}
-                aria-current={ativo ? 'location' : undefined}
-                className="flex items-center justify-between border-t border-solid border-[rgba(128,128,128,0.18)] py-[calc(14*var(--ui))] text-[length:var(--t-corpo)] leading-[1.5]"
-                style={{ opacity: ativo ? 1 : 0.5 }}
               >
-                {it.label}
-                {ativo && <span aria-hidden="true" className="h-[calc(6*var(--ui))] w-[calc(6*var(--ui))] rounded-full bg-current" />}
-              </a>
-            </li>
-          )
-        })}
-      </ul>
+                <a
+                  href={`#${it.id}`}
+                  onClick={(e) => {
+                    ir(it.id)(e)
+                    setDrop(false)
+                  }}
+                  aria-current={ativo ? 'location' : undefined}
+                  className="flex items-center justify-between border-t border-solid border-[rgba(128,128,128,0.18)] py-[calc(14*var(--ui))] text-[length:var(--t-corpo)] leading-[1.5] transition-opacity duration-[300ms] ease-[var(--ease-out)] active:!opacity-100"
+                  style={{ opacity: ativo ? 1 : 0.5 }}
+                >
+                  {it.label}
+                  {ativo && <span aria-hidden="true" className="h-[calc(6*var(--ui))] w-[calc(6*var(--ui))] rounded-full bg-current" />}
+                </a>
+              </li>
+            )
+          })}
+        </ul>
+      </div>
 
       <ul className="max-lg:hidden flex h-full items-center justify-center gap-[calc(24*var(--ui))] px-[calc(32*var(--u))]">
         {itens.map((it) => {
