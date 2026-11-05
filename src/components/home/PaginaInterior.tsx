@@ -14,15 +14,17 @@ import { MenuProvider } from '@/components/home/MenuContext'
  *
  * Cada página só indica as suas âncoras (`id` de cada secção e o nome) e o
  * conteúdo. Qualquer página interior nova deve usar este componente.
+ * `ancorasSoMobile`: a faixa só aparece no mobile (no desktop a página tem um
+ * índice próprio, como as páginas legais).
  */
-export default function PaginaInterior({ ancoras, children }: { ancoras: Ancora[]; children: ReactNode }) {
+export default function PaginaInterior({ ancoras, ancorasSoMobile = false, children }: { ancoras: Ancora[]; ancorasSoMobile?: boolean; children: ReactNode }) {
   return (
     <MenuProvider barraFixa ancoras={ancoras.length > 0}>
       <main className="pt-[calc(88*var(--u))] bg-[var(--bege-claro-2)]">{children}</main>
       <HomeRodape />
       <HomeLogo />
       <HomeBarra />
-      {ancoras.length > 0 && <HomeAncoras itens={ancoras} />}
+      {ancoras.length > 0 && <HomeAncoras itens={ancoras} soMobile={ancorasSoMobile} />}
       <HomeMenu />
     </MenuProvider>
   )

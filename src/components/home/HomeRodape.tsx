@@ -32,8 +32,7 @@ const LINK = 'alvo-toque transition-colors duration-[400ms] ease-[var(--ease-out
  * letras grandes (os ficheiros SVG do desenho, em quatro blocos, posicionados
  * como no Figma) e a barra legal.
  *
- * Links ainda sem página (política, termos) e redes sem endereço conhecido
- * ficam como texto, como no menu de ecrã.
+ * Redes sem endereço conhecido ficam como texto, como no menu de ecrã.
  *
  * Mobile (marcação própria, em blocos separados por réguas de ponta a ponta): o símbolo
  * da Basílica à esquerda e o lema ao lado; as oito páginas em duas colunas iguais; contacto (morada,
@@ -129,9 +128,10 @@ export default function HomeRodape() {
         {/* ── Barra legal ── */}
         <div className="absolute left-0 top-[calc(826.82*var(--u))] flex items-center justify-between w-full h-[calc(40*var(--u))] pt-[calc(24*var(--u))] px-[calc(32*var(--u))] border-t border-solid border-[rgba(247,242,238,0.2)] text-[length:var(--t-etiqueta)] leading-[1.17]">
           <p className="text-[rgba(186,201,213,0.6)]">{t('rodDireitos')}</p>
-          <div className="flex items-center gap-[calc(16*var(--u))] w-[calc(404*var(--u))]">
-            <span>{t('rodPrivacidade')}</span>
-            <span>{t('rodTermos')}</span>
+          <div className="flex items-center gap-[calc(16*var(--u))] min-w-[calc(404*var(--u))]">
+            <Link href="/politica-de-privacidade" className={`whitespace-nowrap ${LINK}`}>{t('rodPrivacidade')}</Link>
+            <Link href="/termos-e-condicoes" className={`whitespace-nowrap ${LINK}`}>{t('rodTermos')}</Link>
+            <Link href="/politica-de-cookies" className={`whitespace-nowrap ${LINK}`}>{t('rodCookies')}</Link>
             <a href={DUALL} target="_blank" rel="noopener noreferrer" className={`pl-[calc(24*var(--u))] w-[calc(91*var(--u))] whitespace-nowrap ${LINK}`}>{t('rodDesign')}</a>
           </div>
         </div>
@@ -204,8 +204,9 @@ export default function HomeRodape() {
         {/* Barra legal */}
         <div className="flex flex-col gap-[calc(14*var(--u))] border-t border-solid border-[rgba(247,242,238,0.16)] px-[calc(20*var(--u))] pt-[calc(20*var(--u))] pb-[calc(28*var(--u))] text-[length:var(--t-etiqueta)] leading-[1.33]">
           <div className="flex flex-wrap gap-x-[calc(20*var(--u))] gap-y-[calc(4*var(--u))]">
-            <span>{t('rodPrivacidade')}</span>
-            <span>{t('rodTermos')}</span>
+            <Link href="/politica-de-privacidade" className={LINK}>{t('rodPrivacidade')}</Link>
+            <Link href="/termos-e-condicoes" className={LINK}>{t('rodTermos')}</Link>
+            <Link href="/politica-de-cookies" className={LINK}>{t('rodCookies')}</Link>
           </div>
           <div className="flex flex-col gap-[calc(4*var(--u))] text-[rgba(186,201,213,0.6)]">
             <p>{t('rodDireitos')}</p>

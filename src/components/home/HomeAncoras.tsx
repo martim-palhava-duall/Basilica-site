@@ -28,8 +28,11 @@ const soltar = (l: NonNullable<ReturnType<typeof getLenis>>) => {
  * Fecha ao escolher, ao tocar fora, com Esc e ao fazer scroll.
  *
  * Cada secção da página tem de ter o `id` correspondente.
+ *
+ * `soMobile`: a faixa só existe no mobile (a página tem o seu próprio índice no
+ * desktop, como as páginas legais).
  */
-export default function HomeAncoras({ itens }: { itens: Ancora[] }) {
+export default function HomeAncoras({ itens, soMobile = false }: { itens: Ancora[]; soMobile?: boolean }) {
   const { aberto, barra } = useMenu()
   const [ativa, setAtiva] = useState<string | null>(null)
   const [drop, setDrop] = useState(false)
@@ -137,7 +140,7 @@ export default function HomeAncoras({ itens }: { itens: Ancora[] }) {
       ref={navRef}
       aria-label="Nesta página"
       inert={!visivel}
-      className="fixed left-0 z-[39] w-full border-b border-solid border-[rgba(27,43,57,0.07)]"
+      className={`${soMobile ? 'lg:hidden ' : ''}fixed left-0 z-[39] w-full border-b border-solid border-[rgba(27,43,57,0.07)]`}
       style={{
         top: u(ALTURA_BARRA),
         height: 'calc(48 * var(--ui))',
