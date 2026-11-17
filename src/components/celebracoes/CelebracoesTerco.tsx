@@ -38,12 +38,12 @@ export default function CelebracoesTerco() {
       <div className="absolute bottom-[calc(180*var(--u))] left-[calc(614*var(--u))] max-lg:static max-lg:order-2 max-lg:w-full flex items-end gap-[calc(20*var(--u))]">
         <Revelar atraso={150}>
           <div className="relative h-[calc(394*var(--u))] w-[calc(329*var(--u))] max-lg:h-[calc(200*var(--u))] max-lg:w-[calc(150*var(--u))] overflow-hidden rounded-[calc(4*var(--u))]">
-            <Image src="/basilica/duvida.jpg" alt={t('tercoAlt1')} fill sizes="329px" className="object-cover" />
+            <Image src="/vida/catequese/5.jpg" alt={t('tercoAlt1')} fill sizes="329px" className="object-cover" />
           </div>
         </Revelar>
         <Revelar atraso={250}>
           <div className="relative h-[calc(519*var(--u))] w-[calc(445*var(--u))] max-lg:h-[calc(260*var(--u))] max-lg:w-[calc(180*var(--u))] overflow-hidden rounded-[calc(4*var(--u))]">
-            <Image src="/celebracoes/adoracao.jpg" alt={t('tercoAlt2')} fill sizes="445px" className="object-cover" />
+            <Image src="/vida/catequese/2.jpg" alt={t('tercoAlt2')} fill sizes="445px" className="object-cover" />
           </div>
         </Revelar>
       </div>

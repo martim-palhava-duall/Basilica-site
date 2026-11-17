@@ -16,11 +16,11 @@ const TRIM = { textBox: 'trim-both cap alphabetic' } as React.CSSProperties
  *  funciona — a trocar pelas de cada época quando as houver. */
 const DECADAS = [
   { ano: 1750, foto: '/sobre/historia-1750.png' },
-  { ano: 1760, foto: '/home/somos-fachada.jpg' },
+  { ano: 1760, foto: '/basilica/conhecer-pinturas.jpg' },
   { ano: 1770, foto: '/basilica/conhecer-fachada.jpg' },
-  { ano: 1780, foto: '/images/cupula-torre.jpg' },
-  { ano: 1790, foto: '/basilica/conhecer-tumulo-rainha.jpg' },
-  { ano: 1800, foto: '/basilica/conhecer-presepio.jpg' },
+  { ano: 1780, foto: '/home/somos-fachada.jpg' },
+  { ano: 1790, foto: '/basilica/conhecer-presepio.jpg' },
+  { ano: 1800, foto: '/basilica/conhecer-tumulo-rainha.jpg' },
 ] as const
 
 /** Opacidade de cada ano consoante a distância à década ativa (Figma: 1, .4, .3, .2, .1, .05).

@@ -28,7 +28,7 @@ export default function CelebracoesIntencoes() {
       className="flex h-[calc(561*var(--u))] max-lg:h-auto max-lg:flex-col max-lg:items-stretch max-lg:gap-[calc(40*var(--u))] w-full items-center gap-[calc(20*var(--u))] max-lg:pb-[calc(72*var(--u))] bg-[var(--vermelho)] text-[var(--bege-claro-2)]"
     >
       <div className="relative h-[calc(561*var(--u))] w-[calc(710*var(--u))] max-lg:h-[calc(320*var(--u))] max-lg:w-full shrink-0">
-        <Image src="/celebracoes/adoracao.jpg" alt={t('intAlt')} fill sizes="710px" className="object-cover" />
+        <Image src="/images/figma-liturgy.jpg" alt={t('intAlt')} fill sizes="710px" className="object-cover" />
       </div>
 
       <div className="flex w-[calc(678*var(--u))] max-lg:w-full flex-col gap-[calc(80*var(--u))] max-lg:gap-[calc(32*var(--u))] px-[calc(32*var(--u))] max-lg:px-[calc(20*var(--u))]">

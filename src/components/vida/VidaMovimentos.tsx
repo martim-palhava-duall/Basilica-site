@@ -6,9 +6,9 @@ import Seta from '@/components/home/Seta'
 import { u } from '@/lib/escala'
 
 const MOVIMENTOS = [
-  { chave: 'mov1', foto: '/vida/mov-1.jpg', largura: 444 },
-  { chave: 'mov2', foto: '/vida/mov-2.jpg', largura: 444 },
-  { chave: 'mov3', foto: '/vida/mov-3.jpg', largura: 445 },
+  { chave: 'mov1', foto: '/celebracoes/batizado/1.jpg', largura: 444 },
+  { chave: 'mov2', foto: '/images/figma-nave-aerial.jpg', largura: 444 },
+  { chave: 'mov3', foto: '/obra/acao-3.jpg', largura: 445 },
 ] as const
 
 /**

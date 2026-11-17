@@ -31,14 +31,14 @@ export default function BasilicaVisitas() {
         <div className="flex items-center justify-between w-full max-lg:flex-col max-lg:gap-[calc(32*var(--u))]">
           <Revelar atraso={100} className="max-lg:w-full">
             <div className="relative h-[calc(624*var(--u))] w-[calc(794*var(--u))] max-lg:h-[calc(300*var(--u))] max-lg:w-full rounded-[calc(4*var(--u))] overflow-hidden">
-              <Image src="/home/oque-celebrar.jpg" alt={t('visitasAlt1')} fill sizes="794px" className="object-cover" />
+              <Image src="/vida/catequese/1.jpg" alt={t('visitasAlt1')} fill sizes="794px" className="object-cover" />
             </div>
           </Revelar>
 
           <div className="flex flex-col gap-[calc(64*var(--u))] max-lg:gap-[calc(32*var(--u))] w-[calc(518*var(--u))] max-lg:w-full">
             <Revelar atraso={200}>
               <div className="relative h-[calc(417*var(--u))] max-lg:h-[calc(220*var(--u))] w-full rounded-[calc(4*var(--u))] overflow-hidden">
-                <Image src="/home/somos-interior.jpg" alt={t('visitasAlt2')} fill sizes="518px" className="object-cover" />
+                <Image src="/vida/catequese/3.jpg" alt={t('visitasAlt2')} fill sizes="518px" className="object-cover" />
               </div>
             </Revelar>
             <Revelar atraso={300}>

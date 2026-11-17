@@ -28,7 +28,7 @@ export default function ObraCapa() {
         </div>
         <Revelar atraso={200} className="w-full">
           <div className="relative h-[calc(600*var(--u))] max-lg:h-[calc(320*var(--u))] w-full overflow-hidden rounded-[calc(4*var(--u))]">
-            <Image src="/obra/capa.jpg" alt={t('capaAlt')} fill priority sizes="1376px" className="object-cover object-[50%_70.5%]" />
+            <Image src="/home/obra-patronato.jpg" alt={t('capaAlt')} fill priority sizes="1376px" className="object-cover object-center" />
           </div>
         </Revelar>
       </div>

@@ -9,8 +9,8 @@ const TRIM = { textBox: 'trim-both cap alphabetic' } as React.CSSProperties
 
 const EXPERIENCIAS = [
   { chave: 'exp1', largura: 444, foto: '/basilica/experiencia-cupula.jpg' },
-  { chave: 'exp2', largura: 444, foto: '/home/dest-2.jpg' },
-  { chave: 'exp3', largura: 445, foto: '/home/dest-3.jpg' },
+  { chave: 'exp2', largura: 444, foto: '/basilica/conhecer-presepio.jpg' },
+  { chave: 'exp3', largura: 445, foto: '/images/figma-nave-wide.jpg' },
 ] as const
 
 /**
