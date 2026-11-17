@@ -59,7 +59,7 @@ export default function CelebracoesDevocoes() {
           n: '02',
           titulo: t('dev2Titulo'),
           texto: t('dev2Texto'),
-          foto: '/home/oque-celebrar.jpg',
+          foto: '/images/figma-statue-mary.jpg',
           intro: t('dev2Intro'),
           intro2: t('sabTexto'),
           // A hora é a da antiga Agenda Paroquial (a do desenho), por confirmar com a paróquia
@@ -84,7 +84,7 @@ export default function CelebracoesDevocoes() {
           n: '04',
           titulo: t('dev4Titulo'),
           texto: t('dev4Texto'),
-          foto: '/home/somos-interior.jpg',
+          foto: '/celebracoes/misericordia.jpg',
           intro: t('dev4Intro'),
           intro2: t('dev4Intro2'),
           // 15h00, a "hora da Misericórdia"; provisória, até a paróquia a confirmar

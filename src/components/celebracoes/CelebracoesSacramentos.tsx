@@ -44,7 +44,7 @@ export default function CelebracoesSacramentos() {
     '/home/obra-recolhimento.jpg', // Unção dos Doentes
     '/sobre/partilha-7.jpg', // Matrimónio
     '/basilica/duvida.jpg', // Ordem
-    '/celebracoes/adoracao.jpg', // Funerais
+    '/basilica/conhecer-tumulo-rainha.jpg', // Funerais
   ]
   const items: Sacramento[] = Array.from({ length: 8 }, (_, i) => ({
     n: String(i + 1).padStart(2, '0'),

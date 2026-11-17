@@ -13,8 +13,8 @@ const i = (chunks: ReactNode) => (
  */
 const GRUPOS = [
   { n: '01', chave: 'gc1', foto: '/vida/catequese/2.jpg', subs: 3, galeria: GALERIA_CATEQUESE },
-  { n: '02', chave: 'gc2', foto: '/vida/grupos.jpg', subs: 2, galeria: undefined },
-  { n: '03', chave: 'gc3', foto: '/vida/grupos.jpg', subs: 3, galeria: undefined },
+  { n: '02', chave: 'gc2', foto: '/vida/cti-2.jpg', subs: 2, galeria: undefined },
+  { n: '03', chave: 'gc3', foto: '/home/missao-thumb.jpg', subs: 3, galeria: undefined },
 ] as const
 
 /** Galeria do painel: as fotografias das galerias do site (lib/galeria) */
