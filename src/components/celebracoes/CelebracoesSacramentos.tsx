@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl'
 import Revelar from '@/components/home/Revelar'
 import SacramentosLista, { type Sacramento } from '@/components/celebracoes/SacramentosLista'
+import { GALERIA_BATISMO } from '@/lib/galeria'
 
 /**
  * Celebrações, Sacramentos — design novo (Figma, nó 111:1534; painel 140:1514), desktop 1440.
@@ -25,8 +26,9 @@ export default function CelebracoesSacramentos() {
   const quando: Record<number, { horas: string; dias: string }[]> = {
     2: [{ horas: min(h('adoracaoSemHoras')), dias: h('adoracaoSemDias') }],
     4: [
-      { horas: min(h('confissoesDomHoras')), dias: h('confissoesDomDias') },
+      { horas: min(h('confissoesMeioHoras')), dias: h('confissoesMeioDias') },
       { horas: min(h('confissoesSemHoras')), dias: h('confissoesSemDias') },
+      { horas: min(h('confissoesDomHoras')), dias: h('confissoesDomDias') },
     ],
     5: [{ horas: c('sac5Quando'), dias: c('sac5QuandoDesc') }],
     8: [{ horas: c('sac8Quando'), dias: c('sac8QuandoDesc') }],
@@ -35,7 +37,7 @@ export default function CelebracoesSacramentos() {
   // Fotografias provisórias, uma por sacramento, escolhidas entre as do site: trocar por
   // as da paróquia quando as houver (basta mudar o caminho aqui)
   const FOTOS = [
-    '/celebracoes/sacramento.jpg', // Batismo
+    '/celebracoes/batizado/2.jpg', // Batismo
     '/images/destaque-celebracao.jpg', // Adoração
     '/images/figma-liturgy.jpg', // Confirmação
     '/basilica/conhecer-sacristia.jpg', // Confissão
@@ -53,6 +55,7 @@ export default function CelebracoesSacramentos() {
     preciso: c(`sac${i + 1}Preciso`),
     quando: quando[i + 1] ?? noCartorio,
     foto: FOTOS[i],
+    galeria: i === 0 ? GALERIA_BATISMO : undefined,
   }))
 
   return (

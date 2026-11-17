@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 import { useTranslations } from 'next-intl'
 import ListaPainel, { type FotoGaleria } from '@/components/ui/ListaPainel'
-import { GALERIA_PAINEL } from '@/lib/galeria'
+import { GALERIA_CATEQUESE, GALERIA_PAINEL } from '@/lib/galeria'
 
 const i = (chunks: ReactNode) => (
   <span className="italic font-light" style={{ fontFamily: "var(--font-display)" }}>{chunks}</span>
@@ -12,9 +12,9 @@ const i = (chunks: ReactNode) => (
  * outras duas ficam com ela até haver fotografias próprias: basta trocar o `foto`.
  */
 const GRUPOS = [
-  { n: '01', chave: 'gc1', foto: '/vida/grupos.jpg', subs: 3 },
-  { n: '02', chave: 'gc2', foto: '/vida/grupos.jpg', subs: 2 },
-  { n: '03', chave: 'gc3', foto: '/vida/grupos.jpg', subs: 3 },
+  { n: '01', chave: 'gc1', foto: '/vida/catequese/2.jpg', subs: 3, galeria: GALERIA_CATEQUESE },
+  { n: '02', chave: 'gc2', foto: '/vida/grupos.jpg', subs: 2, galeria: undefined },
+  { n: '03', chave: 'gc3', foto: '/vida/grupos.jpg', subs: 3, galeria: undefined },
 ] as const
 
 /** Galeria do painel: as fotografias das galerias do site (lib/galeria) */
@@ -43,6 +43,7 @@ export default function VidaGrupos() {
         titulo: t(`${g.chave}Titulo`),
         texto: t(`${g.chave}Texto`),
         foto: g.foto,
+        galeria: g.galeria,
         intro: t(`${g.chave}Intro`),
         intro2: t(`${g.chave}Intro2`),
         blocos: Array.from({ length: g.subs }, (_, k) => ({ titulo: t(`${g.chave}S${k + 1}T`), texto: t(`${g.chave}S${k + 1}X`) })),

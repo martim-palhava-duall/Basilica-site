@@ -30,6 +30,7 @@ export default function VidaHorarios() {
     {
       titulo: h('confissoesHead'),
       entradas: [
+        { horas: h('confissoesMeioHoras'), dias: h('confissoesMeioDias') },
         { horas: h('confissoesSemHoras'), dias: h('confissoesSemDias') },
         { horas: h('confissoesDomHoras'), dias: h('confissoesDomDias') },
       ],

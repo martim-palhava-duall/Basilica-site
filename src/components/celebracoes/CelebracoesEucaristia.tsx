@@ -55,6 +55,7 @@ export default function CelebracoesEucaristia() {
     {
       titulo: h('confissoesHead'),
       entradas: [
+        { horas: h('confissoesMeioHoras'), dias: h('confissoesMeioDias') },
         { horas: h('confissoesSemHoras'), dias: h('confissoesSemDias') },
         { horas: h('confissoesDomHoras'), dias: h('confissoesDomDias') },
       ],
@@ -66,7 +67,6 @@ export default function CelebracoesEucaristia() {
     {
       titulo: t('eucOutrasIgrejas'),
       entradas: [
-        { horas: h('lapaSabHoras'), dias: `${h('lapaTitle')} · ${h('lapaSabDias')}` },
         { horas: h('lapaDomHoras'), dias: `${h('lapaTitle')} · ${h('lapaDomDias')}` },
         { horas: h('clarissasHoras'), dias: `${h('clarissasTitle')} · ${h('clarissasDias')}` },
         { horas: h('navegantesHoras'), dias: `${h('navegantesTitle')} · ${h('navegantesDias')}` },

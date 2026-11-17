@@ -21,6 +21,8 @@ export type Sacramento = {
   preciso: string
   /** fotografia do sacramento: aparece na fotografia fixa quando é o ativo (e em cima do texto no mobile) */
   foto: string
+  /** galeria própria do painel; sem ela usa a do site */
+  galeria?: { src: string; largura: number }[]
 }
 
 export type Textos = {
@@ -36,9 +38,8 @@ export type Textos = {
 
 const TRIM = { textBox: 'trim-both cap alphabetic' } as React.CSSProperties
 /** Fotografias do painel: as das galerias do site (lib/galeria) */
-const GALERIA = GALERIA_PAINEL
+const GALERIA_BASE = GALERIA_PAINEL
 const FOLGA_GALERIA = 12
-const DESLOCAMENTOS = GALERIA.map((_, i) => GALERIA.slice(0, i).reduce((s, g) => s + g.largura, 0))
 
 /**
  * Sacramentos, lista e painel — design novo (Figma, nós 111:1534 e 140:1514).
@@ -62,6 +63,11 @@ const DESLOCAMENTOS = GALERIA.map((_, i) => GALERIA.slice(0, i).reduce((s, g) =>
 export default function SacramentosLista({ items, textos }: { items: Sacramento[]; textos: Textos }) {
   const [ativo, setAtivo] = useState(0)
   const [aberto, setAberto] = useState<number | null>(null)
+  const ultimo = useRef(0)
+  if (aberto !== null) ultimo.current = aberto
+  const s = items[ultimo.current]
+  const GALERIA = s.galeria ?? GALERIA_BASE
+  const DESLOCAMENTOS = GALERIA.map((_, i) => GALERIA.slice(0, i).reduce((acc, g) => acc + g.largura, 0))
   const [foto, setFoto] = useState(0)
   const irFoto = (d: number) => setFoto((f) => Math.min(Math.max(f + d, 0), GALERIA.length - 1))
   // Arrastar e scroll horizontal do trackpad (ver lib/useGaleriaGestos)
@@ -81,9 +87,6 @@ export default function SacramentosLista({ items, textos }: { items: Sacramento[
   useEffect(() => setMontado(true), [])
 
   const estaAberto = aberto !== null
-  const ultimo = useRef(0)
-  if (aberto !== null) ultimo.current = aberto
-  const s = items[ultimo.current]
 
   // Ativo = o último cujo topo já passou a linha de leitura, que desce sobre a
   // fotografia fixa de cima a baixo enquanto a lista passa por ela

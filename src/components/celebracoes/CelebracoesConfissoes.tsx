@@ -17,8 +17,9 @@ export default function CelebracoesConfissoes() {
   const h = useTranslations('horarios')
 
   const linhas = [
-    { dias: h('confissoesDomDias'), horas: horas(h('confissoesDomHoras')) },
+    { dias: h('confissoesMeioDias'), horas: horas(h('confissoesMeioHoras')) },
     { dias: h('confissoesSemDias'), horas: horas(h('confissoesSemHoras')) },
+    { dias: h('confissoesDomDias'), horas: horas(h('confissoesDomHoras')) },
   ]
 
   return (

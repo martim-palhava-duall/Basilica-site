@@ -31,6 +31,8 @@ export type ItemPainel = {
    */
   quando?: { destaque: string; texto: string }[]
   preciso?: string
+  /** galeria própria do item; sem ela usa a do conjunto */
+  galeria?: FotoGaleria[]
 }
 
 export type FotoGaleria = { src: string; largura: number }
@@ -66,7 +68,7 @@ export default function ListaPainel({
   cta,
   saibaMais,
   itens,
-  galeria,
+  galeria: galeriaBase,
   painelCta,
   rotulos,
 }: {
@@ -85,8 +87,12 @@ export default function ListaPainel({
   painelCta: { texto: string; href: string }
   rotulos: { fechar: string; galeria: string; anterior: string; seguinte: string; quando?: string; preciso?: string }
 }) {
-  const DESLOCAMENTOS = galeria.map((_, k) => galeria.slice(0, k).reduce((acc, g) => acc + g.largura, 0))
   const [aberto, setAberto] = useState<number | null>(null)
+  const ultimo = useRef(0)
+  if (aberto !== null) ultimo.current = aberto
+  const g = itens[ultimo.current]
+  const galeria = g.galeria ?? galeriaBase
+  const DESLOCAMENTOS = galeria.map((_, k) => galeria.slice(0, k).reduce((acc, f) => acc + f.largura, 0))
   const [foto, setFoto] = useState(0)
   const irFoto = (d: number) => setFoto((f) => Math.min(Math.max(f + d, 0), galeria.length - 1))
   // Arrastar e scroll horizontal do trackpad (ver lib/useGaleriaGestos)
@@ -101,9 +107,6 @@ export default function ListaPainel({
   useEffect(() => setMontado(true), [])
 
   const estaAberto = aberto !== null
-  const ultimo = useRef(0)
-  if (aberto !== null) ultimo.current = aberto
-  const g = itens[ultimo.current]
 
   // Com o painel aberto a página por trás não pode correr (o Lenis precisa de ser parado à parte)
   useEffect(() => {
