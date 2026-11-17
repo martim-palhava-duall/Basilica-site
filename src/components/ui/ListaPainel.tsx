@@ -94,7 +94,13 @@ export default function ListaPainel({
   const galeria = g.galeria ?? galeriaBase
   const DESLOCAMENTOS = galeria.map((_, k) => galeria.slice(0, k).reduce((acc, f) => acc + f.largura, 0))
   const [foto, setFoto] = useState(0)
-  const irFoto = (d: number) => setFoto((f) => Math.min(Math.max(f + d, 0), galeria.length - 1))
+  // A faixa pára quando a última fotografia chega ao fim das setas (alinhada à direita com elas):
+  // `m` é o deslocamento máximo em px e `max` a última fotografia a que se pode ir.
+  const faixaRef = useRef<HTMLDivElement>(null)
+  const setaRef = useRef<HTMLButtonElement>(null)
+  const [lim, setLim] = useState({ m: 99999, max: galeria.length - 1 })
+  const fotoAt = Math.min(foto, lim.max)
+  const irFoto = (d: number) => setFoto((f) => Math.min(Math.max(Math.min(f, lim.max) + d, 0), lim.max))
   // Arrastar e scroll horizontal do trackpad (ver lib/useGaleriaGestos)
   const { ref: pista, arrasto, arrastando } = useGaleriaGestos<HTMLDivElement>({ ir: irFoto, limiar: 60 })
   const fecharRef = useRef<HTMLButtonElement>(null)
@@ -124,6 +130,26 @@ export default function ListaPainel({
       origemRef.current?.focus({ preventScroll: true })
     }
   }, [estaAberto])
+
+  useLayoutEffect(() => {
+    const medir = () => {
+      const tr = faixaRef.current
+      const seta = setaRef.current
+      const visivel = tr?.parentElement
+      if (!tr || !seta || !visivel) return
+      const vis = seta.getBoundingClientRect().right - visivel.getBoundingClientRect().left
+      const m = Math.max(0, tr.offsetWidth - vis)
+      const pos = Array.from(tr.children, (c) => (c as HTMLElement).offsetLeft)
+      const i = pos.findIndex((p) => p >= m - 1)
+      setLim((l) => {
+        const max = i === -1 ? pos.length - 1 : i
+        return Math.abs(l.m - m) < 0.5 && l.max === max ? l : { m, max }
+      })
+    }
+    medir()
+    window.addEventListener('resize', medir)
+    return () => window.removeEventListener('resize', medir)
+  }, [montado, aberto, galeria])
 
   useLayoutEffect(() => {
     if (estaAberto) {
@@ -225,8 +251,9 @@ export default function ListaPainel({
                       key={b.d}
                       type="button"
                       aria-label={b.rotulo}
-                      disabled={foto + b.d < 0 || foto + b.d >= galeria.length}
+                      disabled={fotoAt + b.d < 0 || fotoAt + b.d > lim.max}
                       onClick={() => irFoto(b.d)}
+                      ref={b.d > 0 ? setaRef : undefined}
                       className="absolute left-[var(--sx)] max-lg:left-auto max-lg:right-[var(--sr)] top-[calc(2*var(--u))] h-[calc(20*var(--u))] w-[calc(32*var(--u))] overflow-hidden opacity-70 transition-opacity duration-[400ms] hover:opacity-100 disabled:cursor-default disabled:opacity-30"
                       style={{ ['--sx' as string]: u(b.left), ['--sr' as string]: u(b.d < 0 ? 40 : 0) }}
                     >
@@ -237,8 +264,9 @@ export default function ListaPainel({
                 </div>
                 <div ref={pista} className="-mr-[calc(64*var(--u))] max-lg:-mr-[calc(20*var(--u))] mt-[calc(24*var(--u))] overflow-hidden" style={{ ...ESTILO_GESTOS, cursor: arrastando ? 'grabbing' : 'grab' }}>
                   <div
+                    ref={faixaRef}
                     className="flex w-max gap-[calc(12*var(--u))] transition-transform duration-[1100ms] ease-[var(--ease-out)]"
-                    style={{ transform: `translateX(calc((${-DESLOCAMENTOS[foto]} * var(--gk) - ${FOLGA_GALERIA * foto}) * var(--u) + ${arrasto}px))`, transitionDuration: arrastando ? '0ms' : undefined }}
+                    style={{ transform: `translateX(calc(max(calc((${-DESLOCAMENTOS[fotoAt]} * var(--gk) - ${FOLGA_GALERIA * fotoAt}) * var(--u)), ${-lim.m}px) + ${arrasto}px))`, transitionDuration: arrastando ? '0ms' : undefined }}
                   >
                     {galeria.map((f, k) => (
                       <div key={k} className="relative h-[calc(400*var(--u))] max-lg:h-[calc(280*var(--u))] shrink-0 overflow-hidden rounded-[calc(4*var(--u))]" style={{ width: `calc(${f.largura} * var(--gk) * var(--u))` }}>
