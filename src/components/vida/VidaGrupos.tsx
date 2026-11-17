@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 import { useTranslations } from 'next-intl'
 import ListaPainel, { type FotoGaleria } from '@/components/ui/ListaPainel'
-import { GALERIA_CATEQUESE, GALERIA_PAINEL } from '@/lib/galeria'
+import { GALERIA_CATEQUESE } from '@/lib/galeria'
 
 const i = (chunks: ReactNode) => (
   <span className="italic font-light" style={{ fontFamily: "var(--font-display)" }}>{chunks}</span>
@@ -18,7 +18,8 @@ const GRUPOS = [
 ] as const
 
 /** Galeria do painel: as fotografias das galerias do site (lib/galeria) */
-const GALERIA: FotoGaleria[] = GALERIA_PAINEL
+/** Sem galeria de conjunto: só os grupos com fotografias próprias têm galeria (ver `galeria` em GRUPOS) */
+const GALERIA: FotoGaleria[] = []
 
 /**
  * Vida da Paróquia, Grupos Culturais — design novo (Figma, nó 111:1995), desktop 1440.

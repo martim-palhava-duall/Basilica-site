@@ -114,7 +114,7 @@ export default function SacramentList({ items, labels }: { items: Sacramento[]; 
               }}
               className="alvo-toque group/mais inline-flex items-center gap-3 text-[0.9rem]"
             >
-              <span className="underline underline-offset-[5px] decoration-[0.5px]">{labels.saibaMais}</span>
+              <span className="underline underline-offset-[6px] decoration-[0.5px]">{labels.saibaMais}</span>
               <span className="transition-transform duration-300 ease-[var(--ease-out)] group-hover/mais:translate-x-[3px]">
                 <Seta />
               </span>

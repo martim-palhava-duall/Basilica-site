@@ -240,6 +240,7 @@ export default function ListaPainel({
 
             {/* Galeria: faixa que desliza com as setas, e o botão */}
             <div className="flex w-full flex-col gap-[calc(24*var(--u))]">
+              {galeria.length > 0 && (
               <div className="flex w-[calc(872*var(--u))] max-w-full flex-col">
                 <div className="relative h-[calc(24*var(--u))] w-full">
                   <p className="absolute left-0 top-0 text-[length:var(--t-corpo)] leading-[1.5]">{rotulos.galeria}</p>
@@ -276,6 +277,7 @@ export default function ListaPainel({
                   </div>
                 </div>
               </div>
+              )}
 
               <Link
                 href={painelCta.href}
@@ -352,7 +354,7 @@ export default function ListaPainel({
               <span className="flex w-[calc(384*var(--u))] max-lg:w-full max-lg:gap-[calc(14*var(--u))] max-lg:pl-[calc(60*var(--u))] max-lg:pr-[calc(20*var(--u))] flex-col gap-[calc(24*var(--u))]">
                 <span className="block max-w-[calc(448*var(--u))] pr-[calc(32*var(--u))] max-lg:pr-0 text-[length:var(--t-corpo)] leading-[1.38]">{gr.texto}</span>
                 <span className="flex items-center gap-[calc(12*var(--u))] text-[length:var(--t-corpo)] leading-[1.5]">
-                  <span className="underline decoration-from-font underline-offset-[from-font]">{saibaMais}</span>
+                  <span className="underline decoration-from-font underline-offset-[calc(6*var(--u))]">{saibaMais}</span>
                   <Seta className="group-hover/grupo:translate-x-[calc(4*var(--u))]" />
                 </span>
               </span>

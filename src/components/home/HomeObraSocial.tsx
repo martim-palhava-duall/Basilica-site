@@ -133,7 +133,7 @@ export default function HomeObraSocial() {
             <div className="flex flex-col gap-[calc(24*var(--u))] w-[calc(384*var(--u))] max-lg:w-full max-lg:gap-[calc(14*var(--u))] max-lg:pl-[calc(60*var(--u))] max-lg:pr-[calc(20*var(--u))]">
               <p className="max-w-[calc(448*var(--u))] pr-[calc(32*var(--u))] max-lg:pr-0 text-[length:var(--t-corpo)] leading-[1.4]">{t(`${o.chave}Texto`)}</p>
               <span className="flex items-center gap-[calc(4*var(--u))] text-[length:var(--t-corpo)] leading-[1.5]">
-                <span className="underline decoration-from-font underline-offset-[calc(5*var(--u))]">{t('obraSaibaMais')}</span>
+                <span className="underline decoration-from-font underline-offset-[calc(6*var(--u))]">{t('obraSaibaMais')}</span>
                 <span aria-hidden="true" className="seta-externa transition-transform duration-[400ms] ease-[var(--ease-out)] group-hover/obra:translate-x-[calc(2*var(--u))] group-hover/obra:-translate-y-[calc(2*var(--u))]" />
               </span>
             </div>

@@ -8,7 +8,6 @@ import { getLenis } from '@/lib/lenis'
 import Seta from '@/components/home/Seta'
 import { u } from '@/lib/escala'
 import { ESTILO_GESTOS, useGaleriaGestos } from '@/lib/useGaleriaGestos'
-import { GALERIA_PAINEL } from '@/lib/galeria'
 
 export type Sacramento = {
   n: string
@@ -38,7 +37,8 @@ export type Textos = {
 
 const TRIM = { textBox: 'trim-both cap alphabetic' } as React.CSSProperties
 /** Fotografias do painel: as das galerias do site (lib/galeria) */
-const GALERIA_BASE = GALERIA_PAINEL
+/** Sem galeria de conjunto: só o Batismo tem fotografias próprias (ver `galeria` em cada sacramento) */
+const GALERIA_BASE: { src: string; largura: number }[] = []
 const FOLGA_GALERIA = 12
 
 /**
@@ -281,6 +281,7 @@ export default function SacramentosLista({ items, textos }: { items: Sacramento[
 
             {/* Galeria: faixa que desliza com as setas */}
             <div className="flex flex-col gap-[calc(24*var(--u))] w-full">
+              {GALERIA.length > 0 && (
               <div className="flex flex-col gap-[calc(0*var(--u))] w-[calc(872*var(--u))] max-w-full">
                 <div className="relative h-[calc(24*var(--u))] w-full">
                   <p className="absolute left-0 top-0 text-[length:var(--t-corpo)] leading-[1.5]">{textos.galeria}</p>
@@ -317,6 +318,7 @@ export default function SacramentosLista({ items, textos }: { items: Sacramento[
                   </div>
                 </div>
               </div>
+              )}
 
               <Link
                 href="/contactos"
@@ -379,7 +381,7 @@ export default function SacramentosLista({ items, textos }: { items: Sacramento[
                   }}
                   className="alvo-toque self-start flex items-center gap-[calc(12*var(--u))] text-[length:var(--t-corpo)] leading-[1.5]"
                 >
-                  <span className="underline decoration-from-font underline-offset-[calc(5*var(--u))]">{textos.saibaMais}</span>
+                  <span className="underline decoration-from-font underline-offset-[calc(6*var(--u))]">{textos.saibaMais}</span>
                   <Seta />
                 </button>
               </div>
@@ -424,7 +426,7 @@ export default function SacramentosLista({ items, textos }: { items: Sacramento[
                 }}
                 className="alvo-toque group/mais self-start flex items-center gap-[calc(12*var(--u))] text-[length:var(--t-corpo)] leading-[1.5]"
               >
-                <span className="underline decoration-from-font underline-offset-[from-font]">{textos.saibaMais}</span>
+                <span className="underline decoration-from-font underline-offset-[calc(6*var(--u))]">{textos.saibaMais}</span>
                 <Seta className="group-hover/mais:translate-x-[calc(4*var(--u))]" />
               </button>
             </article>

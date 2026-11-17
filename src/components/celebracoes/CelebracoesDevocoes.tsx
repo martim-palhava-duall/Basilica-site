@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react'
 import { useTranslations } from 'next-intl'
 import ListaPainel, { type FotoGaleria } from '@/components/ui/ListaPainel'
-import { GALERIA_PAINEL } from '@/lib/galeria'
 
 const i = (chunks: ReactNode) => (
   <span className="italic font-light" style={{ fontFamily: "var(--font-display)" }}>{chunks}</span>
@@ -9,7 +8,8 @@ const i = (chunks: ReactNode) => (
 const min = (s: string) => s.replace(/ ÀS /g, ' às ')
 
 /** Galeria do painel: as fotografias das galerias do site (lib/galeria) */
-const GALERIA: FotoGaleria[] = GALERIA_PAINEL
+/** Sem galeria até haver fotografias das devoções */
+const GALERIA: FotoGaleria[] = []
 
 /**
  * Celebrações, Devoções — pedido do cliente: "algo parecido aos sacramentos mas
